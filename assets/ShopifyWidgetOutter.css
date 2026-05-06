@@ -1,0 +1,81 @@
+/* Responsive logic */
+
+@media screen and (min-width: 451px) {
+  .WizybotShopifyWidget__iframe__outter__open__right {
+    right: 15px;
+    bottom: 15px;
+    width: min(100vw, 387.6px);
+    height: min(590px, 100vh - 40px);
+  }
+
+  .WizybotShopifyWidget__iframe__outter__open__left {
+    right: calc(100% - min(100vw, 402.3px));
+    bottom: 15px;
+    width: min(100vw, 387.6px);
+    height: min(590px, 100vh - 40px);
+  }
+}
+
+@media screen and (max-width: 450.999px) {
+  .WizybotShopifyWidget__iframe__outter__open__right {
+    right: 0px;
+    bottom: 0px;
+    width: 100vw;
+    height: calc(100vh - 100px);
+  }
+
+  .WizybotShopifyWidget__iframe__outter__open__left {
+    right: 0%;
+    bottom: 0;
+    width: 100vw;
+    height: calc(100vh - 100px);
+  }
+}
+
+/* General iframe attributtes */
+
+.WizybotShopifyWidget__iframe__outter__close {
+  display: block;
+  border: none;
+  height: 80px;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999999999 !important;
+  overflow: hidden;
+  position: fixed;
+}
+
+.WizybotShopifyWidget__iframe__outter__open__right {
+  display: block;
+  border: none;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999999999 !important;
+  overflow: hidden;
+  position: fixed;
+}
+
+.WizybotShopifyWidget__iframe__outter__open__left {
+  display: block;
+  border: none;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999999999 !important;
+  overflow: hidden;
+  position: fixed;
+}
+
+.WizybotShopifyWidget__iframe__outter__open__relative {
+  display: block;
+  border: none;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999999999 !important;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 590px;
+  width: 387.6px;
+}
