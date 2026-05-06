@@ -16,7 +16,6 @@
 
 define('STAGE', 'prod');
 define('GLOBAL_SELECTED_BACKEND', 'https://api.dev.wizybot.com');
-define('NGROK_URL', '');
 
 define('IP_REGISTRY_KEY', '47m2mudauztxbwih');
 
@@ -327,7 +326,6 @@ if (!class_exists('Wizybot')):
                 'globalSelectedBackend' => GLOBAL_SELECTED_BACKEND,
                 'isAlreadyInstalled' => get_option('wizybot_is_already_installed', false),
                 'stage' => STAGE,
-                'ngrokUrl' => NGROK_URL,
                 'wordpressUrl' => site_url(),
                 'siteUrl' => site_url(),
                 'hasWooCommerce' => class_exists('WooCommerce'),
@@ -426,7 +424,7 @@ if (!class_exists('Wizybot')):
          */
         public function request_is_already_installed()
         {
-            $url_backend = STAGE === 'local' ? NGROK_URL : GLOBAL_SELECTED_BACKEND;
+            $url_backend = GLOBAL_SELECTED_BACKEND;
             $shopDomain = get_option('wizybot_shop_domain');
             $url = STAGE === 'local'
                 ? 'https://host.docker.internal:3001/wordpress/isinstalled/' . urlencode($shopDomain)
