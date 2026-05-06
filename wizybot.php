@@ -17,20 +17,6 @@
 define('STAGE', 'prod');
 define('GLOBAL_SELECTED_BACKEND', 'https://api.dev.wizybot.com');
 define('NGROK_URL', '');
-// Load local environment variables if available
-if (STAGE === 'local') {
-    $ngrokFile = plugin_dir_path(__FILE__) . 'assets/ngrok.php';
-    if (file_exists($ngrokFile)) {
-        include_once $ngrokFile;
-    }
-
-    if (defined('NGROK_DOMAIN_WEBPACK')) {
-        define('NGROK_URL', "https://" . NGROK_DOMAIN_WEBPACK . ".ngrok.io");
-    }
-    if (defined('WP_LOCAL_URL_WEBPACK')) {
-        define('WP_LOCAL_URL', WP_LOCAL_URL_WEBPACK);
-    }
-}
 
 define('IP_REGISTRY_KEY', '47m2mudauztxbwih');
 
