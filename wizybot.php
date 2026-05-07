@@ -92,10 +92,6 @@ if (!class_exists('Wizybot')):
 
         /**
          * Initialize hooks and filters.
-         *
-         * All logic lives here in PHP because it needs WordPress/WooCommerce server-side context.
-         * The rule: if it requires wp_options, WC() objects, WP hooks, or cookies that must exist
-         * before JS loads — it belongs here. Everything else goes directly in the React widget.
          */
         private function init()
         {
