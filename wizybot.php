@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Plugin Name:       Wizybot
  * Plugin URI:        https://wizybot.com
@@ -16,10 +18,8 @@
 
 define('STAGE', 'prod');
 define('GLOBAL_SELECTED_BACKEND', 'https://api.dev.wizybot.com');
-
 define('IP_REGISTRY_KEY', '47m2mudauztxbwih');
 
-defined('ABSPATH') || exit;
 
 if (!class_exists('Wizybot')):
 
