@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Requires PHP:      7.2
  */
 
-define('STAGE', 'prod');
-define('GLOBAL_SELECTED_BACKEND', 'https://api.wizybot.com');
-define('IP_REGISTRY_KEY', '47m2mudauztxbwih');
+define('WIZYBOT_STAGE', 'prod');
+define('WIZYBOT_GLOBAL_SELECTED_BACKEND', 'https://api.wizybot.com');
+define('WIZYBOT_IP_REGISTRY_KEY', '47m2mudauztxbwih');
 
 
 if (!class_exists('Wizybot')):
@@ -301,9 +301,9 @@ if (!class_exists('Wizybot')):
                 'shopName' => get_option('wizybot_shop_name'),
                 'shopEmail' => get_option('wizybot_shop_email'),
                 'shopToken' => get_option('wizybot_shop_token', ''),
-                'globalSelectedBackend' => GLOBAL_SELECTED_BACKEND,
+                'globalSelectedBackend' => WIZYBOT_GLOBAL_SELECTED_BACKEND,
                 'isAlreadyInstalled' => get_option('wizybot_is_already_installed', false),
-                'stage' => STAGE,
+                'stage' => WIZYBOT_STAGE,
                 'wordpressUrl' => site_url(),
                 'siteUrl' => site_url(),
                 'hasWooCommerce' => class_exists('WooCommerce'),
@@ -365,8 +365,8 @@ if (!class_exists('Wizybot')):
 
             wp_localize_script('wizybot-main-js', 'wizybot', array(
                 'shopDomain' => get_option('wizybot_shop_domain'),
-                'ipRegistryKey' => IP_REGISTRY_KEY,
-                'globalSelectedBackend' => GLOBAL_SELECTED_BACKEND,
+                'ipRegistryKey' => WIZYBOT_IP_REGISTRY_KEY,
+                'globalSelectedBackend' => WIZYBOT_GLOBAL_SELECTED_BACKEND,
                 'chatProfileImage' => plugin_dir_url(__FILE__) . 'assets/wizy_chat_profile.png',
                 'curvyBorderImage' => plugin_dir_url(__FILE__) . 'assets/wizy_curvy_border.png',
                 'wizyLogoImage' => plugin_dir_url(__FILE__) . 'assets/wizy_logo_blue.svg',
@@ -402,13 +402,13 @@ if (!class_exists('Wizybot')):
          */
         public function request_is_already_installed()
         {
-            $url_backend = GLOBAL_SELECTED_BACKEND;
+            $url_backend = WIZYBOT_GLOBAL_SELECTED_BACKEND;
             $shopDomain = get_option('wizybot_shop_domain');
-            $url = STAGE === 'local'
+            $url = WIZYBOT_STAGE === 'local'
                 ? 'https://host.docker.internal:3001/wordpress/isinstalled/' . urlencode($shopDomain)
                 : $url_backend . '/wordpress/isinstalled/' . urlencode($shopDomain);
 
-            if (STAGE === 'local') {
+            if (WIZYBOT_STAGE === 'local') {
                 $options = [
                     'sslverify' => false,
                 ];
