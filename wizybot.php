@@ -363,6 +363,12 @@ if (!class_exists('Wizybot')):
                 }
             }
 
+            $wizy_cart_cookie_key = str_replace('.', '_', 'WIZY_CART_' . get_option('wizybot_shop_domain'));
+            $wizy_cart_id = null;
+            if (isset($_COOKIE[$wizy_cart_cookie_key])) {
+                $wizy_cart_id = sanitize_text_field(wp_unslash($_COOKIE[$wizy_cart_cookie_key]));
+            }
+
             wp_localize_script('wizybot-main-js', 'wizybot', array(
                 'shopDomain' => get_option('wizybot_shop_domain'),
                 'ipRegistryKey' => WIZYBOT_IP_REGISTRY_KEY,
@@ -375,7 +381,7 @@ if (!class_exists('Wizybot')):
                 'stylesPathOutter' => plugin_dir_url(__FILE__) . 'assets/ShopifyWidgetOutter.css',
                 'stylesPathInner' => plugin_dir_url(__FILE__) . 'assets/ShopifyWidgetInner.css',
                 'isShopifyForeing' => 'true',
-                'wizyCartId'       => $_COOKIE[str_replace('.', '_', 'WIZY_CART_' . get_option('wizybot_shop_domain'))] ?? null,
+                'wizyCartId'       => $wizy_cart_id,
                 'wizyCartItems'    => $wizy_cart_items,
                 'checkoutUrl'      => function_exists('wc_get_checkout_url') ? wc_get_checkout_url() : null,
             ));
