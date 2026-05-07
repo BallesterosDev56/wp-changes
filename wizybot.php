@@ -253,19 +253,6 @@ if (!class_exists('Wizybot')):
             set_error_handler(function($errno, $errstr, $errfile, $errline) {
                 return false; // Let native handler also process
             });
-
-            set_exception_handler(function($exception) {
-              if (WP_DEBUG) {
-                error_log("Wizybot Excepción: " . $exception->getMessage() . " en " . $exception->getFile() . ":" . $exception->getLine());
-              }
-            });
-
-            register_shutdown_function(function() {
-                $error = error_get_last();
-                if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR]) && WP_DEBUG) {
-                    error_log("Wizybot Fatal: [{$error['type']}] {$error['message']} en {$error['file']}:{$error['line']}");
-                }
-            });
         }
 
         /**
@@ -438,10 +425,6 @@ if (!class_exists('Wizybot')):
             $body = wp_remote_retrieve_body($response);
             $data = json_decode($body, true);
 
-            if (WP_DEBUG) {
-                error_log('Wizybot Debug - API Response: ' . $body);
-            }
-
             $installed = !empty($data['installed']);
             return $installed;
         }
@@ -581,10 +564,6 @@ if (!class_exists('Wizybot')):
                 if ($client_id) {
                     $order->update_meta_data('_wizybot_client_id', $client_id);
                 }
-            } else {
-                if (WP_DEBUG) {
-                    error_log('Wizybot - client cookie not found: ' . $client_cookie);
-                }
             }
 
             $cart_cookie = 'WIZY_CART_' . $shop_domain;
@@ -597,10 +576,6 @@ if (!class_exists('Wizybot')):
                     $new_cart_id = wp_generate_uuid4();
                     setcookie($cart_cookie, $new_cart_id, time() + (86400 * 365), '/');
                     $_COOKIE[$cart_cookie_key] = $new_cart_id;
-                }
-            } else {
-                if (WP_DEBUG) {
-                    error_log('Wizybot - cart cookie not found: ' . $cart_cookie_key);
                 }
             }
 
@@ -626,10 +601,6 @@ if (!class_exists('Wizybot')):
 
             foreach ($options as $option) {
                 delete_option($option);
-            }
-
-            if (WP_DEBUG) {
-                error_log('Wizybot Debug - Plugin Deactivated: Options deleted.');
             }
         }
     }
