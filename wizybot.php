@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name:       Wizybot
  * Plugin URI:        https://wizybot.com
  * Description:       A plugin to integrate Wizybot with WordPress.
- * Version:           0.0.1
+ * Version:           1.0.0
  * Author:            Wizybot Inc
  * Author URI:        https://wizybot.com
  * Text Domain:       wizybot
@@ -119,7 +119,7 @@ if (!class_exists('Wizybot')):
 
             // Shop Domain
             $siteUrl = site_url();
-            $parsedUrl = parse_url($siteUrl);
+            $parsedUrl = wp_parse_url($siteUrl);
             $shopDomain = str_replace('.', '-', $parsedUrl['host'] ?? '');
             $path = trim($parsedUrl['path'] ?? '/', '/');
             $path = str_replace('/', '.', $path);
@@ -128,7 +128,7 @@ if (!class_exists('Wizybot')):
 
 
             // Shop Main Domain
-            $shopMainDomain = $parsedUrl["host"] . $parsedUrl["path"] ?? '';
+            $shopMainDomain = $parsedUrl["host"] . ($parsedUrl["path"] ?? '');
             update_option('wizybot_shop_main_domain', $shopMainDomain);
 
             // Shop Name
