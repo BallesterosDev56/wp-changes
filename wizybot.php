@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 define('STAGE', 'prod');
-define('GLOBAL_SELECTED_BACKEND', 'https://api.dev.wizybot.com');
+define('GLOBAL_SELECTED_BACKEND', 'https://api.wizybot.com');
 define('IP_REGISTRY_KEY', '47m2mudauztxbwih');
 
 
