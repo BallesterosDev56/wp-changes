@@ -560,7 +560,7 @@ if (!class_exists('Wizybot')):
 
             $client_cookie = str_replace('.', '_', 'WIZY_CLIENT_' . $shop_domain);
             if (isset($_COOKIE[$client_cookie])) {
-                $client_id = sanitize_text_field($_COOKIE[$client_cookie]);
+                $client_id = sanitize_text_field( wp_unslash( $_COOKIE[$client_cookie] ) );
                 if ($client_id) {
                     $order->update_meta_data('_wizybot_client_id', $client_id);
                 }
@@ -569,7 +569,7 @@ if (!class_exists('Wizybot')):
             $cart_cookie = 'WIZY_CART_' . $shop_domain;
             $cart_cookie_key = str_replace('.', '_', $cart_cookie);
             if (isset($_COOKIE[$cart_cookie_key])) {
-                $cart_id = sanitize_text_field($_COOKIE[$cart_cookie_key]);
+                $cart_id = sanitize_text_field( wp_unslash( $_COOKIE[$cart_cookie_key] ) );
                 if ($cart_id) {
                     $order->update_meta_data('_wizybot_cart_id', $cart_id);
                     // Regenerate so the next purchase gets a fresh cart ID
