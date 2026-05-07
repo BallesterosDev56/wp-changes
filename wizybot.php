@@ -100,6 +100,7 @@ if (!class_exists('Wizybot')):
             if (!$token) {
                 $token = get_option('wizybot_shop_token');
             }
+            // phpcs:disable WordPress.Security.NonceVerification.Recommended -- token from external backend
 
             // Woocommerce return url
             $woocommerce_success = null;
@@ -514,7 +515,7 @@ if (!class_exists('Wizybot')):
             // Restore tracking cookies so the eventual order is attributed to this recovery
             $shop_domain = get_option('wizybot_shop_domain');
             if (isset($_GET['wizy_recover'])) {
-                setcookie('WIZY_CART_' . $shop_domain, sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ) ), time() + (86400 * 365), '/');
+                setcookie('WIZY_CART_' . $shop_domain, sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ?? '' ) ), time() + (86400 * 365), '/');
             }
             if (isset($_GET['wizy_client']) || isset($_GET['wizyreferral'])) {
                 $client_id = sanitize_text_field( wp_unslash( $_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '' ) );

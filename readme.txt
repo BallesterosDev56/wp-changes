@@ -91,6 +91,16 @@ Visit [wizybot.com](https://wizybot.com) for technical support, billing question
 * Customer tracking and order attribution
 * Admin dashboard integration
 
+== Upgrade Notice ==
+
+= 0.0.1 =
+Initial release.
+
+== Screenshots ==
+
+1. Wizybot admin dashboard inside WordPress.
+2. Chat widget on the storefront.
+
 == Licensing ==
 
 **Plugin Code:** GPL v2 or later
