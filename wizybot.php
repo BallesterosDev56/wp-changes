@@ -248,11 +248,6 @@ if (!class_exists('Wizybot')):
             </style>
 
             <?php
-
-            // Global error and exception handlers for Wizybot plugin
-            set_error_handler(function($errno, $errstr, $errfile, $errline) {
-                return false; // Let native handler also process
-            });
         }
 
         /**
