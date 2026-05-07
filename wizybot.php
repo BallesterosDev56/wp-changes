@@ -104,18 +104,15 @@ if (!class_exists('Wizybot')):
             // Woocommerce return url
             $woocommerce_success = null;
             if (isset($_GET['success'])) {
-                $woocommerce_success = $_GET['success'];
-                error_log('woocommerce_success: ' . $woocommerce_success);
+                $woocommerce_success = sanitize_text_field( wp_unslash( $_GET['success'] ) );
                 if ($woocommerce_success) {
-                    error_log('woocommerce_success: ' . $woocommerce_success);
                     update_option('wizybot_woocommerce_success', $woocommerce_success);
                 }
             }
 
             if (isset($_GET['token'])) {
-                $token = $_GET['token'];
+                $token = sanitize_text_field( wp_unslash( $_GET['token'] ) );
                 if ($token) {
-                    error_log('token: ' . $token);
                     update_option('wizybot_shop_token', $token);
                 }
             }
@@ -151,10 +148,6 @@ if (!class_exists('Wizybot')):
                 delete_option('wizybot_woocommerce_success');
                 delete_option('wizybot_token');
             }
-
-            error_log('is_already_installed: ' . $is_already_installed);
-            error_log('token: ' . $token);
-
 
             add_action('admin_menu', array($this, 'add_admin_menu'));
             add_action('admin_head', array($this, 'admin_icon_styles'));
@@ -258,17 +251,18 @@ if (!class_exists('Wizybot')):
 
             // Global error and exception handlers for Wizybot plugin
             set_error_handler(function($errno, $errstr, $errfile, $errline) {
-                error_log("Wizybot Error: [$errno] $errstr en $errfile:$errline");
                 return false; // Let native handler also process
             });
 
             set_exception_handler(function($exception) {
+              if (WP_DEBUG) {
                 error_log("Wizybot Excepción: " . $exception->getMessage() . " en " . $exception->getFile() . ":" . $exception->getLine());
+              }
             });
 
             register_shutdown_function(function() {
                 $error = error_get_last();
-                if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+                if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR]) && WP_DEBUG) {
                     error_log("Wizybot Fatal: [{$error['type']}] {$error['message']} en {$error['file']}:{$error['line']}");
                 }
             });
@@ -438,17 +432,17 @@ if (!class_exists('Wizybot')):
             }
 
             if (is_wp_error($response)) {
-                error_log('Wizybot Debug - API Error: ' . $response->get_error_message());
                 return false;
             }
 
             $body = wp_remote_retrieve_body($response);
             $data = json_decode($body, true);
 
-            error_log('Wizybot Debug - API Response: ' . $body);
+            if (WP_DEBUG) {
+                error_log('Wizybot Debug - API Response: ' . $body);
+            }
 
             $installed = !empty($data['installed']);
-            error_log('Wizybot Debug - status check: ' . ($installed ? 'installed' : 'not installed') . ' for domain: ' . $shopDomain);
             return $installed;
         }
 
@@ -500,7 +494,7 @@ if (!class_exists('Wizybot')):
          */
         public function handle_cart_recovery()
         {
-            if (!isset($_GET['wizy_action']) || $_GET['wizy_action'] !== 'recover') {
+            if (!isset($_GET['wizy_action']) || sanitize_text_field( wp_unslash( $_GET['wizy_action'] ) ) !== 'recover') {
                 return;
             }
 
@@ -515,7 +509,7 @@ if (!class_exists('Wizybot')):
 
             // Parse products param: "productId:quantity,productId:quantity"
             if (isset($_GET['products'])) {
-                $products_data = explode(',', sanitize_text_field($_GET['products']));
+                $products_data = explode(',', sanitize_text_field( wp_unslash( $_GET['products'] ) ));
 
                 foreach ($products_data as $item_str) {
                     $parts = explode(':', $item_str);
@@ -525,8 +519,8 @@ if (!class_exists('Wizybot')):
                     $qty = intval($parts[1]);
 
                     $cart_item_data = [
-                        'wizy_recover_id' => sanitize_text_field($_GET['wizy_recover'] ?? ''),
-                        'wizy_referral'   => sanitize_text_field($_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '')
+                        'wizy_recover_id' => sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ?? '' ) ),
+                        'wizy_referral'   => sanitize_text_field( wp_unslash( $_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '' ) )
                     ];
 
                     WC()->cart->add_to_cart($product_id, $qty, 0, [], $cart_item_data);
@@ -536,10 +530,10 @@ if (!class_exists('Wizybot')):
             // Restore tracking cookies so the eventual order is attributed to this recovery
             $shop_domain = get_option('wizybot_shop_domain');
             if (isset($_GET['wizy_recover'])) {
-                setcookie('WIZY_CART_' . $shop_domain, sanitize_text_field($_GET['wizy_recover']), time() + (86400 * 365), '/');
+                setcookie('WIZY_CART_' . $shop_domain, sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ) ), time() + (86400 * 365), '/');
             }
             if (isset($_GET['wizy_client']) || isset($_GET['wizyreferral'])) {
-                $client_id = sanitize_text_field($_GET['wizy_client'] ?? $_GET['wizyreferral']);
+                $client_id = sanitize_text_field( wp_unslash( $_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '' ) );
                 setcookie('WIZY_CLIENT_' . $shop_domain, $client_id, time() + (86400 * 365), '/');
             }
 
@@ -580,18 +574,17 @@ if (!class_exists('Wizybot')):
         public function save_wizybot_client_in_order($order)
         {
             $shop_domain = get_option('wizybot_shop_domain');
-            error_log('Wizybot - save_wizybot_client_in_order fired for shop: ' . $shop_domain);
-            error_log('Wizybot - cookies available: ' . json_encode(array_keys($_COOKIE)));
 
             $client_cookie = str_replace('.', '_', 'WIZY_CLIENT_' . $shop_domain);
             if (isset($_COOKIE[$client_cookie])) {
                 $client_id = sanitize_text_field($_COOKIE[$client_cookie]);
                 if ($client_id) {
                     $order->update_meta_data('_wizybot_client_id', $client_id);
-                    error_log('Wizybot - saved client_id in order: ' . $client_id);
                 }
             } else {
-                error_log('Wizybot - client cookie not found: ' . $client_cookie);
+                if (WP_DEBUG) {
+                    error_log('Wizybot - client cookie not found: ' . $client_cookie);
+                }
             }
 
             $cart_cookie = 'WIZY_CART_' . $shop_domain;
@@ -600,14 +593,15 @@ if (!class_exists('Wizybot')):
                 $cart_id = sanitize_text_field($_COOKIE[$cart_cookie_key]);
                 if ($cart_id) {
                     $order->update_meta_data('_wizybot_cart_id', $cart_id);
-                    error_log('Wizybot - saved cart_id in order: ' . $cart_id);
                     // Regenerate so the next purchase gets a fresh cart ID
                     $new_cart_id = wp_generate_uuid4();
                     setcookie($cart_cookie, $new_cart_id, time() + (86400 * 365), '/');
                     $_COOKIE[$cart_cookie_key] = $new_cart_id;
                 }
             } else {
-                error_log('Wizybot - cart cookie not found: ' . $cart_cookie_key);
+                if (WP_DEBUG) {
+                    error_log('Wizybot - cart cookie not found: ' . $cart_cookie_key);
+                }
             }
 
             $order->save();
@@ -634,7 +628,9 @@ if (!class_exists('Wizybot')):
                 delete_option($option);
             }
 
-            error_log('Wizybot Debug - Plugin Deactivated: Options deleted.');
+            if (WP_DEBUG) {
+                error_log('Wizybot Debug - Plugin Deactivated: Options deleted.');
+            }
         }
     }
 
