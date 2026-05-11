@@ -39,7 +39,6 @@ if (!class_exists('Wizybot')):
          */
         protected function __construct()
         {
-            $this->includes();
             $this->init();
         }
 
@@ -78,16 +77,16 @@ if (!class_exists('Wizybot')):
             }
         }
 
-        /**
-         * Load dependencies.
-         */
-        private function includes()
-        {
-            // Include other files if needed
-            if (!function_exists('is_plugin_active')) {
-                include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-            }
-        }
+        // /**
+        //  * Load dependencies.
+        //  */
+        // private function includes()
+        // {
+        //     // Include other files if needed
+        //     if (!function_exists('is_plugin_active')) {
+        //         include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+        //     }
+        // }
 
         /**
          * Initialize hooks and filters.
