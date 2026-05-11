@@ -8,7 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Description:       A plugin to integrate Wizybot with WordPress.
  * Version:           1.0.0
  * Author:            Wizybot Inc
- * Author URI:        https://wizybot.com
  * Text Domain:       wizybot
  * Domain Path:       /languages
  * License:           GPL v2 or later
@@ -209,11 +208,8 @@ if (!class_exists('Wizybot')):
         /**
          * Custom Icon Styles
          */
-        public function admin_icon_styles()
-        {
-            ?>
-            <style>
-                /* Target by both the specific ID and a more generic selector for the redirect URL */
+        public function admin_icon_styles() {
+            $css = '/* Target by both the specific ID and a more generic selector for the redirect URL */
                 #adminmenu li[id^="toplevel_page_wizybot"] .wp-menu-image,
                 #adminmenu li[class*="toplevel_page_http"] .wp-menu-image {
                     display: flex !important;
@@ -245,10 +241,11 @@ if (!class_exists('Wizybot')):
                 #adminmenu li[class*="toplevel_page_http"].wp-has-current-submenu .wp-menu-image img {
                     opacity: 1;
                     filter: brightness(0) invert(1);
-                }
-            </style>
-
-            <?php
+                }';
+            // Enqueue a dummy style handle if not already enqueued
+            wp_register_style('wizybot-admin-icon-style', false);
+            wp_enqueue_style('wizybot-admin-icon-style');
+            wp_add_inline_style('wizybot-admin-icon-style', $css);
         }
 
         /**
