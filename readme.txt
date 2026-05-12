@@ -147,9 +147,8 @@ By installing and activating this plugin, you consent to share:
 - Customer contact information
 - Order information for attribution
 
-**Terms & Privacy:**
-- Wizybot Terms of Service: [wizybot.com/terms](https://wizybot.com/terms)
-- Wizybot Privacy Policy: [wizybot.com/privacy](https://wizybot.com/privacy)
+**Privacy Policy:**
+- Wizybot Privacy Policy: [https://app.wizybot.com/privacy](https://app.wizybot.com/privacy)
 - Review these documents before using this plugin
 
 == Support & Billing ==
