@@ -372,56 +372,56 @@ if (!class_exists('Wizybot')):
               ],
           ]);
 
-                    register_rest_route('wizybot/v1', '/cart-recovery', [
-                            'methods'             => 'POST',
-                            'callback'            => array($this, 'handle_cart_recovery_setup'),
-                            'permission_callback' => array($this, 'check_admin_permissions'),
-                            'args' => [
-                                    'recovery_token' => [
-                                        'required'          => true,
-                                        'sanitize_callback' => 'sanitize_text_field',
-                                    ],
-                                    'products' => [
-                                        'required'          => false,
-                                        'sanitize_callback' => 'sanitize_text_field',
-                                    ],
-                                    'cart_id' => [
-                                        'required'          => false,
-                                        'sanitize_callback' => 'sanitize_text_field',
-                                    ],
-                                    'client_id' => [
-                                        'required'          => false,
-                                        'sanitize_callback' => 'sanitize_text_field',
-                                    ],
-                            ],
-                    ]);
+          register_rest_route('wizybot/v1', '/cart-recovery', [
+                  'methods'             => 'POST',
+                  'callback'            => array($this, 'handle_cart_recovery_setup'),
+                  'permission_callback' => array($this, 'check_admin_permissions'),
+                  'args' => [
+                          'recovery_token' => [
+                              'required'          => true,
+                              'sanitize_callback' => 'sanitize_text_field',
+                          ],
+                          'products' => [
+                              'required'          => false,
+                              'sanitize_callback' => 'sanitize_text_field',
+                          ],
+                          'cart_id' => [
+                              'required'          => false,
+                              'sanitize_callback' => 'sanitize_text_field',
+                          ],
+                          'client_id' => [
+                              'required'          => false,
+                              'sanitize_callback' => 'sanitize_text_field',
+                          ],
+                  ],
+          ]);
         }
 
-                private function get_query_param($key, $default = '')
-                {
-                        $raw_value = filter_input(INPUT_GET, $key, FILTER_UNSAFE_RAW);
-                        if ($raw_value === null || $raw_value === false) {
-                                return $default;
-                        }
-
-                        return sanitize_text_field(wp_unslash($raw_value));
+        private function get_query_param($key, $default = '')
+        {
+                $raw_value = filter_input(INPUT_GET, $key, FILTER_UNSAFE_RAW);
+                if ($raw_value === null || $raw_value === false) {
+                        return $default;
                 }
 
-                public function handle_cart_recovery_setup( WP_REST_Request $request ) {
-                    $recovery_token = $request->get_param('recovery_token');
-                    if (!$recovery_token) {
-                        return new WP_Error('wizybot_missing_recovery_token', 'Missing recovery token.', array('status' => 400));
-                    }
+                return sanitize_text_field(wp_unslash($raw_value));
+        }
 
-                    $payload = array(
-                        'products'  => $request->get_param('products') ?? '',
-                        'cart_id'   => $request->get_param('cart_id') ?? '',
-                        'client_id' => $request->get_param('client_id') ?? '',
-                    );
+        public function handle_cart_recovery_setup( WP_REST_Request $request ) {
+            $recovery_token = $request->get_param('recovery_token');
+            if (!$recovery_token) {
+                return new WP_Error('wizybot_missing_recovery_token', 'Missing recovery token.', array('status' => 400));
+            }
 
-                    set_transient('wizybot_cart_recovery_' . $recovery_token, $payload, 2 * DAY_IN_SECONDS);
-                    return rest_ensure_response(array('ok' => true));
-                }
+            $payload = array(
+                'products'  => $request->get_param('products') ?? '',
+                'cart_id'   => $request->get_param('cart_id') ?? '',
+                'client_id' => $request->get_param('client_id') ?? '',
+            );
+
+            set_transient('wizybot_cart_recovery_' . $recovery_token, $payload, 2 * DAY_IN_SECONDS);
+            return rest_ensure_response(array('ok' => true));
+        }
 
         public function check_admin_permissions($request)
         {
