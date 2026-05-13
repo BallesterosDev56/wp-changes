@@ -371,7 +371,57 @@ if (!class_exists('Wizybot')):
                   ],
               ],
           ]);
+
+                    register_rest_route('wizybot/v1', '/cart-recovery', [
+                            'methods'             => 'POST',
+                            'callback'            => array($this, 'handle_cart_recovery_setup'),
+                            'permission_callback' => array($this, 'check_admin_permissions'),
+                            'args' => [
+                                    'recovery_token' => [
+                                        'required'          => true,
+                                        'sanitize_callback' => 'sanitize_text_field',
+                                    ],
+                                    'products' => [
+                                        'required'          => false,
+                                        'sanitize_callback' => 'sanitize_text_field',
+                                    ],
+                                    'cart_id' => [
+                                        'required'          => false,
+                                        'sanitize_callback' => 'sanitize_text_field',
+                                    ],
+                                    'client_id' => [
+                                        'required'          => false,
+                                        'sanitize_callback' => 'sanitize_text_field',
+                                    ],
+                            ],
+                    ]);
         }
+
+                private function get_query_param($key, $default = '')
+                {
+                        $raw_value = filter_input(INPUT_GET, $key, FILTER_UNSAFE_RAW);
+                        if ($raw_value === null || $raw_value === false) {
+                                return $default;
+                        }
+
+                        return sanitize_text_field(wp_unslash($raw_value));
+                }
+
+                public function handle_cart_recovery_setup( WP_REST_Request $request ) {
+                    $recovery_token = $request->get_param('recovery_token');
+                    if (!$recovery_token) {
+                        return new WP_Error('wizybot_missing_recovery_token', 'Missing recovery token.', array('status' => 400));
+                    }
+
+                    $payload = array(
+                        'products'  => $request->get_param('products') ?? '',
+                        'cart_id'   => $request->get_param('cart_id') ?? '',
+                        'client_id' => $request->get_param('client_id') ?? '',
+                    );
+
+                    set_transient('wizybot_cart_recovery_' . $recovery_token, $payload, 2 * DAY_IN_SECONDS);
+                    return rest_ensure_response(array('ok' => true));
+                }
 
         public function check_admin_permissions($request)
         {
@@ -462,7 +512,8 @@ if (!class_exists('Wizybot')):
          */
         public function handle_cart_recovery()
         {
-            if (!isset($_GET['wizy_action']) || sanitize_text_field( wp_unslash( $_GET['wizy_action'] ) ) !== 'recover') {
+            $action = $this->get_query_param('wizy_action');
+            if ($action !== 'recover') {
                 return;
             }
 
@@ -475,9 +526,22 @@ if (!class_exists('Wizybot')):
 
             WC()->cart->empty_cart();
 
+            $recovery_token = $this->get_query_param('wizy_recovery_token');
+            $recovery_data = $recovery_token ? get_transient('wizybot_cart_recovery_' . $recovery_token) : null;
+            if (!is_array($recovery_data)) {
+                $recovery_data = array();
+            }
+
+            $products_param = $recovery_data['products'] ?? $this->get_query_param('products');
+            $cart_id_param = $recovery_data['cart_id'] ?? $this->get_query_param('wizy_recover');
+            $client_id_param = $recovery_data['client_id'] ?? $this->get_query_param('wizy_client');
+            if (!$client_id_param) {
+                $client_id_param = $this->get_query_param('wizyreferral');
+            }
+
             // Parse products param: "productId:quantity,productId:quantity"
-            if (isset($_GET['products'])) {
-                $products_data = explode(',', sanitize_text_field( wp_unslash( $_GET['products'] ) ));
+            if ($products_param) {
+                $products_data = explode(',', $products_param);
 
                 foreach ($products_data as $item_str) {
                     $parts = explode(':', $item_str);
@@ -487,8 +551,8 @@ if (!class_exists('Wizybot')):
                     $qty = intval($parts[1]);
 
                     $cart_item_data = [
-                        'wizy_recover_id' => sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ?? '' ) ),
-                        'wizy_referral'   => sanitize_text_field( wp_unslash( $_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '' ) )
+                        'wizy_recover_id' => $cart_id_param,
+                        'wizy_referral'   => $client_id_param,
                     ];
 
                     WC()->cart->add_to_cart($product_id, $qty, 0, [], $cart_item_data);
@@ -497,12 +561,11 @@ if (!class_exists('Wizybot')):
 
             // Restore tracking cookies so the eventual order is attributed to this recovery
             $shop_domain = get_option('wizybot_shop_domain');
-            if (isset($_GET['wizy_recover'])) {
-                setcookie('WIZY_CART_' . $shop_domain, sanitize_text_field( wp_unslash( $_GET['wizy_recover'] ?? '' ) ), time() + (86400 * 365), '/');
+            if ($cart_id_param) {
+                setcookie('WIZY_CART_' . $shop_domain, $cart_id_param, time() + (86400 * 365), '/');
             }
-            if (isset($_GET['wizy_client']) || isset($_GET['wizyreferral'])) {
-                $client_id = sanitize_text_field( wp_unslash( $_GET['wizy_client'] ?? $_GET['wizyreferral'] ?? '' ) );
-                setcookie('WIZY_CLIENT_' . $shop_domain, $client_id, time() + (86400 * 365), '/');
+            if ($client_id_param) {
+                setcookie('WIZY_CLIENT_' . $shop_domain, $client_id_param, time() + (86400 * 365), '/');
             }
 
             WC()->cart->calculate_totals();
