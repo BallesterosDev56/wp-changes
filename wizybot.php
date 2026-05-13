@@ -174,12 +174,19 @@ if (!class_exists('Wizybot')):
                 56
             );
         }
+
         public function handle_setup( WP_REST_Request $request ) {
           $token   = $request->get_param('token');
           if ($token) {
             update_option('wizybot_shop_token', $token);
           }
           return rest_ensure_response(['ok' => true]);
+        }
+
+        public function handle_woocommerce_success( WP_REST_Request $request ) {
+            $woocommerce_success = $request->get_param('success');
+            update_option('wizybot_woocommerce_success', rest_sanitize_boolean($woocommerce_success));
+            return rest_ensure_response(['ok' => true]);
         }
 
         /**
@@ -368,6 +375,18 @@ if (!class_exists('Wizybot')):
                   'token' => [
                     'required'          => false,
                     'sanitize_callback' => 'sanitize_text_field',
+                  ],
+              ],
+          ]);
+
+          register_rest_route('wizybot/v1', '/woocommerce-success', [
+              'methods'             => 'POST',
+              'callback'            => array($this, 'handle_woocommerce_success'),
+              'permission_callback' => array($this, 'check_admin_permissions'),
+              'args' => [
+                  'success' => [
+                    'required'          => false,
+                    'sanitize_callback' => 'rest_sanitize_boolean',
                   ],
               ],
           ]);
