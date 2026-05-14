@@ -227,7 +227,7 @@ if (!class_exists('Wizybot')):
                     filter: brightness(0) invert(1);
                 }';
             // Enqueue a dummy style handle if not already enqueued
-            wp_register_style('wizybot-admin-icon-style', false);
+            wp_register_style('wizybot-admin-icon-style', false, array(), '1.0.0');
             wp_enqueue_style('wizybot-admin-icon-style');
             wp_add_inline_style('wizybot-admin-icon-style', $css);
         }
