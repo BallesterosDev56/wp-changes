@@ -15004,7 +15004,7 @@ const ShopifyWidgetWrapper = _ref => {
           side: JSONresult.setup.side,
           paddingBottom: +JSONresult.setup.paddingBottom,
           paddingSide: +JSONresult.setup.paddingSide,
-          image: JSONresult.setup.image !== "Default" ? globalSelectedBackend !== "https://api.wizybot.com" ? "https://s3-tjlabs-wizybot-widget-images-dev.s3.amazonaws.com/" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "https://s3-tjlabs-wizybot-widget-images-prod.s3.amazonaws.com/" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "",
+          image: JSONresult.setup.image !== "Default" ? globalSelectedBackend !== "https://api.wizybot.com" ? "" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "",
           isVisible: JSONresult.setup.isVisible,
           emailRetrievalMethod: JSONresult.setup.emailRetrievalMethod,
           dataRetrievalType: JSONresult.setup.dataRetrievalType,
