@@ -72,7 +72,7 @@ The plugin loads on WordPress sites without WooCommerce, but ecommerce features 
 
 = What data does Wizybot collect? =
 
-Wizybot collects customer interactions, cart data, and sales information to provide personalized engagement and track conversions. See our [Privacy Policy](https://wizybot.com/privacy) for details on how your data is handled.
+Wizybot collects customer interactions, cart data, and sales information to provide personalized engagement and track conversions. See our [Privacy Policy](https://app.wizybot.com/privacy) for details on how your data is handled.
 
 = Do I need to modify my theme? =
 
