@@ -18,8 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define('WIZYBOT_STAGE', 'prod');
 define('WIZYBOT_GLOBAL_SELECTED_BACKEND', 'https://api.wizybot.com');
-define('WIZYBOT_IP_REGISTRY_KEY', '47m2mudauztxbwih');
-
 
 if (!class_exists('Wizybot')):
 
@@ -346,7 +344,6 @@ if (!class_exists('Wizybot')):
 
             wp_localize_script('wizybot-main-js', 'wizybot', array(
                 'shopDomain' => get_option('wizybot_shop_domain'),
-                'ipRegistryKey' => WIZYBOT_IP_REGISTRY_KEY,
                 'globalSelectedBackend' => WIZYBOT_GLOBAL_SELECTED_BACKEND,
                 'chatProfileImage' => plugin_dir_url(__FILE__) . 'assets/wizy_chat_profile.png',
                 'curvyBorderImage' => plugin_dir_url(__FILE__) . 'assets/wizy_curvy_border.png',

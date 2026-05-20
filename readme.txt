@@ -33,7 +33,7 @@ Wizybot is a powerful customer engagement and sales platform designed for WooCom
 * WooCommerce plugin (for full ecommerce features)
 * Active Wizybot account or plan
 
-By installing this plugin, you consent to share store information and customer interaction data with Wizybot. See the Privacy and Terms sections below.
+By installing this plugin, you consent to share store information and customer interaction data with Wizybot. See the Privacy section below.
 
 == Installation ==
 
@@ -42,8 +42,6 @@ By installing this plugin, you consent to share store information and customer i
 3. Navigate to the Wizybot menu in WordPress admin
 4. Complete setup by authenticating with your Wizybot account
 5. Verify the chat widget appears on your store frontend
-
-For detailed setup instructions, visit [Wizybot Help Center](https://help.wizybot.com).
 
 == Frequently Asked Questions ==
 
@@ -57,7 +55,7 @@ The plugin code is free and open-source (GPL v2). However, accessing Wizybot's s
 
 = What subscription plans are available? =
 
-Visit [wizybot.com/pricing](https://wizybot.com/pricing) for current plan details, pricing, and features. Plans include features like chat automation, WhatsApp/SMS messaging, and analytics.
+Visit [wizybot.com](https://wizybot.com) for current plan details, pricing, and features.
 
 = Can I modify or redistribute the plugin? =
 
@@ -156,7 +154,6 @@ By installing and activating this plugin, you consent to share:
 For support, billing, feature requests, or account management:
 - Visit [wizybot.com](https://wizybot.com)
 - Email: support@wizybot.com
-- Help Center: [help.wizybot.com](https://help.wizybot.com)
 
 For WordPress plugin technical issues:
 - Check installation instructions above
