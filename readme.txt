@@ -159,3 +159,23 @@ For WordPress plugin technical issues:
 - Check installation instructions above
 - Review FAQ section
 - Contact Wizybot support for platform-related issues
+
+== Código fuente incluido (source/) ==
+
+El directorio `source/` contiene los archivos fuente del widget frontend (React + TypeScript) y la configuración necesaria para empaquetarlo y generar los assets que utiliza el plugin de WordPress. A continuación se describe la estructura y el propósito de los archivos incluidos:
+
+- `package.json`: define dependencias y scripts de desarrollo/compilación.
+- `webpack.wordpress.config.js`: configuración de webpack para construir los paquetes destinados a WordPress.
+- `public/`: contiene archivos CSS compilados que se copian al plugin en tiempo de build:
+  - `ShopifyWidgetInner.css`
+  - `ShopifyWidgetOutter.css`
+- `src/components/`: componentes React/TypeScript que implementan el widget:
+  - `ShopifyWidget.tsx`: componente principal del widget.
+  - `ShopifyWidgetWrapper.tsx`: envoltorio/bridge que facilita la integración en WordPress.
+  - `styles/ShopifyWidget.css`: estilos del widget.
+- `src/wordpress/`: punto de entrada y assets específicos para la versión WordPress:
+  - `index.wordpress.css`: estilos globales para la integración en WordPress.
+  - `types/WizybotWindow.ts`: definiciones de tipos TypeScript para objetos globales usados por el widget.
+  - `widget/indexWidget.wordpress.tsx`: entrypoint que inicializa el widget dentro de páginas WordPress.
+
+Este código fuente representa la implementación del widget frontend que se integra con el plugin para mostrar la interfaz de chat y funcionalidad en tiendas.

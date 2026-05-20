@@ -1,0 +1,772 @@
+@media screen and (min-width: 451px) {
+  .ShopifyWidget__outter__open__left {
+    position: absolute;
+    width: 372px;
+    height: min(590px, 100vh - 40px);
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 170%;
+    left: 50%;
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__outter__open__right {
+    position: absolute;
+    width: 372px;
+    height: min(590px, 100vh - 40px);
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 170%;
+    left: 50%;
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__outter__close {
+    position: absolute;
+    width: 372px;
+    height: 0px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 170%;
+    left: 50%;
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__chat__outter {
+    position: relative;
+    height: min(330px, 100vh - 300px);
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% - 40px);
+    overflow: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: white;
+  }
+
+  .ShopifyWidget__header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+
+  .ChatSetup__email__requirement__outter__close {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    background-color: #ffffff;
+    z-index: 9;
+    top: 150px;
+    overflow: hidden;
+    transition: 0.8s;
+  }
+
+  .ChatSetup__email__requirement__outter__open {
+    position: absolute;
+    width: 100%;
+    height: 430px;
+    background-color: #ffffff;
+    z-index: 9;
+    top: 150px;
+    overflow: hidden;
+    transition: 0.8s;
+  }
+
+  .ChanTest__send__button__outter__right {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .ChanTest__send__button__outter__left {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 11;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .ShopifyWidget__outter__open__right {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 200%;
+    left: calc(100% + 15px);
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__outter__open__left {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 200%;
+    left: 100%;
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__outter__close {
+    position: absolute;
+    width: 100vw;
+    height: 0px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1),
+      -10px 8px 15px rgba(0, 0, 0, 0.1), 10px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    top: 200%;
+    left: calc(100% + 15px);
+    z-index: 10;
+    transition: 0.8s;
+    transform: translate(-100%, -100%);
+    overflow: hidden;
+  }
+
+  .ShopifyWidget__chat__outter {
+    position: relative;
+    height: calc(100vh - 260px);
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% - 40px);
+    overflow: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: white;
+  }
+
+  .ShopifyWidget__header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+  }
+
+  .ChatSetup__email__requirement__outter__close {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    background-color: #ffffff;
+    z-index: 9;
+    top: 150px;
+    overflow: hidden;
+    transition: 0.8s;
+  }
+
+  .ChatSetup__email__requirement__outter__open {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 150px);
+    background-color: #ffffff;
+    z-index: 9;
+    top: 150px;
+    overflow: hidden;
+    transition: 0.8s;
+  }
+
+  .ChanTest__send__button__outter__right {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .ChanTest__send__button__outter__left {
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 11;
+  }
+}
+
+.ShopifyWidget__outter__open__is__relative {
+  position: absolute;
+  width: 372px;
+  height: min(590px, 100vh - 40px);
+  border-radius: 20px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1), -10px 8px 15px rgba(0, 0, 0, 0.1),
+    10px 8px 15px rgba(0, 0, 0, 0.1);
+  color: white;
+  top: 170%;
+  left: 50%;
+  z-index: 10;
+  transition: 0.8s;
+  transform: translate(-100%, -100%);
+  overflow: hidden;
+}
+
+.ShopifyWidget__chat__outter__is__relative {
+  position: relative;
+  height: min(330px, 100vh - 300px);
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc(100% - 40px);
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: white;
+}
+
+.ShopifyWidget__outter__outter__1 {
+  transform: translate(-100%, -100%);
+  height: 60px;
+  width: 60px;
+  z-index: 10;
+  letter-spacing: -0.05px;
+  transition: 1s;
+}
+
+.ChanTest__send__button__outter__1 {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.ShopifyWidget__outter__outter {
+  top: calc(100% - 60px);
+  transform: translate(-100%, -100%);
+  height: 60px;
+  width: 60px;
+  z-index: 10;
+  letter-spacing: -0.05px;
+  transition: 1s;
+}
+
+.ShopifyWidget__header__inner {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-top: 30px;
+}
+
+.ShopifyWidget__header__inner__inner {
+  position: relative;
+  width: 85%;
+  left: 7.5%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.ShopifyWidget__header__picture__name {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50px calc(100% - 50px);
+}
+
+.ShopifyWidget__header__profile__image {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.ShopifyWidget__header__name__outter {
+  position: relative;
+  margin-left: 15px;
+}
+
+.ShopifyWidget__header__chat__with {
+  position: relative;
+  width: 100%;
+}
+
+.ShopifyWidget__header__agent__name {
+  position: relative;
+  width: 100%;
+  font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ShopifyWidget__header__close__arrow__outter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ShopifyWidget__header__close__arrow__image {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 100%;
+  transform: translate(-100%, -50%);
+  cursor: pointer;
+}
+
+.ShopifyWidget__header__options__dots__image {
+  position: absolute;
+  color: white;
+  top: 48%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+}
+
+.ShopifyWidget__online__phrase__outter {
+  position: relative;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 50px;
+  width: calc(100% - 40px);
+  display: grid;
+  grid-template-columns: 30px calc(100% - 30px);
+}
+
+.ShopifyWidget__online__dot__outter {
+  position: relative;
+  height: 40px;
+  width: 30px;
+}
+
+.ShopifyWidget__online__dot__inner {
+  position: absolute;
+  background-color: green;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.ShopifyWidget__online__phrase {
+  position: relative;
+  line-height: 40px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ShopifyWidget__headder__wave {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -95%);
+}
+
+.ShopifyWidget__chat__outter::-webkit-scrollbar {
+  display: none;
+}
+
+.ShopifyWidget__chat__message__outter {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ShopifyWidget__chat__message__inner {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f0f2f7;
+  border-radius: 20px;
+  color: black;
+  width: auto;
+  font-weight: 200;
+  font-size: 14px;
+  max-width: 70%;
+}
+
+.ShopifyWidget__input__outter {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+}
+
+.ShopifyWidget__input__inner {
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ChanTest__send__button__image {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transition: 0.8s;
+  width: 30px;
+  height: 30px;
+}
+
+.ShopifyWidget__send__button__outter__notification {
+  position: absolute;
+  background-color: red;
+  border-radius: 100%;
+  color: white;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  top: 0;
+  left: 0;
+  transform: translate(-10%, -10%);
+  transition: 0.8s;
+}
+
+.ShopifyWidget__new__visible__message__outter {
+  position: absolute;
+  text-align: center;
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #f5f7f9;
+  box-shadow: rgba(0, 27, 71, 0.12) 0px 2px 6px;
+  transition: 0.8s;
+  opacity: 0;
+}
+
+.ShopifyWidget__new__visible__message__inner {
+  position: absolute;
+  width: 140px;
+  text-align: center;
+  max-height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ShopifyWidget__email__requirement__outter {
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  background-color: #ffffff;
+  z-index: 9;
+  top: 150px;
+  overflow: hidden;
+  transition: 0.8s;
+}
+
+.ShopifyWidget__email__requirement__inner {
+  position: absolute;
+  padding-top: 20px;
+  width: calc(100% - 40px);
+  height: 260px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+.ShopifyWidget__emojis__propaganda__outter {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: #ffffff;
+}
+
+.ShopifyWidget__emojis__propaganda__inner {
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  height: 30px;
+  transform: translate(-50%, 0%);
+  display: flex;
+}
+
+.ShopifyWidget__emojis__outter {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.ShopifyWidget__emojis__outter:hover {
+  background-color: rgba(130, 177, 230, 0.189);
+}
+
+.ShopifyWidget__emojis__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.ShopifyWidget__propaganda__outter {
+  margin-left: auto;
+  margin-right: 10px;
+  height: 30px;
+  color: #939394;
+  font-size: 9px;
+  display: flex;
+}
+
+.ShopifyWidget__propaganda__text {
+  position: relative;
+  height: 30px;
+  line-height: 32px;
+}
+
+.ShopifyWidget__propaganda__logo__outter {
+  position: relative;
+  margin-left: 8px;
+  height: 30px;
+  display: flex;
+  opacity: 0.6;
+}
+
+.ShopifyWidget__propaganda__logo__image {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+  top: 4px;
+}
+
+.ShopifyWidget__propaganda__logo__text {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  color: #161635;
+  font-size: 13px;
+}
+
+.ChatSetup__email__requirement__inner {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: min(280px, 100vh - 200px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  overflow: scroll;
+}
+
+.ChatSetup__email__requirement__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.Wizy__input__title {
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+
+.Wizy__input__2__outter {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.Wizy__input__2 {
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  background: #fefcff;
+  border: 1px solid #8787877b;
+  padding: 10px 10px 10px 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: "Euclid";
+}
+
+.Wizy__input__2:hover {
+  outline: none;
+  border: 1px solid rgba(5, 101, 255, 0.738);
+}
+
+.Wizy__input__2:focus {
+  outline: none;
+  border: 1px solid rgba(5, 101, 255, 0.944);
+}
+
+.Wizy__input__prompt__1 {
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 6px;
+  color: rgb(129, 129, 129);
+  margin-bottom: 7px;
+  text-align: right;
+  width: 100%;
+}
+
+.Wizy__input__checkbox__outter {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  display: flex;
+}
+
+.Wizy__input__checkbox__text {
+  position: relative;
+  padding-left: 6px;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #161635;
+}
+
+.Clients__apply__button__outter {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+
+.Wizy__button__2 {
+  font-family: "Euclid";
+  position: relative;
+  width: auto;
+  height: 100%;
+  min-width: 60px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0px;
+  background-color: rgb(5, 102, 255);
+  transition: 1s;
+}
+
+.Wizy__button__2:hover {
+  background-color: rgb(0, 73, 189);
+}
+
+.Wizy__input__3__outter {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.Wizy__input__3 {
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  background: #fefcff;
+  border: 1px transparent;
+  padding: 10px 20px 10px 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: "Euclid";
+}
+
+.Wizy__input__3:hover {
+  outline: none;
+  border: 1px transparent;
+}
+
+.Wizy__input__3:focus {
+  outline: none;
+  border: 1px transparent;
+}
+
+.Wizy__input__3::placeholder {
+  opacity: 0.5;
+}
+
+.rise-shake {
+  animation: jump-shaking 0.83s infinite;
+}
+
+@keyframes jump-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateY(-9px);
+  }
+  35% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  55% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  65% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  75% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* actions menu animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

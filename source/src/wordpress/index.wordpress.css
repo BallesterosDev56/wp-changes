@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FONTS */
+@font-face {
+  font-family: "Euclid";
+  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidLight.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Euclid";
+  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidRegular.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Euclid";
+  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidSemibold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Euclid";
+  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidBold.ttf");
+  font-weight: 1000;
+}
+
+/* WORK SANS */
+@font-face {
+  font-family: "WorkSans";
+  src: url("../fonts/worksans/WorkSans-Bold.woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("../fonts/worksans/WorkSans-Medium.woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("../fonts/worksans/WorkSans-Regular.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SCOPED STYLES */
+
+.tw-class {
+  margin: 0;
+  font-family: "Euclid";
+  --chart-label-color: #0E0713;
+}
+
+.tw-class.dark {
+  --chart-label-color: #F4F4F4;
+}
+
+.tw-class .break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+/*Remove the edge show password default*/
+.tw-class input::-ms-reveal,
+.tw-class input::-ms-clear {
+  display: none;
+}
+
+.tw-class .hide-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+}
+
+.tw-class .hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari y Edge */
+}
+
+.tw-class.lock-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+/*Remove the autofill color*/
+.tw-class input:-webkit-autofill,
+.tw-class input:-webkit-autofill:hover,
+.tw-class input:-webkit-autofill:focus,
+.tw-class input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #222251 !important;
+}
+
+.tw-class.dark input:-webkit-autofill,
+.tw-class.dark input:-webkit-autofill:hover,
+.tw-class.dark input:-webkit-autofill:focus,
+.tw-class.dark input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px #212330 inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+@layer utilities {
+  /* Chat Scrollbar with tailwind */
+  .tw-class .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .tw-class .scrollbar-custom::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .tw-class .scrollbar-custom:hover::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .tw-class .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .tw-class .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    transition: background-color 0.3s;
+  }
+
+  .tw-class .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+  }
+
+  .tw-class .client-card {
+    width: 90%;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+    @apply flex flex-col bg-neutral-white dark:bg-dark-30 dark:border dark:border-neutral-50/10 rounded-lg;
+  }
+
+  .tw-class .custom-shadow {
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+@layer components {
+  .tw-class .custom-color-picker .color-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .tw-class .custom-color-picker .color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  .tw-class .custom-color-picker .color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 9999px;
+  }
+
+  .tw-class .custom-color-picker .color-input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  .tw-class.dark .custom-color-picker .color-input {
+    border-color: #2d2d2d;
+  }
+
+  .tw-class.dark .Wizy__input__1[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@keyframes blink {
+  50% {
+    color: transparent;
+  }
+}
+
+.tw-class .loader__dot {
+  animation: 1s blink infinite;
+}
+
+.tw-class .loader__dot:nth-child(2) {
+  animation-delay: 250ms;
+}
+
+.tw-class .loader__dot:nth-child(3) {
+  animation-delay: 500ms;
+}
+
+.tw-class .loader__dot__1 {
+  font-size: 40px;
+  animation: 1s blink infinite;
+}
+
+.tw-class .loader__dot__1:nth-child(2) {
+  font-size: 40px;
+  animation-delay: 250ms;
+}
+
+.tw-class .loader__dot__1:nth-child(3) {
+  font-size: 40px;
+  animation-delay: 500ms;
+}
+
+/* Audio simulation */
+@keyframes wave {
+  0%,
+  100% {
+    height: 6px;
+  }
+
+  50% {
+    height: 16px;
+  }
+}
+
+.tw-class .animate-wave {
+  animation: wave ease-in-out infinite;
+}
+
+/* width */
+.tw-class ::-webkit-scrollbar {
+  width: 14px;
+  height: 5px;
+}
+
+/* Handle */
+.tw-class ::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(133, 49, 49, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #eceef185;
+}
+
+.tw-class ::-webkit-scrollbar-thumb:hover {
+  border: 4px solid rgba(133, 49, 49, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #eceef1;
+}
