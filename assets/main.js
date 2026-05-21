@@ -1,2651 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 822:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Ay: () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   PW: () => (/* binding */ EMainLanguage),
-/* harmony export */   ju: () => (/* binding */ ESide),
-/* harmony export */   oj: () => (/* binding */ EDataRetrievalType),
-/* harmony export */   rb: () => (/* binding */ EEmailRetrievalMethod),
-/* harmony export */   wP: () => (/* binding */ ELimitBudgetAction)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(394);
-/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(820);
-/* harmony import */ var react_international_phone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(849);
-/* harmony import */ var _extraUIcomponents_ShopifyWidgetCart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(468);
-/* harmony import */ var _extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(585);
-/* harmony import */ var _extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(966);
-/* harmony import */ var _extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(897);
-/* harmony import */ var _types_MessageType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(222);
-/* harmony import */ var _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(68);
-/* harmony import */ var _extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(253);
-/* harmony import */ var _extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(726);
-/* harmony import */ var _WidgetMedia__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(624);
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-// Import React Dependencies
-
-
-
-
-// Import phone input dependencies
-
-
-// Import extra ui components
-
-
-
-
-
-
-// Import types
-
-
-
-
-
-
-// Define types
-// Define enums
-var EChatState = /*#__PURE__*/function (EChatState) {
-  EChatState["close"] = "close";
-  EChatState["open"] = "open";
-  return EChatState;
-}(EChatState || {});
-var EVisibleMessageState = /*#__PURE__*/function (EVisibleMessageState) {
-  EVisibleMessageState["visible"] = "visible";
-  EVisibleMessageState["invisible"] = "invisible";
-  return EVisibleMessageState;
-}(EVisibleMessageState || {});
-var ECreateClientState = /*#__PURE__*/function (ECreateClientState) {
-  ECreateClientState["visible"] = "visible";
-  ECreateClientState["invisible"] = "invisible";
-  return ECreateClientState;
-}(ECreateClientState || {});
-var ECartState = /*#__PURE__*/function (ECartState) {
-  ECartState["visible"] = "visible";
-  ECartState["invisible"] = "invisible";
-  return ECartState;
-}(ECartState || {});
-var EActionsMenuState = /*#__PURE__*/function (EActionsMenuState) {
-  EActionsMenuState["visible"] = "visible";
-  EActionsMenuState["invisible"] = "invisible";
-  return EActionsMenuState;
-}(EActionsMenuState || {});
-var ECreateClientBackendState = /*#__PURE__*/function (ECreateClientBackendState) {
-  ECreateClientBackendState["send"] = "send";
-  ECreateClientBackendState["loading"] = "loading";
-  return ECreateClientBackendState;
-}(ECreateClientBackendState || {});
-var EConnectionType = /*#__PURE__*/function (EConnectionType) {
-  EConnectionType["initial"] = "initial";
-  EConnectionType["message"] = "message";
-  EConnectionType["brute"] = "brute";
-  return EConnectionType;
-}(EConnectionType || {});
-let EMainLanguage = /*#__PURE__*/function (EMainLanguage) {
-  EMainLanguage["SPANISH"] = "Spanish";
-  EMainLanguage["ENGLISH"] = "English";
-  EMainLanguage["PORTUGUESE"] = "Portuguese";
-  EMainLanguage["FRENCH"] = "French";
-  EMainLanguage["GERMAN"] = "German";
-  EMainLanguage["ITALIAN"] = "Italian";
-  return EMainLanguage;
-}({});
-let ESide = /*#__PURE__*/function (ESide) {
-  ESide["RIGHT"] = "Right";
-  ESide["LEFT"] = "Left";
-  return ESide;
-}({});
-let EEmailRetrievalMethod = /*#__PURE__*/function (EEmailRetrievalMethod) {
-  EEmailRetrievalMethod["MANDATORY"] = "Mandatory";
-  EEmailRetrievalMethod["SEMANTIC"] = "Semantic";
-  EEmailRetrievalMethod["NONE"] = "None";
-  return EEmailRetrievalMethod;
-}({});
-let EDataRetrievalType = /*#__PURE__*/function (EDataRetrievalType) {
-  EDataRetrievalType["NAME"] = "Name";
-  EDataRetrievalType["EMAIL"] = "Email";
-  EDataRetrievalType["PHONE"] = "Phone";
-  EDataRetrievalType["BOTH"] = "Both";
-  EDataRetrievalType["NAME_EMAIL"] = "Name_Email";
-  EDataRetrievalType["NAME_PHONE"] = "Name_Phone";
-  EDataRetrievalType["NAME_EMAIL_PHONE"] = "Name_Email_Phone";
-  EDataRetrievalType["CUSTOM"] = "Custom";
-  return EDataRetrievalType;
-}({});
-let ELimitBudgetAction = /*#__PURE__*/function (ELimitBudgetAction) {
-  ELimitBudgetAction["WIDGET_OFF"] = "widget off";
-  ELimitBudgetAction["AI_OFF"] = "ai off";
-  ELimitBudgetAction["DEFAULT_MESSAGE"] = "default message";
-  ELimitBudgetAction["REDIRECT"] = "redirect";
-  return ELimitBudgetAction;
-}({});
-
-// Page main functional component
-const ShopifyWidget = _ref => {
-  let {
-    domain,
-    widget,
-    isTest,
-    isDashboard,
-    isAdmin,
-    isRelative,
-    ipRegistryKey,
-    globalSelectedBackend,
-    chatProfileImage,
-    curvyBorderImage,
-    wizyLogoImage,
-    noImageImage,
-    widgetLoader,
-    shopifyRootPath,
-    isRedirect,
-    redirectionLink,
-    shopifyCurrentPath,
-    isShopifyForeing,
-    showNewMessage,
-    hideNewMessage,
-    setIsOpen,
-    marketId,
-    languageCode,
-    languageUrl,
-    platform,
-    wizyCartId,
-    onMessagesUpdate
-  } = _ref;
-  // Track observability messages in a ref for performance
-  const observabilityMessagesRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
-  // Track if WordPress sale intent has been created this session (for returning clients)
-  const wordpressSaleCreatedRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
-  // file input reference for image upload
-  const fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  // actions menu container reference for outside click detection
-  const actionsMenuRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-  // Helper function to update observability messages
-  const updateObservabilityMessages = updater => {
-    if (onMessagesUpdate) {
-      observabilityMessagesRef.current = updater(observabilityMessagesRef.current);
-      onMessagesUpdate(observabilityMessagesRef.current);
-    }
-  };
-
-  // Use State Variables
-  const [messages, setMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [newMessage, setNewMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [isNewMessage, setIsNewMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [init, setInit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    init: "",
-    type: EConnectionType.initial
-  });
-  const [chatState, setChatState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(isRelative ? EChatState.open : EChatState.close);
-  const [chatStateVisibility, setChatStateVisibility] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(isRelative ? EChatState.open : EChatState.close);
-  const [visibleMessage, setVisibleMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [visibleMessageState, setVisibleMessageState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EVisibleMessageState.invisible);
-  const [visibleMessageOpacity, setVisibleMessageOpacity] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EVisibleMessageState.invisible);
-  const [createClientState, setCreateClientState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECreateClientState.invisible);
-  const [cartState, setCartState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECartState.invisible);
-  const [actionsMenuState, setActionsMenuState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EActionsMenuState.invisible);
-  const [createClientBackendState, setCreateClientBackendState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECreateClientBackendState.send);
-  const [isLoaded, setIsLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [socket, setSocket] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__.io)(globalSelectedBackend + "/shopifywidget?domain=" + domain + "&&path=" + shopifyCurrentPath + "&&marketId=" + marketId + "&&languageCode=" + languageCode, {
-    forceNew: true,
-    autoConnect: false,
-    transports: ["websocket"],
-    transportOptions: {
-      websocket: {
-        extraHeaders: {
-          "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
-          "Sec-WebSocket-Version": "13",
-          "Sec-WebSocket-Protocol": "chat, superchat"
-        }
-      }
-    }
-  }));
-  const [name, setName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [phone, setPhone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [nameError, setNameError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [emailError, setEmailError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [phoneError, setPhoneError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [subscriptionState, setSubscriptionState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [cart, setCart] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [isCartLoaded, setIsCartLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [isTyping, setIsTyping] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [isSendButtonActive, setIsSendButtonActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  const [isCreatingClient, setIsCreatingClient] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [clientCreated, setClientCreated] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [lastMessage, setLastMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [selectedImage, setSelectedImage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [imagePreviewUrl, setImagePreviewUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-
-  // Socket Reference
-  const socketRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(socket);
-
-  // Constants
-  const cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .A();
-  const ecommerceEmojis = ["😊", "🛍️", "📦", "💳", "🤑", "🛒", "💬", "👍", "📢", "📆", "✉️", "🔍", "🎁", "📱", "💻", "📋", "🌟", "💬", "❓", "💯", "🐗"];
-
-  /**
-   * actions menu configuration
-   * to add new items, simply add a new object to this array with:
-   * - id: unique identifier
-   * - label: display text
-   * - icon: svg icon component
-   * - onClick: handler function
-   */
-  const actionsMenuItems = [{
-    id: "image",
-    label: "Image",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z",
-      fill: "#666"
-    })),
-    onClick: () => {
-      var _fileInputRef$current;
-      (_fileInputRef$current = fileInputRef.current) === null || _fileInputRef$current === void 0 || _fileInputRef$current.click();
-      handleCloseActionsMenu();
-    }
-  }
-  // example: add video option
-  // {
-  //   id: "video",
-  //   label: "Video",
-  //   icon: (
-  //     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-  //       <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" fill="#666" />
-  //     </svg>
-  //   ),
-  //   onClick: () => {
-  //     // handle video upload
-  //     handleCloseActionsMenu();
-  //   },
-  // },
-  ];
-
-  // Initial functions
-
-  // 1. Initialize websocket parameteres
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    initializeChat();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // close actions menu when clicking outside
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleClickOutside = event => {
-      if (actionsMenuRef.current && !actionsMenuRef.current.contains(event.target)) {
-        handleCloseActionsMenu();
-      }
-    };
-    if (actionsMenuState === EActionsMenuState.visible) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [actionsMenuState]);
-
-  // cleanup image preview url on unmount
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    return () => {
-      if (imagePreviewUrl) {
-        URL.revokeObjectURL(imagePreviewUrl);
-      }
-    };
-  }, [imagePreviewUrl]);
-  const initializeChat = async () => {
-    // Check for params in the url
-    const urlParams = new URLSearchParams(window.location.search);
-    // Get Wizyopen parameter
-    const wizyOpen = urlParams.get("wizyopen");
-
-    // If there is a wizyopen true parameter
-    if (wizyOpen === "true") {
-      handleToggleChat();
-    }
-
-    // Start backend comunication
-    const clientCookie = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-
-    // If there is a cookie initizalize the websocket
-    if (clientCookie !== undefined) {
-      setClientCreated(true);
-      handleSocketConnection(EConnectionType.initial);
-      setIsLoaded(true);
-      // If there isn't a cookie only get the outboundmessage
-    } else {
-      getOutboundMessage(domain, shopifyCurrentPath);
-    }
-  };
-
-  // 2.1 If a client is already created then initialize websocket
-
-  // Websocket functions
-  // conections and mesage process
-  const handleSocketConnection = connectionType => {
-    // Connections can be initial, message attempting or brute (in case of failure)
-    if (connectionType === EConnectionType.initial || connectionType === EConnectionType.message) {
-      // If websocket is already initiated
-      if (socket) {
-        // Handle connection
-        socket.connect();
-        socket.on("connect", onConnect);
-        socket.on("disconnect", onDisconnect);
-        socket.on("newMessage", onMessageEvent);
-        socket.on("typing", onTyping);
-        socket.on("init", connectionType === EConnectionType.initial ? onInitInitial : onInitMessage);
-        return () => {
-          socket.off("connect", onConnect);
-          socket.off("disconnect", onDisconnect);
-          socket.off("newMessage", onMessageEvent);
-          socket.off("typing", onTyping);
-          socket.off("init", connectionType === EConnectionType.initial ? onInitInitial : onInitMessage);
-          socket.disconnect();
-        };
-      }
-    } else if (connectionType === EConnectionType.brute) {
-      // Initialize a provisional websocket
-      const provisionalSocket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__.io)(globalSelectedBackend + "/shopifywidget?domain=" + domain + "&&path=" + shopifyCurrentPath, {
-        forceNew: true,
-        autoConnect: false,
-        transports: ["websocket"],
-        transportOptions: {
-          websocket: {
-            extraHeaders: {
-              "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
-              "Sec-WebSocket-Version": "13",
-              "Sec-WebSocket-Protocol": "chat, superchat"
-            }
-          }
-        }
-      });
-      // Handle connection
-      provisionalSocket.connect();
-      provisionalSocket.on("connect", onConnect);
-      provisionalSocket.on("disconnect", onDisconnect);
-      provisionalSocket.on("newMessage", onMessageEvent);
-      provisionalSocket.on("typing", onTyping);
-      provisionalSocket.on("init", onInitBrute);
-      setSocket(provisionalSocket);
-      return () => {
-        provisionalSocket.off("connect", onConnect);
-        provisionalSocket.off("disconnect", onDisconnect);
-        provisionalSocket.off("newMessage", onMessageEvent);
-        provisionalSocket.off("typing", onTyping);
-        provisionalSocket.off("init", onInitBrute);
-        provisionalSocket.disconnect();
-      };
-    }
-  };
-
-  // Websocket connections
-  function onConnect() {}
-  function onDisconnect() {}
-
-  // Websocket message events
-  function onMessageEvent(value) {
-    setLastMessage(value);
-  }
-  function onTyping(value) {
-    setIsTyping(true);
-  }
-
-  // Websocket initial handshakes (Differente types)
-  function onInitInitial(value) {
-    setInit({
-      init: value,
-      type: EConnectionType.initial
-    });
-  }
-  function onInitMessage(value) {
-    setInit({
-      init: value,
-      type: EConnectionType.message
-    });
-  }
-  function onInitBrute(value) {
-    setInit({
-      init: value,
-      type: EConnectionType.brute
-    });
-  }
-
-  // 2.2 If a client was not connected already then get outbound message
-
-  const getOutboundMessage = async (domain, path) => {
-    try {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({
-        domain: domain,
-        path: path,
-        marketId: marketId,
-        languageCode: languageCode
-      });
-      const response = await fetch(globalSelectedBackend + "/shopifywidgetrest/outboundmessage", {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        credentials: "include",
-        redirect: "follow"
-      });
-      if (!response.ok) {
-        let errorText = await response.text();
-        console.log(errorText);
-      } else {
-        setLastMessage(JSON.parse(await response.text()));
-        setIsLoaded(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // 3. Either way run custom code
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (isLoaded) {
-      // Some times people want the widget to do weird stuff, and as an inclusive company, we do not judge, we just do it
-      // Example: "I want the widget to suck my client's dick"
-      // This snap of code allows you to run custom javascript code from a string saved in thye db without having to do a
-      // new release or keep contaminating our codebase with weird flags such as shouldSuckDick.
-
-      // Here is an example of a string that changes the color of something inside and outside the iframe:
-
-      // OUTSIDE OF THE IFRAME
-      // document.getElementsByClassName("Test__reset__outter")[0].style.backgroundColor = "#000000";
-
-      // INSIDE OF THE IFRAME
-      // var iframe = document.getElementById('WizybotShopifyWidget__iframe__outter__id');
-      // var innerDoc = iframe.contentWindow.document;
-      // innerDoc.getElementsByClassName("WizybotShopifyWidget__open__button__notification")[0].style.backgroundColor = "#000000";
-
-      // Here is an example of how to extract variables from the backend:
-
-      // const dataDiv = document.getElementById("WizybotShopifyWidget__data__div");
-      // const data = dataDiv?.dataset;
-      // console.log(JSON.parse(data.storesetup).setup.isRedirect);
-
-      if (isNotBlank(widget.setup.customWidgetCode)) {
-        // eslint-disable-next-line
-        eval("try { ".concat(widget.setup.customWidgetCode, " } catch (e) { console.log(\"Error in custom widget script\") }"));
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoaded]);
-
-  // Use Effect runtime functions
-  // Check if cart is loaded
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setIsCartLoaded(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart]);
-
-  // Receive a new message
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (lastMessage !== null) {
-      // Create message for observability if callback is provided
-      const newObservabilityMessage = onMessagesUpdate ? {
-        id: lastMessage.id,
-        content: lastMessage.content,
-        createDate: lastMessage.createDate,
-        role: lastMessage.role,
-        name: lastMessage.name || undefined,
-        toolCalls: lastMessage.toolCalls || undefined,
-        extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
-        extraUIComponentReference: lastMessage.extraUIComponentReference,
-        hasMedia: lastMessage.hasMedia,
-        interpretationForLLM: lastMessage.interpretationForLLM || undefined,
-        status: lastMessage.status,
-        showLogs: false,
-        messageLogs: lastMessage.messageLogs ? typeof lastMessage.messageLogs === "string" ? JSON.parse(lastMessage.messageLogs) : lastMessage.messageLogs : null
-      } : null;
-
-      // Only add visible messages to local state (for widget display)
-      // console.log(lastMessage);
-      const hasVisibleContent = lastMessage.content && lastMessage.content !== "" || lastMessage.hasMedia || lastMessage.extraUIComponents || lastMessage.extraUIComponentReference;
-      if (hasVisibleContent) {
-        if (clientCreated) {
-          // Append to local state and update observability
-          if (onMessagesUpdate && newObservabilityMessage) {
-            updateObservabilityMessages(previous => [...previous, newObservabilityMessage]);
-          }
-          setMessages(previous => [...previous, {
-            id: lastMessage.id ? lastMessage.id : "",
-            content: lastMessage.content,
-            createDate: lastMessage.createDate,
-            role: lastMessage.role,
-            name: lastMessage.name,
-            functionCall: lastMessage.functionCall,
-            toolCalls: lastMessage.toolCalls,
-            toolCallId: lastMessage.toolCallId,
-            extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
-            extraUIComponentReference: lastMessage.extraUIComponentReference,
-            sourceType: lastMessage.sourceType,
-            sourceId: lastMessage.sourceId,
-            hasMedia: lastMessage.hasMedia,
-            status: lastMessage.status,
-            isAsset: lastMessage.isAsset
-          }]);
-          setIsNewMessage(true);
-          setIsTyping(false);
-        } else {
-          // Reset local state and update observability (first message)
-          if (onMessagesUpdate && newObservabilityMessage) {
-            updateObservabilityMessages(() => [newObservabilityMessage]);
-          }
-          setMessages([{
-            id: lastMessage.id ? lastMessage.id : "",
-            content: lastMessage.content,
-            createDate: lastMessage.createDate,
-            role: lastMessage.role,
-            name: lastMessage.name,
-            functionCall: lastMessage.functionCall,
-            toolCalls: lastMessage.toolCalls,
-            toolCallId: lastMessage.toolCallId,
-            extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
-            extraUIComponentReference: lastMessage.extraUIComponentReference,
-            sourceType: lastMessage.sourceType,
-            sourceId: lastMessage.sourceId,
-            hasMedia: lastMessage.hasMedia,
-            status: lastMessage.status,
-            isAsset: lastMessage.isAsset
-          }]);
-          setIsNewMessage(true);
-          setIsTyping(false);
-        }
-      } else {
-        // Message not visible in widget, but add for observability
-        if (onMessagesUpdate && newObservabilityMessage) {
-          if (clientCreated) {
-            updateObservabilityMessages(previous => [...previous, newObservabilityMessage]);
-          } else {
-            updateObservabilityMessages(() => [newObservabilityMessage]);
-          }
-        }
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastMessage]);
-
-  // When a new message is received then show it as a outbound message
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (isLoaded) {
-      if (chatState === EChatState.close && !widget.setup.hideOutboundMessage) {
-        var _lastMessage$content, _lastMessage$extraUIC2;
-        const lastMessage = messages.at(-1);
-        let lastVisibleMessage = (_lastMessage$content = lastMessage === null || lastMessage === void 0 ? void 0 : lastMessage.content) !== null && _lastMessage$content !== void 0 ? _lastMessage$content : "";
-
-        // Display the product title as the visible message for the product card
-        if (lastMessage !== null && lastMessage !== void 0 && lastMessage.extraUIComponents) {
-          var _lastMessage$extraUIC;
-          if (((_lastMessage$extraUIC = lastMessage.extraUIComponents[0]) === null || _lastMessage$extraUIC === void 0 ? void 0 : _lastMessage$extraUIC.type) === _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD) {
-            lastVisibleMessage = lastMessage.extraUIComponents[0].content.title;
-          }
-        }
-
-        // Display the product title as the visible message for the new product card
-        if (lastMessage !== null && lastMessage !== void 0 && (_lastMessage$extraUIC2 = lastMessage.extraUIComponentReference) !== null && _lastMessage$extraUIC2 !== void 0 && _lastMessage$extraUIC2[0]) {
-          lastVisibleMessage = (0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .getNewExtraUIComponentTitle */ .Wz)(lastMessage.extraUIComponentReference[0], widget.setup.mainLanguage);
-        }
-        setVisibleMessage(lastVisibleMessage);
-        setVisibleMessageState(EVisibleMessageState.visible);
-        showNewMessage();
-        setTimeout(() => {
-          setVisibleMessageOpacity(EVisibleMessageState.visible);
-        }, 100);
-        setTimeout(() => {
-          setVisibleMessageOpacity(EVisibleMessageState.invisible);
-        }, 5000);
-        setTimeout(() => {
-          setVisibleMessageState(EVisibleMessageState.invisible);
-          hideNewMessage();
-        }, 5800);
-      } else {
-        const clientCookie = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-        if (chatState === EChatState.open && clientCookie !== undefined) {
-          socketEmit("clientRead", {
-            clientId: cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain),
-            shopDomain: domain
-          });
-        }
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isNewMessage]);
-
-  // Update client init when it is recieved
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (isLoaded) {
-      if (init.type === EConnectionType.message) {
-        handleMessageSend();
-      } else {
-        updateClient(init.init);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [init]);
-
-  // Reset reference to new websocket in case it gets updated
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    socketRef.current = socket;
-  }, [socket]);
-
-  // Internal Functions
-  // Function to emit in a safe way, it asures that the message is actually sent
-  const socketEmit = function (topic, payload) {
-    let retries = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
-    let delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
-    return new Promise((resolve, reject) => {
-      const attemptEmit = attempt => {
-        let isAcknowledged = false; // Track if we receive a response
-
-        // Emit the event with an acknowledgment callback
-        socketRef.current.emit(topic, payload, response => {
-          isAcknowledged = true; // Mark acknowledgment as received
-          resolve(); // Successfully resolved
-        });
-
-        // Set a timeout to check if the server responded in 3 seconds
-        setTimeout(() => {
-          if (!isAcknowledged) {
-            if (attempt < retries - 1) {
-              console.warn("No response, retrying in ".concat(delay, "ms..."));
-              handleSocketConnection(EConnectionType.brute);
-              setTimeout(() => attemptEmit(attempt + 1), delay); // Retry with backoff
-            } else {
-              console.error("Emit failed after maximum retries.");
-              reject(new Error("Server did not respond after retries."));
-            }
-          }
-        }, 3000); // 3 seconds timeout
-      };
-      attemptEmit(0); // Start with the first attempt
-    });
-  };
-
-  // Send message
-  // Helper: upload image to S3 and emit socket message with media info
-  const uploadImageAndEmit = async (content, clientId, image) => {
-    var _clientInfo$location, _clientInfo$location2, _clientInfo$location3;
-    // Use existing helper to get client IP/location info
-    const clientInfo = JSON.parse(await getClientIpInfo());
-    const location = (clientInfo === null || clientInfo === void 0 || (_clientInfo$location = clientInfo.location) === null || _clientInfo$location === void 0 ? void 0 : _clientInfo$location.city) + ", " + (clientInfo === null || clientInfo === void 0 || (_clientInfo$location2 = clientInfo.location) === null || _clientInfo$location2 === void 0 || (_clientInfo$location2 = _clientInfo$location2.country) === null || _clientInfo$location2 === void 0 ? void 0 : _clientInfo$location2.name) + " " + (clientInfo === null || clientInfo === void 0 || (_clientInfo$location3 = clientInfo.location) === null || _clientInfo$location3 === void 0 || (_clientInfo$location3 = _clientInfo$location3.country) === null || _clientInfo$location3 === void 0 || (_clientInfo$location3 = _clientInfo$location3.flag) === null || _clientInfo$location3 === void 0 ? void 0 : _clientInfo$location3.emoji);
-    const computer = window.navigator.platform === undefined ? "" : window.navigator.platform;
-
-    //create formData with all the info needed
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("clientId", clientId);
-    formData.append("location", location);
-    formData.append("computer", computer);
-    const uploadResponse = await fetch(globalSelectedBackend + "/shopifywidgetrest/mediaupload/" + domain, {
-      method: "POST",
-      body: formData,
-      credentials: "include"
-    });
-    if (!uploadResponse.ok) {
-      if (uploadResponse.status === 403) {
-        throw new Error("Upload limit reached. Please try again later.");
-      }
-      console.error("Failed to upload image:", uploadResponse);
-      throw new Error("Failed to upload image");
-    }
-    const responseJson = await uploadResponse.json();
-    const {
-      mediaId
-    } = responseJson;
-
-    // 4. Emit via socket WITH media info (await to catch delivery failures)
-    await socketEmit("newMessage", {
-      content: content,
-      clientId: clientId,
-      isTest: isTest,
-      shopDomain: domain,
-      path: shopifyCurrentPath,
-      media: {
-        mediaId: mediaId,
-        mediaType: image.type,
-        mediaName: image.name
-      }
-    });
-  };
-
-  // Helper: get localized upload error message
-  const getUploadErrorMessage = error => {
-    const isIpBlocked = error instanceof Error && error.message === "Upload limit reached. Please try again later.";
-    if (isIpBlocked) {
-      switch (widget.setup.mainLanguage) {
-        case "Spanish":
-          return "Tu dirección IP ha sido bloqueada por exceder el límite de envíos. ";
-        case "French":
-          return "Votre adresse IP a été bloquée pour avoir dépassé la limite d'envoi.";
-        case "Portuguese":
-          return "Seu endereço IP foi bloqueado por exceder o limite de envios.";
-        case "German":
-          return "Ihre IP-Adresse wurde gesperrt, da das Sendelimit überschritten wurde.";
-        case "Italian":
-          return "Il tuo indirizzo IP è stato bloccato per aver superato il limite di invio.";
-        default:
-          return "Your IP address has been blocked due to exceeding the upload limit.";
-      }
-    }
-    switch (widget.setup.mainLanguage) {
-      case "Spanish":
-        return "Error al enviar la imagen. Por favor, intenta de nuevo.";
-      case "French":
-        return "Erreur lors de l'envoi de l'image. Veuillez réessayer.";
-      case "Portuguese":
-        return "Erro ao enviar a imagem. Por favor, tente novamente.";
-      case "German":
-        return "Fehler beim Senden des Bildes. Bitte versuchen Sie es erneut.";
-      case "Italian":
-        return "Errore nell'invio dell'immagine. Per favore, riprova.";
-      default:
-        return "Error sending the image. Please try again.";
-    }
-  };
-  const handleMessageSend = async () => {
-    if (socket.connected) {
-      if (!isCreatingClient) {
-        const hasImage = selectedImage !== null;
-        const hasText = newMessage.replaceAll(" ", "") !== "";
-
-        // Must have at least text OR image to send
-        if (!hasText && !hasImage) return;
-        const clientId = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-        if (clientId !== undefined) {
-          // === EXISTING CLIENT FLOW ==
-          // For WordPress returning clients, register sale intent with current cart UUID on first message
-          if (platform === "WORDPRESS" && !isDashboard && !wordpressSaleCreatedRef.current) {
-            wordpressSaleCreatedRef.current = true;
-            createSaleOption(clientId);
-          }
-          const content = newMessage !== null && newMessage !== void 0 ? newMessage : '';
-          const currentImage = selectedImage;
-          const currentPreviewUrl = imagePreviewUrl;
-
-          // Create local message for immediate UI display
-          const userMessage = {
-            content: content !== null && content !== void 0 ? content : "",
-            createDate: new Date().toISOString(),
-            role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
-            name: null,
-            functionCall: null,
-            toolCalls: null,
-            toolCallId: null,
-            extraUIComponents: [],
-            extraUIComponentReference: [],
-            sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-            sourceId: null,
-            hasMedia: hasImage,
-            localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
-            isAsset: false,
-            status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-          };
-
-          // Update both local state and observability
-          setMessages(previous => [...previous, userMessage]);
-          if (onMessagesUpdate) {
-            updateObservabilityMessages(previous => [...previous, {
-              content: content,
-              createDate: new Date().toISOString(),
-              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
-              showLogs: false,
-              messageLogs: null,
-              hasMedia: hasImage,
-              localMedia: hasImage && selectedImage ? selectedImage : undefined
-            }]);
-          }
-
-          // Clear input state immediately for responsiveness
-          setNewMessage("");
-          if (hasImage) {
-            handleClearImageSelection();
-          }
-          if (hasImage && currentImage) {
-            // IMAGE FLOW (with no text caption)
-            try {
-              await uploadImageAndEmit(content, clientId, currentImage);
-            } catch (error) {
-              console.error("Error uploading image:", error);
-
-              // Rollback: remove the optimistic message
-              setMessages(previous => previous.slice(0, -1));
-              if (onMessagesUpdate) {
-                updateObservabilityMessages(previous => previous.slice(0, -1));
-              }
-
-              // Restore input state so user can retry
-              setNewMessage(content);
-              setSelectedImage(currentImage);
-              setImagePreviewUrl(currentPreviewUrl);
-
-              // Show localized error message in chat
-              const errorMsg = {
-                id: "",
-                content: getUploadErrorMessage(error),
-                createDate: new Date().toISOString(),
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-                name: "",
-                functionCall: "",
-                toolCalls: "",
-                toolCallId: "",
-                extraUIComponents: null,
-                extraUIComponentReference: null,
-                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-                sourceId: null,
-                hasMedia: false,
-                isAsset: false,
-                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-              };
-              setMessages(previous => [...previous, errorMsg]);
-            }
-          } else {
-            // TEXT-ONLY FLOW (existing behavior)
-            socketEmit("newMessage", {
-              content: content,
-              clientId: clientId,
-              isTest: isTest,
-              shopDomain: domain,
-              path: shopifyCurrentPath
-            });
-          }
-        } else {
-          // === NO CLIENT COOKIE ===
-          if (clientCreated) {
-            const errorMessage = {
-              id: "",
-              content: "We are sorry, but the widget has to be tested in your own web [page](https://" + domain + "). Enter now! It's already available!",
-              createDate: messages[0].createDate,
-              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-              name: "",
-              functionCall: "",
-              toolCalls: "",
-              toolCallId: "",
-              extraUIComponents: null,
-              extraUIComponentReference: null,
-              sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-              sourceId: null,
-              hasMedia: false,
-              isAsset: false,
-              status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-            };
-
-            // Update both local state and observability
-            setMessages(previous => [...previous, errorMessage]);
-            if (onMessagesUpdate) {
-              updateObservabilityMessages(previous => [...previous, {
-                id: "",
-                content: errorMessage.content,
-                createDate: errorMessage.createDate,
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-                showLogs: false,
-                messageLogs: null
-              }]);
-            }
-            setIsNewMessage(true);
-            setIsTyping(false);
-          } else {
-            if (widget.setup.emailRetrievalMethod === "Mandatory") {
-              handleToogleCreateClient();
-            } else {
-              // === AUTO-CREATE CLIENT FLOW (with image support) ===
-              const content = newMessage !== null && newMessage !== void 0 ? newMessage : "";
-              const currentImage = selectedImage;
-              const currentPreviewUrl = imagePreviewUrl;
-              const userMessage = {
-                content: content !== null && content !== void 0 ? content : "",
-                createDate: new Date().toISOString(),
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
-                name: null,
-                functionCall: null,
-                toolCalls: null,
-                toolCallId: null,
-                extraUIComponents: [],
-                extraUIComponentReference: [],
-                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-                sourceId: null,
-                hasMedia: hasImage,
-                localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
-                isAsset: false,
-                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-              };
-
-              // Update local state immediately for widget display
-              setMessages(previous => [...previous, userMessage]);
-
-              // Clear input state
-              setNewMessage("");
-              if (hasImage) {
-                handleClearImageSelection();
-              }
-
-              // Create client first (sets cookie)
-              await createClientAuto();
-
-              // Get the newly created clientId from cookie
-              const newClientId = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-              if (!newClientId) return;
-
-              // Update observability AFTER client is created
-              if (onMessagesUpdate) {
-                updateObservabilityMessages(previous => [...previous, {
-                  content: content,
-                  createDate: new Date().toISOString(),
-                  role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
-                  showLogs: false,
-                  messageLogs: null,
-                  hasMedia: hasImage,
-                  localMedia: hasImage && currentImage ? currentImage : undefined
-                }]);
-              }
-              if (hasImage && currentImage) {
-                // IMAGE FLOW after client creation
-                try {
-                  await uploadImageAndEmit(content, newClientId, currentImage);
-                } catch (error) {
-                  console.error("Error uploading image:", error);
-
-                  // Rollback: remove the optimistic message
-                  setMessages(previous => previous.slice(0, -1));
-                  if (onMessagesUpdate) {
-                    updateObservabilityMessages(previous => previous.slice(0, -1));
-                  }
-
-                  // Restore input state so user can retry
-                  setNewMessage(content);
-                  setSelectedImage(currentImage);
-                  setImagePreviewUrl(currentPreviewUrl);
-                  const errorMsg = {
-                    id: "",
-                    content: getUploadErrorMessage(error),
-                    createDate: new Date().toISOString(),
-                    role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-                    name: "",
-                    functionCall: "",
-                    toolCalls: "",
-                    toolCallId: "",
-                    extraUIComponents: null,
-                    extraUIComponentReference: null,
-                    sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-                    sourceId: null,
-                    hasMedia: false,
-                    isAsset: false,
-                    status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-                  };
-                  setMessages(previous => [...previous, errorMsg]);
-                }
-              } else {
-                // TEXT-ONLY FLOW after client creation
-                socketEmit("newMessage", {
-                  content: content,
-                  clientId: newClientId,
-                  isTest: isTest,
-                  shopDomain: domain,
-                  path: shopifyCurrentPath
-                });
-              }
-            }
-          }
-        }
-      }
-    } else {
-      handleSocketConnection(EConnectionType.message);
-    }
-  };
-
-  // toggle actions menu visibility
-  const handleToggleActionsMenu = () => {
-    setActionsMenuState(prevState => prevState === EActionsMenuState.invisible ? EActionsMenuState.visible : EActionsMenuState.invisible);
-  };
-
-  // close actions menu
-  const handleCloseActionsMenu = () => {
-    setActionsMenuState(EActionsMenuState.invisible);
-  };
-
-  // handle image selection and validation
-  const handleImageUpload = event => {
-    var _event$target$files;
-    const file = (_event$target$files = event.target.files) === null || _event$target$files === void 0 ? void 0 : _event$target$files[0];
-    if (!file) {
-      return;
-    }
-
-    // validate file type
-    const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
-    if (!validTypes.includes(file.type)) {
-      // show error message based on language
-      const errorContent = widget.setup.mainLanguage === "English" ? "Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP)." : widget.setup.mainLanguage === "Spanish" ? "Tipo de archivo no válido. Por favor, sube una imagen (JPEG, PNG, GIF o WebP)." : widget.setup.mainLanguage === "French" ? "Type de fichier invalide. Veuillez télécharger une image (JPEG, PNG, GIF ou WebP)." : widget.setup.mainLanguage === "Portuguese" ? "Tipo de arquivo inválido. Por favor, envie uma imagem (JPEG, PNG, GIF ou WebP)." : widget.setup.mainLanguage === "German" ? "Ungültiger Dateityp. Bitte laden Sie ein Bild hoch (JPEG, PNG, GIF oder WebP)." : widget.setup.mainLanguage === "Italian" ? "Tipo di file non valido. Si prega di caricare un'immagine (JPEG, PNG, GIF o WebP)." : "Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).";
-      const errorMessage = {
-        id: "",
-        content: errorContent,
-        createDate: new Date().toISOString(),
-        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-        name: "",
-        functionCall: "",
-        toolCalls: "",
-        toolCallId: "",
-        extraUIComponents: null,
-        extraUIComponentReference: null,
-        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-        sourceId: null,
-        hasMedia: false,
-        isAsset: false,
-        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-      };
-
-      // update both local state and observability
-      setMessages(previous => [...previous, errorMessage]);
-      if (onMessagesUpdate) {
-        updateObservabilityMessages(previous => [...previous, {
-          id: "",
-          content: errorMessage.content,
-          createDate: errorMessage.createDate,
-          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-          showLogs: false,
-          messageLogs: null
-        }]);
-      }
-
-      // reset file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-      return;
-    }
-
-    // validate file size (5mb limit)
-    const maxSizeInBytes = 5 * 1024 * 1024;
-    if (file.size > maxSizeInBytes) {
-      // show error message based on language
-      const errorContent = widget.setup.mainLanguage === "English" ? "File size exceeds the limit. Please upload an image smaller than 5MB." : widget.setup.mainLanguage === "Spanish" ? "El tamaño del archivo excede el límite. Por favor, sube una imagen menor a 5MB." : widget.setup.mainLanguage === "French" ? "La taille du fichier dépasse la limite. Veuillez télécharger une image de moins de 5 Mo." : widget.setup.mainLanguage === "Portuguese" ? "O tamanho do arquivo excede o limite. Por favor, envie uma imagem menor que 5MB." : widget.setup.mainLanguage === "German" ? "Die Dateigröße überschreitet das Limit. Bitte laden Sie ein Bild unter 5 MB hoch." : widget.setup.mainLanguage === "Italian" ? "La dimensione del file supera il limite. Si prega di caricare un'immagine inferiore a 5 MB." : "File size exceeds the limit. Please upload an image smaller than 5MB.";
-      const errorMessage = {
-        id: "",
-        content: errorContent,
-        createDate: new Date().toISOString(),
-        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-        name: "",
-        functionCall: "",
-        toolCalls: "",
-        toolCallId: "",
-        extraUIComponents: null,
-        extraUIComponentReference: null,
-        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
-        sourceId: null,
-        hasMedia: false,
-        isAsset: false,
-        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
-      };
-
-      // update both local state and observability
-      setMessages(previous => [...previous, errorMessage]);
-      if (onMessagesUpdate) {
-        updateObservabilityMessages(previous => [...previous, {
-          id: "",
-          content: errorMessage.content,
-          createDate: errorMessage.createDate,
-          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
-          showLogs: false,
-          messageLogs: null
-        }]);
-      }
-
-      // reset file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-      return;
-    }
-
-    // create preview url
-    const previewUrl = URL.createObjectURL(file);
-    setImagePreviewUrl(previewUrl);
-    setSelectedImage(file);
-    setNewMessage("");
-
-    // close actions menu
-    handleCloseActionsMenu();
-  };
-
-  // remove image preview (revokes blob URL - used when user cancels selection)
-  const handleRemoveImagePreview = () => {
-    // revoke object url to free memory
-    if (imagePreviewUrl) {
-      URL.revokeObjectURL(imagePreviewUrl);
-    }
-    setImagePreviewUrl(null);
-    setSelectedImage(null);
-
-    // reset file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
-  };
-
-  // clear image selection without revoking blob URL (used after send -
-  // the blob URL is still referenced by localMediaUrl in the sent message)
-  const handleClearImageSelection = () => {
-    setImagePreviewUrl(null);
-    setSelectedImage(null);
-
-    // reset file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
-  };
-
-  // Open and close chat
-  const handleToggleChat = () => {
-    if (isRedirect) {
-      // Check if there is any additional text for redirection link
-      // This additional text can be added dinamically from store to store using custom scripts this way:
-
-      // const dataDiv = document.getElementById("WizybotShopifyWidget__data__div");
-      // const text = "?text=Hello520there!"
-      // dataDiv.setAttribute('data-additionaltextredirectionlink', text)
-
-      const dataDiv = document.getElementById("WizybotShopifyWidget__data__div");
-      const additionalText = dataDiv === null || dataDiv === void 0 ? void 0 : dataDiv.dataset.additionaltextredirectionlink;
-
-      // Add additional text if is the case
-      if (additionalText) {
-        window.open(redirectionLink + additionalText, "_blank");
-      } else {
-        window.open(redirectionLink, "_blank");
-      }
-    } else {
-      if (chatState === EChatState.close) {
-        setChatState(EChatState.open);
-        setChatStateVisibility(EChatState.open);
-        setIsOpen(true);
-        setIsNewMessage(false);
-        const clientCookie = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-        if (clientCookie !== undefined) {
-          try {
-            socketEmit("clientRead", {
-              clientId: cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain),
-              shopDomain: domain
-            });
-          } catch (e) {}
-        }
-      } else {
-        setChatState(EChatState.close);
-        setTimeout(() => {
-          setIsOpen(false);
-          setChatStateVisibility(EChatState.close);
-        }, 800);
-      }
-    }
-  };
-
-  // Open and close obligatory create client prompt
-  const handleToogleCreateClient = () => {
-    if (createClientState === ECreateClientState.invisible) {
-      setCreateClientState(ECreateClientState.visible);
-      setIsNewMessage(false);
-      setIsSendButtonActive(false);
-    } else {
-      setIsSendButtonActive(true);
-      setCreateClientState(ECreateClientState.invisible);
-    }
-  };
-
-  // Open and close cart view from widget
-  const handleToggleCartState = async () => {
-    if (cartState === ECartState.invisible) {
-      getCart().then(() => {
-        setCartState(ECartState.visible);
-      });
-      setIsSendButtonActive(false);
-    } else {
-      setIsSendButtonActive(true);
-      setCartState(ECartState.invisible);
-    }
-  };
-
-  // Add random emoji from the list
-  const addRandomNiceEmoji = () => {
-    const randomIndex = Math.floor(Math.random() * ecommerceEmojis.length);
-    const randomEmoji = ecommerceEmojis[randomIndex];
-    setNewMessage(newMessage + randomEmoji);
-  };
-
-  // Get cart content in the moment
-  const getCart = async () => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "") {
-      setIsCartLoaded(false);
-      await fetch(shopifyRootPath + "cart.js", {
-        method: "GET"
-      }).then(response => {
-        return response.json();
-      }).then(data => {
-        setCart({
-          totalPrice: data.total_price,
-          currency: data.currency,
-          items: data.items.map(item => {
-            return {
-              id: item.id,
-              quantity: item.quantity,
-              productTitle: item.product_title,
-              variantTitle: item.variant_title,
-              linePrice: item.line_price,
-              image: item.image,
-              url: item.url
-            };
-          })
-        });
-      }).catch(error => {
-        console.error("Error:", error);
-        setIsCartLoaded(true);
-      });
-    } else {
-      console.log("Not in shopify");
-      setIsCartLoaded(true);
-    }
-  };
-
-  // Update cart content with new quantity
-  const updateCart = async cartToUpdate => {
-    setIsCartLoaded(false);
-    if (shopifyRootPath !== null && shopifyRootPath !== "" && cartToUpdate !== null) {
-      const updates = cartToUpdate.items.reduce((a, v) => _objectSpread(_objectSpread({}, a), {}, {
-        [v.id]: v.quantity
-      }), {});
-      fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          updates
-        })
-      }).then(response => {
-        return response.json();
-      }).then(data => {
-        setCart({
-          totalPrice: data.total_price,
-          currency: data.currency,
-          items: data.items.map(item => {
-            return {
-              id: item.id,
-              quantity: item.quantity,
-              productTitle: item.product_title,
-              variantTitle: item.variant_title,
-              linePrice: item.line_price,
-              image: item.image,
-              url: item.url
-            };
-          })
-        });
-        const clientId = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-        if (clientId) {
-          fetch(globalSelectedBackend + "/carts/" + clientId, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              total: data.total_price / 100,
-              sourceType: "shopify widget",
-              cartToken: data.token,
-              items: data.items.map(item => ({
-                shopifyVariantId: String(item.id),
-                unitPrice: item.quantity > 0 ? item.line_price / item.quantity / 100 : 0,
-                quantity: item.quantity
-              }))
-            })
-          }).catch(e => console.error("Error syncing cart to backend:", e));
-        }
-      }).catch(error => {
-        console.error("Error:", error);
-        setIsCartLoaded(true);
-      });
-    } else {
-      console.log("Not in shopify");
-      setIsCartLoaded(true);
-    }
-  };
-
-  // Create client sale option
-  const createSaleOption = async clientId => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "" && !isDashboard) {
-      await fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          attributes: {
-            wizybot: true
-          },
-          note: widget.setup.preventSaleNoteCreation ? "" : "Wizybot sale!"
-        })
-      }).then(async response => {
-        await fetch(shopifyRootPath + "cart.js", {
-          method: "GET"
-        }).then(response => {
-          return response.json();
-        }).then(async data => {
-          var raw = JSON.stringify({
-            cartId: data.token.split("?")[0]
-          });
-          var myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          await fetch(globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale", {
-            method: "POST",
-            headers: myHeaders,
-            body: raw,
-            credentials: "include",
-            redirect: "follow"
-          }).then(async response => {
-            if (!response.ok) {
-              let errorText = await response.text();
-              let errorJSON = JSON.parse(errorText);
-              throw new Error(errorJSON.message);
-            } else {
-              return response.text();
-            }
-          }).then(result => JSON.parse(result)).then(JSONresult => {}).catch(error => {
-            console.log("Error:", error);
-          });
-        }).catch(error => {
-          console.error("Error:", error);
-        });
-      }).catch(error => {
-        console.error("Error:", error);
-      });
-    } else if (platform === "WORDPRESS" && !isDashboard) {
-      try {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        await fetch(globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale", {
-          method: "POST",
-          headers: myHeaders,
-          body: JSON.stringify({
-            cartId: wizyCartId || null
-          }),
-          credentials: "include",
-          redirect: "follow"
-        });
-      } catch (error) {
-        console.error("Error creating WordPress sale:", error);
-      }
-    }
-  };
-  const nameRequired = [EDataRetrievalType.NAME, EDataRetrievalType.NAME_EMAIL, EDataRetrievalType.NAME_PHONE, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
-  const emailRequired = [EDataRetrievalType.EMAIL, EDataRetrievalType.BOTH, EDataRetrievalType.NAME_EMAIL, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
-  const phoneRequired = [EDataRetrievalType.PHONE, EDataRetrievalType.BOTH, EDataRetrievalType.NAME_PHONE, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
-
-  // Create client from obligatory prompt
-  const createClient = async () => {
-    if (isCreatingClient) return;
-    setIsCreatingClient(true);
-    const emptyName = nameRequired && name.trim() === "";
-    const emptyEmail = emailRequired && email.trim() === "";
-    const emptyPhone = phoneRequired && phone === "";
-    if (emptyName || emptyEmail || emptyPhone) {
-      setNameError(emptyName);
-      setEmailError(emptyEmail);
-      setPhoneError(emptyPhone);
-      setIsCreatingClient(false);
-      return;
-    }
-    const invalidFields = await getContactDataValidation({
-      required: phoneRequired,
-      value: phone
-    }, {
-      required: emailRequired,
-      value: email
-    }, {
-      required: nameRequired,
-      value: name
-    });
-    setNameError(invalidFields.includes("name"));
-    setEmailError(invalidFields.includes("email"));
-    setPhoneError(invalidFields.includes("phone"));
-    if (invalidFields.length > 0) {
-      setIsCreatingClient(false);
-      return;
-    }
-    if (cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain) !== undefined) {
-      setIsCreatingClient(false);
-      return;
-    }
-    setCreateClientBackendState(ECreateClientBackendState.loading);
-    const clientInfo = JSON.parse(await getClientIpInfo());
-    const superClientId = cookies.get("WIZY_SUPERCLIENT_" + domain);
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      firstName: name.trim(),
-      lastName: "",
-      email: email.trim(),
-      phone: phone.replace(/^\+/, ""),
-      location: clientInfo.location.city + ", " + clientInfo.location.country.name + " " + clientInfo.location.country.flag.emoji,
-      computer: window.navigator.platform === undefined ? "" : window.navigator.platform,
-      ipAddress: clientInfo.ip,
-      lastMessageDate: messages[0].createDate,
-      lastMessage: messages[0].content,
-      subscriptionState: subscriptionState,
-      isShopRead: false,
-      isClientRead: true,
-      isAiEnabled: true,
-      websocketId: init.init,
-      isTest: isTest,
-      superClient: superClientId ? {
-        id: superClientId
-      } : null
-    });
-    await fetch(globalSelectedBackend + "/clients/" + domain + (isDashboard ? "/private" : ""), {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      credentials: "include",
-      redirect: "follow"
-    }).then(async response => {
-      if (!response.ok) {
-        let errorText = await response.text();
-        let errorJSON = JSON.parse(errorText);
-        throw new Error(errorJSON.message);
-      } else {
-        return response.text();
-      }
-    }).then(result => JSON.parse(result)).then(JSONresult => {
-      var _JSONresult$superClie;
-      if ((_JSONresult$superClie = JSONresult.superClient) !== null && _JSONresult$superClie !== void 0 && _JSONresult$superClie.id) {
-        var _JSONresult$superClie2;
-        cookies.set("WIZY_SUPERCLIENT_" + domain, (_JSONresult$superClie2 = JSONresult.superClient) === null || _JSONresult$superClie2 === void 0 ? void 0 : _JSONresult$superClie2.id, {
-          path: "/",
-          maxAge: 60 * 60 * 24 * 365
-        });
-      }
-      cookies.set(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain, JSONresult.id, {
-        path: "/",
-        maxAge: 60 * 60 * 24 * 365
-      });
-      handleToogleCreateClient();
-      createSaleOption(JSONresult.id);
-      setCreateClientBackendState(ECreateClientBackendState.send);
-      setClientCreated(true);
-      setIsCreatingClient(false);
-      handleMessageSend();
-    }).catch(error => {
-      console.log(error);
-      setIsCreatingClient(false);
-    });
-  };
-
-  // Create client automatically from the start of the conversation
-  const createClientAuto = async () => {
-    setIsCreatingClient(true);
-    if (cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain) === undefined) {
-      setCreateClientBackendState(ECreateClientBackendState.loading);
-
-      // Get client IP info
-      const clientInfo = JSON.parse(await getClientIpInfo());
-      setEmailError(false);
-
-      // Check if there is a superclient cookie,
-      const superClientId = cookies.get("WIZY_SUPERCLIENT_" + domain);
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        location: clientInfo.location.city + ", " + clientInfo.location.country.name + " " + clientInfo.location.country.flag.emoji,
-        computer: window.navigator.platform === undefined ? "" : window.navigator.platform,
-        ipAddress: clientInfo.ip,
-        lastMessageDate: messages[0].createDate,
-        lastMessage: messages[0].content,
-        subscriptionState: subscriptionState,
-        isShopRead: false,
-        isClientRead: true,
-        isAiEnabled: true,
-        isTest: isTest,
-        websocketId: init.init,
-        superClient: superClientId ? {
-          id: superClientId
-        } : null,
-        marketId: marketId,
-        languageCode: languageCode,
-        languageUrl: languageUrl
-      });
-      await fetch(globalSelectedBackend + "/clients/" + domain + (isDashboard ? "/private" : ""), {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        credentials: "include",
-        redirect: "follow"
-      }).then(async response => {
-        if (!response.ok) {
-          let errorText = await response.text();
-          let errorJSON = JSON.parse(errorText);
-          throw new Error(errorJSON.message);
-        } else {
-          return response.text();
-        }
-      }).then(result => JSON.parse(result)).then(JSONresult => {
-        var _JSONresult$superClie3;
-        if ((_JSONresult$superClie3 = JSONresult.superClient) !== null && _JSONresult$superClie3 !== void 0 && _JSONresult$superClie3.id) {
-          cookies.set("WIZY_SUPERCLIENT_" + domain, JSONresult.superClient.id, {
-            path: "/",
-            maxAge: 60 * 60 * 24 * 365
-          });
-        }
-        cookies.set(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain, JSONresult.id, {
-          path: "/",
-          maxAge: 60 * 60 * 24 * 365
-        });
-        createSaleOption(JSONresult.id);
-        setCreateClientBackendState(ECreateClientBackendState.send);
-        setClientCreated(true);
-        setIsCreatingClient(false);
-      }).catch(error => {
-        console.log(error);
-        setIsCreatingClient(false);
-      });
-    } else {
-      setEmailError(true);
-      setPhoneError(true);
-      setIsCreatingClient(false);
-      setCreateClientBackendState(ECreateClientBackendState.send);
-    }
-  };
-
-  // Get Client info from the ip (location. country, flag)
-  const getClientIpInfo = async () => {
-    let clientInfo = "";
-    await fetch("https://api.ipregistry.co/?key=" + ipRegistryKey, {
-      method: "GET",
-      redirect: "follow"
-    }).then(async response => {
-      if (!response.ok) {
-        let errorText = await response.text();
-        let errorJSON = JSON.parse(errorText);
-        throw new Error(errorJSON.message);
-      } else {
-        return response.text();
-      }
-    }).then(result => JSON.parse(result)).then(JSONresult => {
-      clientInfo = JSON.stringify(JSONresult);
-    }).catch(err => {
-      console.log(err);
-    });
-    return clientInfo;
-  };
-
-  // Update client init
-  const updateClient = async selectedInit => {
-    if (cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain) !== undefined) {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({
-        websocketId: selectedInit
-      });
-      await fetch(globalSelectedBackend + "/clients/" + cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain) + "/websocketid", {
-        method: "PATCH",
-        headers: myHeaders,
-        body: raw,
-        credentials: "include",
-        redirect: "follow"
-      }).then(async response => {
-        if (!response.ok) {
-          let errorText = await response.text();
-          let errorJSON = JSON.parse(errorText);
-          throw new Error(errorJSON.message);
-        } else {
-          return response.text();
-        }
-      }).then(result => JSON.parse(result)).then(JSONresult => {
-        if (JSONresult.messages.length > 0 && messages.length === 0) {
-          const sortedMessages = JSONresult.messages.sort((a, b) => Date.parse(a.createDate) - Date.parse(b.createDate));
-
-          // Update observability with ALL messages (no filter)
-          if (onMessagesUpdate) {
-            updateObservabilityMessages(() => sortedMessages.map(msg => ({
-              id: msg.id,
-              content: msg.content,
-              createDate: msg.createDate,
-              role: msg.role,
-              name: msg.name || undefined,
-              toolCalls: msg.toolCalls || undefined,
-              extraUIComponents: msg.extraUIComponents ? JSON.parse(msg.extraUIComponents) : null,
-              extraUIComponentReference: msg.extraUIComponentReference,
-              hasMedia: msg.hasMedia,
-              interpretationForLLM: msg.interpretationForLLM || undefined,
-              status: msg.status,
-              showLogs: false,
-              messageLogs: msg.messageLogs ? typeof msg.messageLogs === "string" ? JSON.parse(msg.messageLogs) : msg.messageLogs : null
-            })));
-          }
-
-          // Update local state with FILTERED messages for widget display
-          setMessages([]);
-          sortedMessages.filter(message => {
-            var _message$content, _message$extraUICompo, _message$extraUICompo2, _message$extraUICompo3, _message$extraUICompo4;
-            if ((message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.assistant || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user) && (isNotBlank(message.content) && !((_message$content = message.content) !== null && _message$content !== void 0 && _message$content.includes("{wizy_asset_reference}")) || message.hasMedia || ((_message$extraUICompo = (_message$extraUICompo2 = message.extraUIComponents) === null || _message$extraUICompo2 === void 0 ? void 0 : _message$extraUICompo2.length) !== null && _message$extraUICompo !== void 0 ? _message$extraUICompo : 0) > 0 || ((_message$extraUICompo3 = (_message$extraUICompo4 = message.extraUIComponentReference) === null || _message$extraUICompo4 === void 0 ? void 0 : _message$extraUICompo4.length) !== null && _message$extraUICompo3 !== void 0 ? _message$extraUICompo3 : 0) > 0)) {
-              return true;
-            } else {
-              return false;
-            }
-          }).forEach(message => {
-            setMessages(previous => [...previous, {
-              id: message.id,
-              content: message.content,
-              createDate: message.createDate,
-              role: message.role,
-              name: message.name,
-              functionCall: message.functionCall,
-              toolCalls: message.toolCalls,
-              toolCallId: message.toolCallId,
-              extraUIComponents: message.extraUIComponents ? JSON.parse(message.extraUIComponents) : null,
-              extraUIComponentReference: message.extraUIComponentReference,
-              sourceType: message.sourceType,
-              sourceId: message.sourceId,
-              hasMedia: message.hasMedia,
-              isAsset: message.isAsset,
-              status: message.status
-            }]);
-          });
-          setIsNewMessage(!JSONresult.isClientRead);
-        }
-      }).catch(error => {
-        console.log(error);
-        cookies.remove(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
-      });
-    }
-  };
-
-  // Change link format
-  const convertToHTMLLink = text => {
-    // Matches either markdown links or bold:
-    // 1) [anchor](url)
-    // 2) **bold**
-    const tokenRegex = /\[([^[\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)|\*\*([^*]+)\*\*/g;
-    const nodes = [];
-    let lastIndex = 0;
-    let match;
-    while ((match = tokenRegex.exec(text)) !== null) {
-      const index = match.index;
-
-      // Push preceding text (React will escape it safely)
-      if (index > lastIndex) {
-        nodes.push(text.slice(lastIndex, index));
-      }
-
-      // Markdown link: match[1]=anchor, match[2]=url
-      if (match[1] && match[2]) {
-        const anchorText = match[1];
-        const url = match[2];
-        nodes.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-          key: "link-".concat(index, "-").concat(url),
-          href: url,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          style: {
-            textDecoration: "underline"
-          }
-        }, anchorText));
-      }
-      // Bold: match[3]=boldText
-      else if (match[3]) {
-        const boldText = match[3];
-        nodes.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
-          key: "bold-".concat(index)
-        }, boldText));
-      }
-      lastIndex = index + match[0].length;
-    }
-
-    // Remaining tail text
-    if (lastIndex < text.length) {
-      nodes.push(text.slice(lastIndex));
-    }
-
-    // Your “double line break -> single line break” behavior:
-    // If you actually want to preserve paragraphs, remove this step.
-    const normalized = nodes; // keep as-is; CSS handles line breaks
-
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        whiteSpace: "pre-line"
-      }
-    }, normalized);
-  };
-
-  // Check whether or not a variable is blank
-  const isNotBlank = value => {
-    return value !== null && value !== undefined && value !== "";
-  };
-  const getContactDataValidation = async (phone, email, name) => {
-    try {
-      var _data$invalidFields;
-      const response = await fetch(globalSelectedBackend + "/shopifywidgetrest/validatecontactdataform/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email,
-          phone,
-          name
-        }),
-        credentials: "include",
-        redirect: "follow"
-      });
-      if (!response.ok) {
-        const errorText = await response.text();
-        const errorJSON = JSON.parse(errorText);
-        throw new Error(errorJSON.message);
-      }
-      const data = await response.json();
-      return (_data$invalidFields = data.invalidFields) !== null && _data$invalidFields !== void 0 ? _data$invalidFields : [];
-    } catch (error) {
-      console.error("Error in contact data validation");
-      console.error(error);
-      return [];
-    }
-  };
-
-  // JSX Return statement
-  if (isLoaded) {
-    var _widget$setup$default;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: widgetLoader,
-      className: "ProtectedRoute__loader",
-      alt: "ProtectedRoute__loader",
-      id: "ProtectedRoute__loader",
-      style: {
-        display: "none"
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__open__button__outter",
-      style: {
-        right: widget.setup.side === ESide.RIGHT ? "0px" : "calc(100% - 80px)",
-        visibility: chatStateVisibility === EChatState.close ? "visible" : "hidden",
-        opacity: chatStateVisibility === EChatState.close ? "1" : "0"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__open__button__inner",
-      style: {
-        background: "linear-gradient(135deg, " + widget.setup.primaryColor + " 0%, " + widget.setup.secondaryColor + " 100%)"
-      },
-      onClick: () => {
-        if (chatState === EChatState.close) {
-          handleToggleChat();
-        } else {
-          handleMessageSend();
-        }
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__open__button__notification rise-shake",
-      style: {
-        opacity: chatStateVisibility === EChatState.close && isNewMessage ? "1" : "0",
-        display: widget.setup.hideNotificationSign ? "none" : "block"
-      }
-    }, "!"), isRedirect && (redirectionLink.includes("wa") || redirectionLink.includes("whatsapp")) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 50 50",
-      width: "50",
-      height: "50",
-      fill: "none",
-      className: "WizybotShopifyWidget__open__button__image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M25,2C12.318,2,2,12.318,2,25c0,3.96,1.023,7.854,2.963,11.29L2.037,46.73c-0.096,0.343-0.003,0.711,0.245,0.966 C2.473,47.893,2.733,48,3,48c0.08,0,0.161-0.01,0.24-0.029l10.896-2.699C17.463,47.058,21.21,48,25,48c12.682,0,23-10.318,23-23 S37.682,2,25,2z M36.57,33.116c-0.492,1.362-2.852,2.605-3.986,2.772c-1.018,0.149-2.306,0.213-3.72-0.231 c-0.857-0.27-1.957-0.628-3.366-1.229c-5.923-2.526-9.791-8.415-10.087-8.804C15.116,25.235,13,22.463,13,19.594 s1.525-4.28,2.067-4.864c0.542-0.584,1.181-0.73,1.575-0.73s0.787,0.005,1.132,0.021c0.363,0.018,0.85-0.137,1.329,1.001 c0.492,1.168,1.673,4.037,1.819,4.33c0.148,0.292,0.246,0.633,0.05,1.022c-0.196,0.389-0.294,0.632-0.59,0.973 s-0.62,0.76-0.886,1.022c-0.296,0.291-0.603,0.606-0.259,1.19c0.344,0.584,1.529,2.493,3.285,4.039 c2.255,1.986,4.158,2.602,4.748,2.894c0.59,0.292,0.935,0.243,1.279-0.146c0.344-0.39,1.476-1.703,1.869-2.286 s0.787-0.487,1.329-0.292c0.542,0.194,3.445,1.604,4.035,1.896c0.59,0.292,0.984,0.438,1.132,0.681 C37.062,30.587,37.062,31.755,36.57,33.116z",
-      fill: widget.setup.fontColor
-    })) : isRedirect && redirectionLink.includes("m.me") ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 50 50",
-      width: "50",
-      height: "50",
-      fill: "none",
-      className: "WizybotShopifyWidget__open__button__image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M37,19h-2c-2.14,0-3,0.5-3,2 v3h5l-1,5h-4v15h-5V29h-4v-5h4v-3c0-4,2-7,6-7c2.9,0,4,1,4,1V19z",
-      fill: widget.setup.fontColor
-    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__open__button__image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
-      fill: widget.setup.fontColor
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
-      fill: widget.setup.fontColor
-    }))), visibleMessageState === EVisibleMessageState.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__new__visible__message__outter",
-      style: {
-        opacity: visibleMessageOpacity === EVisibleMessageState.visible ? "1" : "0",
-        left: widget.setup.side === "Left" ? "-100%" : "0",
-        transform: widget.setup.side === "Left" ? "translate(130px, -100%)" : "translate(-110%, -100%)"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WisybotShopifyWidget__new__visible__message__inner"
-    }, visibleMessage)) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__outter__outter",
-      style: {
-        position: "absolute",
-        visibility: chatStateVisibility === EChatState.close ? "hidden" : "visible",
-        opacity: chatStateVisibility === EChatState.close ? "0" : "1"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: chatState === EChatState.open ? widget.setup.side === "Left" ? "WizybotShopifyWidget__outter__open__left" : "WizybotShopifyWidget__outter__open__right" : "WizybotShopifyWidget__outter__close"
-    }, imagePreviewUrl && selectedImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        position: "absolute",
-        bottom: "110px",
-        left: "15px",
-        right: "70px",
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-        padding: "8px 10px",
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        height: "50px"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: imagePreviewUrl,
-      alt: "Preview",
-      style: {
-        width: "30px",
-        height: "40px",
-        objectFit: "cover",
-        borderRadius: "6px",
-        flexShrink: 0
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        fontSize: "12px",
-        color: "#666",
-        flex: 1,
-        minWidth: 0
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        fontWeight: 500,
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-        marginBottom: "2px",
-        color: "#333"
-      }
-    }, selectedImage.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        fontSize: "11px",
-        color: "#999"
-      }
-    }, (selectedImage.size / 1024).toFixed(1), " KB")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      onClick: handleRemoveImagePreview,
-      style: {
-        cursor: "pointer",
-        width: "24px",
-        height: "24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "50%",
-        backgroundColor: "#f5f5f5",
-        transition: "all 0.2s",
-        flexShrink: 0
-      },
-      onMouseEnter: e => {
-        e.currentTarget.style.backgroundColor = "#e8e8e8";
-        e.currentTarget.style.transform = "scale(1.1)";
-      },
-      onMouseLeave: e => {
-        e.currentTarget.style.backgroundColor = "#f5f5f5";
-        e.currentTarget.style.transform = "scale(1)";
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "12",
-      height: "12",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M18 6L6 18M6 6l12 12",
-      stroke: "#666",
-      strokeWidth: "2.5",
-      strokeLinecap: "round"
-    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header",
-      style: {
-        background: "linear-gradient(135deg, " + widget.setup.primaryColor + " 0%, " + widget.setup.secondaryColor + " 100%)"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__inner"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__inner__inner"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__picture__name"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: widget.setup.image === "" ? chatProfileImage : widget.setup.image,
-      alt: "wizy_chat_profile",
-      className: "WizybotShopifyWidget__header__profile__image"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__name__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__chat__with",
-      style: {
-        color: widget.setup.fontColor
-      }
-    }, widget.setup.mainLanguage === "English" ? "Chat with" : widget.setup.mainLanguage === "Spanish" ? "Habla con" : widget.setup.mainLanguage === "French" ? "Parler avec" : widget.setup.mainLanguage === "Portuguese" ? "Conversar com" : widget.setup.mainLanguage === "German" ? "Chatten Sie mit" : widget.setup.mainLanguage === "Italian" ? "Chat con" : "Chat with"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__agent__name",
-      style: {
-        color: widget.setup.fontColor
-      }
-    }, " ", widget.setup.agentName, " "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__header__close__arrow__outter"
-    }, createClientState === ECreateClientState.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__header__options__dots__image",
-      onClick: () => {
-        handleToogleCreateClient();
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
-      fill: widget.setup.fontColor
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
-      fill: widget.setup.fontColor
-    })) : cartState === ECartState.visible && !isShopifyForeing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__header__options__dots__image",
-      onClick: () => {
-        handleToggleCartState();
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
-      fill: widget.setup.fontColor
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
-      fill: widget.setup.fontColor
-    })) : !isShopifyForeing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      className: "WizybotShopifyWidget__header__options__dots__image",
-      xmlns: "http://www.w3.org/2000/svg",
-      onClick: () => {
-        handleToggleCartState();
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M3 1C2.44772 1 2 1.44772 2 2C2 2.55228 2.44772 3 3 3H4.21922L4.52478 4.22224C4.52799 4.23637 4.5315 4.25039 4.5353 4.26429L5.89253 9.69321L4.99995 10.5858C3.74002 11.8457 4.63235 14 6.41416 14H15C15.5522 14 16 13.5523 16 13C16 12.4477 15.5522 12 15 12L6.41417 12L7.41416 11H14C14.3788 11 14.725 10.786 14.8944 10.4472L17.8944 4.44721C18.0494 4.13723 18.0329 3.76909 17.8507 3.47427C17.6684 3.17945 17.3466 3 17 3H6.28078L5.97014 1.75746C5.85885 1.3123 5.45887 1 5 1H3Z",
-      fill: widget.setup.fontColor
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M16 16.5C16 17.3284 15.3284 18 14.5 18C13.6716 18 13 17.3284 13 16.5C13 15.6716 13.6716 15 14.5 15C15.3284 15 16 15.6716 16 16.5Z",
-      fill: widget.setup.fontColor
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M6.5 18C7.32843 18 8 17.3284 8 16.5C8 15.6716 7.32843 15 6.5 15C5.67157 15 5 15.6716 5 16.5C5 17.3284 5.67157 18 6.5 18Z",
-      fill: widget.setup.fontColor
-    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "25",
-      height: "25",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__header__close__arrow__image",
-      onClick: () => {
-        if (!isRelative) {
-          handleToggleChat();
-        }
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z",
-      fill: widget.setup.fontColor
-    }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__online__phrase__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__online__dot__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__online__dot__inner"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__online__phrase",
-      style: {
-        color: widget.setup.fontColor
-      }
-    }, widget.setup.onlinePhrase)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: curvyBorderImage,
-      alt: "wizy_curvy_border",
-      className: "WizybotShopifyWidget__headder__wave"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: createClientState === ECreateClientState.invisible ? "WizybotShopifyWidget__email__requirement__outter__close" : "WizybotShopifyWidget__email__requirement__outter__open"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotMandatoryForm__inner"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotMandatoryForm__inputs__scroll"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotMandatoryForm__inputs__center"
-    }, nameRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__title"
-    }, widget.setup.mainLanguage === "Spanish" ? "Nombre" : widget.setup.mainLanguage === "French" ? "Nom" : widget.setup.mainLanguage === "Portuguese" ? "Nome" : widget.setup.mainLanguage === "German" ? "Name" : widget.setup.mainLanguage === "Italian" ? "Nome" : "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__2__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      className: "WizybotShopifyWidget__email__input__2",
-      value: name,
-      onChange: event => {
-        const {
-          value
-        } = event.currentTarget;
-        setName(value);
-      },
-      style: {
-        border: nameError ? "1px solid #ff3e3e" : ""
-      },
-      onKeyDown: event => {
-        if (event.key === "Enter") {
-          if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
-            createClient();
-          }
-        }
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__prompt__1"
-    }, "Eg: John Doe")), emailRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__title"
-    }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__2__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      className: "WizybotShopifyWidget__email__input__2",
-      value: email,
-      onChange: event => {
-        const {
-          value
-        } = event.currentTarget;
-        setEmail(value);
-      },
-      style: {
-        border: emailError ? "1px solid #ff3e3e" : ""
-      },
-      onKeyDown: event => {
-        if (event.key === "Enter") {
-          if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
-            createClient();
-          }
-        }
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__prompt__1"
-    }, "Eg: jhon.doe@email.com")), phoneRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__title"
-    }, widget.setup.mainLanguage === "English" ? "Phone" : widget.setup.mainLanguage === "Spanish" ? "Teléfono" : widget.setup.mainLanguage === "French" ? "Téléphone" : widget.setup.mainLanguage === "Portuguese" ? "Telefone" : widget.setup.mainLanguage === "German" ? "Telefon" : widget.setup.mainLanguage === "Italian" ? "Telefono" : "Phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_international_phone__WEBPACK_IMPORTED_MODULE_2__/* .PhoneInput */ .LR, {
-      defaultCountry: (_widget$setup$default = widget.setup.defaultCountryCode) !== null && _widget$setup$default !== void 0 ? _widget$setup$default : "co",
-      value: phone,
-      onChange: phone => {
-        setPhone(phone);
-      },
-      inputStyle: {
-        borderTop: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db"),
-        borderRight: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db"),
-        borderBottom: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db")
-      },
-      countrySelectorStyleProps: {
-        buttonStyle: {
-          borderTop: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db"),
-          borderLeft: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db"),
-          borderBottom: "1px solid ".concat(phoneError ? "#ff3e3e" : "#d1d5db")
-        }
-      },
-      inputProps: {
-        onKeyDown: e => {
-          if (e.key === "Enter" && createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
-            createClient();
-          }
-        }
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__prompt__1"
-    }, "Eg: +573123456789")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__checkbox__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "checkbox",
-      name: "isNotCommercialized",
-      checked: subscriptionState,
-      onChange: () => {
-        setSubscriptionState(!subscriptionState);
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__input__checkbox__text"
-    }, widget.setup.mainLanguage === "English" ? "Sign up for our newsletter" : widget.setup.mainLanguage === "Spanish" ? "Suscríbete a nuestro boletín" : widget.setup.mainLanguage === "French" ? "Inscrivez-vous à notre newsletter" : widget.setup.mainLanguage === "Portuguese" ? "Assine a nossa newsletter" : widget.setup.mainLanguage === "German" ? "Melden Sie sich für unseren Newsletter an" : widget.setup.mainLanguage === "Italian" ? "Iscriviti alla nostra newsletter" : "Sign up for our newsletter")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotMandatoryForm__footer"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__email__button__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "WizybotShopifyWidget__email__button",
-      style: {
-        width: "100%",
-        background: "linear-gradient(135deg, " + widget.setup.primaryColor + " 0%, " + widget.setup.secondaryColor + " 100%)",
-        color: widget.setup.fontColor
-      },
-      onClick: async () => {
-        if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
-          createClient();
-        }
-      }
-    }, createClientBackendState === ECreateClientBackendState.send ? widget.setup.mainLanguage === "English" ? "Send" : widget.setup.mainLanguage === "Spanish" ? "Enviar" : widget.setup.mainLanguage === "French" ? "Envoyer" : widget.setup.mainLanguage === "Portuguese" ? "Enviar" : widget.setup.mainLanguage === "German" ? "Schicken" : widget.setup.mainLanguage === "Italian" ? "Inviare" : "Send" : widget.setup.mainLanguage === "English" ? "Loading..." : widget.setup.mainLanguage === "Spanish" ? "Cargando..." : widget.setup.mainLanguage === "French" ? "Chargement..." : widget.setup.mainLanguage === "Portuguese" ? "Carregando..." : widget.setup.mainLanguage === "German" ? "Wird geladen..." : widget.setup.mainLanguage === "Italian" ? "Caricamento..." : "Loading..."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: cartState === ECartState.invisible ? "WizybotShopifyWidget__cart__outter__close" : "WizybotShopifyWidget__cart__outter__open"
-    }, cart !== null && isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ShopifyWidgetCart__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
-      cart: cart,
-      updateCart: updateCart,
-      language: widget.setup.mainLanguage,
-      agentName: widget.setup.agentName,
-      closeCart: handleToggleCartState,
-      languageUrl: languageUrl
-    }) : isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__products"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__no__products"
-    }, widget.setup.mainLanguage === "English" ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : widget.setup.mainLanguage === "Spanish" ? "¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?" : widget.setup.mainLanguage === "French" ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : widget.setup.mainLanguage === "Portuguese" ? "Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?" : widget.setup.mainLanguage === "German" ? "Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?" : widget.setup.mainLanguage === "Italian" ? "Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?" : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__no__products__button",
-      style: {
-        width: "100%"
-      },
-      onClick: handleToggleCartState
-    }, widget.setup.mainLanguage === "English" ? "Chat with" : widget.setup.mainLanguage === "Spanish" ? "Habla con" : widget.setup.mainLanguage === "French" ? "Parler avec" : widget.setup.mainLanguage === "Portuguese" ? "Conversar com" : widget.setup.mainLanguage === "German" ? "Chatten Sie mit" : widget.setup.mainLanguage === "Italian" ? "Chat con" : "Chat with", " ", widget.setup.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__checkout"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__estimated"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated"
-    }, widget.setup.mainLanguage === "English" ? "Estimated total" : widget.setup.mainLanguage === "Spanish" ? "Total estimado" : widget.setup.mainLanguage === "French" ? "Total estimé" : widget.setup.mainLanguage === "Portuguese" ? "Total estimado" : widget.setup.mainLanguage === "German" ? "Geschätzte Gesamtsumme" : widget.setup.mainLanguage === "Italian" ? "Totale stimato" : "Estimated total"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__price"
-    }, "$0.00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "/cart",
-      target: "_blank",
-      rel: "noreferrer",
-      style: {
-        textDecoration: "none"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__button",
-      style: {
-        width: "100%"
-      }
-    }, widget.setup.mainLanguage === "English" ? "Pay" : widget.setup.mainLanguage === "Spanish" ? "Pagar" : widget.setup.mainLanguage === "French" ? "Payer" : widget.setup.mainLanguage === "Portuguese" ? "Pagar" : widget.setup.mainLanguage === "German" ? "Bezahlen" : widget.setup.mainLanguage === "Italian" ? "Pagare" : "Pay")))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__products"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__no__products",
-      style: {
-        width: "fit-content"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "loader"
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__checkout"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__outter__estimated"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated"
-    }, widget.setup.mainLanguage === "English" ? "Estimated total" : widget.setup.mainLanguage === "Spanish" ? "Total estimado" : widget.setup.mainLanguage === "French" ? "Total estimé" : widget.setup.mainLanguage === "Portuguese" ? "Total estimado" : widget.setup.mainLanguage === "German" ? "Geschätzte Gesamtsumme" : widget.setup.mainLanguage === "Italian" ? "Totale stimato" : "Estimated total"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__price"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "loader",
-      style: {
-        position: "absolute",
-        transform: "translate(-100%, -50%)",
-        left: "100%",
-        top: "50%"
-      }
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "/cart",
-      target: "_blank",
-      rel: "noreferrer",
-      style: {
-        textDecoration: "none"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "WizybotShopifyWidget__cart__inner__estimated__button",
-      style: {
-        width: "100%"
-      }
-    }, widget.setup.mainLanguage === "English" ? "Pay" : widget.setup.mainLanguage === "Spanish" ? "Pagar" : widget.setup.mainLanguage === "French" ? "Payer" : widget.setup.mainLanguage === "Portuguese" ? "Pagar" : widget.setup.mainLanguage === "German" ? "Bezahlen" : widget.setup.mainLanguage === "Italian" ? "Pagare" : "Pay"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__chat__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__chat__inner"
-    }, messages.map((message, index) => {
-      var _message$content2;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        style: {
-          width: "100%"
-        },
-        key: index
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "WizybotShopifyWidget__chat__message__outter"
-      }, message.content && !((_message$content2 = message.content) !== null && _message$content2 !== void 0 && _message$content2.includes("{wizy_asset_reference}")) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "WizybotShopifyWidget__chat__message__inner",
-        style: {
-          marginLeft: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? "auto" : "",
-          background: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? "linear-gradient(135deg, " + widget.setup.primaryColor + " 0%, " + widget.setup.secondaryColor + " 100%)" : "",
-          color: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? widget.setup.fontColor : "black"
-        }
-      }, convertToHTMLLink(message.content))), message.extraUIComponents && message.extraUIComponents.length > 0 ? message.extraUIComponents.map((extraUIComponent, i) => {
-        switch (extraUIComponent.type) {
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
-              key: i,
-              content: extraUIComponent.content,
-              extraUIComponentIndex: i,
-              globalSelectedBackend: globalSelectedBackend,
-              domain: domain,
-              shopifyRootPath: shopifyRootPath,
-              message: message,
-              language: widget.setup.mainLanguage,
-              openCart: handleToggleCartState,
-              isShopifyForeing: isShopifyForeing
-            });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART_WITH_SUBSCRIPTIONS:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
-              key: i,
-              content: extraUIComponent.content,
-              extraUIComponentIndex: i,
-              globalSelectedBackend: globalSelectedBackend,
-              domain: domain,
-              shopifyRootPath: shopifyRootPath,
-              message: message,
-              language: widget.setup.mainLanguage,
-              noImageImage: noImageImage,
-              openCart: handleToggleCartState
-            });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.RECOMMENDATION_CAROUSEL:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
-              key: i,
-              content: extraUIComponent.content,
-              language: widget.setup.mainLanguage,
-              platform: platform
-            });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
-              noImageImage: noImageImage,
-              key: i,
-              content: extraUIComponent.content,
-              language: widget.setup.mainLanguage
-            });
-          default:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              key: i
-            });
-        }
-      }) : message.extraUIComponentReference ? message.extraUIComponentReference.map((extraUIComponent, i) => {
-        if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
-            key: i,
-            content: {
-              title: extraUIComponent.title,
-              productId: extraUIComponent.productId,
-              productUrl: extraUIComponent.productUrl,
-              imageUrl: extraUIComponent.imageUrl,
-              imageAltText: extraUIComponent.imageAltText,
-              options: extraUIComponent.options,
-              infoArray: extraUIComponent.infoArray,
-              stateAction: extraUIComponent.stateAction,
-              stateSelection: extraUIComponent.stateSelection
-            },
-            extraUIComponentIndex: i,
-            globalSelectedBackend: globalSelectedBackend,
-            domain: domain,
-            shopifyRootPath: shopifyRootPath,
-            message: message,
-            language: widget.setup.mainLanguage,
-            openCart: handleToggleCartState,
-            isShopifyForeing: isShopifyForeing
-          });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART_WITH_SUBSCRIPTIONS)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
-            key: i,
-            content: {
-              title: extraUIComponent.title,
-              productId: extraUIComponent.productId,
-              productUrl: extraUIComponent.productUrl,
-              imageUrl: extraUIComponent.imageUrl,
-              imageAltText: extraUIComponent.imageAltText,
-              options: extraUIComponent.options,
-              infoArray: extraUIComponent.infoArray,
-              stateAction: extraUIComponent.stateAction,
-              stateSelection: extraUIComponent.stateSelection
-            },
-            extraUIComponentIndex: i,
-            globalSelectedBackend: globalSelectedBackend,
-            domain: domain,
-            shopifyRootPath: shopifyRootPath,
-            message: message,
-            language: widget.setup.mainLanguage,
-            noImageImage: noImageImage,
-            openCart: handleToggleCartState
-          });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.RECOMMENDATION_CAROUSEL)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
-            key: i,
-            content: {
-              cards: extraUIComponent.cards.map(card => {
-                if (card.cardType === "product") {
-                  return {
-                    type: "product",
-                    title: card.title,
-                    price: card.price,
-                    imageUrl: card.imageUrls[0],
-                    redirectUrl: card.redirectUrl
-                  };
-                } else {
-                  return {
-                    type: "collection",
-                    title: card.title,
-                    imageUrls: card.imageUrls,
-                    redirectUrl: card.redirectUrl
-                  };
-                }
-              })
-            },
-            language: widget.setup.mainLanguage,
-            platform: platform
-          });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CARD)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
-            noImageImage: noImageImage,
-            content: {
-              title: extraUIComponent.title,
-              price: extraUIComponent.price,
-              imageUrl: extraUIComponent.imageUrl,
-              redirectUrl: extraUIComponent.redirectUrl,
-              variantTitle: extraUIComponent.variantTitle,
-              productId: extraUIComponent.productId,
-              productUrl: extraUIComponent.productUrl,
-              stock: extraUIComponent.stock
-            },
-            language: widget.setup.mainLanguage
-          });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CART)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
-            noImageImage: noImageImage,
-            content: extraUIComponent,
-            language: widget.setup.mainLanguage
-          });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_MEDIA)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
-            key: i,
-            isAdmin: isAdmin,
-            content: extraUIComponent,
-            extraUIComponentIndex: i,
-            globalSelectedBackend: globalSelectedBackend,
-            domain: domain,
-            message: message,
-            language: widget.setup.mainLanguage,
-            getClientIpInfo: getClientIpInfo
-          });
-        } else {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-            key: i
-          });
-        }
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), message.hasMedia ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "WizybotShopifyWidget__chat__message__outter",
-        style: {
-          justifyContent: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? "flex-end" : "flex-start"
-        }
-      }, message.localMediaUrl ?
-      /*#__PURE__*/
-      // Local preview for user's just-sent image (optimistic)
-      react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "ChatMedia__outter"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "ChatMedia__inner",
-        style: {
-          width: "fit-content",
-          height: "fit-content"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-        href: message.localMediaUrl,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        style: {
-          zIndex: 1
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "ChatMedia__image",
-        src: message.localMediaUrl,
-        alt: "Uploaded image",
-        style: {
-          zIndex: 1,
-          display: "block"
-        }
-      })))) : message.id ?
-      /*#__PURE__*/
-      // Server media (historical or received messages)
-      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_WidgetMedia__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A, {
-        messageId: message.id,
-        isAsset: message.isAsset,
-        globalSelectedBackend: globalSelectedBackend,
-        mainLanguage: widget.setup.mainLanguage,
-        widgetLoader: widgetLoader
-      }) : null) : null);
-    }), isTyping ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__chat__message__outter",
-      key: "LoadingDots"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__chat__message__inner",
-      style: {
-        color: "black"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "loader"
-    }))) : "")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__input__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__send__button__outter",
-      style: {
-        background: "linear-gradient(135deg, " + widget.setup.primaryColor + " 0%, " + widget.setup.secondaryColor + " 100%)",
-        opacity: isSendButtonActive ? "1" : "0",
-        visibility: isSendButtonActive ? "visible" : "hidden"
-      },
-      onClick: () => {
-        if (chatState === EChatState.close) {
-          handleToggleChat();
-        } else {
-          handleMessageSend();
-        }
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      width: "20",
-      height: "20",
-      viewBox: "0 0 20 20",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__open__button__image",
-      style: {
-        transform: "scale(1) translate(-50%, -50%)"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M17.4472 9.10556C17.786 9.27495 18 9.62122 18 9.99999C18 10.3788 17.786 10.725 17.4472 10.8944L3.44721 17.8944C3.09251 18.0718 2.66653 18.0228 2.36136 17.7695C2.0562 17.5162 1.92953 17.1066 2.03848 16.7253L3.46704 11.7253C3.5897 11.296 3.98209 11 4.42857 11L9 11C9.55229 11 10 10.5523 10 10C10 9.44771 9.55229 9 9 9H4.42857C3.98209 9 3.58971 8.70402 3.46705 8.27472L2.03848 3.27471C1.92953 2.8934 2.0562 2.48374 2.36136 2.23048C2.66653 1.97722 3.09251 1.92821 3.44721 2.10556L17.4472 9.10556Z",
-      fill: widget.setup.fontColor
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__input__inner"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__chat__input__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      name: "message",
-      value: newMessage,
-      type: "text",
-      className: "WizybotShopifyWidget__chat__input",
-      placeholder: widget.setup.mainLanguage === "English" ? "Enter your message..." : widget.setup.mainLanguage === "Spanish" ? "Ingrese su mensaje.." : widget.setup.mainLanguage === "French" ? "Entrez votre message..." : widget.setup.mainLanguage === "Portuguese" ? "Digite sua mensagem..." : widget.setup.mainLanguage === "German" ? "Geben Sie eine Nachricht ein..." : widget.setup.mainLanguage === "Italian" ? "Inserisci il tuo messaggio..." : "Enter your message...",
-      onChange: event => {
-        setNewMessage(event.currentTarget.value);
-      },
-      onKeyDown: event => {
-        if (event.key === "Enter") {
-          handleMessageSend();
-        }
-      }
-    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__emojis__propaganda__outter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__emojis__propaganda__inner"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      ref: actionsMenuRef,
-      style: {
-        position: "relative",
-        display: "flex"
-      }
-    }, actionsMenuState === EActionsMenuState.visible && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        position: "absolute",
-        bottom: "40px",
-        left: "0",
-        backgroundColor: "#ffffff",
-        borderRadius: "8px",
-        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
-        padding: "8px",
-        minWidth: "150px",
-        zIndex: 1000,
-        animation: "fadeInUp 0.2s ease-out"
-      }
-    }, actionsMenuItems.map(item => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      key: item.id,
-      onClick: item.onClick,
-      style: {
-        display: "flex",
-        alignItems: "center",
-        padding: "10px 12px",
-        cursor: "pointer",
-        borderRadius: "6px",
-        transition: "background-color 0.2s"
-      },
-      onMouseEnter: e => {
-        e.currentTarget.style.backgroundColor = "rgba(130, 177, 230, 0.1)";
-      },
-      onMouseLeave: e => {
-        e.currentTarget.style.backgroundColor = "transparent";
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      style: {
-        marginRight: "10px"
-      }
-    }, item.icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      style: {
-        fontSize: "14px",
-        color: "#333",
-        fontWeight: 500
-      }
-    }, item.label)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "file",
-      ref: fileInputRef,
-      onChange: handleImageUpload,
-      style: {
-        display: "none"
-      },
-      accept: "image/png, image/jpeg, image/jpg, image/gif, image/webp"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__emojis__outter",
-      onClick: handleToggleActionsMenu,
-      style: {
-        marginRight: "5px"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      id: "ic_actionsMenu",
-      fill: "#000000",
-      height: "20",
-      viewBox: "0 0 24 24",
-      width: "20",
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "WizybotShopifyWidget__emojis__image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M0 0h24v24H0z",
-      fill: "none"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__emojis__outter",
-      onClick: addRandomNiceEmoji
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-      id: "ic_emojiSwitch",
-      fill: "#000000",
-      height: "20",
-      viewBox: "0 0 24 24",
-      width: "20",
-      xmlns: "http://www.w3.org/2000/svg",
-      "aria-hidden": "true",
-      className: "WizybotShopifyWidget__emojis__image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M0 0h24v24H0z",
-      fill: "none"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-      d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__propaganda__outter",
-      style: {
-        visibility: widget.setup.hideWizybotBanner ? "hidden" : "visible"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__propaganda__text"
-    }, "POWERED BY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-      href: "https://apps.shopify.com/wizybot",
-      target: "_blank",
-      rel: "noreferrer",
-      style: {
-        textDecoration: "none"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__propaganda__logo__outter"
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: wizyLogoImage,
-      alt: "wizy_logo_blue",
-      className: "WizybotShopifyWidget__propaganda__logo__image"
-    }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "WizybotShopifyWidget__propaganda__logo__text"
-    }, "Wizybot")))))))));
-  } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
-  }
-};
-
-// Default exported function
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShopifyWidget);
-
-/***/ }),
-
 /***/ 624:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2998,6 +353,2648 @@ const WidgetMedia = props => {
 
 /***/ }),
 
+/***/ 509:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Ay: () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   PW: () => (/* binding */ EMainLanguage),
+/* harmony export */   ju: () => (/* binding */ ESide),
+/* harmony export */   oj: () => (/* binding */ EDataRetrievalType),
+/* harmony export */   rb: () => (/* binding */ EEmailRetrievalMethod),
+/* harmony export */   wP: () => (/* binding */ ELimitBudgetAction)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(394);
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(820);
+/* harmony import */ var react_international_phone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(849);
+/* harmony import */ var _extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(719);
+/* harmony import */ var _extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(585);
+/* harmony import */ var _extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(966);
+/* harmony import */ var _extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(897);
+/* harmony import */ var _types_MessageType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(222);
+/* harmony import */ var _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(486);
+/* harmony import */ var _extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(253);
+/* harmony import */ var _extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(726);
+/* harmony import */ var _WidgetMedia__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(624);
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// Import React Dependencies
+
+
+
+
+// Import phone input dependencies
+
+
+// Import extra ui components
+
+
+
+
+
+
+// Import types
+
+
+
+
+
+
+// Define types
+// Define enums
+var EChatState = /*#__PURE__*/function (EChatState) {
+  EChatState["close"] = "close";
+  EChatState["open"] = "open";
+  return EChatState;
+}(EChatState || {});
+var EVisibleMessageState = /*#__PURE__*/function (EVisibleMessageState) {
+  EVisibleMessageState["visible"] = "visible";
+  EVisibleMessageState["invisible"] = "invisible";
+  return EVisibleMessageState;
+}(EVisibleMessageState || {});
+var ECreateClientState = /*#__PURE__*/function (ECreateClientState) {
+  ECreateClientState["visible"] = "visible";
+  ECreateClientState["invisible"] = "invisible";
+  return ECreateClientState;
+}(ECreateClientState || {});
+var ECartState = /*#__PURE__*/function (ECartState) {
+  ECartState["visible"] = "visible";
+  ECartState["invisible"] = "invisible";
+  return ECartState;
+}(ECartState || {});
+var EActionsMenuState = /*#__PURE__*/function (EActionsMenuState) {
+  EActionsMenuState["visible"] = "visible";
+  EActionsMenuState["invisible"] = "invisible";
+  return EActionsMenuState;
+}(EActionsMenuState || {});
+var ECreateClientBackendState = /*#__PURE__*/function (ECreateClientBackendState) {
+  ECreateClientBackendState["send"] = "send";
+  ECreateClientBackendState["loading"] = "loading";
+  return ECreateClientBackendState;
+}(ECreateClientBackendState || {});
+var EConnectionType = /*#__PURE__*/function (EConnectionType) {
+  EConnectionType["initial"] = "initial";
+  EConnectionType["message"] = "message";
+  EConnectionType["brute"] = "brute";
+  return EConnectionType;
+}(EConnectionType || {});
+let EMainLanguage = /*#__PURE__*/function (EMainLanguage) {
+  EMainLanguage["SPANISH"] = "Spanish";
+  EMainLanguage["ENGLISH"] = "English";
+  EMainLanguage["PORTUGUESE"] = "Portuguese";
+  EMainLanguage["FRENCH"] = "French";
+  EMainLanguage["GERMAN"] = "German";
+  EMainLanguage["ITALIAN"] = "Italian";
+  return EMainLanguage;
+}({});
+let ESide = /*#__PURE__*/function (ESide) {
+  ESide["RIGHT"] = "Right";
+  ESide["LEFT"] = "Left";
+  return ESide;
+}({});
+let EEmailRetrievalMethod = /*#__PURE__*/function (EEmailRetrievalMethod) {
+  EEmailRetrievalMethod["MANDATORY"] = "Mandatory";
+  EEmailRetrievalMethod["SEMANTIC"] = "Semantic";
+  EEmailRetrievalMethod["NONE"] = "None";
+  return EEmailRetrievalMethod;
+}({});
+let EDataRetrievalType = /*#__PURE__*/function (EDataRetrievalType) {
+  EDataRetrievalType["NAME"] = "Name";
+  EDataRetrievalType["EMAIL"] = "Email";
+  EDataRetrievalType["PHONE"] = "Phone";
+  EDataRetrievalType["BOTH"] = "Both";
+  EDataRetrievalType["NAME_EMAIL"] = "Name_Email";
+  EDataRetrievalType["NAME_PHONE"] = "Name_Phone";
+  EDataRetrievalType["NAME_EMAIL_PHONE"] = "Name_Email_Phone";
+  EDataRetrievalType["CUSTOM"] = "Custom";
+  return EDataRetrievalType;
+}({});
+let ELimitBudgetAction = /*#__PURE__*/function (ELimitBudgetAction) {
+  ELimitBudgetAction["WIDGET_OFF"] = "widget off";
+  ELimitBudgetAction["AI_OFF"] = "ai off";
+  ELimitBudgetAction["DEFAULT_MESSAGE"] = "default message";
+  ELimitBudgetAction["REDIRECT"] = "redirect";
+  return ELimitBudgetAction;
+}({});
+
+// Page main functional component
+const WordpressWidget = _ref => {
+  let {
+    domain,
+    widget,
+    isTest,
+    isDashboard,
+    isAdmin,
+    isRelative,
+    globalSelectedBackend,
+    chatProfileImage,
+    curvyBorderImage,
+    wizyLogoImage,
+    noImageImage,
+    widgetLoader,
+    shopifyRootPath,
+    isRedirect,
+    redirectionLink,
+    shopifyCurrentPath,
+    isShopifyForeing,
+    showNewMessage,
+    hideNewMessage,
+    setIsOpen,
+    marketId,
+    languageCode,
+    languageUrl,
+    platform,
+    wizyCartId,
+    onMessagesUpdate
+  } = _ref;
+  // Track observability messages in a ref for performance
+  const observabilityMessagesRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  // Track if WordPress sale intent has been created this session (for returning clients)
+  const wordpressSaleCreatedRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
+  // file input reference for image upload
+  const fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  // actions menu container reference for outside click detection
+  const actionsMenuRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Helper function to update observability messages
+  const updateObservabilityMessages = updater => {
+    if (onMessagesUpdate) {
+      observabilityMessagesRef.current = updater(observabilityMessagesRef.current);
+      onMessagesUpdate(observabilityMessagesRef.current);
+    }
+  };
+
+  // Use State Variables
+  const [messages, setMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [newMessage, setNewMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [isNewMessage, setIsNewMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [init, setInit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    init: '',
+    type: EConnectionType.initial
+  });
+  const [chatState, setChatState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(isRelative ? EChatState.open : EChatState.close);
+  const [chatStateVisibility, setChatStateVisibility] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(isRelative ? EChatState.open : EChatState.close);
+  const [visibleMessage, setVisibleMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [visibleMessageState, setVisibleMessageState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EVisibleMessageState.invisible);
+  const [visibleMessageOpacity, setVisibleMessageOpacity] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EVisibleMessageState.invisible);
+  const [createClientState, setCreateClientState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECreateClientState.invisible);
+  const [cartState, setCartState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECartState.invisible);
+  const [actionsMenuState, setActionsMenuState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EActionsMenuState.invisible);
+  const [createClientBackendState, setCreateClientBackendState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(ECreateClientBackendState.send);
+  const [isLoaded, setIsLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [socket, setSocket] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__.io)(globalSelectedBackend + '/shopifywidget?domain=' + domain + '&&path=' + shopifyCurrentPath + '&&marketId=' + marketId + '&&languageCode=' + languageCode, {
+    forceNew: true,
+    autoConnect: false,
+    transports: ['websocket'],
+    transportOptions: {
+      websocket: {
+        extraHeaders: {
+          'Sec-WebSocket-Key': 'dGhlIHNhbXBsZSBub25jZQ==',
+          'Sec-WebSocket-Version': '13',
+          'Sec-WebSocket-Protocol': 'chat, superchat'
+        }
+      }
+    }
+  }));
+  const [name, setName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [phone, setPhone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [nameError, setNameError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [emailError, setEmailError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [phoneError, setPhoneError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [subscriptionState, setSubscriptionState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [cart, setCart] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [isCartLoaded, setIsCartLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isTyping, setIsTyping] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isSendButtonActive, setIsSendButtonActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [isCreatingClient, setIsCreatingClient] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [clientCreated, setClientCreated] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [lastMessage, setLastMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [selectedImage, setSelectedImage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+
+  // Socket Reference
+  const socketRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(socket);
+
+  // Constants
+  const cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .A();
+  const ecommerceEmojis = ['😊', '🛍️', '📦', '💳', '🤑', '🛒', '💬', '👍', '📢', '📆', '✉️', '🔍', '🎁', '📱', '💻', '📋', '🌟', '💬', '❓', '💯', '🐗'];
+
+  /**
+   * actions menu configuration
+   * to add new items, simply add a new object to this array with:
+   * - id: unique identifier
+   * - label: display text
+   * - icon: svg icon component
+   * - onClick: handler function
+   */
+  const actionsMenuItems = [{
+    id: 'image',
+    label: 'Image',
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z",
+      fill: "#666"
+    })),
+    onClick: () => {
+      var _fileInputRef$current;
+      (_fileInputRef$current = fileInputRef.current) === null || _fileInputRef$current === void 0 || _fileInputRef$current.click();
+      handleCloseActionsMenu();
+    }
+  }
+  // example: add video option
+  // {
+  //   id: "video",
+  //   label: "Video",
+  //   icon: (
+  //     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+  //       <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" fill="#666" />
+  //     </svg>
+  //   ),
+  //   onClick: () => {
+  //     // handle video upload
+  //     handleCloseActionsMenu();
+  //   },
+  // },
+  ];
+
+  // Initial functions
+
+  // 1. Initialize websocket parameteres
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    initializeChat();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // close actions menu when clicking outside
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleClickOutside = event => {
+      if (actionsMenuRef.current && !actionsMenuRef.current.contains(event.target)) {
+        handleCloseActionsMenu();
+      }
+    };
+    if (actionsMenuState === EActionsMenuState.visible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [actionsMenuState]);
+
+  // cleanup image preview url on unmount
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    return () => {
+      if (imagePreviewUrl) {
+        URL.revokeObjectURL(imagePreviewUrl);
+      }
+    };
+  }, [imagePreviewUrl]);
+  const initializeChat = async () => {
+    // Check for params in the url
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get Wizyopen parameter
+    const wizyOpen = urlParams.get('wizyopen');
+
+    // If there is a wizyopen true parameter
+    if (wizyOpen === 'true') {
+      handleToggleChat();
+    }
+
+    // Start backend comunication
+    const clientCookie = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+
+    // If there is a cookie initizalize the websocket
+    if (clientCookie !== undefined) {
+      setClientCreated(true);
+      handleSocketConnection(EConnectionType.initial);
+      setIsLoaded(true);
+      // If there isn't a cookie only get the outboundmessage
+    } else {
+      getOutboundMessage(domain, shopifyCurrentPath);
+    }
+  };
+
+  // 2.1 If a client is already created then initialize websocket
+
+  // Websocket functions
+  // conections and mesage process
+  const handleSocketConnection = connectionType => {
+    // Connections can be initial, message attempting or brute (in case of failure)
+    if (connectionType === EConnectionType.initial || connectionType === EConnectionType.message) {
+      // If websocket is already initiated
+      if (socket) {
+        // Handle connection
+        socket.connect();
+        socket.on('connect', onConnect);
+        socket.on('disconnect', onDisconnect);
+        socket.on('newMessage', onMessageEvent);
+        socket.on('typing', onTyping);
+        socket.on('init', connectionType === EConnectionType.initial ? onInitInitial : onInitMessage);
+        return () => {
+          socket.off('connect', onConnect);
+          socket.off('disconnect', onDisconnect);
+          socket.off('newMessage', onMessageEvent);
+          socket.off('typing', onTyping);
+          socket.off('init', connectionType === EConnectionType.initial ? onInitInitial : onInitMessage);
+          socket.disconnect();
+        };
+      }
+    } else if (connectionType === EConnectionType.brute) {
+      // Initialize a provisional websocket
+      const provisionalSocket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__.io)(globalSelectedBackend + '/shopifywidget?domain=' + domain + '&&path=' + shopifyCurrentPath, {
+        forceNew: true,
+        autoConnect: false,
+        transports: ['websocket'],
+        transportOptions: {
+          websocket: {
+            extraHeaders: {
+              'Sec-WebSocket-Key': 'dGhlIHNhbXBsZSBub25jZQ==',
+              'Sec-WebSocket-Version': '13',
+              'Sec-WebSocket-Protocol': 'chat, superchat'
+            }
+          }
+        }
+      });
+      // Handle connection
+      provisionalSocket.connect();
+      provisionalSocket.on('connect', onConnect);
+      provisionalSocket.on('disconnect', onDisconnect);
+      provisionalSocket.on('newMessage', onMessageEvent);
+      provisionalSocket.on('typing', onTyping);
+      provisionalSocket.on('init', onInitBrute);
+      setSocket(provisionalSocket);
+      return () => {
+        provisionalSocket.off('connect', onConnect);
+        provisionalSocket.off('disconnect', onDisconnect);
+        provisionalSocket.off('newMessage', onMessageEvent);
+        provisionalSocket.off('typing', onTyping);
+        provisionalSocket.off('init', onInitBrute);
+        provisionalSocket.disconnect();
+      };
+    }
+  };
+
+  // Websocket connections
+  function onConnect() {}
+  function onDisconnect() {}
+
+  // Websocket message events
+  function onMessageEvent(value) {
+    setLastMessage(value);
+  }
+  function onTyping(value) {
+    setIsTyping(true);
+  }
+
+  // Websocket initial handshakes (Differente types)
+  function onInitInitial(value) {
+    setInit({
+      init: value,
+      type: EConnectionType.initial
+    });
+  }
+  function onInitMessage(value) {
+    setInit({
+      init: value,
+      type: EConnectionType.message
+    });
+  }
+  function onInitBrute(value) {
+    setInit({
+      init: value,
+      type: EConnectionType.brute
+    });
+  }
+
+  // 2.2 If a client was not connected already then get outbound message
+
+  const getOutboundMessage = async (domain, path) => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      var raw = JSON.stringify({
+        domain: domain,
+        path: path,
+        marketId: marketId,
+        languageCode: languageCode
+      });
+      const response = await fetch(globalSelectedBackend + '/shopifywidgetrest/outboundmessage', {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        credentials: 'include',
+        redirect: 'follow'
+      });
+      if (!response.ok) {
+        let errorText = await response.text();
+        console.log(errorText);
+      } else {
+        setLastMessage(JSON.parse(await response.text()));
+        setIsLoaded(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 3. Either way run custom code
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isLoaded) {
+      // Some times people want the widget to do weird stuff, and as an inclusive company, we do not judge, we just do it
+      // Example: "I want the widget to suck my client's dick"
+      // This snap of code allows you to run custom javascript code from a string saved in thye db without having to do a
+      // new release or keep contaminating our codebase with weird flags such as shouldSuckDick.
+
+      // Here is an example of a string that changes the color of something inside and outside the iframe:
+
+      // OUTSIDE OF THE IFRAME
+      // document.getElementsByClassName("Test__reset__outter")[0].style.backgroundColor = "#000000";
+
+      // INSIDE OF THE IFRAME
+      // var iframe = document.getElementById('WizybotShopifyWidget__iframe__outter__id');
+      // var innerDoc = iframe.contentWindow.document;
+      // innerDoc.getElementsByClassName("WizybotShopifyWidget__open__button__notification")[0].style.backgroundColor = "#000000";
+
+      // Here is an example of how to extract variables from the backend:
+
+      // const dataDiv = document.getElementById("WizybotShopifyWidget__data__div");
+      // const data = dataDiv?.dataset;
+      // console.log(JSON.parse(data.storesetup).setup.isRedirect);
+
+      if (isNotBlank(widget.setup.customWidgetCode)) {
+        // eslint-disable-next-line
+        eval("try { ".concat(widget.setup.customWidgetCode, " } catch (e) { console.log(\"Error in custom widget script\") }"));
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoaded]);
+
+  // Use Effect runtime functions
+  // Check if cart is loaded
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setIsCartLoaded(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart]);
+
+  // Receive a new message
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (lastMessage !== null) {
+      // Create message for observability if callback is provided
+      const newObservabilityMessage = onMessagesUpdate ? {
+        id: lastMessage.id,
+        content: lastMessage.content,
+        createDate: lastMessage.createDate,
+        role: lastMessage.role,
+        name: lastMessage.name || undefined,
+        toolCalls: lastMessage.toolCalls || undefined,
+        extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
+        extraUIComponentReference: lastMessage.extraUIComponentReference,
+        hasMedia: lastMessage.hasMedia,
+        interpretationForLLM: lastMessage.interpretationForLLM || undefined,
+        status: lastMessage.status,
+        showLogs: false,
+        messageLogs: lastMessage.messageLogs ? typeof lastMessage.messageLogs === 'string' ? JSON.parse(lastMessage.messageLogs) : lastMessage.messageLogs : null
+      } : null;
+
+      // Only add visible messages to local state (for widget display)
+      // console.log(lastMessage);
+      const hasVisibleContent = lastMessage.content && lastMessage.content !== '' || lastMessage.hasMedia || lastMessage.extraUIComponents || lastMessage.extraUIComponentReference;
+      if (hasVisibleContent) {
+        if (clientCreated) {
+          // Append to local state and update observability
+          if (onMessagesUpdate && newObservabilityMessage) {
+            updateObservabilityMessages(previous => [...previous, newObservabilityMessage]);
+          }
+          setMessages(previous => [...previous, {
+            id: lastMessage.id ? lastMessage.id : '',
+            content: lastMessage.content,
+            createDate: lastMessage.createDate,
+            role: lastMessage.role,
+            name: lastMessage.name,
+            functionCall: lastMessage.functionCall,
+            toolCalls: lastMessage.toolCalls,
+            toolCallId: lastMessage.toolCallId,
+            extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
+            extraUIComponentReference: lastMessage.extraUIComponentReference,
+            sourceType: lastMessage.sourceType,
+            sourceId: lastMessage.sourceId,
+            hasMedia: lastMessage.hasMedia,
+            status: lastMessage.status,
+            isAsset: lastMessage.isAsset
+          }]);
+          setIsNewMessage(true);
+          setIsTyping(false);
+        } else {
+          // Reset local state and update observability (first message)
+          if (onMessagesUpdate && newObservabilityMessage) {
+            updateObservabilityMessages(() => [newObservabilityMessage]);
+          }
+          setMessages([{
+            id: lastMessage.id ? lastMessage.id : '',
+            content: lastMessage.content,
+            createDate: lastMessage.createDate,
+            role: lastMessage.role,
+            name: lastMessage.name,
+            functionCall: lastMessage.functionCall,
+            toolCalls: lastMessage.toolCalls,
+            toolCallId: lastMessage.toolCallId,
+            extraUIComponents: lastMessage.extraUIComponents ? JSON.parse(lastMessage.extraUIComponents) : null,
+            extraUIComponentReference: lastMessage.extraUIComponentReference,
+            sourceType: lastMessage.sourceType,
+            sourceId: lastMessage.sourceId,
+            hasMedia: lastMessage.hasMedia,
+            status: lastMessage.status,
+            isAsset: lastMessage.isAsset
+          }]);
+          setIsNewMessage(true);
+          setIsTyping(false);
+        }
+      } else {
+        // Message not visible in widget, but add for observability
+        if (onMessagesUpdate && newObservabilityMessage) {
+          if (clientCreated) {
+            updateObservabilityMessages(previous => [...previous, newObservabilityMessage]);
+          } else {
+            updateObservabilityMessages(() => [newObservabilityMessage]);
+          }
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastMessage]);
+
+  // When a new message is received then show it as a outbound message
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isLoaded) {
+      if (chatState === EChatState.close && !widget.setup.hideOutboundMessage) {
+        var _lastMessage$content, _lastMessage$extraUIC2;
+        const lastMessage = messages.at(-1);
+        let lastVisibleMessage = (_lastMessage$content = lastMessage === null || lastMessage === void 0 ? void 0 : lastMessage.content) !== null && _lastMessage$content !== void 0 ? _lastMessage$content : '';
+
+        // Display the product title as the visible message for the product card
+        if (lastMessage !== null && lastMessage !== void 0 && lastMessage.extraUIComponents) {
+          var _lastMessage$extraUIC;
+          if (((_lastMessage$extraUIC = lastMessage.extraUIComponents[0]) === null || _lastMessage$extraUIC === void 0 ? void 0 : _lastMessage$extraUIC.type) === _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD) {
+            lastVisibleMessage = lastMessage.extraUIComponents[0].content.title;
+          }
+        }
+
+        // Display the product title as the visible message for the new product card
+        if (lastMessage !== null && lastMessage !== void 0 && (_lastMessage$extraUIC2 = lastMessage.extraUIComponentReference) !== null && _lastMessage$extraUIC2 !== void 0 && _lastMessage$extraUIC2[0]) {
+          lastVisibleMessage = (0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .getNewExtraUIComponentTitle */ .Wz)(lastMessage.extraUIComponentReference[0], widget.setup.mainLanguage);
+        }
+        setVisibleMessage(lastVisibleMessage);
+        setVisibleMessageState(EVisibleMessageState.visible);
+        showNewMessage();
+        setTimeout(() => {
+          setVisibleMessageOpacity(EVisibleMessageState.visible);
+        }, 100);
+        setTimeout(() => {
+          setVisibleMessageOpacity(EVisibleMessageState.invisible);
+        }, 5000);
+        setTimeout(() => {
+          setVisibleMessageState(EVisibleMessageState.invisible);
+          hideNewMessage();
+        }, 5800);
+      } else {
+        const clientCookie = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+        if (chatState === EChatState.open && clientCookie !== undefined) {
+          socketEmit('clientRead', {
+            clientId: cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain),
+            shopDomain: domain
+          });
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNewMessage]);
+
+  // Update client init when it is recieved
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isLoaded) {
+      if (init.type === EConnectionType.message) {
+        handleMessageSend();
+      } else {
+        updateClient(init.init);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [init]);
+
+  // Reset reference to new websocket in case it gets updated
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    socketRef.current = socket;
+  }, [socket]);
+
+  // Internal Functions
+  // Function to emit in a safe way, it asures that the message is actually sent
+  const socketEmit = function (topic, payload) {
+    let retries = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
+    let delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
+    return new Promise((resolve, reject) => {
+      const attemptEmit = attempt => {
+        let isAcknowledged = false; // Track if we receive a response
+
+        // Emit the event with an acknowledgment callback
+        socketRef.current.emit(topic, payload, response => {
+          isAcknowledged = true; // Mark acknowledgment as received
+          resolve(); // Successfully resolved
+        });
+
+        // Set a timeout to check if the server responded in 3 seconds
+        setTimeout(() => {
+          if (!isAcknowledged) {
+            if (attempt < retries - 1) {
+              console.warn("No response, retrying in ".concat(delay, "ms..."));
+              handleSocketConnection(EConnectionType.brute);
+              setTimeout(() => attemptEmit(attempt + 1), delay); // Retry with backoff
+            } else {
+              console.error('Emit failed after maximum retries.');
+              reject(new Error('Server did not respond after retries.'));
+            }
+          }
+        }, 3000); // 3 seconds timeout
+      };
+      attemptEmit(0); // Start with the first attempt
+    });
+  };
+
+  // Send message
+  // Helper: upload image to S3 and emit socket message with media info
+  const uploadImageAndEmit = async (content, clientId, image) => {
+    var _clientInfo$location, _clientInfo$location2, _clientInfo$location3;
+    // Use existing helper to get client IP/location info
+    const clientInfo = JSON.parse(await getClientIpInfo());
+    const location = (clientInfo === null || clientInfo === void 0 || (_clientInfo$location = clientInfo.location) === null || _clientInfo$location === void 0 ? void 0 : _clientInfo$location.city) + ', ' + (clientInfo === null || clientInfo === void 0 || (_clientInfo$location2 = clientInfo.location) === null || _clientInfo$location2 === void 0 || (_clientInfo$location2 = _clientInfo$location2.country) === null || _clientInfo$location2 === void 0 ? void 0 : _clientInfo$location2.name) + ' ' + (clientInfo === null || clientInfo === void 0 || (_clientInfo$location3 = clientInfo.location) === null || _clientInfo$location3 === void 0 || (_clientInfo$location3 = _clientInfo$location3.country) === null || _clientInfo$location3 === void 0 || (_clientInfo$location3 = _clientInfo$location3.flag) === null || _clientInfo$location3 === void 0 ? void 0 : _clientInfo$location3.emoji);
+    const computer = window.navigator.platform === undefined ? '' : window.navigator.platform;
+
+    //create formData with all the info needed
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('clientId', clientId);
+    formData.append('location', location);
+    formData.append('computer', computer);
+    const uploadResponse = await fetch(globalSelectedBackend + '/shopifywidgetrest/mediaupload/' + domain, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include'
+    });
+    if (!uploadResponse.ok) {
+      if (uploadResponse.status === 403) {
+        throw new Error('Upload limit reached. Please try again later.');
+      }
+      console.error('Failed to upload image:', uploadResponse);
+      throw new Error('Failed to upload image');
+    }
+    const responseJson = await uploadResponse.json();
+    const {
+      mediaId
+    } = responseJson;
+
+    // 4. Emit via socket WITH media info (await to catch delivery failures)
+    await socketEmit('newMessage', {
+      content: content,
+      clientId: clientId,
+      isTest: isTest,
+      shopDomain: domain,
+      path: shopifyCurrentPath,
+      media: {
+        mediaId: mediaId,
+        mediaType: image.type,
+        mediaName: image.name
+      }
+    });
+  };
+
+  // Helper: get localized upload error message
+  const getUploadErrorMessage = error => {
+    const isIpBlocked = error instanceof Error && error.message === 'Upload limit reached. Please try again later.';
+    if (isIpBlocked) {
+      switch (widget.setup.mainLanguage) {
+        case 'Spanish':
+          return 'Tu dirección IP ha sido bloqueada por exceder el límite de envíos. ';
+        case 'French':
+          return "Votre adresse IP a été bloquée pour avoir dépassé la limite d'envoi.";
+        case 'Portuguese':
+          return 'Seu endereço IP foi bloqueado por exceder o limite de envios.';
+        case 'German':
+          return 'Ihre IP-Adresse wurde gesperrt, da das Sendelimit überschritten wurde.';
+        case 'Italian':
+          return 'Il tuo indirizzo IP è stato bloccato per aver superato il limite di invio.';
+        default:
+          return 'Your IP address has been blocked due to exceeding the upload limit.';
+      }
+    }
+    switch (widget.setup.mainLanguage) {
+      case 'Spanish':
+        return 'Error al enviar la imagen. Por favor, intenta de nuevo.';
+      case 'French':
+        return "Erreur lors de l'envoi de l'image. Veuillez réessayer.";
+      case 'Portuguese':
+        return 'Erro ao enviar a imagem. Por favor, tente novamente.';
+      case 'German':
+        return 'Fehler beim Senden des Bildes. Bitte versuchen Sie es erneut.';
+      case 'Italian':
+        return "Errore nell'invio dell'immagine. Per favore, riprova.";
+      default:
+        return 'Error sending the image. Please try again.';
+    }
+  };
+  const handleMessageSend = async () => {
+    if (socket.connected) {
+      if (!isCreatingClient) {
+        const hasImage = selectedImage !== null;
+        const hasText = newMessage.replaceAll(' ', '') !== '';
+
+        // Must have at least text OR image to send
+        if (!hasText && !hasImage) return;
+        const clientId = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+        if (clientId !== undefined) {
+          // === EXISTING CLIENT FLOW ==
+          // For WordPress returning clients, register sale intent with current cart UUID on first message
+          if (platform === 'WORDPRESS' && !isDashboard && !wordpressSaleCreatedRef.current) {
+            wordpressSaleCreatedRef.current = true;
+            createSaleOption(clientId);
+          }
+          const content = newMessage !== null && newMessage !== void 0 ? newMessage : '';
+          const currentImage = selectedImage;
+          const currentPreviewUrl = imagePreviewUrl;
+
+          // Create local message for immediate UI display
+          const userMessage = {
+            content: content !== null && content !== void 0 ? content : '',
+            createDate: new Date().toISOString(),
+            role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+            name: null,
+            functionCall: null,
+            toolCalls: null,
+            toolCallId: null,
+            extraUIComponents: [],
+            extraUIComponentReference: [],
+            sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+            sourceId: null,
+            hasMedia: hasImage,
+            localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
+            isAsset: false,
+            status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+          };
+
+          // Update both local state and observability
+          setMessages(previous => [...previous, userMessage]);
+          if (onMessagesUpdate) {
+            updateObservabilityMessages(previous => [...previous, {
+              content: content,
+              createDate: new Date().toISOString(),
+              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+              showLogs: false,
+              messageLogs: null,
+              hasMedia: hasImage,
+              localMedia: hasImage && selectedImage ? selectedImage : undefined
+            }]);
+          }
+
+          // Clear input state immediately for responsiveness
+          setNewMessage('');
+          if (hasImage) {
+            handleClearImageSelection();
+          }
+          if (hasImage && currentImage) {
+            // IMAGE FLOW (with no text caption)
+            try {
+              await uploadImageAndEmit(content, clientId, currentImage);
+            } catch (error) {
+              console.error('Error uploading image:', error);
+
+              // Rollback: remove the optimistic message
+              setMessages(previous => previous.slice(0, -1));
+              if (onMessagesUpdate) {
+                updateObservabilityMessages(previous => previous.slice(0, -1));
+              }
+
+              // Restore input state so user can retry
+              setNewMessage(content);
+              setSelectedImage(currentImage);
+              setImagePreviewUrl(currentPreviewUrl);
+
+              // Show localized error message in chat
+              const errorMsg = {
+                id: '',
+                content: getUploadErrorMessage(error),
+                createDate: new Date().toISOString(),
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                name: '',
+                functionCall: '',
+                toolCalls: '',
+                toolCallId: '',
+                extraUIComponents: null,
+                extraUIComponentReference: null,
+                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                sourceId: null,
+                hasMedia: false,
+                isAsset: false,
+                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+              };
+              setMessages(previous => [...previous, errorMsg]);
+            }
+          } else {
+            // TEXT-ONLY FLOW (existing behavior)
+            socketEmit('newMessage', {
+              content: content,
+              clientId: clientId,
+              isTest: isTest,
+              shopDomain: domain,
+              path: shopifyCurrentPath
+            });
+          }
+        } else {
+          // === NO CLIENT COOKIE ===
+          if (clientCreated) {
+            const errorMessage = {
+              id: '',
+              content: 'We are sorry, but the widget has to be tested in your own web [page](https://' + domain + "). Enter now! It's already available!",
+              createDate: messages[0].createDate,
+              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+              name: '',
+              functionCall: '',
+              toolCalls: '',
+              toolCallId: '',
+              extraUIComponents: null,
+              extraUIComponentReference: null,
+              sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+              sourceId: null,
+              hasMedia: false,
+              isAsset: false,
+              status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+            };
+
+            // Update both local state and observability
+            setMessages(previous => [...previous, errorMessage]);
+            if (onMessagesUpdate) {
+              updateObservabilityMessages(previous => [...previous, {
+                id: '',
+                content: errorMessage.content,
+                createDate: errorMessage.createDate,
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                showLogs: false,
+                messageLogs: null
+              }]);
+            }
+            setIsNewMessage(true);
+            setIsTyping(false);
+          } else {
+            if (widget.setup.emailRetrievalMethod === 'Mandatory') {
+              handleToogleCreateClient();
+            } else {
+              // === AUTO-CREATE CLIENT FLOW (with image support) ===
+              const content = newMessage !== null && newMessage !== void 0 ? newMessage : '';
+              const currentImage = selectedImage;
+              const currentPreviewUrl = imagePreviewUrl;
+              const userMessage = {
+                content: content !== null && content !== void 0 ? content : '',
+                createDate: new Date().toISOString(),
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+                name: null,
+                functionCall: null,
+                toolCalls: null,
+                toolCallId: null,
+                extraUIComponents: [],
+                extraUIComponentReference: [],
+                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                sourceId: null,
+                hasMedia: hasImage,
+                localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
+                isAsset: false,
+                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+              };
+
+              // Update local state immediately for widget display
+              setMessages(previous => [...previous, userMessage]);
+
+              // Clear input state
+              setNewMessage('');
+              if (hasImage) {
+                handleClearImageSelection();
+              }
+
+              // Create client first (sets cookie)
+              await createClientAuto();
+
+              // Get the newly created clientId from cookie
+              const newClientId = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+              if (!newClientId) return;
+
+              // Update observability AFTER client is created
+              if (onMessagesUpdate) {
+                updateObservabilityMessages(previous => [...previous, {
+                  content: content,
+                  createDate: new Date().toISOString(),
+                  role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+                  showLogs: false,
+                  messageLogs: null,
+                  hasMedia: hasImage,
+                  localMedia: hasImage && currentImage ? currentImage : undefined
+                }]);
+              }
+              if (hasImage && currentImage) {
+                // IMAGE FLOW after client creation
+                try {
+                  await uploadImageAndEmit(content, newClientId, currentImage);
+                } catch (error) {
+                  console.error('Error uploading image:', error);
+
+                  // Rollback: remove the optimistic message
+                  setMessages(previous => previous.slice(0, -1));
+                  if (onMessagesUpdate) {
+                    updateObservabilityMessages(previous => previous.slice(0, -1));
+                  }
+
+                  // Restore input state so user can retry
+                  setNewMessage(content);
+                  setSelectedImage(currentImage);
+                  setImagePreviewUrl(currentPreviewUrl);
+                  const errorMsg = {
+                    id: '',
+                    content: getUploadErrorMessage(error),
+                    createDate: new Date().toISOString(),
+                    role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                    name: '',
+                    functionCall: '',
+                    toolCalls: '',
+                    toolCallId: '',
+                    extraUIComponents: null,
+                    extraUIComponentReference: null,
+                    sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                    sourceId: null,
+                    hasMedia: false,
+                    isAsset: false,
+                    status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+                  };
+                  setMessages(previous => [...previous, errorMsg]);
+                }
+              } else {
+                // TEXT-ONLY FLOW after client creation
+                socketEmit('newMessage', {
+                  content: content,
+                  clientId: newClientId,
+                  isTest: isTest,
+                  shopDomain: domain,
+                  path: shopifyCurrentPath
+                });
+              }
+            }
+          }
+        }
+      }
+    } else {
+      handleSocketConnection(EConnectionType.message);
+    }
+  };
+
+  // toggle actions menu visibility
+  const handleToggleActionsMenu = () => {
+    setActionsMenuState(prevState => prevState === EActionsMenuState.invisible ? EActionsMenuState.visible : EActionsMenuState.invisible);
+  };
+
+  // close actions menu
+  const handleCloseActionsMenu = () => {
+    setActionsMenuState(EActionsMenuState.invisible);
+  };
+
+  // handle image selection and validation
+  const handleImageUpload = event => {
+    var _event$target$files;
+    const file = (_event$target$files = event.target.files) === null || _event$target$files === void 0 ? void 0 : _event$target$files[0];
+    if (!file) {
+      return;
+    }
+
+    // validate file type
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      // show error message based on language
+      const errorContent = widget.setup.mainLanguage === 'English' ? 'Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).' : widget.setup.mainLanguage === 'Spanish' ? 'Tipo de archivo no válido. Por favor, sube una imagen (JPEG, PNG, GIF o WebP).' : widget.setup.mainLanguage === 'French' ? 'Type de fichier invalide. Veuillez télécharger une image (JPEG, PNG, GIF ou WebP).' : widget.setup.mainLanguage === 'Portuguese' ? 'Tipo de arquivo inválido. Por favor, envie uma imagem (JPEG, PNG, GIF ou WebP).' : widget.setup.mainLanguage === 'German' ? 'Ungültiger Dateityp. Bitte laden Sie ein Bild hoch (JPEG, PNG, GIF oder WebP).' : widget.setup.mainLanguage === 'Italian' ? "Tipo di file non valido. Si prega di caricare un'immagine (JPEG, PNG, GIF o WebP)." : 'Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).';
+      const errorMessage = {
+        id: '',
+        content: errorContent,
+        createDate: new Date().toISOString(),
+        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+        name: '',
+        functionCall: '',
+        toolCalls: '',
+        toolCallId: '',
+        extraUIComponents: null,
+        extraUIComponentReference: null,
+        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+        sourceId: null,
+        hasMedia: false,
+        isAsset: false,
+        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+      };
+
+      // update both local state and observability
+      setMessages(previous => [...previous, errorMessage]);
+      if (onMessagesUpdate) {
+        updateObservabilityMessages(previous => [...previous, {
+          id: '',
+          content: errorMessage.content,
+          createDate: errorMessage.createDate,
+          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+          showLogs: false,
+          messageLogs: null
+        }]);
+      }
+
+      // reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+      return;
+    }
+
+    // validate file size (5mb limit)
+    const maxSizeInBytes = 5 * 1024 * 1024;
+    if (file.size > maxSizeInBytes) {
+      // show error message based on language
+      const errorContent = widget.setup.mainLanguage === 'English' ? 'File size exceeds the limit. Please upload an image smaller than 5MB.' : widget.setup.mainLanguage === 'Spanish' ? 'El tamaño del archivo excede el límite. Por favor, sube una imagen menor a 5MB.' : widget.setup.mainLanguage === 'French' ? 'La taille du fichier dépasse la limite. Veuillez télécharger une image de moins de 5 Mo.' : widget.setup.mainLanguage === 'Portuguese' ? 'O tamanho do arquivo excede o limite. Por favor, envie uma imagem menor que 5MB.' : widget.setup.mainLanguage === 'German' ? 'Die Dateigröße überschreitet das Limit. Bitte laden Sie ein Bild unter 5 MB hoch.' : widget.setup.mainLanguage === 'Italian' ? "La dimensione del file supera il limite. Si prega di caricare un'immagine inferiore a 5 MB." : 'File size exceeds the limit. Please upload an image smaller than 5MB.';
+      const errorMessage = {
+        id: '',
+        content: errorContent,
+        createDate: new Date().toISOString(),
+        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+        name: '',
+        functionCall: '',
+        toolCalls: '',
+        toolCallId: '',
+        extraUIComponents: null,
+        extraUIComponentReference: null,
+        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+        sourceId: null,
+        hasMedia: false,
+        isAsset: false,
+        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+      };
+
+      // update both local state and observability
+      setMessages(previous => [...previous, errorMessage]);
+      if (onMessagesUpdate) {
+        updateObservabilityMessages(previous => [...previous, {
+          id: '',
+          content: errorMessage.content,
+          createDate: errorMessage.createDate,
+          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+          showLogs: false,
+          messageLogs: null
+        }]);
+      }
+
+      // reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+      return;
+    }
+
+    // create preview url
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreviewUrl(previewUrl);
+    setSelectedImage(file);
+    setNewMessage('');
+
+    // close actions menu
+    handleCloseActionsMenu();
+  };
+
+  // remove image preview (revokes blob URL - used when user cancels selection)
+  const handleRemoveImagePreview = () => {
+    // revoke object url to free memory
+    if (imagePreviewUrl) {
+      URL.revokeObjectURL(imagePreviewUrl);
+    }
+    setImagePreviewUrl(null);
+    setSelectedImage(null);
+
+    // reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // clear image selection without revoking blob URL (used after send -
+  // the blob URL is still referenced by localMediaUrl in the sent message)
+  const handleClearImageSelection = () => {
+    setImagePreviewUrl(null);
+    setSelectedImage(null);
+
+    // reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // Open and close chat
+  const handleToggleChat = () => {
+    if (isRedirect) {
+      // Check if there is any additional text for redirection link
+      // This additional text can be added dinamically from store to store using custom scripts this way:
+
+      // const dataDiv = document.getElementById("WizybotShopifyWidget__data__div");
+      // const text = "?text=Hello520there!"
+      // dataDiv.setAttribute('data-additionaltextredirectionlink', text)
+
+      const dataDiv = document.getElementById('WizybotShopifyWidget__data__div');
+      const additionalText = dataDiv === null || dataDiv === void 0 ? void 0 : dataDiv.dataset.additionaltextredirectionlink;
+
+      // Add additional text if is the case
+      if (additionalText) {
+        window.open(redirectionLink + additionalText, '_blank');
+      } else {
+        window.open(redirectionLink, '_blank');
+      }
+    } else {
+      if (chatState === EChatState.close) {
+        setChatState(EChatState.open);
+        setChatStateVisibility(EChatState.open);
+        setIsOpen(true);
+        setIsNewMessage(false);
+        const clientCookie = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+        if (clientCookie !== undefined) {
+          try {
+            socketEmit('clientRead', {
+              clientId: cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain),
+              shopDomain: domain
+            });
+          } catch (e) {}
+        }
+      } else {
+        setChatState(EChatState.close);
+        setTimeout(() => {
+          setIsOpen(false);
+          setChatStateVisibility(EChatState.close);
+        }, 800);
+      }
+    }
+  };
+
+  // Open and close obligatory create client prompt
+  const handleToogleCreateClient = () => {
+    if (createClientState === ECreateClientState.invisible) {
+      setCreateClientState(ECreateClientState.visible);
+      setIsNewMessage(false);
+      setIsSendButtonActive(false);
+    } else {
+      setIsSendButtonActive(true);
+      setCreateClientState(ECreateClientState.invisible);
+    }
+  };
+
+  // Open and close cart view from widget
+  const handleToggleCartState = async () => {
+    if (cartState === ECartState.invisible) {
+      getCart().then(() => {
+        setCartState(ECartState.visible);
+      });
+      setIsSendButtonActive(false);
+    } else {
+      setIsSendButtonActive(true);
+      setCartState(ECartState.invisible);
+    }
+  };
+
+  // Add random emoji from the list
+  const addRandomNiceEmoji = () => {
+    const randomIndex = Math.floor(Math.random() * ecommerceEmojis.length);
+    const randomEmoji = ecommerceEmojis[randomIndex];
+    setNewMessage(newMessage + randomEmoji);
+  };
+
+  // Get cart content in the moment
+  const getCart = async () => {
+    if (shopifyRootPath !== null && shopifyRootPath !== '') {
+      setIsCartLoaded(false);
+      await fetch(shopifyRootPath + 'cart.js', {
+        method: 'GET'
+      }).then(response => {
+        return response.json();
+      }).then(data => {
+        setCart({
+          totalPrice: data.total_price,
+          currency: data.currency,
+          items: data.items.map(item => {
+            return {
+              id: item.id,
+              quantity: item.quantity,
+              productTitle: item.product_title,
+              variantTitle: item.variant_title,
+              linePrice: item.line_price,
+              image: item.image,
+              url: item.url
+            };
+          })
+        });
+      }).catch(error => {
+        console.error('Error:', error);
+        setIsCartLoaded(true);
+      });
+    } else {
+      console.log('Not in shopify');
+      setIsCartLoaded(true);
+    }
+  };
+
+  // Update cart content with new quantity
+  const updateCart = async cartToUpdate => {
+    setIsCartLoaded(false);
+    if (shopifyRootPath !== null && shopifyRootPath !== '' && cartToUpdate !== null) {
+      const updates = cartToUpdate.items.reduce((a, v) => _objectSpread(_objectSpread({}, a), {}, {
+        [v.id]: v.quantity
+      }), {});
+      fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          updates
+        })
+      }).then(response => {
+        return response.json();
+      }).then(data => {
+        setCart({
+          totalPrice: data.total_price,
+          currency: data.currency,
+          items: data.items.map(item => {
+            return {
+              id: item.id,
+              quantity: item.quantity,
+              productTitle: item.product_title,
+              variantTitle: item.variant_title,
+              linePrice: item.line_price,
+              image: item.image,
+              url: item.url
+            };
+          })
+        });
+        const clientId = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+        if (clientId) {
+          fetch(globalSelectedBackend + '/carts/' + clientId, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              total: data.total_price / 100,
+              sourceType: 'shopify widget',
+              cartToken: data.token,
+              items: data.items.map(item => ({
+                shopifyVariantId: String(item.id),
+                unitPrice: item.quantity > 0 ? item.line_price / item.quantity / 100 : 0,
+                quantity: item.quantity
+              }))
+            })
+          }).catch(e => console.error('Error syncing cart to backend:', e));
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        setIsCartLoaded(true);
+      });
+    } else {
+      console.log('Not in shopify');
+      setIsCartLoaded(true);
+    }
+  };
+
+  // Create client sale option
+  const createSaleOption = async clientId => {
+    if (shopifyRootPath !== null && shopifyRootPath !== '' && !isDashboard) {
+      await fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          attributes: {
+            wizybot: true
+          },
+          note: widget.setup.preventSaleNoteCreation ? '' : 'Wizybot sale!'
+        })
+      }).then(async response => {
+        await fetch(shopifyRootPath + 'cart.js', {
+          method: 'GET'
+        }).then(response => {
+          return response.json();
+        }).then(async data => {
+          var raw = JSON.stringify({
+            cartId: data.token.split('?')[0]
+          });
+          var myHeaders = new Headers();
+          myHeaders.append('Content-Type', 'application/json');
+          await fetch(globalSelectedBackend + '/sale/' + domain + '/' + clientId + '/createsale', {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            credentials: 'include',
+            redirect: 'follow'
+          }).then(async response => {
+            if (!response.ok) {
+              let errorText = await response.text();
+              let errorJSON = JSON.parse(errorText);
+              throw new Error(errorJSON.message);
+            } else {
+              return response.text();
+            }
+          }).then(result => JSON.parse(result)).then(JSONresult => {}).catch(error => {
+            console.log('Error:', error);
+          });
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+      }).catch(error => {
+        console.error('Error:', error);
+      });
+    } else if (platform === 'WORDPRESS' && !isDashboard) {
+      try {
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        await fetch(globalSelectedBackend + '/sale/' + domain + '/' + clientId + '/createsale', {
+          method: 'POST',
+          headers: myHeaders,
+          body: JSON.stringify({
+            cartId: wizyCartId || null
+          }),
+          credentials: 'include',
+          redirect: 'follow'
+        });
+      } catch (error) {
+        console.error('Error creating WordPress sale:', error);
+      }
+    }
+  };
+  const nameRequired = [EDataRetrievalType.NAME, EDataRetrievalType.NAME_EMAIL, EDataRetrievalType.NAME_PHONE, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
+  const emailRequired = [EDataRetrievalType.EMAIL, EDataRetrievalType.BOTH, EDataRetrievalType.NAME_EMAIL, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
+  const phoneRequired = [EDataRetrievalType.PHONE, EDataRetrievalType.BOTH, EDataRetrievalType.NAME_PHONE, EDataRetrievalType.NAME_EMAIL_PHONE].includes(widget.setup.dataRetrievalType);
+
+  // Create client from obligatory prompt
+  const createClient = async () => {
+    if (isCreatingClient) return;
+    setIsCreatingClient(true);
+    const emptyName = nameRequired && name.trim() === '';
+    const emptyEmail = emailRequired && email.trim() === '';
+    const emptyPhone = phoneRequired && phone === '';
+    if (emptyName || emptyEmail || emptyPhone) {
+      setNameError(emptyName);
+      setEmailError(emptyEmail);
+      setPhoneError(emptyPhone);
+      setIsCreatingClient(false);
+      return;
+    }
+    const invalidFields = await getContactDataValidation({
+      required: phoneRequired,
+      value: phone
+    }, {
+      required: emailRequired,
+      value: email
+    }, {
+      required: nameRequired,
+      value: name
+    });
+    setNameError(invalidFields.includes('name'));
+    setEmailError(invalidFields.includes('email'));
+    setPhoneError(invalidFields.includes('phone'));
+    if (invalidFields.length > 0) {
+      setIsCreatingClient(false);
+      return;
+    }
+    if (cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain) !== undefined) {
+      setIsCreatingClient(false);
+      return;
+    }
+    setCreateClientBackendState(ECreateClientBackendState.loading);
+    const clientInfo = JSON.parse(await getClientIpInfo());
+    const superClientId = cookies.get('WIZY_SUPERCLIENT_' + domain);
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    var raw = JSON.stringify({
+      firstName: name.trim(),
+      lastName: '',
+      email: email.trim(),
+      phone: phone.replace(/^\+/, ''),
+      location: clientInfo.location.city + ', ' + clientInfo.location.country.name + ' ' + clientInfo.location.country.flag.emoji,
+      computer: window.navigator.platform === undefined ? '' : window.navigator.platform,
+      ipAddress: clientInfo.ip,
+      lastMessageDate: messages[0].createDate,
+      lastMessage: messages[0].content,
+      subscriptionState: subscriptionState,
+      isShopRead: false,
+      isClientRead: true,
+      isAiEnabled: true,
+      websocketId: init.init,
+      isTest: isTest,
+      superClient: superClientId ? {
+        id: superClientId
+      } : null
+    });
+    await fetch(globalSelectedBackend + '/clients/' + domain + (isDashboard ? '/private' : ''), {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      credentials: 'include',
+      redirect: 'follow'
+    }).then(async response => {
+      if (!response.ok) {
+        let errorText = await response.text();
+        let errorJSON = JSON.parse(errorText);
+        throw new Error(errorJSON.message);
+      } else {
+        return response.text();
+      }
+    }).then(result => JSON.parse(result)).then(JSONresult => {
+      var _JSONresult$superClie;
+      if ((_JSONresult$superClie = JSONresult.superClient) !== null && _JSONresult$superClie !== void 0 && _JSONresult$superClie.id) {
+        var _JSONresult$superClie2, _JSONresult$superClie3;
+        cookies.set('WIZY_SUPERCLIENT_' + domain, (_JSONresult$superClie2 = JSONresult.superClient) === null || _JSONresult$superClie2 === void 0 ? void 0 : _JSONresult$superClie2.id, {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 365
+        });
+        document.cookie = "WIZY_SUPERCLIENT_".concat(domain, "=").concat((_JSONresult$superClie3 = JSONresult.superClient) === null || _JSONresult$superClie3 === void 0 ? void 0 : _JSONresult$superClie3.id, "; path=/; max-age=").concat(60 * 60 * 24 * 365);
+      }
+      cookies.set(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, JSONresult.id, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 365
+      });
+      document.cookie = "".concat(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, "=").concat(JSONresult.id, "; path=/; max-age=").concat(60 * 60 * 24 * 365);
+      handleToogleCreateClient();
+      createSaleOption(JSONresult.id);
+      setCreateClientBackendState(ECreateClientBackendState.send);
+      setClientCreated(true);
+      setIsCreatingClient(false);
+      handleMessageSend();
+    }).catch(error => {
+      console.log(error);
+      setIsCreatingClient(false);
+    });
+  };
+
+  // Create client automatically from the start of the conversation
+  const createClientAuto = async () => {
+    setIsCreatingClient(true);
+    if (cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain) === undefined) {
+      setCreateClientBackendState(ECreateClientBackendState.loading);
+
+      // Get client IP info
+      const clientInfo = JSON.parse(await getClientIpInfo());
+      setEmailError(false);
+
+      // Check if there is a superclient cookie,
+      const superClientId = cookies.get('WIZY_SUPERCLIENT_' + domain);
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      var raw = JSON.stringify({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        location: clientInfo.location.city + ', ' + clientInfo.location.country.name + ' ' + clientInfo.location.country.flag.emoji,
+        computer: window.navigator.platform === undefined ? '' : window.navigator.platform,
+        ipAddress: clientInfo.ip,
+        lastMessageDate: messages[0].createDate,
+        lastMessage: messages[0].content,
+        subscriptionState: subscriptionState,
+        isShopRead: false,
+        isClientRead: true,
+        isAiEnabled: true,
+        isTest: isTest,
+        websocketId: init.init,
+        superClient: superClientId ? {
+          id: superClientId
+        } : null,
+        marketId: marketId,
+        languageCode: languageCode,
+        languageUrl: languageUrl
+      });
+      await fetch(globalSelectedBackend + '/clients/' + domain + (isDashboard ? '/private' : ''), {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        credentials: 'include',
+        redirect: 'follow'
+      }).then(async response => {
+        if (!response.ok) {
+          let errorText = await response.text();
+          let errorJSON = JSON.parse(errorText);
+          throw new Error(errorJSON.message);
+        } else {
+          return response.text();
+        }
+      }).then(result => JSON.parse(result)).then(JSONresult => {
+        var _JSONresult$superClie4;
+        if ((_JSONresult$superClie4 = JSONresult.superClient) !== null && _JSONresult$superClie4 !== void 0 && _JSONresult$superClie4.id) {
+          cookies.set('WIZY_SUPERCLIENT_' + domain, JSONresult.superClient.id, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 365
+          });
+          document.cookie = "WIZY_SUPERCLIENT_".concat(domain, "=").concat(JSONresult.superClient.id, "; path=/; max-age=").concat(60 * 60 * 24 * 365);
+        }
+        cookies.set(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, JSONresult.id, {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 365
+        });
+        document.cookie = "".concat(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, "=").concat(JSONresult.id, "; path=/; max-age=").concat(60 * 60 * 24 * 365);
+        createSaleOption(JSONresult.id);
+        setCreateClientBackendState(ECreateClientBackendState.send);
+        setClientCreated(true);
+        setIsCreatingClient(false);
+      }).catch(error => {
+        console.log(error);
+        setIsCreatingClient(false);
+      });
+    } else {
+      setEmailError(true);
+      setPhoneError(true);
+      setIsCreatingClient(false);
+      setCreateClientBackendState(ECreateClientBackendState.send);
+    }
+  };
+
+  // Get Client info from the ip (location. country, flag)
+  const getClientIpInfo = async () => {
+    return JSON.stringify({
+      ip: '',
+      location: {
+        city: '',
+        country: {
+          name: '',
+          flag: {
+            emoji: ''
+          }
+        }
+      }
+    });
+  };
+
+  // Update client init
+  const updateClient = async selectedInit => {
+    if (cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain) !== undefined) {
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      var raw = JSON.stringify({
+        websocketId: selectedInit
+      });
+      await fetch(globalSelectedBackend + '/clients/' + cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain) + '/websocketid', {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: raw,
+        credentials: 'include',
+        redirect: 'follow'
+      }).then(async response => {
+        if (!response.ok) {
+          let errorText = await response.text();
+          let errorJSON = JSON.parse(errorText);
+          throw new Error(errorJSON.message);
+        } else {
+          return response.text();
+        }
+      }).then(result => JSON.parse(result)).then(JSONresult => {
+        if (JSONresult.messages.length > 0 && messages.length === 0) {
+          const sortedMessages = JSONresult.messages.sort((a, b) => Date.parse(a.createDate) - Date.parse(b.createDate));
+
+          // Update observability with ALL messages (no filter)
+          if (onMessagesUpdate) {
+            updateObservabilityMessages(() => sortedMessages.map(msg => ({
+              id: msg.id,
+              content: msg.content,
+              createDate: msg.createDate,
+              role: msg.role,
+              name: msg.name || undefined,
+              toolCalls: msg.toolCalls || undefined,
+              extraUIComponents: msg.extraUIComponents ? JSON.parse(msg.extraUIComponents) : null,
+              extraUIComponentReference: msg.extraUIComponentReference,
+              hasMedia: msg.hasMedia,
+              interpretationForLLM: msg.interpretationForLLM || undefined,
+              status: msg.status,
+              showLogs: false,
+              messageLogs: msg.messageLogs ? typeof msg.messageLogs === 'string' ? JSON.parse(msg.messageLogs) : msg.messageLogs : null
+            })));
+          }
+
+          // Update local state with FILTERED messages for widget display
+          setMessages([]);
+          sortedMessages.filter(message => {
+            var _message$content, _message$extraUICompo, _message$extraUICompo2, _message$extraUICompo3, _message$extraUICompo4;
+            if ((message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.assistant || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user) && (isNotBlank(message.content) && !((_message$content = message.content) !== null && _message$content !== void 0 && _message$content.includes('{wizy_asset_reference}')) || message.hasMedia || ((_message$extraUICompo = (_message$extraUICompo2 = message.extraUIComponents) === null || _message$extraUICompo2 === void 0 ? void 0 : _message$extraUICompo2.length) !== null && _message$extraUICompo !== void 0 ? _message$extraUICompo : 0) > 0 || ((_message$extraUICompo3 = (_message$extraUICompo4 = message.extraUIComponentReference) === null || _message$extraUICompo4 === void 0 ? void 0 : _message$extraUICompo4.length) !== null && _message$extraUICompo3 !== void 0 ? _message$extraUICompo3 : 0) > 0)) {
+              return true;
+            } else {
+              return false;
+            }
+          }).forEach(message => {
+            setMessages(previous => [...previous, {
+              id: message.id,
+              content: message.content,
+              createDate: message.createDate,
+              role: message.role,
+              name: message.name,
+              functionCall: message.functionCall,
+              toolCalls: message.toolCalls,
+              toolCallId: message.toolCallId,
+              extraUIComponents: message.extraUIComponents ? JSON.parse(message.extraUIComponents) : null,
+              extraUIComponentReference: message.extraUIComponentReference,
+              sourceType: message.sourceType,
+              sourceId: message.sourceId,
+              hasMedia: message.hasMedia,
+              isAsset: message.isAsset,
+              status: message.status
+            }]);
+          });
+          setIsNewMessage(!JSONresult.isClientRead);
+        }
+      }).catch(error => {
+        console.log(error);
+        cookies.remove(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
+      });
+    }
+  };
+
+  // Change link format
+  const convertToHTMLLink = text => {
+    // Matches either markdown links or bold:
+    // 1) [anchor](url)
+    // 2) **bold**
+    const tokenRegex = /\[([^[\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)|\*\*([^*]+)\*\*/g;
+    const nodes = [];
+    let lastIndex = 0;
+    let match;
+    while ((match = tokenRegex.exec(text)) !== null) {
+      const index = match.index;
+
+      // Push preceding text (React will escape it safely)
+      if (index > lastIndex) {
+        nodes.push(text.slice(lastIndex, index));
+      }
+
+      // Markdown link: match[1]=anchor, match[2]=url
+      if (match[1] && match[2]) {
+        const anchorText = match[1];
+        const url = match[2];
+        nodes.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+          key: "link-".concat(index, "-").concat(url),
+          href: url,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: {
+            textDecoration: 'underline'
+          }
+        }, anchorText));
+      }
+      // Bold: match[3]=boldText
+      else if (match[3]) {
+        const boldText = match[3];
+        nodes.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+          key: "bold-".concat(index)
+        }, boldText));
+      }
+      lastIndex = index + match[0].length;
+    }
+
+    // Remaining tail text
+    if (lastIndex < text.length) {
+      nodes.push(text.slice(lastIndex));
+    }
+
+    // Your “double line break -> single line break” behavior:
+    // If you actually want to preserve paragraphs, remove this step.
+    const normalized = nodes; // keep as-is; CSS handles line breaks
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        whiteSpace: 'pre-line'
+      }
+    }, normalized);
+  };
+
+  // Check whether or not a variable is blank
+  const isNotBlank = value => {
+    return value !== null && value !== undefined && value !== '';
+  };
+  const getContactDataValidation = async (phone, email, name) => {
+    try {
+      var _data$invalidFields;
+      const response = await fetch(globalSelectedBackend + '/shopifywidgetrest/validatecontactdataform/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          phone,
+          name
+        }),
+        credentials: 'include',
+        redirect: 'follow'
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        const errorJSON = JSON.parse(errorText);
+        throw new Error(errorJSON.message);
+      }
+      const data = await response.json();
+      return (_data$invalidFields = data.invalidFields) !== null && _data$invalidFields !== void 0 ? _data$invalidFields : [];
+    } catch (error) {
+      console.error('Error in contact data validation');
+      console.error(error);
+      return [];
+    }
+  };
+
+  // JSX Return statement
+  if (isLoaded) {
+    var _widget$setup$default;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: widgetLoader,
+      className: "ProtectedRoute__loader",
+      alt: "ProtectedRoute__loader",
+      id: "ProtectedRoute__loader",
+      style: {
+        display: 'none'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__open__button__outter",
+      style: {
+        right: widget.setup.side === ESide.RIGHT ? '0px' : 'calc(100% - 80px)',
+        visibility: chatStateVisibility === EChatState.close ? 'visible' : 'hidden',
+        opacity: chatStateVisibility === EChatState.close ? '1' : '0'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__open__button__inner",
+      style: {
+        background: 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)'
+      },
+      onClick: () => {
+        if (chatState === EChatState.close) {
+          handleToggleChat();
+        } else {
+          handleMessageSend();
+        }
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__open__button__notification rise-shake",
+      style: {
+        opacity: chatStateVisibility === EChatState.close && isNewMessage ? '1' : '0',
+        display: widget.setup.hideNotificationSign ? 'none' : 'block'
+      }
+    }, "!"), isRedirect && (redirectionLink.includes('wa') || redirectionLink.includes('whatsapp')) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 50 50",
+      width: "50",
+      height: "50",
+      fill: "none",
+      className: "WizybotShopifyWidget__open__button__image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M25,2C12.318,2,2,12.318,2,25c0,3.96,1.023,7.854,2.963,11.29L2.037,46.73c-0.096,0.343-0.003,0.711,0.245,0.966 C2.473,47.893,2.733,48,3,48c0.08,0,0.161-0.01,0.24-0.029l10.896-2.699C17.463,47.058,21.21,48,25,48c12.682,0,23-10.318,23-23 S37.682,2,25,2z M36.57,33.116c-0.492,1.362-2.852,2.605-3.986,2.772c-1.018,0.149-2.306,0.213-3.72-0.231 c-0.857-0.27-1.957-0.628-3.366-1.229c-5.923-2.526-9.791-8.415-10.087-8.804C15.116,25.235,13,22.463,13,19.594 s1.525-4.28,2.067-4.864c0.542-0.584,1.181-0.73,1.575-0.73s0.787,0.005,1.132,0.021c0.363,0.018,0.85-0.137,1.329,1.001 c0.492,1.168,1.673,4.037,1.819,4.33c0.148,0.292,0.246,0.633,0.05,1.022c-0.196,0.389-0.294,0.632-0.59,0.973 s-0.62,0.76-0.886,1.022c-0.296,0.291-0.603,0.606-0.259,1.19c0.344,0.584,1.529,2.493,3.285,4.039 c2.255,1.986,4.158,2.602,4.748,2.894c0.59,0.292,0.935,0.243,1.279-0.146c0.344-0.39,1.476-1.703,1.869-2.286 s0.787-0.487,1.329-0.292c0.542,0.194,3.445,1.604,4.035,1.896c0.59,0.292,0.984,0.438,1.132,0.681 C37.062,30.587,37.062,31.755,36.57,33.116z",
+      fill: widget.setup.fontColor
+    })) : isRedirect && redirectionLink.includes('m.me') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 50 50",
+      width: "50",
+      height: "50",
+      fill: "none",
+      className: "WizybotShopifyWidget__open__button__image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M37,19h-2c-2.14,0-3,0.5-3,2 v3h5l-1,5h-4v15h-5V29h-4v-5h4v-3c0-4,2-7,6-7c2.9,0,4,1,4,1V19z",
+      fill: widget.setup.fontColor
+    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__open__button__image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
+      fill: widget.setup.fontColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
+      fill: widget.setup.fontColor
+    }))), visibleMessageState === EVisibleMessageState.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__new__visible__message__outter",
+      style: {
+        opacity: visibleMessageOpacity === EVisibleMessageState.visible ? '1' : '0',
+        left: widget.setup.side === 'Left' ? '-100%' : '0',
+        transform: widget.setup.side === 'Left' ? 'translate(130px, -100%)' : 'translate(-110%, -100%)'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WisybotShopifyWidget__new__visible__message__inner"
+    }, visibleMessage)) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__outter__outter",
+      style: {
+        position: 'absolute',
+        visibility: chatStateVisibility === EChatState.close ? 'hidden' : 'visible',
+        opacity: chatStateVisibility === EChatState.close ? '0' : '1'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: chatState === EChatState.open ? widget.setup.side === 'Left' ? 'WizybotShopifyWidget__outter__open__left' : 'WizybotShopifyWidget__outter__open__right' : 'WizybotShopifyWidget__outter__close'
+    }, imagePreviewUrl && selectedImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        position: 'absolute',
+        bottom: '110px',
+        left: '15px',
+        right: '70px',
+        backgroundColor: '#fff',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+        padding: '8px 10px',
+        zIndex: 100,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        height: '50px'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: imagePreviewUrl,
+      alt: "Preview",
+      style: {
+        width: '30px',
+        height: '40px',
+        objectFit: 'cover',
+        borderRadius: '6px',
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        fontWeight: 500,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        marginBottom: '2px',
+        color: '#333'
+      }
+    }, selectedImage.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        fontSize: '11px',
+        color: '#999'
+      }
+    }, (selectedImage.size / 1024).toFixed(1), " KB")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      onClick: handleRemoveImagePreview,
+      style: {
+        cursor: 'pointer',
+        width: '24px',
+        height: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '50%',
+        backgroundColor: '#f5f5f5',
+        transition: 'all 0.2s',
+        flexShrink: 0
+      },
+      onMouseEnter: e => {
+        e.currentTarget.style.backgroundColor = '#e8e8e8';
+        e.currentTarget.style.transform = 'scale(1.1)';
+      },
+      onMouseLeave: e => {
+        e.currentTarget.style.backgroundColor = '#f5f5f5';
+        e.currentTarget.style.transform = 'scale(1)';
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "12",
+      height: "12",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M18 6L6 18M6 6l12 12",
+      stroke: "#666",
+      strokeWidth: "2.5",
+      strokeLinecap: "round"
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header",
+      style: {
+        background: 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__inner__inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__picture__name"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: widget.setup.image === '' ? chatProfileImage : widget.setup.image,
+      alt: "wizy_chat_profile",
+      className: "WizybotShopifyWidget__header__profile__image"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__name__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__chat__with",
+      style: {
+        color: widget.setup.fontColor
+      }
+    }, widget.setup.mainLanguage === 'English' ? 'Chat with' : widget.setup.mainLanguage === 'Spanish' ? 'Habla con' : widget.setup.mainLanguage === 'French' ? 'Parler avec' : widget.setup.mainLanguage === 'Portuguese' ? 'Conversar com' : widget.setup.mainLanguage === 'German' ? 'Chatten Sie mit' : widget.setup.mainLanguage === 'Italian' ? 'Chat con' : 'Chat with'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__agent__name",
+      style: {
+        color: widget.setup.fontColor
+      }
+    }, ' ', widget.setup.agentName, ' '))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__header__close__arrow__outter"
+    }, createClientState === ECreateClientState.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__header__options__dots__image",
+      onClick: () => {
+        handleToogleCreateClient();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
+      fill: widget.setup.fontColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
+      fill: widget.setup.fontColor
+    })) : cartState === ECartState.visible && !isShopifyForeing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__header__options__dots__image",
+      onClick: () => {
+        handleToggleCartState();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M2 5C2 3.89543 2.89543 3 4 3H11C12.1046 3 13 3.89543 13 5V9C13 10.1046 12.1046 11 11 11H9L6 14V11H4C2.89543 11 2 10.1046 2 9V5Z",
+      fill: widget.setup.fontColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M15 7V9C15 11.2091 13.2091 13 11 13H9.82843L8.06173 14.7667C8.34154 14.9156 8.66091 15 9 15H11L14 18V15H16C17.1046 15 18 14.1046 18 13V9C18 7.89543 17.1046 7 16 7H15Z",
+      fill: widget.setup.fontColor
+    })) : !isShopifyForeing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      className: "WizybotShopifyWidget__header__options__dots__image",
+      xmlns: "http://www.w3.org/2000/svg",
+      onClick: () => {
+        handleToggleCartState();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M3 1C2.44772 1 2 1.44772 2 2C2 2.55228 2.44772 3 3 3H4.21922L4.52478 4.22224C4.52799 4.23637 4.5315 4.25039 4.5353 4.26429L5.89253 9.69321L4.99995 10.5858C3.74002 11.8457 4.63235 14 6.41416 14H15C15.5522 14 16 13.5523 16 13C16 12.4477 15.5522 12 15 12L6.41417 12L7.41416 11H14C14.3788 11 14.725 10.786 14.8944 10.4472L17.8944 4.44721C18.0494 4.13723 18.0329 3.76909 17.8507 3.47427C17.6684 3.17945 17.3466 3 17 3H6.28078L5.97014 1.75746C5.85885 1.3123 5.45887 1 5 1H3Z",
+      fill: widget.setup.fontColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M16 16.5C16 17.3284 15.3284 18 14.5 18C13.6716 18 13 17.3284 13 16.5C13 15.6716 13.6716 15 14.5 15C15.3284 15 16 15.6716 16 16.5Z",
+      fill: widget.setup.fontColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M6.5 18C7.32843 18 8 17.3284 8 16.5C8 15.6716 7.32843 15 6.5 15C5.67157 15 5 15.6716 5 16.5C5 17.3284 5.67157 18 6.5 18Z",
+      fill: widget.setup.fontColor
+    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "25",
+      height: "25",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__header__close__arrow__image",
+      onClick: () => {
+        if (!isRelative) {
+          handleToggleChat();
+        }
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z",
+      fill: widget.setup.fontColor
+    }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__online__phrase__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__online__dot__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__online__dot__inner"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__online__phrase",
+      style: {
+        color: widget.setup.fontColor
+      }
+    }, widget.setup.onlinePhrase)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: curvyBorderImage,
+      alt: "wizy_curvy_border",
+      className: "WizybotShopifyWidget__headder__wave"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: createClientState === ECreateClientState.invisible ? 'WizybotShopifyWidget__email__requirement__outter__close' : 'WizybotShopifyWidget__email__requirement__outter__open'
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotMandatoryForm__inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotMandatoryForm__inputs__scroll"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotMandatoryForm__inputs__center"
+    }, nameRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__title"
+    }, widget.setup.mainLanguage === 'Spanish' ? 'Nombre' : widget.setup.mainLanguage === 'French' ? 'Nom' : widget.setup.mainLanguage === 'Portuguese' ? 'Nome' : widget.setup.mainLanguage === 'German' ? 'Name' : widget.setup.mainLanguage === 'Italian' ? 'Nome' : 'Name'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__2__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      className: "WizybotShopifyWidget__email__input__2",
+      value: name,
+      onChange: event => {
+        const {
+          value
+        } = event.currentTarget;
+        setName(value);
+      },
+      style: {
+        border: nameError ? '1px solid #ff3e3e' : ''
+      },
+      onKeyDown: event => {
+        if (event.key === 'Enter') {
+          if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
+            createClient();
+          }
+        }
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__prompt__1"
+    }, "Eg: John Doe")), emailRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__title"
+    }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__2__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      className: "WizybotShopifyWidget__email__input__2",
+      value: email,
+      onChange: event => {
+        const {
+          value
+        } = event.currentTarget;
+        setEmail(value);
+      },
+      style: {
+        border: emailError ? '1px solid #ff3e3e' : ''
+      },
+      onKeyDown: event => {
+        if (event.key === 'Enter') {
+          if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
+            createClient();
+          }
+        }
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__prompt__1"
+    }, "Eg: jhon.doe@email.com")), phoneRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__title"
+    }, widget.setup.mainLanguage === 'English' ? 'Phone' : widget.setup.mainLanguage === 'Spanish' ? 'Teléfono' : widget.setup.mainLanguage === 'French' ? 'Téléphone' : widget.setup.mainLanguage === 'Portuguese' ? 'Telefone' : widget.setup.mainLanguage === 'German' ? 'Telefon' : widget.setup.mainLanguage === 'Italian' ? 'Telefono' : 'Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_international_phone__WEBPACK_IMPORTED_MODULE_2__/* .PhoneInput */ .LR, {
+      defaultCountry: (_widget$setup$default = widget.setup.defaultCountryCode) !== null && _widget$setup$default !== void 0 ? _widget$setup$default : 'co',
+      value: phone,
+      onChange: phone => {
+        setPhone(phone);
+      },
+      inputStyle: {
+        borderTop: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderRight: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderBottom: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db')
+      },
+      countrySelectorStyleProps: {
+        buttonStyle: {
+          borderTop: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+          borderLeft: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+          borderBottom: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db')
+        }
+      },
+      inputProps: {
+        onKeyDown: e => {
+          if (e.key === 'Enter' && createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
+            createClient();
+          }
+        }
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__prompt__1"
+    }, "Eg: +573123456789")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__checkbox__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "checkbox",
+      name: "isNotCommercialized",
+      checked: subscriptionState,
+      onChange: () => {
+        setSubscriptionState(!subscriptionState);
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__input__checkbox__text"
+    }, widget.setup.mainLanguage === 'English' ? 'Sign up for our newsletter' : widget.setup.mainLanguage === 'Spanish' ? 'Suscríbete a nuestro boletín' : widget.setup.mainLanguage === 'French' ? 'Inscrivez-vous à notre newsletter' : widget.setup.mainLanguage === 'Portuguese' ? 'Assine a nossa newsletter' : widget.setup.mainLanguage === 'German' ? 'Melden Sie sich für unseren Newsletter an' : widget.setup.mainLanguage === 'Italian' ? 'Iscriviti alla nostra newsletter' : 'Sign up for our newsletter')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotMandatoryForm__footer"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__email__button__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "WizybotShopifyWidget__email__button",
+      style: {
+        width: '100%',
+        background: 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)',
+        color: widget.setup.fontColor
+      },
+      onClick: async () => {
+        if (createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
+          createClient();
+        }
+      }
+    }, createClientBackendState === ECreateClientBackendState.send ? widget.setup.mainLanguage === 'English' ? 'Send' : widget.setup.mainLanguage === 'Spanish' ? 'Enviar' : widget.setup.mainLanguage === 'French' ? 'Envoyer' : widget.setup.mainLanguage === 'Portuguese' ? 'Enviar' : widget.setup.mainLanguage === 'German' ? 'Schicken' : widget.setup.mainLanguage === 'Italian' ? 'Inviare' : 'Send' : widget.setup.mainLanguage === 'English' ? 'Loading...' : widget.setup.mainLanguage === 'Spanish' ? 'Cargando...' : widget.setup.mainLanguage === 'French' ? 'Chargement...' : widget.setup.mainLanguage === 'Portuguese' ? 'Carregando...' : widget.setup.mainLanguage === 'German' ? 'Wird geladen...' : widget.setup.mainLanguage === 'Italian' ? 'Caricamento...' : 'Loading...'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: cartState === ECartState.invisible ? 'WizybotShopifyWidget__cart__outter__close' : 'WizybotShopifyWidget__cart__outter__open'
+    }, cart !== null && isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+      cart: cart,
+      updateCart: updateCart,
+      language: widget.setup.mainLanguage,
+      agentName: widget.setup.agentName,
+      closeCart: handleToggleCartState,
+      languageUrl: languageUrl
+    }) : isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__products"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__no__products"
+    }, widget.setup.mainLanguage === 'English' ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : widget.setup.mainLanguage === 'Spanish' ? '¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?' : widget.setup.mainLanguage === 'French' ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : widget.setup.mainLanguage === 'Portuguese' ? 'Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?' : widget.setup.mainLanguage === 'German' ? 'Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?' : widget.setup.mainLanguage === 'Italian' ? 'Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?' : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__no__products__button",
+      style: {
+        width: '100%'
+      },
+      onClick: handleToggleCartState
+    }, widget.setup.mainLanguage === 'English' ? 'Chat with' : widget.setup.mainLanguage === 'Spanish' ? 'Habla con' : widget.setup.mainLanguage === 'French' ? 'Parler avec' : widget.setup.mainLanguage === 'Portuguese' ? 'Conversar com' : widget.setup.mainLanguage === 'German' ? 'Chatten Sie mit' : widget.setup.mainLanguage === 'Italian' ? 'Chat con' : 'Chat with', ' ', widget.setup.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__checkout"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__estimated"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated"
+    }, widget.setup.mainLanguage === 'English' ? 'Estimated total' : widget.setup.mainLanguage === 'Spanish' ? 'Total estimado' : widget.setup.mainLanguage === 'French' ? 'Total estimé' : widget.setup.mainLanguage === 'Portuguese' ? 'Total estimado' : widget.setup.mainLanguage === 'German' ? 'Geschätzte Gesamtsumme' : widget.setup.mainLanguage === 'Italian' ? 'Totale stimato' : 'Estimated total'), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__price"
+    }, "$0.00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "/cart",
+      target: "_blank",
+      rel: "noreferrer",
+      style: {
+        textDecoration: 'none'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__button",
+      style: {
+        width: '100%'
+      }
+    }, widget.setup.mainLanguage === 'English' ? 'Pay' : widget.setup.mainLanguage === 'Spanish' ? 'Pagar' : widget.setup.mainLanguage === 'French' ? 'Payer' : widget.setup.mainLanguage === 'Portuguese' ? 'Pagar' : widget.setup.mainLanguage === 'German' ? 'Bezahlen' : widget.setup.mainLanguage === 'Italian' ? 'Pagare' : 'Pay')))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__products"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__no__products",
+      style: {
+        width: 'fit-content'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "loader"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__checkout"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__outter__estimated"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated"
+    }, widget.setup.mainLanguage === 'English' ? 'Estimated total' : widget.setup.mainLanguage === 'Spanish' ? 'Total estimado' : widget.setup.mainLanguage === 'French' ? 'Total estimé' : widget.setup.mainLanguage === 'Portuguese' ? 'Total estimado' : widget.setup.mainLanguage === 'German' ? 'Geschätzte Gesamtsumme' : widget.setup.mainLanguage === 'Italian' ? 'Totale stimato' : 'Estimated total'), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__price"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "loader",
+      style: {
+        position: 'absolute',
+        transform: 'translate(-100%, -50%)',
+        left: '100%',
+        top: '50%'
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "/cart",
+      target: "_blank",
+      rel: "noreferrer",
+      style: {
+        textDecoration: 'none'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "WizybotShopifyWidget__cart__inner__estimated__button",
+      style: {
+        width: '100%'
+      }
+    }, widget.setup.mainLanguage === 'English' ? 'Pay' : widget.setup.mainLanguage === 'Spanish' ? 'Pagar' : widget.setup.mainLanguage === 'French' ? 'Payer' : widget.setup.mainLanguage === 'Portuguese' ? 'Pagar' : widget.setup.mainLanguage === 'German' ? 'Bezahlen' : widget.setup.mainLanguage === 'Italian' ? 'Pagare' : 'Pay'))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__chat__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__chat__inner"
+    }, messages.map((message, index) => {
+      var _message$content2;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        style: {
+          width: '100%'
+        },
+        key: index
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "WizybotShopifyWidget__chat__message__outter"
+      }, message.content && !((_message$content2 = message.content) !== null && _message$content2 !== void 0 && _message$content2.includes('{wizy_asset_reference}')) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "WizybotShopifyWidget__chat__message__inner",
+        style: {
+          marginLeft: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'auto' : '',
+          background: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)' : '',
+          color: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? widget.setup.fontColor : 'black'
+        }
+      }, convertToHTMLLink(message.content))), message.extraUIComponents && message.extraUIComponents.length > 0 ? message.extraUIComponents.map((extraUIComponent, i) => {
+        switch (extraUIComponent.type) {
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+              key: i,
+              content: extraUIComponent.content,
+              extraUIComponentIndex: i,
+              globalSelectedBackend: globalSelectedBackend,
+              domain: domain,
+              shopifyRootPath: shopifyRootPath,
+              message: message,
+              language: widget.setup.mainLanguage,
+              openCart: handleToggleCartState,
+              isShopifyForeing: isShopifyForeing
+            });
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART_WITH_SUBSCRIPTIONS:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+              key: i,
+              content: extraUIComponent.content,
+              extraUIComponentIndex: i,
+              globalSelectedBackend: globalSelectedBackend,
+              domain: domain,
+              shopifyRootPath: shopifyRootPath,
+              message: message,
+              language: widget.setup.mainLanguage,
+              noImageImage: noImageImage,
+              openCart: handleToggleCartState
+            });
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.RECOMMENDATION_CAROUSEL:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+              key: i,
+              content: extraUIComponent.content,
+              language: widget.setup.mainLanguage,
+              platform: platform
+            });
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+              noImageImage: noImageImage,
+              key: i,
+              content: extraUIComponent.content,
+              language: widget.setup.mainLanguage
+            });
+          default:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              key: i
+            });
+        }
+      }) : message.extraUIComponentReference ? message.extraUIComponentReference.map((extraUIComponent, i) => {
+        if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+            key: i,
+            content: {
+              title: extraUIComponent.title,
+              productId: extraUIComponent.productId,
+              productUrl: extraUIComponent.productUrl,
+              imageUrl: extraUIComponent.imageUrl,
+              imageAltText: extraUIComponent.imageAltText,
+              options: extraUIComponent.options,
+              infoArray: extraUIComponent.infoArray,
+              stateAction: extraUIComponent.stateAction,
+              stateSelection: extraUIComponent.stateSelection
+            },
+            extraUIComponentIndex: i,
+            globalSelectedBackend: globalSelectedBackend,
+            domain: domain,
+            shopifyRootPath: shopifyRootPath,
+            message: message,
+            language: widget.setup.mainLanguage,
+            openCart: handleToggleCartState,
+            isShopifyForeing: isShopifyForeing
+          });
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART_WITH_SUBSCRIPTIONS)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+            key: i,
+            content: {
+              title: extraUIComponent.title,
+              productId: extraUIComponent.productId,
+              productUrl: extraUIComponent.productUrl,
+              imageUrl: extraUIComponent.imageUrl,
+              imageAltText: extraUIComponent.imageAltText,
+              options: extraUIComponent.options,
+              infoArray: extraUIComponent.infoArray,
+              stateAction: extraUIComponent.stateAction,
+              stateSelection: extraUIComponent.stateSelection
+            },
+            extraUIComponentIndex: i,
+            globalSelectedBackend: globalSelectedBackend,
+            domain: domain,
+            shopifyRootPath: shopifyRootPath,
+            message: message,
+            language: widget.setup.mainLanguage,
+            noImageImage: noImageImage,
+            openCart: handleToggleCartState
+          });
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.RECOMMENDATION_CAROUSEL)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+            key: i,
+            content: {
+              cards: extraUIComponent.cards.map(card => {
+                if (card.cardType === 'product') {
+                  return {
+                    type: 'product',
+                    title: card.title,
+                    price: card.price,
+                    imageUrl: card.imageUrls[0],
+                    redirectUrl: card.redirectUrl
+                  };
+                } else {
+                  return {
+                    type: 'collection',
+                    title: card.title,
+                    imageUrls: card.imageUrls,
+                    redirectUrl: card.redirectUrl
+                  };
+                }
+              })
+            },
+            language: widget.setup.mainLanguage,
+            platform: platform
+          });
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CARD)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+            noImageImage: noImageImage,
+            content: {
+              title: extraUIComponent.title,
+              price: extraUIComponent.price,
+              imageUrl: extraUIComponent.imageUrl,
+              redirectUrl: extraUIComponent.redirectUrl,
+              variantTitle: extraUIComponent.variantTitle,
+              productId: extraUIComponent.productId,
+              productUrl: extraUIComponent.productUrl,
+              stock: extraUIComponent.stock
+            },
+            language: widget.setup.mainLanguage
+          });
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CART)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
+            noImageImage: noImageImage,
+            content: extraUIComponent,
+            language: widget.setup.mainLanguage
+          });
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_MEDIA)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+            key: i,
+            isAdmin: isAdmin,
+            content: extraUIComponent,
+            extraUIComponentIndex: i,
+            globalSelectedBackend: globalSelectedBackend,
+            domain: domain,
+            message: message,
+            language: widget.setup.mainLanguage,
+            getClientIpInfo: getClientIpInfo
+          });
+        } else {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+            key: i
+          });
+        }
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), message.hasMedia ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "WizybotShopifyWidget__chat__message__outter",
+        style: {
+          justifyContent: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'flex-end' : 'flex-start'
+        }
+      }, message.localMediaUrl ?
+      /*#__PURE__*/
+      // Local preview for user's just-sent image (optimistic)
+      react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "ChatMedia__outter"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "ChatMedia__inner",
+        style: {
+          width: 'fit-content',
+          height: 'fit-content'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        href: message.localMediaUrl,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        style: {
+          zIndex: 1
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "ChatMedia__image",
+        src: message.localMediaUrl,
+        alt: "Uploaded image",
+        style: {
+          zIndex: 1,
+          display: 'block'
+        }
+      })))) : message.id ?
+      /*#__PURE__*/
+      // Server media (historical or received messages)
+      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_WidgetMedia__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A, {
+        messageId: message.id,
+        isAsset: message.isAsset,
+        globalSelectedBackend: globalSelectedBackend,
+        mainLanguage: widget.setup.mainLanguage,
+        widgetLoader: widgetLoader
+      }) : null) : null);
+    }), isTyping ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__chat__message__outter",
+      key: "LoadingDots"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__chat__message__inner",
+      style: {
+        color: 'black'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "loader"
+    }))) : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__input__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__send__button__outter",
+      style: {
+        background: 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)',
+        opacity: isSendButtonActive ? '1' : '0',
+        visibility: isSendButtonActive ? 'visible' : 'hidden'
+      },
+      onClick: () => {
+        if (chatState === EChatState.close) {
+          handleToggleChat();
+        } else {
+          handleMessageSend();
+        }
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      width: "20",
+      height: "20",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__open__button__image",
+      style: {
+        transform: 'scale(1) translate(-50%, -50%)'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M17.4472 9.10556C17.786 9.27495 18 9.62122 18 9.99999C18 10.3788 17.786 10.725 17.4472 10.8944L3.44721 17.8944C3.09251 18.0718 2.66653 18.0228 2.36136 17.7695C2.0562 17.5162 1.92953 17.1066 2.03848 16.7253L3.46704 11.7253C3.5897 11.296 3.98209 11 4.42857 11L9 11C9.55229 11 10 10.5523 10 10C10 9.44771 9.55229 9 9 9H4.42857C3.98209 9 3.58971 8.70402 3.46705 8.27472L2.03848 3.27471C1.92953 2.8934 2.0562 2.48374 2.36136 2.23048C2.66653 1.97722 3.09251 1.92821 3.44721 2.10556L17.4472 9.10556Z",
+      fill: widget.setup.fontColor
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__input__inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__chat__input__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      name: "message",
+      value: newMessage,
+      type: "text",
+      className: "WizybotShopifyWidget__chat__input",
+      placeholder: widget.setup.mainLanguage === 'English' ? 'Enter your message...' : widget.setup.mainLanguage === 'Spanish' ? 'Ingrese su mensaje..' : widget.setup.mainLanguage === 'French' ? 'Entrez votre message...' : widget.setup.mainLanguage === 'Portuguese' ? 'Digite sua mensagem...' : widget.setup.mainLanguage === 'German' ? 'Geben Sie eine Nachricht ein...' : widget.setup.mainLanguage === 'Italian' ? 'Inserisci il tuo messaggio...' : 'Enter your message...',
+      onChange: event => {
+        setNewMessage(event.currentTarget.value);
+      },
+      onKeyDown: event => {
+        if (event.key === 'Enter') {
+          handleMessageSend();
+        }
+      }
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__emojis__propaganda__outter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__emojis__propaganda__inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      ref: actionsMenuRef,
+      style: {
+        position: 'relative',
+        display: 'flex'
+      }
+    }, actionsMenuState === EActionsMenuState.visible && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        position: 'absolute',
+        bottom: '40px',
+        left: '0',
+        backgroundColor: '#ffffff',
+        borderRadius: '8px',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+        padding: '8px',
+        minWidth: '150px',
+        zIndex: 1000,
+        animation: 'fadeInUp 0.2s ease-out'
+      }
+    }, actionsMenuItems.map(item => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: item.id,
+      onClick: item.onClick,
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '10px 12px',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        transition: 'background-color 0.2s'
+      },
+      onMouseEnter: e => {
+        e.currentTarget.style.backgroundColor = 'rgba(130, 177, 230, 0.1)';
+      },
+      onMouseLeave: e => {
+        e.currentTarget.style.backgroundColor = 'transparent';
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        marginRight: '10px'
+      }
+    }, item.icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      style: {
+        fontSize: '14px',
+        color: '#333',
+        fontWeight: 500
+      }
+    }, item.label)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "file",
+      ref: fileInputRef,
+      onChange: handleImageUpload,
+      style: {
+        display: 'none'
+      },
+      accept: "image/png, image/jpeg, image/jpg, image/gif, image/webp"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__emojis__outter",
+      onClick: handleToggleActionsMenu,
+      style: {
+        marginRight: '5px'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      id: "ic_actionsMenu",
+      fill: "#000000",
+      height: "20",
+      viewBox: "0 0 24 24",
+      width: "20",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "WizybotShopifyWidget__emojis__image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M0 0h24v24H0z",
+      fill: "none"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__emojis__outter",
+      onClick: addRandomNiceEmoji
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+      id: "ic_emojiSwitch",
+      fill: "#000000",
+      height: "20",
+      viewBox: "0 0 24 24",
+      width: "20",
+      xmlns: "http://www.w3.org/2000/svg",
+      "aria-hidden": "true",
+      className: "WizybotShopifyWidget__emojis__image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M0 0h24v24H0z",
+      fill: "none"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+      d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__propaganda__outter",
+      style: {
+        visibility: widget.setup.hideWizybotBanner ? 'hidden' : 'visible'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__propaganda__text"
+    }, "POWERED BY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: "https://apps.shopify.com/wizybot",
+      target: "_blank",
+      rel: "noreferrer",
+      style: {
+        textDecoration: 'none'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__propaganda__logo__outter"
+    }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: wizyLogoImage,
+      alt: "wizy_logo_blue",
+      className: "WizybotShopifyWidget__propaganda__logo__image"
+    }), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "WizybotShopifyWidget__propaganda__logo__text"
+    }, "Wizybot")))))))));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+  }
+};
+
+// Default exported function
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WordpressWidget);
+
+/***/ }),
+
 /***/ 849:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3006,7 +3003,7 @@ const WidgetMedia = props => {
 /* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(68);
+/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(486);
 // Import React Dependencies
 
 
@@ -3497,7 +3494,7 @@ const Add2Cart = props => {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
 /* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(394);
-/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(68);
+/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(486);
 // Import React Dependencies
 
 
@@ -3681,7 +3678,7 @@ const AddMedia = props => {
 /* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(68);
+/* harmony import */ var _extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(486);
 // Import React Dependencies
 
 
@@ -4370,8 +4367,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./src/extraUIcomponents/extraUIComponentTypes.ts
-var extraUIComponentTypes = __webpack_require__(68);
+// EXTERNAL MODULE: ./src/extraUIcomponents/extraUIComponentTypes.ts + 1 modules
+var extraUIComponentTypes = __webpack_require__(486);
 ;// CONCATENATED MODULE: ./src/extraUIcomponents/ProductCart/dictionary.ts
 const quantityDictionaryProductCart = {
   English: "Quantity",
@@ -4592,7 +4589,7 @@ const RecommendationCarousel = props => {
 
 /***/ }),
 
-/***/ 468:
+/***/ 719:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4608,7 +4605,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
 // Import React Dependencies
 
 // Page main functional component
-const ShopifyWidgetCart = props => {
+const WordpressWidgetCart = props => {
   // Use state
   const [cartToUpdate, setCartToUpdate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.cart);
   const [updateTimeout, setUpdateTimeout] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
@@ -4649,7 +4646,7 @@ const ShopifyWidgetCart = props => {
   function currencyFormat(price, currency) {
     // Check if the number has decimal
     // eslint-disable-next-line
-    const formatedMoney = eval("Shopify.formatMoney(" + price + ")");
+    const formatedMoney = eval('Shopify.formatMoney(' + price + ')');
 
     // Add commas for thousands separators
     return formatedMoney;
@@ -4677,7 +4674,7 @@ const ShopifyWidgetCart = props => {
       className: "WizybotShopifyWidget__cart__add__prouct__name__inner"
     }, item.productTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__cart__add__prouct__sku__inner"
-    }, item.variantTitle !== "" && item.variantTitle !== null ? item.variantTitle : props.language === "English" ? "Unique" : props.language === "Spanish" ? "Único" : props.language === "French" ? "Unique" : props.language === "Portuguese" ? "Único" : props.language === "German" ? "Einzigartig" : props.language === "Italian" ? "unico" : "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, item.variantTitle !== '' && item.variantTitle !== null ? item.variantTitle : props.language === 'English' ? 'Unique' : props.language === 'Spanish' ? 'Único' : props.language === 'French' ? 'Unique' : props.language === 'Portuguese' ? 'Único' : props.language === 'German' ? 'Einzigartig' : props.language === 'Italian' ? 'unico' : 'Unique'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__cart__add__prouct__quantity__delete"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__cart__add__product__option__quantity__outter"
@@ -4696,7 +4693,7 @@ const ShopifyWidgetCart = props => {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
       d: "M19.1111 12.7778H4.88889C4.40296 12.7778 4 12.3748 4 11.8889C4 11.403 4.40296 11 4.88889 11H19.1111C19.597 11 20 11.403 20 11.8889C20 12.3748 19.597 12.7778 19.1111 12.7778Z",
       fill: "#222251"
-    }))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }))), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__cart__add__product__option__quantity__counter"
     }, item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       onClick: () => {
@@ -4718,92 +4715,106 @@ const ShopifyWidgetCart = props => {
     }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null))))));
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__no__products"
-  }, props.language === "English" ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : props.language === "Spanish" ? "¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?" : props.language === "French" ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : props.language === "Portuguese" ? "Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?" : props.language === "German" ? "Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?" : props.language === "Italian" ? "Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?" : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : props.language === 'Spanish' ? '¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?' : props.language === 'French' ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : props.language === 'Portuguese' ? 'Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?' : props.language === 'German' ? 'Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?' : props.language === 'Italian' ? 'Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?' : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "WizybotShopifyWidget__cart__inner__estimated__no__products__button",
     style: {
-      width: "100%"
+      width: '100%'
     },
     onClick: props.closeCart
-  }, props.language === "English" ? "Chat with" : props.language === "Spanish" ? "Habla con" : props.language === "French" ? "Parler avec" : props.language === "Portuguese" ? "Conversar com" : props.language === "German" ? "Chatten Sie mit" : props.language === "Italian" ? "Chat con" : "Chat with", " ", props.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? 'Chat with' : props.language === 'Spanish' ? 'Habla con' : props.language === 'French' ? 'Parler avec' : props.language === 'Portuguese' ? 'Conversar com' : props.language === 'German' ? 'Chatten Sie mit' : props.language === 'Italian' ? 'Chat con' : 'Chat with', ' ', props.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__checkout"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__estimated"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated"
-  }, props.language === "English" ? "Estimated total" : props.language === "Spanish" ? "Total estimado" : props.language === "French" ? "Total estimé" : props.language === "Portuguese" ? "Total estimado" : props.language === "German" ? "Geschätzte Gesamtsumme" : props.language === "Italian" ? "Totale stimato" : "Estimated total"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? 'Estimated total' : props.language === 'Spanish' ? 'Total estimado' : props.language === 'French' ? 'Total estimé' : props.language === 'Portuguese' ? 'Total estimado' : props.language === 'German' ? 'Geschätzte Gesamtsumme' : props.language === 'Italian' ? 'Totale stimato' : 'Estimated total'), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__price"
   }, currencyFormat(cartToUpdate.totalPrice, cartToUpdate.currency))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    href: props.languageUrl && props.languageUrl !== "/" ? props.languageUrl + "/cart" : "/cart",
+    href: props.languageUrl && props.languageUrl !== '/' ? props.languageUrl + '/cart' : '/cart',
     target: "_blank",
     rel: "noreferrer",
     style: {
-      textDecoration: "none"
+      textDecoration: 'none'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button",
     style: {
-      width: "100%"
+      width: '100%'
     }
-  }, props.language === "English" ? "Pay" : props.language === "Spanish" ? "Pagar" : props.language === "French" ? "Payer" : props.language === "Portuguese" ? "Pagar" : props.language === "German" ? "Bezahlen" : props.language === "Italian" ? "Pagare" : "Pay"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? 'Pay' : props.language === 'Spanish' ? 'Pagar' : props.language === 'French' ? 'Payer' : props.language === 'Portuguese' ? 'Pagar' : props.language === 'German' ? 'Bezahlen' : props.language === 'Italian' ? 'Pagare' : 'Pay'))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__products"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__no__products"
-  }, props.language === "English" ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : props.language === "Spanish" ? "¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?" : props.language === "French" ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : props.language === "Portuguese" ? "Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?" : props.language === "German" ? "Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?" : props.language === "Italian" ? "Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?" : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?" : props.language === 'Spanish' ? '¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?' : props.language === 'French' ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?" : props.language === 'Portuguese' ? 'Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?' : props.language === 'German' ? 'Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?' : props.language === 'Italian' ? 'Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?' : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "WizybotShopifyWidget__cart__inner__estimated__no__products__button",
     style: {
-      width: "100%"
+      width: '100%'
     },
     onClick: props.closeCart
-  }, props.language === "English" ? "Chat with" : props.language === "Spanish" ? "Habla con" : props.language === "French" ? "Parler avec" : props.language === "Portuguese" ? "Conversar com" : props.language === "German" ? "Chatten Sie mit" : props.language === "Italian" ? "Chat con" : "Chat with", " ", props.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? 'Chat with' : props.language === 'Spanish' ? 'Habla con' : props.language === 'French' ? 'Parler avec' : props.language === 'Portuguese' ? 'Conversar com' : props.language === 'German' ? 'Chatten Sie mit' : props.language === 'Italian' ? 'Chat con' : 'Chat with', ' ', props.agentName)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__checkout"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__outter__estimated"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated"
-  }, props.language === "English" ? "Estimated total" : props.language === "Spanish" ? "Total estimado" : props.language === "French" ? "Total estimé" : props.language === "Portuguese" ? "Total estimado" : props.language === "German" ? "Geschätzte Gesamtsumme" : props.language === "Italian" ? "Totale stimato" : "Estimated total"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, props.language === 'English' ? 'Estimated total' : props.language === 'Spanish' ? 'Total estimado' : props.language === 'French' ? 'Total estimé' : props.language === 'Portuguese' ? 'Total estimado' : props.language === 'German' ? 'Geschätzte Gesamtsumme' : props.language === 'Italian' ? 'Totale stimato' : 'Estimated total'), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__price"
   }, "$0.00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button__outter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    href: props.languageUrl && props.languageUrl !== "/" ? props.languageUrl + "/cart" : "/cart",
+    href: props.languageUrl && props.languageUrl !== '/' ? props.languageUrl + '/cart' : '/cart',
     target: "_blank",
     rel: "noreferrer",
     style: {
-      textDecoration: "none"
+      textDecoration: 'none'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "WizybotShopifyWidget__cart__inner__estimated__button",
     style: {
-      width: "100%"
+      width: '100%'
     }
-  }, props.language === "English" ? "Pay" : props.language === "Spanish" ? "Pagar" : props.language === "French" ? "Payer" : props.language === "Portuguese" ? "Pagar" : props.language === "German" ? "Bezahlen" : props.language === "Italian" ? "Pagare" : "Pay")))))));
+  }, props.language === 'English' ? 'Pay' : props.language === 'Spanish' ? 'Pagar' : props.language === 'French' ? 'Payer' : props.language === 'Portuguese' ? 'Pagar' : props.language === 'German' ? 'Bezahlen' : props.language === 'Italian' ? 'Pagare' : 'Pay')))))));
 };
 
 // Default exported function
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShopifyWidgetCart);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WordpressWidgetCart);
 
 /***/ }),
 
-/***/ 68:
+/***/ 486:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Az: () => (/* binding */ EAddToCartStateActions),
-/* harmony export */   Wz: () => (/* binding */ getNewExtraUIComponentTitle),
-/* harmony export */   Zo: () => (/* binding */ EAddMediaStateActions),
-/* harmony export */   ks: () => (/* binding */ isExtraUIComponentType),
-/* harmony export */   q2: () => (/* binding */ EExtraUIComponentTypes),
-/* harmony export */   qH: () => (/* binding */ ENewExtraUIComponentTypes)
-/* harmony export */ });
-/* unused harmony export INewProductCardTypeExtraUIComponent */
-/* harmony import */ var _components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(822);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Zo: () => (/* binding */ EAddMediaStateActions),
+  Az: () => (/* binding */ EAddToCartStateActions),
+  q2: () => (/* binding */ EExtraUIComponentTypes),
+  qH: () => (/* binding */ ENewExtraUIComponentTypes),
+  Wz: () => (/* binding */ getNewExtraUIComponentTitle),
+  ks: () => (/* binding */ isExtraUIComponentType)
+});
+
+// UNUSED EXPORTS: INewProductCardTypeExtraUIComponent
+
+;// CONCATENATED MODULE: ./src/components/WidgetTypes.ts
+let EMainLanguage = /*#__PURE__*/function (EMainLanguage) {
+  EMainLanguage["SPANISH"] = "Spanish";
+  EMainLanguage["ENGLISH"] = "English";
+  EMainLanguage["PORTUGUESE"] = "Portuguese";
+  EMainLanguage["FRENCH"] = "French";
+  EMainLanguage["GERMAN"] = "German";
+  EMainLanguage["ITALIAN"] = "Italian";
+  return EMainLanguage;
+}({});
+;// CONCATENATED MODULE: ./src/extraUIcomponents/extraUIComponentTypes.ts
 // EXTRA UI COMPONENTS
 
 
@@ -4857,14 +4868,14 @@ function getNewExtraUIComponentTitle(extraUIComponent, language) {
     return extraUIComponent.title;
   } else if (isExtraUIComponentType(extraUIComponent, ENewExtraUIComponentTypes.PRODUCT_CART)) {
     const titles = {
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.ENGLISH]: "Cart",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.SPANISH]: "Carrito",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.PORTUGUESE]: "Carrinho",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.FRENCH]: "Panier",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.GERMAN]: "Wagen",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.ITALIAN]: "Carrello"
+      [EMainLanguage.ENGLISH]: 'Cart',
+      [EMainLanguage.SPANISH]: 'Carrito',
+      [EMainLanguage.PORTUGUESE]: 'Carrinho',
+      [EMainLanguage.FRENCH]: 'Panier',
+      [EMainLanguage.GERMAN]: 'Wagen',
+      [EMainLanguage.ITALIAN]: 'Carrello'
     };
-    return titles[language] || "Cart";
+    return titles[language] || 'Cart';
   } else if (isExtraUIComponentType(extraUIComponent, ENewExtraUIComponentTypes.ADD_TO_CART)) {
     return extraUIComponent.title;
   } else if (isExtraUIComponentType(extraUIComponent, ENewExtraUIComponentTypes.ADD_TO_CART_WITH_SUBSCRIPTIONS)) {
@@ -4875,14 +4886,14 @@ function getNewExtraUIComponentTitle(extraUIComponent, language) {
     return extraUIComponent.title;
   } else {
     const unknownTitles = {
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.ENGLISH]: "Unknown component",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.SPANISH]: "Componente desconocido",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.PORTUGUESE]: "Componente desconhecido",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.FRENCH]: "Composant inconnu",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.GERMAN]: "Unbekannte Komponente",
-      [_components_ShopifyWidget__WEBPACK_IMPORTED_MODULE_0__/* .EMainLanguage */ .PW.ITALIAN]: "Componente sconosciuto"
+      [EMainLanguage.ENGLISH]: 'Unknown component',
+      [EMainLanguage.SPANISH]: 'Componente desconocido',
+      [EMainLanguage.PORTUGUESE]: 'Componente desconhecido',
+      [EMainLanguage.FRENCH]: 'Composant inconnu',
+      [EMainLanguage.GERMAN]: 'Unbekannte Komponente',
+      [EMainLanguage.ITALIAN]: 'Componente sconosciuto'
     };
-    return unknownTitles[language] || "Unknown component";
+    return unknownTitles[language] || 'Unknown component';
   }
 }
 
@@ -8266,7 +8277,7 @@ class WS extends Transport {
                         opts.compress = packet.options.compress;
                     }
                     if (this.opts.perMessageDeflate) {
-                        const len =
+                        const len = 
                         // @ts-ignore
                         "string" === typeof data ? Buffer.byteLength(data) : data.length;
                         if (len < this.opts.perMessageDeflate.threshold) {
@@ -10864,7 +10875,7 @@ Object.assign(esm_lookup, {
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -10878,14 +10889,14 @@ Object.assign(esm_lookup, {
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -10898,7 +10909,7 @@ Object.assign(esm_lookup, {
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -10910,7 +10921,7 @@ Object.assign(esm_lookup, {
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -10922,12 +10933,12 @@ Object.assign(esm_lookup, {
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -10938,7 +10949,7 @@ Object.assign(esm_lookup, {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -13993,11 +14004,11 @@ const Spanish_chat_namespaceObject = /*#__PURE__*/JSON.parse('{"DateUnavailable"
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/chat.json
 const Portuguese_chat_namespaceObject = /*#__PURE__*/JSON.parse('{"DateUnavailable":"Data indisponível","Error":"Você precisa desativar a IA para enviar mensagens","ErrorT":"Chat ao vivo","ChatsD":"Você pode buscar clientes que acabaram de entrar em contato com sua loja, respondê-los ou ver como a IA lida com suas solicitações.","Ticket":"Ticket","Select":"Selecionar um cliente","NoName":"Sem nome","NoLastname":"Sem sobrenome","NoPhone":"Sem telefone","NoLocation":"Sem localização","NoComputer":"Computador não identificado","NoIp":"Endereço IP não identificado","NoCreation":"Sem data de criação","Unsubed":"Descadastrado","Subed":"Cadastrado","Enter":"Digite sua mensagem aqui...","NewClient":"Novo cliente!","CorrectMessage":"Melhorar resposta","Filters":"Filtros","FiltersD":"Filtre seus chats por e-mail do cliente ou data","Text":"Texto","EgNoMeta":"Email, Nome, Sobrenome...","EgMeta":"Email, Nome, Número do WhatsApp, Usuário do Instagram...","Date":"Data","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Limpar filtros","You":"Você","All":"Todos","WithSale":"Vendas","Sale!":"Venda!","Sales":"Vendas","WhatsAppWindowExceeded":"A última mensagem do cliente foi há mais de 24 horas, então você só pode responder com modelos aprovados","MessengerWindowExceeded":"A última mensagem do cliente foi há mais de 7 dias, então ele só pode ser contatado pela caixa de entrada do Messenger","MessageFailed":"Houve um erro ao enviar esta mensagem. Se o problema persistir, entre em contato com o suporte.","SourceDeleted":"A conta pela qual esta conversa ocorreu foi excluída desta loja no Wizybot, portanto você não poderá receber ou enviar mensagens por ela","MessageDeleted":"Esta mensagem foi excluída","Channel":"Canal","MaxLimitErrorD":"O arquivo {{fileName}} excede o tamanho máximo permitido para sua extensão ({{fileExtension}}: {{fileMaxSize}})","MaxLimitError":"Arquivo muito grande","FileNotSupportedD":"Arquivos com extensão {{fileExtension}} não podem ser enviados por este canal.","FileNotSupported":"Arquivo não suportado","PdfDocumentTitle":"Documento PDF","SpreadsheetsDocumentTitle":"Planilhas","SlidesDocumentTitle":"Apresentação","TextDocumentTitle":"Arquivo de texto","AttachedDocumentTitle":"Arquivo anexado","MediaNotAvailable":"Arquivo não disponível","StoryResponse":"Respondeu à sua história","SharedPost":"Compartilhou uma publicação","StoryMention":"Mencionou você em uma história","SendTemplate":"Enviar modelo","WhatsAppNumberSelection":"1. Selecione o número pelo qual deseja enviar o modelo","TemplateSelection":"2. Selecione o modelo que deseja enviar","ProductCardUnSelected":"Selecione um produto","ProductCardSelected":"Este produto será enviado","ProductCardSearch":"Buscar produto","ProductCardAvailable":"Disponível","ProductCardUnavailable":"Indisponível","ProductCartSelected":"O seguinte carrinho será enviado","ProductCartUnSelected":"Montar carrinho","ProductCartPossible":"Resultados da busca","ProductCartClear":"Esvaziar","ProductCartTotal":"Total","ProductCartSave":"Salvar carrinho","ProductCartSend":"Enviar carrinho","ProductCartSearch":"Buscar produto","ProductCartAvailable":"Disponível","ProductCartUnavailable":"Indisponível","ProductCartSelect":"Selecionar carrinho","HumanAgentTitle":"Janela de 24 horas","HumanAgentPrompt":"A última mensagem do cliente foi há mais de 24 horas. De acordo com as políticas da Meta, você só pode responder com as informações solicitadas pelo cliente. Esta mensagem será enviada por um agente humano e não gera custos adicionais.","Return":"Voltar","Send":"Enviar","GoToInbox":"Ir para o chat","Converting":"Convertendo","LastMessageReplyEmailSend":"Responder","NewMessageEmailSend":"Novo","EmailSubject":"Assunto","CommandPannelActionReplace":"Substituir","CommandPannelActionReplaceWithFiles":"Substituir por Arquivos","CreateNewCommand":"Criar novo comando","CreateNewCommandDescription":"Criar uma nova descrição de comando","Commands":"Comandos","CommandPannelAction":"Ação","CommandPannelCommand":"Comando","CommandPannelValue":"Valor","UpdateCommand":"Atualizar comando","DeleteCommand":"Excluir comando","ManageCommands":"Gerenciar comandos","ManageCommandsDescription":"Gerencie os comandos que podem ser usados no chat","ManageCommandBack":"Voltar","ManageCommandDelete":"Excluir","ManageCommandUpdate":"Atualizar","ManageCommandCancel":"Cancelar","ManageCommandCreate":"Criar","EditCommand":"Editar comando","SearchCommands":"Buscar comandos","NoCommandsFound":"Nenhum comando encontrado","CommandAlreadyExists":"O comando já existe","SharedLocation":"Compartilhou uma localização com você","SharedContacts":"Compartilhou os seguintes contatos com você","SharedContact":"Compartilhou um contato com você","Phone":"Telefone","Email":"Email","Organization":"Organização","Company":"Empresa","Departament":"Departamento","Title":"Cargo","Address":"Endereços","Street":"Endereço","City":"Cidade","State":"Estado","Zip":"CEP","Country":"País","CELL":"Celular","WORK":"Trabalho","HOME":"Casa","RepliedTo":"Respondeu a:","InvalidPhone":"Número inválido","NeedHelp":"Precisam de atenção","AIHandled":"Gerenciados por IA","MyBoard":"Minhas conversas","Backlog":"Outras","Closed":"Fechado","Claim":"Reivindicar","CloseAllTickets":"Você deve marcar os tickets pendentes do cliente como resolvidos antes de fechar a conversa","CloseConfirmation":"Fechar conversa","ChooseDefaultAssignedTo":"Quando o cliente voltar a escrever será atribuído a: ","CloseConversation":"Fechar conversa","Sending":"Enviando","WhatsappSourceMonitoring":"Esta conta é apenas para monitoramento. Não é possível enviar mensagens, apenas visualizá-las.","AssignedToOthers":"Atribuído a outros","Close":"Fechar","RedirectedbyAd":"Redirecionado por anúncio:","SeeAd":"Ver anúncio","Reply":"Responder","ReplyingTo":"Respondendo a:","New":"Novo","ChooseConversationTags":"Escolha as etiquetas relacionadas com esta conversa:","ConversationTagsPlaceholder":"Pesquisar etiqueta","AttachFiles":"Anexar Arquivos","ManageFiles":"Gerenciar Arquivos","SelectedFiles":"Arquivos Selecionados","Images":"Imagens","Videos":"Vídeos","Audio":"Áudio","Documents":"Documentos","SearchFiles":"Pesquisar {{mediaType}}s","CommandNameRequired":"Nome do comando é obrigatório","NoCommandsAvailable":"Nenhum comando disponível","NotSupported":"Não compatível com este canal","FileTypeNotSupported":"Tipo de arquivo não compatível","FileSizeExceeds":"O arquivo excede {{maxSize}}MB limite","Accept":"Aceitar","Reject":"Rejeitar","TransferTo":"Transferir para:","CancelTransfer":"Cancelar transferência","InTransfer":"Transferindo","TransferRequest":"Transferir","ClickToDownload":"Clique para baixar mídia","SelectShop":"Selecionar loja","IncludeProductsWithoutStock":"Incluir produtos sem estoque","CustomerInfo":"Informações do cliente","SelectOpt":"Selecione uma opção","ViewDetail":"Ver detalhe","AddNote":"Criar nota","InfoState":"Permite abrir ou fechar a conversa atual.","InfoCurrentAgent":"Mostra o agente que está respondendo ao cliente neste momento.","InfoPreferredAgent":"Indica o agente para o qual a conversa será reatribuída se for fechada e depois reaberta.","InfoTransferTo":"Permite transferir a conversa para outro agente imediatamente.","IncludeProd":"Incluir produtos esgotados","Attachment":"Anexo","Templates":"Modelos","Products":"Produtos","Cart":"Carrinho","ViewMore":"Ver mais","ViewLess":"Ver menos","Inbox":"Conversas","TextFilter":"Pesquisar","FilterAll":"Todos","FilterNoreply":"Sem responder","LoadingSupervisions":"Carregando supervisões","WhatsAppTemplate":"Modelo do WhatsApp","TemplateDocument":"Documento","TemplateLocation":"Localização","TemplateDownload":"Baixar","TemplateOpenMaps":"Abrir no Google Maps","TemplateVideoNotSupported":"Seu navegador não suporta a tag de vídeo.","ClickToCopy":"Clique para copiar","CreateTicket":"Criar Ticket","Name":"Nome","Description":"Descrição","Departments":"Departamentos","Tags":"Etiquetas","DownloadAs":"Baixar como","RightClickToDownload":"Clique direito para opções","ImageOptions":"Opções de imagem","OpenInNewTab":"Abrir em nova aba","OpenMap":"Abrir no Maps","SendOption":"Opção de envio","SendOptionCart":"Enviar URL do carrinho","SendOptionDraft":"Criar rascunho de pedido","DiscountValue":"Valor do desconto","DiscountType":"Tipo de desconto","DiscountTypePercent":"Porcentagem (%)","DiscountTypeFixed":"Monto fixo ($)","PaymentMonitoring":"Monitoramento de pagamento","PaymentStatus":"Status","PaymentFound":"Pagamento encontrado","PaymentNotFound":"Pagamento não encontrado","PaymentReviewDate":"Última data de revisão","PaymentAmount":"Valor","PaymentSenderName":"Remetente","PaymentValueUnavailable":"Indisponível","PaymentSenderUnavailable":"Indisponível","LoadMoreMessages":"Carregar mais mensagens","PinConversation":"Fixar conversa","UnpinConversation":"Desafixar conversa","EmailRichInput":{"RichTextEditorTitle":"Formatar texto","EmojiPickerTitle":"Inserir emoji","WizyAutoCompleteTitle":"Resposta gerada por IA","SignaturePickerTitle":"Assinatura","NoSignature":"Sem assinatura","NoSignaturesHint":"Vá para Configurações → Conta → Seção de e-mail → Gerenciar assinaturas e clique em Adicionar assinatura para criar uma nova","Resize":{"FloatLeft":"Esq.","FloatRight":"Dir.","Center":"Centro","Restore":"Normal","AltTip":"Segure Alt para manter a proporção","InputTip":"Pressione Enter para aplicar"},"CommandsPlaceholder":{"TypeForCommands":"Digite","ForCommands":"para ver os comandos"}},"EmailCommand":{"CreateNew":"Criar novo comando","CreateNewDescription":"Crie um novo comando reutilizável de resposta rápida","ActionReplace":"Substituir por texto","ActionReplaceWithFiles":"Substituir por texto e anexos","NoMatch":"Nenhum comando corresponde a \\"{{filter}}\\"","NoneYet":"Ainda não há comandos","InsertEditHint":"Clique para inserir · {{modifier}}+clique para editar","NotSupported":"Não suportado","NoText":"Sem texto","SearchPlaceholder":"Buscar comandos…","ClickToEdit":"+ clique para editar","Back":"Voltar","DeleteConfirm":"Excluir?","DeleteYes":"Sim","DeleteNo":"Não","DeleteTitle":"Excluir comando","BodyPlaceholder":"Texto que será inserido quando este comando for usado…","NamePlaceholder":"nome_comando — ex. politica_de_reembolso","NameRequired":"O nome é obrigatório","NameExists":"Já existe um comando com este nome","AttachmentsManage_one":"{{count}} anexo — clique para gerenciar","AttachmentsManage_other":"{{count}} anexos — clique para gerenciar","AttachmentsEmpty":"Anexar arquivos (opcional)","Manage":"Gerenciar","Cancel":"Cancelar","Saving":"Salvando…","Save":"Atualizar comando","Creating":"Criando…","Create":"Criar comando"},"FileUpload":{"TabImages":"Imagens","TabVideos":"Vídeos","TabAudio":"Áudios","TabDocs":"Documentos","Type_image":"imagens","Type_video":"vídeos","Type_audio":"áudios","Type_file":"arquivos","UploadButton":"Enviar","SearchPlaceholder":"Buscar {{type}}…","NoneFound":"Nenhum {{type}} encontrado","NotSupported":"Não suportado","Selected_one":"Selecionado ({{count}})","Selected_other":"Selecionados ({{count}})","Remove":"Remover","Back":"Voltar","PreviewAlt":"Pré-visualização","PdfTitle":"PDF","LabelPlaceholder":"Etiqueta — ex. foto do produto","DescriptionPlaceholder":"Descrição — sobre o que é este arquivo?","Discard":"Descartar","Save":"Salvar"},"ImagesHidden":"As imagens estão ocultas.","ImagesDisplayed":"As imagens são exibidas.","DisplayImages":"Exibir imagens","HideImages":"Ocultar imagens","MetaTemplate":"Modelo de Meta","FileNotSupportedError":"Archivo no compatible","FileNotSupportedErrorD":"Este tipo de archivo no es compatible. Por favor, sube un archivo válido.","DropFilesHere":"Solte os arquivos aqui","DropFilesHereD":"Suporta imagens, documentos e vídeos"}');
 ;// CONCATENATED MODULE: ./src/translations/English/clients.json
-const clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"New Client","Filters":"Filters","Text":"Text","EgNoMeta":"Email, First Name, Last Name...","EgMeta":"Email, First Name, WA, IG...","LastMessageDate":"Date of the last message","DateI":"Start Date","DateF":"End Date","Sales":"Sales","All":"All","WithSales":"With Sales","Channel":"Channel","Apply":"Apply","Reset":"Reset","Clients":"Clients","ClientsD":"Explore your latest clients!","ManageTags":"Tags","AddClient":"Add Client","Client":"Client","Channels":"Channels","Tags":"Tags","LastMessage":"Last Message","ViewChat":"View Chat","firstName":"First Name","lastName":"Last Name","email":"Email","phone":"Phone","location":"Location","computer":"Device","ipAddress":"IP Adress","lastMessageDate":"Date","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Update","ManageTagsD":"Create and organize tags to segment your clients into different interest groups according to your business needs","Title":"Title","Color":"Color","AddSingleClient":"A Client","AddManyClients":"Multiple Clients","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Add a new client using their WhatsApp number to start a new conversation from Wizybot.","firstNamePlaceholder":"John","lastNamePlaceholder":"Doe","emailPlaceholder":"example@gmail.com","phonePlaceholder":"12345678","CreateClient":"Create Client","AddManyClientsD":"Add multiple clients using their WhatsApp numbers to start new conversations. Download the .csv template file and fill the columns with your new clients\' information.","DownloadInstructions":"Download the empty CSV template and fill it with your clients\' information (Optional)","DownloadTemplate":"Download Template","UploadTemplate":"Upload Template","UploadInstructions":"Upload the template with the complete information to Wizybot","DragHere":"Click or drag your CSV file here","CreateClients":"Create Clients","SendWhatsAppTemplate":"Send WhatsApp Template","FileProcessedD":"Processing the file resulted in the following records:","createdClients":"Clients Created:","updatedClients":"Clients Updated:","noWhatsAppNumberClients":"Clients without WhatsApp:","incorrectWhatsAppNumberClients":"Clients with incorrect WhatsApp format:","errorClients":"Clients with Errors:","Tickets":"Tickets","WithTickets":"With Tickets","WithNewMessage":"With New Message","Flags":"Flags","ExportClientSelection":"Export Client Selection","NewTag":"New Tag","Pending":"Pending","Solved":"Solved","SuperClientNotes":"Notes","SuperClientNotesPlaceHolder":"Add your note here","TicketNotes":"Ticket Notes","TicketNotesPlaceHolder":"Add your note here","ResultsFor":"Results for","NoResultsFound":"No results found","Loading":"Loading","User":"User","Department":"Department","ConversationRouting":"Conversation Routing","State":"State","Closed":"Closed","Open":"Open","PreferredAgent":"Preferred Agent","CurrentAgent":"Current Agent","NotAssigned":"Not Assigned","AssignedToMe":"Assigned to me","ProcessingFileError":"Error processing file","Return":"Return","ShopifyInformation":"Shopify Information","Address":"Address","LastOrder":"Last Order","AmountSpent":"Amount Spent","ViewInShopify":"View in Shopify","InitiateWhatsAppConversation":"Initiate WhatsApp Conversation","InvalidPhone":"Invalid Number","OnlyMyDepartments":"Only my departments","CreateTicket":"Create Ticket","DepartmentsPlaceholder":"Search departments","SearchDepartments":"Search departments","NoDepartmentsFound":"No departments found","Description":"Description","Departments":"Departments","Create":"Create","SendEmailAccount":"Send Email","SendEmailAccountFrom":"Send Email From: ","HubspotTicketManager":"Hubspot Ticket Manager","SelectProducts":"Select products","BlockClient":"Block","UnblockClient":"Unblock","BlockClientPrompt":"Are you sure you want to block this client?","UnblockClientPrompt":"Are you sure you want to unblock this client?","Cancel":"Cancel","TagsPlaceholder":"Search Tags","Name":"Name","AddTag":"Select or create an option","AddCreateTag":"Select one or more options","CreateTag":"Create new Tag","EditTag":"Edit Tag","ClearFilters":"Clear Filters","RecentActivity":"Recent Activity","ExportDescription":"Get your clients\' information directly in your email, with the option to apply filters based on your needs.","ExportClients":"Export clients","ExportDate":"Date range","ExportSuccess":"We\'re processing your request. The clients will be sent to your email.","ExportLimitPlaceholder":"All results","Sendcsv":"Send clients to email","SelectAll":"All","DeselectAll":"None","ChatPreview":"Chat preview","CurrentClient":"Current client","MailTo":"Send to","Import":"Import","Export":"Export","RShowing":"Showing","RResults":"Results","PropagandaMessages":"Propaganda Blockage","WillReceivePropaganda":"(Campaigns, abandoned checkouts, etc.)","Confirm":"Confirm","OptOutWarningOff":"Are you sure you want to allow propaganda messages again for this client? Remember that this action requires the client\'s consent.","ConfirmOptOutOff":"Propaganda blockage disabled confirmation","OptOutWarningOn":"Are you sure you want to block propaganda messages for this client?","ConfirmOptOutOn":"Propaganda blockage enabled confirmation","General":"Normal","Observability":"Observability","ComposeEmail":"Compose email","TextSearch":"Text Search","SearchPlaceholder":"Search by name, email, phone...","SearchIn":"Search in","ClientData":"Client Data","ClientsData":"Client Data","Conversations":"Conversations","TagMatch":"Match","Any":"Any","Funnels":{"Title":"Funnels","Funnel":"Funnel","Loading":"Loading...","NewFunnel":"New funnel","EmptyState":"Select a funnel or create one","Saved":"Saved","FunnelName":"Funnel name","FunnelNamePlaceholder":"e.g. Sales pipeline","FirstStage":"First stage","FirstStageHint":"A funnel needs at least one stage","StageName":"Stage name","CreateFunnel":"Create funnel","Cancel":"Cancel","DeleteFunnel":"Delete funnel","Stages":"Stages","AddStage":"Add stage","Add":"Add","Required":"This field is required","MoveClientsTitle":"Stage \\"{{stage}}\\" has active clients","MoveClientsHint":"Move {{count}} client(s) to another stage before deleting","MoveClientsTo":"Move clients to","MoveAndDelete":"Move and delete","FunnelNameExists":"A funnel with this name already exists","NoFunnels":"No funnels yet","EmptyStateHint":"Select a funnel on the left or create a new one to get started.","CreateFunnelHint":"Name your funnel and set up the first stage.","Creating":"Creating...","PickColor":"Pick color","DeleteStage":"Delete stage","CannotDeleteLastStage":"At least one stage required","ClientsWillBeMoved":"clients will be moved to the selected stage","StageNameExists":"A stage with this name already exists","DeleteFunnelConfirmTitle":"Delete funnel?","DeleteFunnelConfirmMessage":"All stages and history will be permanently deleted. Your clients won\'t be affected.","DeleteFunnelConfirm":"Yes, delete funnel","SelectFunnel":"Select funnel...","SelectStage":"Select stage...","AddToFunnel":"Add to funnel","RemoveFromFunnel":"Remove from funnel","Confirm":"Confirm","History":"Funnel History","NoActiveFunnels":"Not currently in any funnel","NoHistory":"No stage history yet","FirstEntry":"Start","Current":"Current","AddedOn":"Added","MovedOn":"Moved","DragToReorder":"Drag to reorder"},"ClientKanban":{"NoClientsInStage":"No clients in this stage","Loading":"Loading...","LoadMore":"Load more","Clients":"Clients","NoFunnels":"No funnels yet","CreateHint":"Use the Funnels button above to create your first funnel","NoStages":"This funnel has no stages yet"}}');
+const clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"New Client","Filters":"Filters","Text":"Text","EgNoMeta":"Email, First Name, Last Name...","EgMeta":"Email, First Name, WA, IG...","LastMessageDate":"Date of the last message","DateI":"Start Date","DateF":"End Date","Sales":"Sales","All":"All","WithSales":"With Sales","Channel":"Channel","Apply":"Apply","Reset":"Reset","Clients":"Clients","ClientsD":"Explore your latest clients!","ManageTags":"Tags","AddClient":"Add Client","Client":"Client","Channels":"Channels","Tags":"Tags","LastMessage":"Last Message","ViewChat":"View Chat","firstName":"First Name","lastName":"Last Name","email":"Email","phone":"Phone","location":"Location","computer":"Device","ipAddress":"IP Adress","lastMessageDate":"Date","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Update","ManageTagsD":"Create and organize tags to segment your clients into different interest groups according to your business needs","Title":"Title","Color":"Color","AddSingleClient":"A Client","AddManyClients":"Multiple Clients","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Add a new client using their WhatsApp number to start a new conversation from Wizybot.","firstNamePlaceholder":"John","lastNamePlaceholder":"Doe","emailPlaceholder":"example@gmail.com","phonePlaceholder":"12345678","CreateClient":"Create Client","AddManyClientsD":"Add multiple clients using their WhatsApp numbers to start new conversations. Download the .csv template file and fill the columns with your new clients\' information.","DownloadInstructions":"Download the empty CSV template and fill it with your clients\' information (Optional)","DownloadTemplate":"Download Template","UploadTemplate":"Upload Template","UploadInstructions":"Upload the template with the complete information to Wizybot","DragHere":"Click or drag your CSV file here","CreateClients":"Create Clients","SendWhatsAppTemplate":"Send WhatsApp Template","FileProcessedD":"Processing the file resulted in the following records:","createdClients":"Clients Created:","updatedClients":"Clients Updated:","noWhatsAppNumberClients":"Clients without WhatsApp:","incorrectWhatsAppNumberClients":"Clients with incorrect WhatsApp format:","errorClients":"Clients with Errors:","Tickets":"Tickets","WithTickets":"With Tickets","WithNewMessage":"With New Message","Flags":"Flags","ExportClientSelection":"Export Client Selection","NewTag":"New Tag","Pending":"Pending","Solved":"Solved","SuperClientNotes":"Notes","SuperClientNotesPlaceHolder":"Add your note here","TicketNotes":"Ticket Notes","TicketNotesPlaceHolder":"Add your note here","ResultsFor":"Results for","NoResultsFound":"No results found","Loading":"Loading","User":"User","Department":"Department","ConversationRouting":"Conversation Routing","State":"State","Closed":"Closed","Open":"Open","PreferredAgent":"Preferred Agent","CurrentAgent":"Current Agent","NotAssigned":"Not Assigned","AssignedToMe":"Assigned to me","ProcessingFileError":"Error processing file","Return":"Return","ShopifyInformation":"Shopify Information","Address":"Address","LastOrder":"Last Order","AmountSpent":"Amount Spent","ViewInShopify":"View in Shopify","InitiateWhatsAppConversation":"Initiate WhatsApp Conversation","InvalidPhone":"Invalid Number","OnlyMyDepartments":"Only my departments","CreateTicket":"Create Ticket","DepartmentsPlaceholder":"Search departments","SearchDepartments":"Search departments","NoDepartmentsFound":"No departments found","Description":"Description","Departments":"Departments","Create":"Create","SendEmailAccount":"Send Email","SendEmailAccountFrom":"Send Email From: ","HubspotTicketManager":"Hubspot Ticket Manager","SelectProducts":"Select products","BlockClient":"Block","UnblockClient":"Unblock","BlockClientPrompt":"Are you sure you want to block this client?","UnblockClientPrompt":"Are you sure you want to unblock this client?","Cancel":"Cancel","TagsPlaceholder":"Search Tags","Name":"Name","AddTag":"Select or create an option","AddCreateTag":"Select one or more options","CreateTag":"Create new Tag","EditTag":"Edit Tag","ClearFilters":"Clear Filters","RecentActivity":"Recent Activity","MessageDate":"Message Date","ExportDescription":"Get your clients\' information directly in your email, with the option to apply filters based on your needs.","ExportClients":"Export clients","ExportDate":"Date range","ExportSuccess":"We\'re processing your request. The clients will be sent to your email.","ExportLimitPlaceholder":"All results","Sendcsv":"Send clients to email","SelectAll":"All","DeselectAll":"None","ChatPreview":"Chat preview","CurrentClient":"Current client","MailTo":"Send to","Import":"Import","Export":"Export","RShowing":"Showing","RResults":"Results","PropagandaMessages":"Propaganda Blockage","WillReceivePropaganda":"(Campaigns, abandoned checkouts, etc.)","Confirm":"Confirm","OptOutWarningOff":"Are you sure you want to allow propaganda messages again for this client? Remember that this action requires the client\'s consent.","ConfirmOptOutOff":"Propaganda blockage disabled confirmation","OptOutWarningOn":"Are you sure you want to block propaganda messages for this client?","ConfirmOptOutOn":"Propaganda blockage enabled confirmation","General":"Normal","Observability":"Observability","ComposeEmail":"Compose email","TextSearch":"Text Search","SearchPlaceholder":"Search by name, email, phone...","SearchIn":"Search in","ClientData":"Client Data","ClientsData":"Client Data","Conversations":"Conversations","TagMatch":"Match","Any":"Any","Funnels":{"Title":"Funnels","Funnel":"Funnel","Loading":"Loading...","NewFunnel":"New funnel","EmptyState":"Select a funnel or create one","Saved":"Saved","FunnelName":"Funnel name","FunnelNamePlaceholder":"e.g. Sales pipeline","FirstStage":"First stage","FirstStageHint":"A funnel needs at least one stage","StageName":"Stage name","CreateFunnel":"Create funnel","Cancel":"Cancel","DeleteFunnel":"Delete funnel","Stages":"Stages","AddStage":"Add stage","Add":"Add","Required":"This field is required","MoveClientsTitle":"Stage \\"{{stage}}\\" has active clients","MoveClientsHint":"Move {{count}} client(s) to another stage before deleting","MoveClientsTo":"Move clients to","MoveAndDelete":"Move and delete","FunnelNameExists":"A funnel with this name already exists","NoFunnels":"No funnels yet","EmptyStateHint":"Select a funnel on the left or create a new one to get started.","CreateFunnelHint":"Name your funnel and set up the first stage.","Creating":"Creating...","PickColor":"Pick color","DeleteStage":"Delete stage","CannotDeleteLastStage":"At least one stage required","ClientsWillBeMoved":"clients will be moved to the selected stage","StageNameExists":"A stage with this name already exists","DeleteFunnelConfirmTitle":"Delete funnel?","DeleteFunnelConfirmMessage":"All stages and history will be permanently deleted. Your clients won\'t be affected.","DeleteFunnelConfirm":"Yes, delete funnel","SelectFunnel":"Select funnel...","SelectStage":"Select stage...","AddToFunnel":"Add to funnel","RemoveFromFunnel":"Remove from funnel","Confirm":"Confirm","History":"Funnel History","NoActiveFunnels":"Not currently in any funnel","NoHistory":"No stage history yet","FirstEntry":"Start","Current":"Current","AddedOn":"Added","MovedOn":"Moved","DragToReorder":"Drag to reorder"},"ClientKanban":{"NoClientsInStage":"No clients in this stage","Loading":"Loading...","LoadMore":"Load more","Clients":"Clients","NoFunnels":"No funnels yet","CreateHint":"Use the Funnels button above to create your first funnel","NoStages":"This funnel has no stages yet"}}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/clients.json
-const Spanish_clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"Nuevo Cliente","Filters":"Filtros","Text":"Texto","EgNoMeta":"Email, Nombre, Apellido...","EgMeta":"Email, Nombre, WA, IG...","LastMessageDate":"Fecha del último mensaje","DateI":"Fecha inicial","DateF":"Fecha final","Sales":"Ventas","All":"Todos","WithSales":"Con Ventas","Channel":"Canal","Apply":"Aplicar","Reset":"Reiniciar","Clients":"Clientes","ClientsD":"¡Explora tus últimos clientes!","ManageTags":"Etiquetas","AddClient":"Agregar cliente","Client":"Cliente","Channels":"Canales","Tags":"Etiquetas","LastMessage":"Último mensaje","ViewChat":"Ver chat","firstName":"Nombres","lastName":"Apellidos","email":"Correo","phone":"Telefono","location":"Ubicación","computer":"Dispositivo","ipAddress":"Dirección IP","lastMessageDate":"Fecha","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Actualizar","ManageTagsD":"Crea y organiza etiquetas para segmentar tus clientes en distintos grupos de interés según las necesidades de tu negocio","Title":"Título","Color":"Color","AddSingleClient":"Un cliente","AddManyClients":"Varios clientes","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Agrega un nuevo cliente a partir de su número de WhatsApp para poder iniciar una nueva conversación desde Wizybot.","firstNamePlaceholder":"Juan","lastNamePlaceholder":"Rios","emailPlaceholder":"ejemplo@gmail.com","phonePlaceholder":"12345678","CreateClient":"Crear cliente","AddManyClientsD":"Agrega múltiples clientes a partir de sus números de WhatsApp para poder iniciar nuevas conversaciones. Descarga el archivo .csv plantilla y llena las columnas con la información de tus nuevos clientes.","DownloadInstructions":"Descarga la plantilla csv vacía y llénala con la información de tus clientes (Opcional)","DownloadTemplate":"Descargar plantilla","UploadTemplate":"Subir plantilla","UploadInstructions":"Sube la plantilla con la información completa a Wizybot","DragHere":"Haz clic o arrastra tu archivo CSV aquí","CreateClients":"Crear clientes","SendWhatsAppTemplate":"Enviar plantilla de WhatsApp","FileProcessedD":"Al procesar el archivo se realizaron los siguientes registros: ","createdClients":"Clientes creados:","updatedClients":"Clientes actualizados:","noWhatsAppNumberClients":"Clientes sin WhatsApp:","incorrectWhatsAppNumberClients":"Clientes con format de WhatsApp errado:","errorClients":"Clientes con error:","Tickets":"Tickets","WithTickets":"Con Tickets","WithNewMessage":"Con Mensaje Nuevo","Flags":"Banderas","ExportClientSelection":"Exportar selección de clientes","NewTag":"Nueva etiqueta","Pending":"Pendiente","Solved":"Solucionado","SuperClientNotes":"Notas","SuperClientNotesPlaceHolder":"Ingresa tu nota aquí","TicketNotes":"Notas del Ticket","TicketNotesPlaceHolder":"Ingresa tu nota aquí","ResultsFor":"Resultados para","NoResultsFound":"No se encontraron resultados","Loading":"Cargando","User":"Usuario","Department":"Departamento","ConversationRouting":"Enrutamiento","State":"Estado","Closed":"Cerrado","Open":"Abierto","PreferredAgent":"Agente Preferido","CurrentAgent":"Agente Actual","NotAssigned":"Sin asignar","AssignedToMe":"Asignados a mí","ProcessingFileError":"Error procesando archivo","Return":"Volver","ShopifyInformation":"Información de Shopify","Address":"Dirección","LastOrder":"Última orden","AmountSpent":"Total en compras","ViewInShopify":"Ver en Shopify","InitiateWhatsAppConversation":"Iniciar conversación por WhatsApp","InvalidPhone":"Número invalido","OnlyMyDepartments":"Mis Departamentos","CreateTicket":"Crear ticket","DepartmentsPlaceholder":"Buscar departamentos","SearchDepartments":"Buscar departamentos","NoDepartmentsFound":"No se encontraron departamentos","Description":"Descripción","Departments":"Departamentos","Create":"Crear","SendEmailAccount":"Enviar correo","SendEmailAccountFrom":"Enviar correo desde: ","HubspotTicketManager":"Administrador de Tickets de Hubspot","SelectProducts":"Seleccionar productos","BlockClient":"Bloquear","UnblockClient":"Desbloquear","BlockClientPrompt":"¿Estás seguro de que quieres bloquear este cliente?","UnblockClientPrompt":"¿Estás seguro de que quieres desbloquear este cliente?","Cancel":"Cancelar","TagsPlaceholder":"Buscar etiquetas","Name":"Nombre","AddTag":"Selecciona o crea una opción","AddCreateTag":"Selecciona una o más opciones","CreateTag":"Crear etiqueta","EditTag":"Editar etiqueta","ClearFilters":"Limpiar Filtros","RecentActivity":"Actividad Reciente","ExportDescription":"Obtén la información de tus clientes directamente en tu correo, con la posibilidad de aplicar filtros según tus necesidades.","ExportClients":"Exportar clientes","ExportDate":"Rango de fechas","ExportSuccess":"Estamos procesando tu solicitud. Los clientes serán enviados a tu correo.","ExportLimitPlaceholder":"Todos los resultados","Sendcsv":"Enviar clientes al correo","SelectAll":"Todos","DeselectAll":"Ninguno","ChatPreview":"Vista previa del chat","CurrentClient":"Cliente actual","MailTo":"Enviar a","Import":"Importar","Export":"Exportar","RShowing":"Mostrando","RResults":"Resultados","PropagandaMessages":"Bloqueo de propaganda","WillReceivePropaganda":"(Campañas, carritos abandonados, etc.)","Confirm":"Confirmar","OptOutWarningOff":"¿Estás seguro de que quieres permitir nuevamente los mensajes de propaganda para este cliente? Recuerda que esta acción requiere el consentimiento del cliente.","ConfirmOptOutOff":"Confirmación de desactivación del bloqueo de propaganda","OptOutWarningOn":"¿Estás seguro de que quieres bloquear los mensajes de propaganda para este cliente?","ConfirmOptOutOn":"Confirmación de activación del bloqueo de propaganda","General":"Normal","Observability":"Observabilidad","ComposeEmail":"Redactar correo","TextSearch":"Búsqueda de Texto","SearchPlaceholder":"Buscar por nombre, email, teléfono...","SearchIn":"Buscar en","ClientData":"Datos del Cliente","ClientsData":"Datos del Cliente","Conversations":"Conversaciones","TagMatch":"Coincidir","Any":"Cualquiera","Funnels":{"Title":"Embudos","Funnel":"Embudo","Loading":"Cargando...","NewFunnel":"Nuevo embudo","EmptyState":"Selecciona un embudo o crea uno","Saved":"Guardado","FunnelName":"Nombre del embudo","FunnelNamePlaceholder":"ej. Pipeline de ventas","FirstStage":"Primera etapa","FirstStageHint":"Un embudo necesita al menos una etapa","StageName":"Nombre de etapa","CreateFunnel":"Crear embudo","Cancel":"Cancelar","DeleteFunnel":"Eliminar embudo","Stages":"Etapas","AddStage":"Agregar etapa","Add":"Agregar","Required":"Este campo es obligatorio","MoveClientsTitle":"La etapa \\"{{stage}}\\" tiene clientes activos","MoveClientsHint":"Mueve {{count}} cliente(s) a otra etapa antes de eliminar","MoveClientsTo":"Mover clientes a","MoveAndDelete":"Mover y eliminar","FunnelNameExists":"Ya existe un embudo con este nombre","NoFunnels":"Aún no hay embudos","EmptyStateHint":"Selecciona un embudo a la izquierda o crea uno nuevo para comenzar.","CreateFunnelHint":"Nombra tu embudo y configura la primera etapa.","Creating":"Creando...","PickColor":"Elegir color","DeleteStage":"Eliminar etapa","CannotDeleteLastStage":"Se requiere al menos una etapa","ClientsWillBeMoved":"los clientes se moverán a la etapa seleccionada","StageNameExists":"Ya existe una etapa con este nombre","DeleteFunnelConfirmTitle":"¿Eliminar embudo?","DeleteFunnelConfirmMessage":"Todas las etapas e historial serán eliminados permanentemente. Tus clientes no se verán afectados.","DeleteFunnelConfirm":"Sí, eliminar embudo","SelectFunnel":"Seleccionar embudo...","SelectStage":"Seleccionar etapa...","AddToFunnel":"Agregar al embudo","RemoveFromFunnel":"Eliminar del embudo","Confirm":"Confirmar","History":"Historial del embudo","NoActiveFunnels":"Actualmente no está en ningún embudo","NoHistory":"Aún no hay historial de etapas","FirstEntry":"Inicio","Current":"Actual","AddedOn":"Agregado","MovedOn":"Movido","DragToReorder":"Arrastrar para reordenar"},"ClientKanban":{"NoClientsInStage":"No hay clientes en esta etapa","Loading":"Cargando...","LoadMore":"Cargar más","Clients":"Clientes","NoFunnels":"Aún no hay embudos","CreateHint":"Usa el botón de Embudos arriba para crear tu primer embudo","NoStages":"Este embudo aún no tiene etapas"}}');
+const Spanish_clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"Nuevo Cliente","Filters":"Filtros","Text":"Texto","EgNoMeta":"Email, Nombre, Apellido...","EgMeta":"Email, Nombre, WA, IG...","LastMessageDate":"Fecha del último mensaje","DateI":"Fecha inicial","DateF":"Fecha final","Sales":"Ventas","All":"Todos","WithSales":"Con Ventas","Channel":"Canal","Apply":"Aplicar","Reset":"Reiniciar","Clients":"Clientes","ClientsD":"¡Explora tus últimos clientes!","ManageTags":"Etiquetas","AddClient":"Agregar cliente","Client":"Cliente","Channels":"Canales","Tags":"Etiquetas","LastMessage":"Último mensaje","ViewChat":"Ver chat","firstName":"Nombres","lastName":"Apellidos","email":"Correo","phone":"Telefono","location":"Ubicación","computer":"Dispositivo","ipAddress":"Dirección IP","lastMessageDate":"Fecha","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Actualizar","ManageTagsD":"Crea y organiza etiquetas para segmentar tus clientes en distintos grupos de interés según las necesidades de tu negocio","Title":"Título","Color":"Color","AddSingleClient":"Un cliente","AddManyClients":"Varios clientes","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Agrega un nuevo cliente a partir de su número de WhatsApp para poder iniciar una nueva conversación desde Wizybot.","firstNamePlaceholder":"Juan","lastNamePlaceholder":"Rios","emailPlaceholder":"ejemplo@gmail.com","phonePlaceholder":"12345678","CreateClient":"Crear cliente","AddManyClientsD":"Agrega múltiples clientes a partir de sus números de WhatsApp para poder iniciar nuevas conversaciones. Descarga el archivo .csv plantilla y llena las columnas con la información de tus nuevos clientes.","DownloadInstructions":"Descarga la plantilla csv vacía y llénala con la información de tus clientes (Opcional)","DownloadTemplate":"Descargar plantilla","UploadTemplate":"Subir plantilla","UploadInstructions":"Sube la plantilla con la información completa a Wizybot","DragHere":"Haz clic o arrastra tu archivo CSV aquí","CreateClients":"Crear clientes","SendWhatsAppTemplate":"Enviar plantilla de WhatsApp","FileProcessedD":"Al procesar el archivo se realizaron los siguientes registros: ","createdClients":"Clientes creados:","updatedClients":"Clientes actualizados:","noWhatsAppNumberClients":"Clientes sin WhatsApp:","incorrectWhatsAppNumberClients":"Clientes con format de WhatsApp errado:","errorClients":"Clientes con error:","Tickets":"Tickets","WithTickets":"Con Tickets","WithNewMessage":"Con Mensaje Nuevo","Flags":"Banderas","ExportClientSelection":"Exportar selección de clientes","NewTag":"Nueva etiqueta","Pending":"Pendiente","Solved":"Solucionado","SuperClientNotes":"Notas","SuperClientNotesPlaceHolder":"Ingresa tu nota aquí","TicketNotes":"Notas del Ticket","TicketNotesPlaceHolder":"Ingresa tu nota aquí","ResultsFor":"Resultados para","NoResultsFound":"No se encontraron resultados","Loading":"Cargando","User":"Usuario","Department":"Departamento","ConversationRouting":"Enrutamiento","State":"Estado","Closed":"Cerrado","Open":"Abierto","PreferredAgent":"Agente Preferido","CurrentAgent":"Agente Actual","NotAssigned":"Sin asignar","AssignedToMe":"Asignados a mí","ProcessingFileError":"Error procesando archivo","Return":"Volver","ShopifyInformation":"Información de Shopify","Address":"Dirección","LastOrder":"Última orden","AmountSpent":"Total en compras","ViewInShopify":"Ver en Shopify","InitiateWhatsAppConversation":"Iniciar conversación por WhatsApp","InvalidPhone":"Número invalido","OnlyMyDepartments":"Mis Departamentos","CreateTicket":"Crear ticket","DepartmentsPlaceholder":"Buscar departamentos","SearchDepartments":"Buscar departamentos","NoDepartmentsFound":"No se encontraron departamentos","Description":"Descripción","Departments":"Departamentos","Create":"Crear","SendEmailAccount":"Enviar correo","SendEmailAccountFrom":"Enviar correo desde: ","HubspotTicketManager":"Administrador de Tickets de Hubspot","SelectProducts":"Seleccionar productos","BlockClient":"Bloquear","UnblockClient":"Desbloquear","BlockClientPrompt":"¿Estás seguro de que quieres bloquear este cliente?","UnblockClientPrompt":"¿Estás seguro de que quieres desbloquear este cliente?","Cancel":"Cancelar","TagsPlaceholder":"Buscar etiquetas","Name":"Nombre","AddTag":"Selecciona o crea una opción","AddCreateTag":"Selecciona una o más opciones","CreateTag":"Crear etiqueta","EditTag":"Editar etiqueta","ClearFilters":"Limpiar Filtros","RecentActivity":"Actividad Reciente","MessageDate":"Fecha del Mensaje","ExportDescription":"Obtén la información de tus clientes directamente en tu correo, con la posibilidad de aplicar filtros según tus necesidades.","ExportClients":"Exportar clientes","ExportDate":"Rango de fechas","ExportSuccess":"Estamos procesando tu solicitud. Los clientes serán enviados a tu correo.","ExportLimitPlaceholder":"Todos los resultados","Sendcsv":"Enviar clientes al correo","SelectAll":"Todos","DeselectAll":"Ninguno","ChatPreview":"Vista previa del chat","CurrentClient":"Cliente actual","MailTo":"Enviar a","Import":"Importar","Export":"Exportar","RShowing":"Mostrando","RResults":"Resultados","PropagandaMessages":"Bloqueo de propaganda","WillReceivePropaganda":"(Campañas, carritos abandonados, etc.)","Confirm":"Confirmar","OptOutWarningOff":"¿Estás seguro de que quieres permitir nuevamente los mensajes de propaganda para este cliente? Recuerda que esta acción requiere el consentimiento del cliente.","ConfirmOptOutOff":"Confirmación de desactivación del bloqueo de propaganda","OptOutWarningOn":"¿Estás seguro de que quieres bloquear los mensajes de propaganda para este cliente?","ConfirmOptOutOn":"Confirmación de activación del bloqueo de propaganda","General":"Normal","Observability":"Observabilidad","ComposeEmail":"Redactar correo","TextSearch":"Búsqueda de Texto","SearchPlaceholder":"Buscar por nombre, email, teléfono...","SearchIn":"Buscar en","ClientData":"Datos del Cliente","ClientsData":"Datos del Cliente","Conversations":"Conversaciones","TagMatch":"Coincidir","Any":"Cualquiera","Funnels":{"Title":"Embudos","Funnel":"Embudo","Loading":"Cargando...","NewFunnel":"Nuevo embudo","EmptyState":"Selecciona un embudo o crea uno","Saved":"Guardado","FunnelName":"Nombre del embudo","FunnelNamePlaceholder":"ej. Pipeline de ventas","FirstStage":"Primera etapa","FirstStageHint":"Un embudo necesita al menos una etapa","StageName":"Nombre de etapa","CreateFunnel":"Crear embudo","Cancel":"Cancelar","DeleteFunnel":"Eliminar embudo","Stages":"Etapas","AddStage":"Agregar etapa","Add":"Agregar","Required":"Este campo es obligatorio","MoveClientsTitle":"La etapa \\"{{stage}}\\" tiene clientes activos","MoveClientsHint":"Mueve {{count}} cliente(s) a otra etapa antes de eliminar","MoveClientsTo":"Mover clientes a","MoveAndDelete":"Mover y eliminar","FunnelNameExists":"Ya existe un embudo con este nombre","NoFunnels":"Aún no hay embudos","EmptyStateHint":"Selecciona un embudo a la izquierda o crea uno nuevo para comenzar.","CreateFunnelHint":"Nombra tu embudo y configura la primera etapa.","Creating":"Creando...","PickColor":"Elegir color","DeleteStage":"Eliminar etapa","CannotDeleteLastStage":"Se requiere al menos una etapa","ClientsWillBeMoved":"los clientes se moverán a la etapa seleccionada","StageNameExists":"Ya existe una etapa con este nombre","DeleteFunnelConfirmTitle":"¿Eliminar embudo?","DeleteFunnelConfirmMessage":"Todas las etapas e historial serán eliminados permanentemente. Tus clientes no se verán afectados.","DeleteFunnelConfirm":"Sí, eliminar embudo","SelectFunnel":"Seleccionar embudo...","SelectStage":"Seleccionar etapa...","AddToFunnel":"Agregar al embudo","RemoveFromFunnel":"Eliminar del embudo","Confirm":"Confirmar","History":"Historial del embudo","NoActiveFunnels":"Actualmente no está en ningún embudo","NoHistory":"Aún no hay historial de etapas","FirstEntry":"Inicio","Current":"Actual","AddedOn":"Agregado","MovedOn":"Movido","DragToReorder":"Arrastrar para reordenar"},"ClientKanban":{"NoClientsInStage":"No hay clientes en esta etapa","Loading":"Cargando...","LoadMore":"Cargar más","Clients":"Clientes","NoFunnels":"Aún no hay embudos","CreateHint":"Usa el botón de Embudos arriba para crear tu primer embudo","NoStages":"Este embudo aún no tiene etapas"}}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/clients.json
-const Portuguese_clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"Novo Cliente","Filters":"Filtros","Text":"Texto","EgNoMeta":"Email, Nome, Sobrenome...","EgMeta":"Email, Nome, WA, IG...","LastMessageDate":"Data da última mensagem","DateI":"Data inicial","DateF":"Data final","Sales":"Vendas","All":"Todos","WithSales":"Com Vendas","Channel":"Canal","Apply":"Aplicar","Reset":"Reiniciar","Clients":"Clientes","ClientsD":"Explore seus últimos clientes!","ManageTags":"Etiquetas","AddClient":"Adicionar cliente","Client":"Cliente","Channels":"Canais","Tags":"Etiquetas","LastMessage":"Última mensagem","ViewChat":"Ver chat","firstName":"Nomes","lastName":"Sobrenomes","email":"Email","phone":"Telefone","location":"Localização","computer":"Dispositivo","ipAddress":"Endereço IP","lastMessageDate":"Data","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Atualizar","ManageTagsD":"Crie e organize etiquetas para segmentar seus clientes em diferentes grupos de interesse conforme as necessidades do seu negócio","Title":"Título","Color":"Cor","AddSingleClient":"Um cliente","AddManyClients":"Vários clientes","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Adicione um novo cliente a partir do seu número do WhatsApp para poder iniciar uma nova conversa com o Wizybot.","firstNamePlaceholder":"João","lastNamePlaceholder":"Rios","emailPlaceholder":"exemplo@gmail.com","phonePlaceholder":"12345678","CreateClient":"Criar cliente","AddManyClientsD":"Adicione vários clientes a partir de seus números do WhatsApp para iniciar novas conversas. Baixe o arquivo .csv modelo e preencha as colunas com as informações dos seus novos clientes.","DownloadInstructions":"Baixe o modelo csv vazio e preencha com as informações dos seus clientes (Opcional)","DownloadTemplate":"Baixar modelo","UploadTemplate":"Enviar modelo","UploadInstructions":"Envie o modelo com as informações completas para o Wizybot","DragHere":"Clique ou arraste seu arquivo CSV aqui","CreateClients":"Criar clientes","SendWhatsAppTemplate":"Enviar modelo do WhatsApp","FileProcessedD":"Ao processar o arquivo, foram realizados os seguintes registros: ","createdClients":"Clientes criados:","updatedClients":"Clientes atualizados:","noWhatsAppNumberClients":"Clientes sem WhatsApp:","incorrectWhatsAppNumberClients":"Clientes com número de WhatsApp inválido:","errorClients":"Clientes com erro:","Tickets":"Tickets","WithTickets":"Com Tickets","WithNewMessage":"Com Nova Mensagem","Flags":"Bandeiras","ExportClientSelection":"Exportar seleção de clientes","NewTag":"Nova etiqueta","Pending":"Pendente","Solved":"Resolvido","SuperClientNotes":"Notas","SuperClientNotesPlaceHolder":"Digite sua nota aqui","TicketNotes":"Notas do Ticket","TicketNotesPlaceHolder":"Digite sua nota aqui","ResultsFor":"Resultados para","NoResultsFound":"Nenhum resultado encontrado","Loading":"Carregando","User":"Usuário","Department":"Departamento","ConversationRouting":"Encaminhamento","State":"Estado","Closed":"Fechado","Open":"Aberto","PreferredAgent":"Agente Preferido","CurrentAgent":"Agente Atual","NotAssigned":"Não atribuído","AssignedToMe":"Atribuídos a mim","ProcessingFileError":"Erro ao processar o arquivo","Return":"Voltar","ShopifyInformation":"Informações do Shopify","Address":"Endereço","LastOrder":"Último pedido","AmountSpent":"Total gasto","ViewInShopify":"Ver no Shopify","InitiateWhatsAppConversation":"Iniciar conversa pelo WhatsApp","InvalidPhone":"Número inválido","OnlyMyDepartments":"Apenas meus departamentos","CreateTicket":"Criar ticket","DepartmentsPlaceholder":"Buscar departamentos","SearchDepartments":"Buscar departamentos","NoDepartmentsFound":"Nenhum departamento encontrado","Description":"Descrição","Departments":"Departamentos","Create":"Criar","SendEmailAccount":"Enviar email","SendEmailAccountFrom":"Enviar email de","HubspotTicketManager":"Gerenciador de Tickets do Hubspot","SelectProducts":"Seleccionar produtos","BlockClient":"Bloquear","UnblockClient":"Desbloquear","BlockClientPrompt":"Tem certeza de que deseja bloquear este cliente?","UnblockClientPrompt":"Tem certeza de que deseja desbloquear este cliente?","Cancel":"Cancelar","TagsPlaceholder":"Buscar etiquetas","Name":"Nome","AddTag":"Selecione ou crie uma opção","AddCreateTag":"Selecione uma ou mais opções","CreateTag":"Criar etiqueta","EditTag":"Editar etiqueta","ClearFilters":"Limpar filtros","RecentActivity":"Atividade recente","ExportDescription":"Obtenha as informações dos seus clientes diretamente no seu e-mail, com a opção de aplicar filtros conforme suas necessidades.","ExportClients":"Exportar clientes","ExportDate":"Período de datas","ExportSuccess":"Estamos processando sua solicitação. Os clientes serão enviados para o seu e-mail.","ExportLimitPlaceholder":"Todos os resultados","Sendcsv":"Enviar clientes para o e-mail","SelectAll":"Todos","DeselectAll":"Nenhum","ChatPreview":"Prévia do chat","CurrentClient":"Cliente atual","MailTo":"Enviar para","Import":"Importar","Export":"Exportar","RShowing":"Mostrando","RResults":"Resultados","PropagandaMessages":"Bloqueo de propaganda","WillReceivePropaganda":"(Campanhas, carrinhos abandonados, etc.)","Confirm":"Confirmar","OptOutWarningOff":"Tem certeza de que deseja permitir novamente mensagens de propaganda para este cliente? Lembre-se de que esta ação requer o consentimento do cliente.","ConfirmOptOutOff":"Confirmação de desativação do bloqueio de propaganda","OptOutWarningOn":"Tem certeza de que deseja bloquear mensagens de propaganda para este cliente?","ConfirmOptOutOn":"Confirmação de ativação do bloqueio de propaganda","General":"Normal","Observability":"Observabilidade","ComposeEmail":"Escrever e-mail","TextSearch":"Pesquisa de Texto","SearchPlaceholder":"Pesquisar por nome, e-mail, telefone...","SearchIn":"Pesquisar em","ClientData":"Dados do Cliente","ClientsData":"Dados do Cliente","Conversations":"Conversas","TagMatch":"Corresponder","Any":"Qualquer","Funnels":{"Title":"Funis","Funnel":"Funil","Loading":"Carregando...","NewFunnel":"Novo funil","EmptyState":"Selecione um funil ou crie um","Saved":"Salvo","FunnelName":"Nome do funil","FunnelNamePlaceholder":"ex. Pipeline de vendas","FirstStage":"Primeira etapa","FirstStageHint":"Um funil precisa de pelo menos uma etapa","StageName":"Nome da etapa","CreateFunnel":"Criar funil","Cancel":"Cancelar","DeleteFunnel":"Excluir funil","Stages":"Etapas","AddStage":"Adicionar etapa","Add":"Adicionar","Required":"Este campo é obrigatório","MoveClientsTitle":"A etapa \\"{{stage}}\\" tem clientes ativos","MoveClientsHint":"Mova {{count}} cliente(s) para outra etapa antes de excluir","MoveClientsTo":"Mover clientes para","MoveAndDelete":"Mover e excluir","FunnelNameExists":"Já existe um funil com este nome","NoFunnels":"Ainda não há funis","EmptyStateHint":"Selecione um funil à esquerda ou crie um novo para começar.","CreateFunnelHint":"Nomeie seu funil e configure a primeira etapa.","Creating":"Criando...","PickColor":"Escolher cor","DeleteStage":"Excluir etapa","CannotDeleteLastStage":"É necessário pelo menos uma etapa","ClientsWillBeMoved":"os clientes serão movidos para a etapa selecionada","StageNameExists":"Já existe uma etapa com este nome","DeleteFunnelConfirmTitle":"Excluir funil?","DeleteFunnelConfirmMessage":"Todas as etapas e o histórico serão excluídos permanentemente. Seus clientes não serão afetados.","DeleteFunnelConfirm":"Sim, excluir funil","SelectFunnel":"Selecionar funil...","SelectStage":"Selecionar etapa...","AddToFunnel":"Adicionar ao funil","RemoveFromFunnel":"Remover do funil","Confirm":"Confirmar","History":"Histórico do funil","NoActiveFunnels":"Atualmente não está em nenhum funil","NoHistory":"Ainda não há histórico de etapas","FirstEntry":"Início","Current":"Atual","AddedOn":"Adicionado","MovedOn":"Movido","DragToReorder":"Arrastar para reordenar"},"ClientKanban":{"NoClientsInStage":"Não há clientes nesta etapa","Loading":"Carregando...","LoadMore":"Carregar mais","Clients":"Clientes","NoFunnels":"Ainda não há funis","CreateHint":"Use o botão Funis acima para criar seu primeiro funil","NoStages":"Este funil ainda não tem etapas"}}');
+const Portuguese_clients_namespaceObject = /*#__PURE__*/JSON.parse('{"NewClient":"Novo Cliente","Filters":"Filtros","Text":"Texto","EgNoMeta":"Email, Nome, Sobrenome...","EgMeta":"Email, Nome, WA, IG...","LastMessageDate":"Data da última mensagem","DateI":"Data inicial","DateF":"Data final","Sales":"Vendas","All":"Todos","WithSales":"Com Vendas","Channel":"Canal","Apply":"Aplicar","Reset":"Reiniciar","Clients":"Clientes","ClientsD":"Explore seus últimos clientes!","ManageTags":"Etiquetas","AddClient":"Adicionar cliente","Client":"Cliente","Channels":"Canais","Tags":"Etiquetas","LastMessage":"Última mensagem","ViewChat":"Ver chat","firstName":"Nomes","lastName":"Sobrenomes","email":"Email","phone":"Telefone","location":"Localização","computer":"Dispositivo","ipAddress":"Endereço IP","lastMessageDate":"Data","instagramUsername":"Instagram","messengerName":"Messenger","Update":"Atualizar","ManageTagsD":"Crie e organize etiquetas para segmentar seus clientes em diferentes grupos de interesse conforme as necessidades do seu negócio","Title":"Título","Color":"Cor","AddSingleClient":"Um cliente","AddManyClients":"Vários clientes","whatsAppNumber":"WhatsApp","whatsAppNumberPlaceholder":"573123456789","AddSingleClientD":"Adicione um novo cliente a partir do seu número do WhatsApp para poder iniciar uma nova conversa com o Wizybot.","firstNamePlaceholder":"João","lastNamePlaceholder":"Rios","emailPlaceholder":"exemplo@gmail.com","phonePlaceholder":"12345678","CreateClient":"Criar cliente","AddManyClientsD":"Adicione vários clientes a partir de seus números do WhatsApp para iniciar novas conversas. Baixe o arquivo .csv modelo e preencha as colunas com as informações dos seus novos clientes.","DownloadInstructions":"Baixe o modelo csv vazio e preencha com as informações dos seus clientes (Opcional)","DownloadTemplate":"Baixar modelo","UploadTemplate":"Enviar modelo","UploadInstructions":"Envie o modelo com as informações completas para o Wizybot","DragHere":"Clique ou arraste seu arquivo CSV aqui","CreateClients":"Criar clientes","SendWhatsAppTemplate":"Enviar modelo do WhatsApp","FileProcessedD":"Ao processar o arquivo, foram realizados os seguintes registros: ","createdClients":"Clientes criados:","updatedClients":"Clientes atualizados:","noWhatsAppNumberClients":"Clientes sem WhatsApp:","incorrectWhatsAppNumberClients":"Clientes com número de WhatsApp inválido:","errorClients":"Clientes com erro:","Tickets":"Tickets","WithTickets":"Com Tickets","WithNewMessage":"Com Nova Mensagem","Flags":"Bandeiras","ExportClientSelection":"Exportar seleção de clientes","NewTag":"Nova etiqueta","Pending":"Pendente","Solved":"Resolvido","SuperClientNotes":"Notas","SuperClientNotesPlaceHolder":"Digite sua nota aqui","TicketNotes":"Notas do Ticket","TicketNotesPlaceHolder":"Digite sua nota aqui","ResultsFor":"Resultados para","NoResultsFound":"Nenhum resultado encontrado","Loading":"Carregando","User":"Usuário","Department":"Departamento","ConversationRouting":"Encaminhamento","State":"Estado","Closed":"Fechado","Open":"Aberto","PreferredAgent":"Agente Preferido","CurrentAgent":"Agente Atual","NotAssigned":"Não atribuído","AssignedToMe":"Atribuídos a mim","ProcessingFileError":"Erro ao processar o arquivo","Return":"Voltar","ShopifyInformation":"Informações do Shopify","Address":"Endereço","LastOrder":"Último pedido","AmountSpent":"Total gasto","ViewInShopify":"Ver no Shopify","InitiateWhatsAppConversation":"Iniciar conversa pelo WhatsApp","InvalidPhone":"Número inválido","OnlyMyDepartments":"Apenas meus departamentos","CreateTicket":"Criar ticket","DepartmentsPlaceholder":"Buscar departamentos","SearchDepartments":"Buscar departamentos","NoDepartmentsFound":"Nenhum departamento encontrado","Description":"Descrição","Departments":"Departamentos","Create":"Criar","SendEmailAccount":"Enviar email","SendEmailAccountFrom":"Enviar email de","HubspotTicketManager":"Gerenciador de Tickets do Hubspot","SelectProducts":"Seleccionar produtos","BlockClient":"Bloquear","UnblockClient":"Desbloquear","BlockClientPrompt":"Tem certeza de que deseja bloquear este cliente?","UnblockClientPrompt":"Tem certeza de que deseja desbloquear este cliente?","Cancel":"Cancelar","TagsPlaceholder":"Buscar etiquetas","Name":"Nome","AddTag":"Selecione ou crie uma opção","AddCreateTag":"Selecione uma ou mais opções","CreateTag":"Criar etiqueta","EditTag":"Editar etiqueta","ClearFilters":"Limpar filtros","RecentActivity":"Atividade Recente","MessageDate":"Data da Mensagem","ExportDescription":"Obtenha as informações dos seus clientes diretamente no seu e-mail, com a opção de aplicar filtros conforme suas necessidades.","ExportClients":"Exportar clientes","ExportDate":"Período de datas","ExportSuccess":"Estamos processando sua solicitação. Os clientes serão enviados para o seu e-mail.","ExportLimitPlaceholder":"Todos os resultados","Sendcsv":"Enviar clientes para o e-mail","SelectAll":"Todos","DeselectAll":"Nenhum","ChatPreview":"Prévia do chat","CurrentClient":"Cliente atual","MailTo":"Enviar para","Import":"Importar","Export":"Exportar","RShowing":"Mostrando","RResults":"Resultados","PropagandaMessages":"Bloqueo de propaganda","WillReceivePropaganda":"(Campanhas, carrinhos abandonados, etc.)","Confirm":"Confirmar","OptOutWarningOff":"Tem certeza de que deseja permitir novamente mensagens de propaganda para este cliente? Lembre-se de que esta ação requer o consentimento do cliente.","ConfirmOptOutOff":"Confirmação de desativação do bloqueio de propaganda","OptOutWarningOn":"Tem certeza de que deseja bloquear mensagens de propaganda para este cliente?","ConfirmOptOutOn":"Confirmação de ativação do bloqueio de propaganda","General":"Normal","Observability":"Observabilidade","ComposeEmail":"Escrever e-mail","TextSearch":"Pesquisa de Texto","SearchPlaceholder":"Pesquisar por nome, e-mail, telefone...","SearchIn":"Pesquisar em","ClientData":"Dados do Cliente","ClientsData":"Dados do Cliente","Conversations":"Conversas","TagMatch":"Corresponder","Any":"Qualquer","Funnels":{"Title":"Funis","Funnel":"Funil","Loading":"Carregando...","NewFunnel":"Novo funil","EmptyState":"Selecione um funil ou crie um","Saved":"Salvo","FunnelName":"Nome do funil","FunnelNamePlaceholder":"ex. Pipeline de vendas","FirstStage":"Primeira etapa","FirstStageHint":"Um funil precisa de pelo menos uma etapa","StageName":"Nome da etapa","CreateFunnel":"Criar funil","Cancel":"Cancelar","DeleteFunnel":"Excluir funil","Stages":"Etapas","AddStage":"Adicionar etapa","Add":"Adicionar","Required":"Este campo é obrigatório","MoveClientsTitle":"A etapa \\"{{stage}}\\" tem clientes ativos","MoveClientsHint":"Mova {{count}} cliente(s) para outra etapa antes de excluir","MoveClientsTo":"Mover clientes para","MoveAndDelete":"Mover e excluir","FunnelNameExists":"Já existe um funil com este nome","NoFunnels":"Ainda não há funis","EmptyStateHint":"Selecione um funil à esquerda ou crie um novo para começar.","CreateFunnelHint":"Nomeie seu funil e configure a primeira etapa.","Creating":"Criando...","PickColor":"Escolher cor","DeleteStage":"Excluir etapa","CannotDeleteLastStage":"É necessário pelo menos uma etapa","ClientsWillBeMoved":"os clientes serão movidos para a etapa selecionada","StageNameExists":"Já existe uma etapa com este nome","DeleteFunnelConfirmTitle":"Excluir funil?","DeleteFunnelConfirmMessage":"Todas as etapas e o histórico serão excluídos permanentemente. Seus clientes não serão afetados.","DeleteFunnelConfirm":"Sim, excluir funil","SelectFunnel":"Selecionar funil...","SelectStage":"Selecionar etapa...","AddToFunnel":"Adicionar ao funil","RemoveFromFunnel":"Remover do funil","Confirm":"Confirmar","History":"Histórico do funil","NoActiveFunnels":"Atualmente não está em nenhum funil","NoHistory":"Ainda não há histórico de etapas","FirstEntry":"Início","Current":"Atual","AddedOn":"Adicionado","MovedOn":"Movido","DragToReorder":"Arrastar para reordenar"},"ClientKanban":{"NoClientsInStage":"Não há clientes nesta etapa","Loading":"Carregando...","LoadMore":"Carregar mais","Clients":"Clientes","NoFunnels":"Ainda não há funis","CreateHint":"Use o botão Funis acima para criar seu primeiro funil","NoStages":"Este funil ainda não tem etapas"}}');
 ;// CONCATENATED MODULE: ./src/translations/English/test.json
 const test_namespaceObject = /*#__PURE__*/JSON.parse('{"Back":"Back","Reset":"Reset","Deletion":"Delete client","DeletionD":"Are you sure that you want to delete the test client?","Validation":"Success","Success":"The test client was succesfully created"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/test.json
@@ -14005,11 +14016,11 @@ const Spanish_test_namespaceObject = /*#__PURE__*/JSON.parse('{"Back":"Back","Re
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/test.json
 const Portuguese_test_namespaceObject = /*#__PURE__*/JSON.parse('{"Back":"voltar","Reset":"Limpar","Deletion":"Excluir cliente","DeletionD":"Tem certeza de que deseja excluir o cliente de teste?","Validation":"Sucesso","Success":"O cliente de teste foi excluído com sucesso"}');
 ;// CONCATENATED MODULE: ./src/translations/English/tickets.json
-const tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filters","FiltersD":"You can look for clients based on the parameters listed below, dont forget to select apply once you are done with the filtering.","Text":"Text based filter","Eg":"Eg: email, name, description","State":"State","Solved":"Solved","Unsolved":"Unsolved","Scaled":"Scaled","Actual":"Actual client state","Date":"Date based search","DateI":"Initial date","DateF":"Final date","Apply":"Apply","Reset":"Reset","Tickets":"Tickets","TicketsD":"Browse through your latest tickets and solve them out!","TicketInfo":"Ticket Information","Clients":"Clients","Actions":"Actions","Selected":"Selected","Export":"Export","Delete":"Delete","Code":"Code","Email":"Email","DateC":"Date","Description":"Description","Mark":"Mark as ","View":"View chat","Solved1":"solved","Unsolved1":"unsolved","Success":"The ticket was removed succesfully","Error":"There was an error deleting the ticket","Validation":"Validation","Deletion":"Deletion","DeletionD":"Are you sure you want to delete this ticket?","ReplyVia":"Reply via","Respond using Gmail":"Gmail","Respond using Mail App":"Mail App","Respond using Wizybot":"Wizybot","RespondPrompt":"Solve your tickets directly through the Wizybot chat and your customers will receive a notification through email","Go to chat":"Go to chat","Go back":"Go back","Departments":"Departments","TicketDepartments":"Departments","SearchDepartments":"Departments","NoDepartmentsFound":"No Departments","ManageTicketTags":"Manage Ticket Tags","ManageTicketTagsD":"Manage the tags that can be used in tickets. Tags help you categorize and filter tickets more effectively.","NewManageTicketTag":"New Ticket","ManageTicketStatuses":"Manage Ticket Statuses","ManageTicketStatusesD":"Manage the statuses that can be used in tickets. Statuses help you categorize and filter tickets more effectively.","NewManageTicketStatus":"New Status","SetStarting":"Initial","SetClosing":"Closing","SetIntermediate":"Middle","TicketTags":"Ticket Tags","SearchTags":"Search Tags","TicketStatus":"Ticket Status","SearchStatus":"Search Status","SelectProducts":"Select Products","Update":"Update","HubspotTicketManager":"HubSpot Ticket Manager","HubspotReadOnly":"Read Only","HubspotCalculated":"Calculated","HubspotNoValue":"No value","HubspotUploadFiles":"Upload Files","HubspotUploadingFiles":"Uploading files...","HubspotAttachedFiles":"Attached Files","HubspotDownload":"Download","HubspotNoFilesAttached":"No files attached","HubspotUpdating":"Updating...","HubspotUpdateProperties":"Update Properties","HubspotTicketProperties":"Ticket Properties","HubspotAssociatedContacts":"Associated Contacts","HubspotUpdateContactProperties":"Update Contact Properties","Name":"Name","Statuses":"Statuses","SearchStatuses":"Search Statuses","SelectOrders":"Select Orders","client":"Client","address":"Address","products":"Products","price":"Price","Type":"Type","BtnTicketCustomFields":"Custom fields","BtnTicketTags":"Tags","BtnTicketStatuses":"Statuses","TicketStatusesHelp1":"Define the statuses you will use in your tickets. There must be exactly one Start status, one In Progress status, and one Closed status. The AI will use these three to automatically manage the ticket workflow.","Start":"Start","TicketStatusesHelp2":"Automatically assigned by the AI when the ticket is created.","InProgress":"In Progress","TicketStatusesHelp3":"Set by an agent when they start handling the ticket.","Closed":"Closed","TicketStatusesHelp4":"Assigned by an agent when the ticket has been resolved and closed.","TicketStatusesHelp5":"The remaining statuses can be customized according to your internal needs.","NoTagsFound":"No tags found","ViewList":"List","ViewBoard":"Board","ManageTicketsButton":"Manage","ManageTicketsModalTitle":"Manage tickets","LoadMore":"Load more","LoadingMoreTickets":"Loading more tickets...","EmailCompose":{"Sending":"Sending","Send":"Send","From":"From","To":"To","Subject":"Subject","SubjectPlaceholder":"Subject","BodyPlaceholder":"Write your message","ToPlaceholder":"Recipients","SelectEmail":"Select email","NewMessage":"New message","NoSignature":"No signature","NoSignaturesHint":"Go to Settings → Account → Email → Manage Signatures, then click Add Signature to create one","RichTextEditorTitle":"Format text","EmojiPickerTitle":"Insert emoji","SignaturePickerTitle":"Signature","CommandsPlaceholder":{"TypeForCommands":"Type","ForCommands":"for commands"}}}');
+const tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filters","FiltersD":"You can look for clients based on the parameters listed below, dont forget to select apply once you are done with the filtering.","Text":"Text based filter","Eg":"Eg: email, name, description","State":"State","Solved":"Solved","Unsolved":"Unsolved","Scaled":"Scaled","Actual":"Actual client state","Date":"Date based search","DateI":"Initial date","DateF":"Final date","Apply":"Apply","Reset":"Reset","Tickets":"Tickets","TicketsD":"Browse through your latest tickets and solve them out!","TicketInfo":"Ticket Information","Clients":"Clients","Actions":"Actions","Selected":"Selected","Export":"Export","Delete":"Delete","Code":"Code","Email":"Email","DateC":"Date","Description":"Description","Mark":"Mark as ","View":"View chat","Solved1":"solved","Unsolved1":"unsolved","Success":"The ticket was removed succesfully","Error":"There was an error deleting the ticket","Validation":"Validation","Deletion":"Deletion","DeletionD":"Are you sure you want to delete this ticket?","ReplyVia":"Reply via","Respond using Gmail":"Gmail","Respond using Mail App":"Mail App","Respond using Wizybot":"Wizybot","RespondPrompt":"Solve your tickets directly through the Wizybot chat and your customers will receive a notification through email","Go to chat":"Go to chat","Go back":"Go back","Departments":"Departments","TicketDepartments":"Departments","SearchDepartments":"Departments","NoDepartmentsFound":"No Departments","ManageTicketTags":"Manage Ticket Tags","ManageTicketTagsD":"Manage the tags that can be used in tickets. Tags help you categorize and filter tickets more effectively.","NewManageTicketTag":"New Ticket","ManageTicketStatuses":"Manage Ticket Statuses","ManageTicketStatusesD":"Manage the statuses that can be used in tickets. Statuses help you categorize and filter tickets more effectively.","NewManageTicketStatus":"New Status","SetStarting":"Initial","SetClosing":"Closing","SetIntermediate":"Middle","TicketTags":"Ticket Tags","SearchTags":"Search Tags","TicketStatus":"Ticket Status","SearchStatus":"Search Status","SelectProducts":"Select Products","Update":"Update","HubspotTicketManager":"HubSpot Ticket Manager","HubspotReadOnly":"Read Only","HubspotCalculated":"Calculated","HubspotNoValue":"No value","HubspotUploadFiles":"Upload Files","HubspotUploadingFiles":"Uploading files...","HubspotAttachedFiles":"Attached Files","HubspotDownload":"Download","HubspotNoFilesAttached":"No files attached","HubspotUpdating":"Updating...","HubspotUpdateProperties":"Update Properties","HubspotTicketProperties":"Ticket Properties","HubspotAssociatedContacts":"Associated Contacts","HubspotUpdateContactProperties":"Update Contact Properties","Name":"Name","Statuses":"Statuses","SearchStatuses":"Search Statuses","SelectOrders":"Select Orders","client":"Client","address":"Address","products":"Products","price":"Price","Type":"Type","BtnTicketCustomFields":"Custom fields","BtnTicketTags":"Tags","BtnTicketStatuses":"Statuses","TicketStatusesHelp1":"Define the statuses you will use in your tickets. There must be exactly one Start status, one In Progress status, and one Closed status. The AI will use these three to automatically manage the ticket workflow.","Start":"Start","TicketStatusesHelp2":"Automatically assigned by the AI when the ticket is created.","InProgress":"In Progress","TicketStatusesHelp3":"Set by an agent when they start handling the ticket.","Closed":"Closed","TicketStatusesHelp4":"Assigned by an agent when the ticket has been resolved and closed.","TicketStatusesHelp5":"The remaining statuses can be customized according to your internal needs.","NoTagsFound":"No tags found","ViewList":"List","ViewBoard":"Board","ManageTicketsButton":"Manage","ManageTicketsModalTitle":"Manage tickets","LoadMore":"Load more","LoadingMoreTickets":"Loading more tickets...","EmailCompose":{"Sending":"Sending","Send":"Send","From":"From","To":"To","Subject":"Subject","SubjectPlaceholder":"Subject","BodyPlaceholder":"Write your message","ToPlaceholder":"Recipients","SelectEmail":"Select email","NewMessage":"New message","NoSignature":"No signature","NoSignaturesHint":"Go to Settings → Account → Email → Manage Signatures, then click Add Signature to create one","RichTextEditorTitle":"Format text","EmojiPickerTitle":"Insert emoji","SignaturePickerTitle":"Signature","CommandsPlaceholder":{"TypeForCommands":"Type","ForCommands":"for commands"}},"SelectStatus":"Select status","Loading":"Loading..."}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/tickets.json
-const Spanish_tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","FiltersD":"Puedes buscar clientes basados en los parámetros listados a continuación, no olvides aplicar cuando termines.","Text":"Filtro basado en texto","Eg":"Ej: correo electrónico, nombre, descripción","State":"Estado","Solved":"Resuelto","Unsolved":"No resuelto","Scaled":"Escalado","Actual":"Estado actual del cliente","Date":"Búsqueda basada en fecha","DateI":"Fecha inicial","DateF":"Fecha final","Apply":"Aplicar","Reset":"Reiniciar","Tickets":"Tickets","TicketsD":"¡Explora tus últimos tickets y solucionalos!","TicketInfo":"Información del Ticket","Clients":"Clientes","Actions":"Acciones","Selected":"Seleccionado","Export":"Exportar","Delete":"Eliminar","Code":"Código","Email":"Correo","DateC":"Fecha","Description":"Descripción","Mark":"Marcar como ","View":"Ver chat","Solved1":"resuelto","Unsolved1":"no resuelto","Success":"El ticket se eliminó correctamente","Error":"Hubo un error al eliminar el ticket","Validation":"Validación","Deletion":"Eliminación","DeletionD":"¿Estás seguro de que quieres eliminar este ticket?","ReplyVia":"Responder por","Respond using Gmail":"Gmail","Respond using Mail App":"Mail","Respond using Wizybot":"Wizybot","RespondPrompt":"Resuelve tus tickets directamente a través del chat de Wizybot y tus clientes recibirán una notificación por correo electrónico.","Go to chat":"Ir al chat","Go back":"Volver","Departments":"Departamentos","TicketDepartments":"Departamentos","SearchDepartments":"Departamentos","NoDepartmentsFound":"No hay departamentos","ManageTicketTags":"Gestionar etiquetas de tickets","ManageTicketTagsD":"Gestiona las etiquetas que se pueden usar en los tickets. Las etiquetas te ayudan a categorizar y filtrar tickets de manera más efectiva.","NewManageTicketTag":"Nueva etiqueta","ManageTicketStatuses":"Gestionar estados de tickets","ManageTicketStatusesD":"Gestiona los estados que se pueden usar en los tickets. Los estados te ayudan a categorizar y filtrar tickets de manera más efectiva.","NewManageTicketStatus":"Nuevo estado","SetStarting":"Inicial","SetClosing":"Cierre","SetIntermediate":"Medio","TicketTags":"Etiquetas de tickets","SearchTags":"Buscar etiquetas","TicketStatus":"Estado del ticket","SearchStatus":"Buscar estado","SelectProducts":"Seleccionar Productos","Update":"Actualizar","HubspotTicketManager":"Gestor de Tickets de HubSpot","HubspotReadOnly":"Solo Lectura","HubspotCalculated":"Calculado","HubspotNoValue":"Sin valor","HubspotUploadFiles":"Subir Archivos","HubspotUploadingFiles":"Subiendo archivos...","HubspotAttachedFiles":"Archivos Adjuntos","HubspotDownload":"Descargar","HubspotNoFilesAttached":"No hay archivos adjuntos","HubspotUpdating":"Actualizando...","HubspotUpdateProperties":"Actualizar Propiedades","HubspotTicketProperties":"Propiedades del Ticket","HubspotAssociatedContacts":"Contactos Asociados","HubspotUpdateContactProperties":"Actualizar Propiedades de Contactos","Name":"Nombre","Statuses":"Estados","SearchStatuses":"Buscar Estados","SelectOrders":"Seleccionar Orden","client":"Cliente","address":"Dirección","products":"Productos","price":"Precio","Type":"Tipo","BtnTicketCustomFields":"Campos personalizados","BtnTicketTags":"Etiquetas","BtnTicketStatuses":"Estados","TicketStatusesHelp1":"Define los estados que usarás en tus tickets. Debe existir un único estado de Inicio, uno de En Proceso y uno de Cierre. La IA utilizará estos tres para gestionar automáticamente el flujo del ticket.","Start":"Inicio","TicketStatusesHelp2":"Se asigna automáticamente por la IA cuando el ticket se crea.","InProgress":"En Proceso","TicketStatusesHelp3":"Lo establece un agente cuando comienza a gestionar el ticket.","Closed":"Cierre","TicketStatusesHelp4":"Lo asigna un agente cuando el ticket ha sido resuelto y finalizado.","TicketStatusesHelp5":"Los demás estados pueden personalizarse según tus necesidades internas.","NoTagsFound":"No se encontraron etiquetas","ViewList":"Lista","ViewBoard":"Tablero","ManageTicketsButton":"Gestionar","ManageTicketsModalTitle":"Gestionar tickets","LoadMore":"Cargar más","LoadingMoreTickets":"Cargando más tickets...","EmailCompose":{"Sending":"Enviando","Send":"Enviar","From":"De","To":"Para","Subject":"Asunto","SubjectPlaceholder":"Asunto","BodyPlaceholder":"Escribe tu mensaje","ToPlaceholder":"Destinatarios","SelectEmail":"Seleccionar correo","NewMessage":"Nuevo mensaje","NoSignature":"Sin firma","NoSignaturesHint":"Vaya a Configuración → Cuenta → Sección de correo electrónico → Administrar firmas, y haga clic en Agregar firma para crear una nueva","RichTextEditorTitle":"Dar formato al texto","EmojiPickerTitle":"Insertar emoji","SignaturePickerTitle":"Firma","CommandsPlaceholder":{"TypeForCommands":"Escribe","ForCommands":"para ver los comandos"}}}');
+const Spanish_tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","FiltersD":"Puedes buscar clientes basados en los parámetros listados a continuación, no olvides aplicar cuando termines.","Text":"Filtro basado en texto","Eg":"Ej: correo electrónico, nombre, descripción","State":"Estado","Solved":"Resuelto","Unsolved":"No resuelto","Scaled":"Escalado","Actual":"Estado actual del cliente","Date":"Búsqueda basada en fecha","DateI":"Fecha inicial","DateF":"Fecha final","Apply":"Aplicar","Reset":"Reiniciar","Tickets":"Tickets","TicketsD":"¡Explora tus últimos tickets y solucionalos!","TicketInfo":"Información del Ticket","Clients":"Clientes","Actions":"Acciones","Selected":"Seleccionado","Export":"Exportar","Delete":"Eliminar","Code":"Código","Email":"Correo","DateC":"Fecha","Description":"Descripción","Mark":"Marcar como ","View":"Ver chat","Solved1":"resuelto","Unsolved1":"no resuelto","Success":"El ticket se eliminó correctamente","Error":"Hubo un error al eliminar el ticket","Validation":"Validación","Deletion":"Eliminación","DeletionD":"¿Estás seguro de que quieres eliminar este ticket?","ReplyVia":"Responder por","Respond using Gmail":"Gmail","Respond using Mail App":"Mail","Respond using Wizybot":"Wizybot","RespondPrompt":"Resuelve tus tickets directamente a través del chat de Wizybot y tus clientes recibirán una notificación por correo electrónico.","Go to chat":"Ir al chat","Go back":"Volver","Departments":"Departamentos","TicketDepartments":"Departamentos","SearchDepartments":"Departamentos","NoDepartmentsFound":"No hay departamentos","ManageTicketTags":"Gestionar etiquetas de tickets","ManageTicketTagsD":"Gestiona las etiquetas que se pueden usar en los tickets. Las etiquetas te ayudan a categorizar y filtrar tickets de manera más efectiva.","NewManageTicketTag":"Nueva etiqueta","ManageTicketStatuses":"Gestionar estados de tickets","ManageTicketStatusesD":"Gestiona los estados que se pueden usar en los tickets. Los estados te ayudan a categorizar y filtrar tickets de manera más efectiva.","NewManageTicketStatus":"Nuevo estado","SetStarting":"Inicial","SetClosing":"Cierre","SetIntermediate":"Medio","TicketTags":"Etiquetas de tickets","SearchTags":"Buscar etiquetas","TicketStatus":"Estado del ticket","SearchStatus":"Buscar estado","SelectProducts":"Seleccionar Productos","Update":"Actualizar","HubspotTicketManager":"Gestor de Tickets de HubSpot","HubspotReadOnly":"Solo Lectura","HubspotCalculated":"Calculado","HubspotNoValue":"Sin valor","HubspotUploadFiles":"Subir Archivos","HubspotUploadingFiles":"Subiendo archivos...","HubspotAttachedFiles":"Archivos Adjuntos","HubspotDownload":"Descargar","HubspotNoFilesAttached":"No hay archivos adjuntos","HubspotUpdating":"Actualizando...","HubspotUpdateProperties":"Actualizar Propiedades","HubspotTicketProperties":"Propiedades del Ticket","HubspotAssociatedContacts":"Contactos Asociados","HubspotUpdateContactProperties":"Actualizar Propiedades de Contactos","Name":"Nombre","Statuses":"Estados","SearchStatuses":"Buscar Estados","SelectOrders":"Seleccionar Orden","client":"Cliente","address":"Dirección","products":"Productos","price":"Precio","Type":"Tipo","BtnTicketCustomFields":"Campos personalizados","BtnTicketTags":"Etiquetas","BtnTicketStatuses":"Estados","TicketStatusesHelp1":"Define los estados que usarás en tus tickets. Debe existir un único estado de Inicio, uno de En Proceso y uno de Cierre. La IA utilizará estos tres para gestionar automáticamente el flujo del ticket.","Start":"Inicio","TicketStatusesHelp2":"Se asigna automáticamente por la IA cuando el ticket se crea.","InProgress":"En Proceso","TicketStatusesHelp3":"Lo establece un agente cuando comienza a gestionar el ticket.","Closed":"Cierre","TicketStatusesHelp4":"Lo asigna un agente cuando el ticket ha sido resuelto y finalizado.","TicketStatusesHelp5":"Los demás estados pueden personalizarse según tus necesidades internas.","NoTagsFound":"No se encontraron etiquetas","ViewList":"Lista","ViewBoard":"Tablero","ManageTicketsButton":"Gestionar","ManageTicketsModalTitle":"Gestionar tickets","LoadMore":"Cargar más","LoadingMoreTickets":"Cargando más tickets...","EmailCompose":{"Sending":"Enviando","Send":"Enviar","From":"De","To":"Para","Subject":"Asunto","SubjectPlaceholder":"Asunto","BodyPlaceholder":"Escribe tu mensaje","ToPlaceholder":"Destinatarios","SelectEmail":"Seleccionar correo","NewMessage":"Nuevo mensaje","NoSignature":"Sin firma","NoSignaturesHint":"Vaya a Configuración → Cuenta → Sección de correo electrónico → Administrar firmas, y haga clic en Agregar firma para crear una nueva","RichTextEditorTitle":"Dar formato al texto","EmojiPickerTitle":"Insertar emoji","SignaturePickerTitle":"Firma","CommandsPlaceholder":{"TypeForCommands":"Escribe","ForCommands":"para ver los comandos"}},"SelectStatus":"Seleccionar estado","Loading":"Cargando..."}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/tickets.json
-const Portuguese_tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","FiltersD":"Você pode buscar clientes com base nos parâmetros listados abaixo. Não se esqueça de aplicar quando terminar.","Text":"Filtro baseado em texto","Eg":"Ex: e-mail, nome, descrição","State":"Estado","Solved":"Resolvido","Unsolved":"Não resolvido","Scaled":"Escalado","Actual":"Estado atual do cliente","Date":"Busca baseada em data","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Reiniciar","Tickets":"Tickets","TicketsD":"Explore seus últimos tickets e resolva-os!","TicketInfo":"Informações do ticket","Clients":"Clientes","Actions":"Ações","Selected":"Selecionado","Export":"Exportar","Delete":"Excluir","Code":"Código","Email":"E-mail","DateC":"Data","Description":"Descrição","Mark":"Marcar como ","View":"Ver chat","Solved1":"resolvido","Unsolved1":"não resolvido","Success":"O ticket foi excluído com sucesso","Error":"Ocorreu um erro ao excluir o ticket","Validation":"Validação","Deletion":"Exclusão","DeletionD":"Tem certeza de que deseja excluir este ticket?","ReplyVia":"Responder por","Respond using Gmail":"Gmail","Respond using Mail App":"Mail","Respond using Wizybot":"Wizybot","RespondPrompt":"Resolva seus tickets diretamente pelo chat do Wizybot e seus clientes receberão uma notificação por e-mail.","Go to chat":"Ir para o chat","Go back":"Voltar","Departments":"Departamentos","TicketDepartments":"Departamentos","SearchDepartments":"Departamentos","NoDepartmentsFound":"Nenhum departamento encontrado","ManageTicketTags":"Gerenciar etiquetas de tickets","ManageTicketTagsD":"Gerencie as etiquetas que podem ser usadas em tickets. As etiquetas ajudam você a categorizar e filtrar tickets de forma mais eficaz.","NewManageTicketTag":"Nova etiqueta","ManageTicketStatuses":"Gerenciar status de tickets","ManageTicketStatusesD":"Gerencie os status que podem ser usados em tickets. Os status ajudam você a categorizar e filtrar tickets de forma mais eficaz.","NewManageTicketStatus":"Novo status","SetStarting":"Inicial","SetClosing":"Fechamento","SetIntermediate":"Medio","TicketTags":"Etiquetas de tickets","SearchTags":"Pesquisar etiquetas","TicketStatus":"Estado do ticket","SearchStatus":"Pesquisar estado","SelectProducts":"Selecionar Produtos","Update":"Atualizar","HubspotTicketManager":"Gerenciador de Tickets do HubSpot","HubspotReadOnly":"Somente Leitura","HubspotCalculated":"Calculado","HubspotNoValue":"Sem valor","HubspotUploadFiles":"Enviar Arquivos","HubspotUploadingFiles":"Enviando arquivos...","HubspotAttachedFiles":"Arquivos Anexados","HubspotDownload":"Baixar","HubspotNoFilesAttached":"Nenhum arquivo anexado","HubspotUpdating":"Atualizando...","HubspotUpdateProperties":"Atualizar Propriedades","HubspotTicketProperties":"Propriedades do Ticket","HubspotAssociatedContacts":"Contatos Associados","HubspotUpdateContactProperties":"Atualizar Propriedades de Contatos","Name":"Nome","Statuses":"Status","SearchStatuses":"Pesquisar Status","SelectOrders":"Selecionar Pedidos","client":"Cliente","address":"Endereço","products":"Produtos","price":"Preço","Type":"Tipo","BtnTicketCustomFields":"Campos personalizados","BtnTicketTags":"Etiquetas","BtnTicketStatuses":"Status","TicketStatusesHelp1":"Defina os status que você usará nos seus tickets. Deve existir exatamente um status de Início, um de Em andamento e um de Encerramento. A IA utilizará esses três para gerenciar automaticamente o fluxo do ticket.","Start":"Início","TicketStatusesHelp2":"Atribuído automaticamente pela IA quando o ticket é criado.","InProgress":"Em andamento","TicketStatusesHelp3":"Definido por um agente quando ele começa a atender o ticket.","Closed":"Encerramento","TicketStatusesHelp4":"Atribuído por um agente quando o ticket foi resolvido e finalizado.","TicketStatusesHelp5":"Os demais status podem ser personalizados de acordo com suas necessidades internas.","NoTagsFound":"Nenhuma etiqueta encontrada","ViewList":"Lista","ViewBoard":"Quadro","ManageTicketsButton":"Gerenciar","ManageTicketsModalTitle":"Gerenciar tickets","LoadMore":"Carregar mais","LoadingMoreTickets":"Carregando mais tickets...","EmailCompose":{"Sending":"Enviando","Send":"Enviar","From":"De","To":"Para","Subject":"Assunto","SubjectPlaceholder":"Assunto","BodyPlaceholder":"Escreva sua mensagem","ToPlaceholder":"Destinatários","SelectEmail":"Selecionar e-mail","NewMessage":"Nova mensagem","NoSignature":"Sem assinatura","NoSignaturesHint":"Vá para Configurações → Conta → Seção de e-mail → Gerenciar assinaturas e clique em Adicionar assinatura para criar uma nova","RichTextEditorTitle":"Formatar texto","EmojiPickerTitle":"Inserir emoji","SignaturePickerTitle":"Assinatura","CommandsPlaceholder":{"TypeForCommands":"Digite","ForCommands":"para ver os comandos"}}}');
+const Portuguese_tickets_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","FiltersD":"Você pode buscar clientes com base nos parâmetros listados abaixo. Não se esqueça de aplicar quando terminar.","Text":"Filtro baseado em texto","Eg":"Ex: e-mail, nome, descrição","State":"Estado","Solved":"Resolvido","Unsolved":"Não resolvido","Scaled":"Escalado","Actual":"Estado atual do cliente","Date":"Busca baseada em data","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Reiniciar","Tickets":"Tickets","TicketsD":"Explore seus últimos tickets e resolva-os!","TicketInfo":"Informações do ticket","Clients":"Clientes","Actions":"Ações","Selected":"Selecionado","Export":"Exportar","Delete":"Excluir","Code":"Código","Email":"E-mail","DateC":"Data","Description":"Descrição","Mark":"Marcar como ","View":"Ver chat","Solved1":"resolvido","Unsolved1":"não resolvido","Success":"O ticket foi excluído com sucesso","Error":"Ocorreu um erro ao excluir o ticket","Validation":"Validação","Deletion":"Exclusão","DeletionD":"Tem certeza de que deseja excluir este ticket?","ReplyVia":"Responder por","Respond using Gmail":"Gmail","Respond using Mail App":"Mail","Respond using Wizybot":"Wizybot","RespondPrompt":"Resolva seus tickets diretamente pelo chat do Wizybot e seus clientes receberão uma notificação por e-mail.","Go to chat":"Ir para o chat","Go back":"Voltar","Departments":"Departamentos","TicketDepartments":"Departamentos","SearchDepartments":"Departamentos","NoDepartmentsFound":"Nenhum departamento encontrado","ManageTicketTags":"Gerenciar etiquetas de tickets","ManageTicketTagsD":"Gerencie as etiquetas que podem ser usadas em tickets. As etiquetas ajudam você a categorizar e filtrar tickets de forma mais eficaz.","NewManageTicketTag":"Nova etiqueta","ManageTicketStatuses":"Gerenciar status de tickets","ManageTicketStatusesD":"Gerencie os status que podem ser usados em tickets. Os status ajudam você a categorizar e filtrar tickets de forma mais eficaz.","NewManageTicketStatus":"Novo status","SetStarting":"Inicial","SetClosing":"Fechamento","SetIntermediate":"Medio","TicketTags":"Etiquetas de tickets","SearchTags":"Pesquisar etiquetas","TicketStatus":"Estado do ticket","SearchStatus":"Pesquisar estado","SelectProducts":"Selecionar Produtos","Update":"Atualizar","HubspotTicketManager":"Gerenciador de Tickets do HubSpot","HubspotReadOnly":"Somente Leitura","HubspotCalculated":"Calculado","HubspotNoValue":"Sem valor","HubspotUploadFiles":"Enviar Arquivos","HubspotUploadingFiles":"Enviando arquivos...","HubspotAttachedFiles":"Arquivos Anexados","HubspotDownload":"Baixar","HubspotNoFilesAttached":"Nenhum arquivo anexado","HubspotUpdating":"Atualizando...","HubspotUpdateProperties":"Atualizar Propriedades","HubspotTicketProperties":"Propriedades do Ticket","HubspotAssociatedContacts":"Contatos Associados","HubspotUpdateContactProperties":"Atualizar Propriedades de Contatos","Name":"Nome","Statuses":"Status","SearchStatuses":"Pesquisar Status","SelectOrders":"Selecionar Pedidos","client":"Cliente","address":"Endereço","products":"Produtos","price":"Preço","Type":"Tipo","BtnTicketCustomFields":"Campos personalizados","BtnTicketTags":"Etiquetas","BtnTicketStatuses":"Status","TicketStatusesHelp1":"Defina os status que você usará nos seus tickets. Deve existir exatamente um status de Início, um de Em andamento e um de Encerramento. A IA utilizará esses três para gerenciar automaticamente o fluxo do ticket.","Start":"Início","TicketStatusesHelp2":"Atribuído automaticamente pela IA quando o ticket é criado.","InProgress":"Em andamento","TicketStatusesHelp3":"Definido por um agente quando ele começa a atender o ticket.","Closed":"Encerramento","TicketStatusesHelp4":"Atribuído por um agente quando o ticket foi resolvido e finalizado.","TicketStatusesHelp5":"Os demais status podem ser personalizados de acordo com suas necessidades internas.","NoTagsFound":"Nenhuma etiqueta encontrada","ViewList":"Lista","ViewBoard":"Quadro","ManageTicketsButton":"Gerenciar","ManageTicketsModalTitle":"Gerenciar tickets","LoadMore":"Carregar mais","LoadingMoreTickets":"Carregando mais tickets...","EmailCompose":{"Sending":"Enviando","Send":"Enviar","From":"De","To":"Para","Subject":"Assunto","SubjectPlaceholder":"Assunto","BodyPlaceholder":"Escreva sua mensagem","ToPlaceholder":"Destinatários","SelectEmail":"Selecionar e-mail","NewMessage":"Nova mensagem","NoSignature":"Sem assinatura","NoSignaturesHint":"Vá para Configurações → Conta → Seção de e-mail → Gerenciar assinaturas e clique em Adicionar assinatura para criar uma nova","RichTextEditorTitle":"Formatar texto","EmojiPickerTitle":"Inserir emoji","SignaturePickerTitle":"Assinatura","CommandsPlaceholder":{"TypeForCommands":"Digite","ForCommands":"para ver os comandos"}},"SelectStatus":"Selecionar status","Loading":"Carregando..."}');
 ;// CONCATENATED MODULE: ./src/translations/English/settings.json
 const settings_namespaceObject = /*#__PURE__*/JSON.parse('{"Events":"Shop events","EventsD":"Shop related events, like billing updates, installs, customer information requests.","Event":"Event","Date":"Date","Check":"Check","Selected":"Selected shop","SelectedD":"Shop that is currently selected change to another one to see more info.","ShopAndAccountInfo":"Shop and account information","ShopI":"Shop ID","ShopD":"Shop Domain","ShopP":"Shop Plan","AccountI":"Account Id","AccountE":"Account Email","Delete":"Delete Shop","Upgrade":"Upgrade Free Plan","Cancel":"Cancel Actual Plan","CancelB":"Cancel","Update":"Update","ConfigureLC":"Configure your Live Chat","AgentN":"Agent name","AgentND":"The name your customers will see when starting a conversation.","AgentL":"Agent location","Eg":" Eg: Juan, Thomas, Angela","Eg1":"Eg: Medellin, California, Berlín","PrimaryC":"Primary Color","PrimaryColorD":"The main color that defines the visual identity of the chat.","SecondaryC":"Secondary Color","SecondaryColorD":"A complementary color for accents and interactive elements.","GradientC":"Gradient Colors","FontC":"Font Color","FontColorD":"Ensures good readability across all chat elements.","Interact":"How would you like to interact with your customers?","Discount":"Send them a discount code when the customer access your webpage, this will increase your sales sustancially","Greet":"Only greet them warmly and let them know you are available for any inquiry","Percentage":"Discount percentage","Eg2":"Eg: 10, 20, 30","Phrase":"Online phrase","PhraseD":"A short message that reflects the agent\'s availability or tone.","Eg3":"Eg: We reply immediately","WidgetLang":"Widget language","WidgetLangD":"Defines the language in which the chat interface will be displayed.","InitialMessage":"Initial message","InitialMessageD":"The first message the user will see when opening the chat.","Eg4":"Eg: Hey! would you like a discount?","ConfigureOP":"Configure your order policy","OrderP":"What is your process for placing an order on your website?","OrderPD":"Step 1: Choose the product you want\\nStep 2: Select the colors, sizes or characteristics you need\\nStep 3: Add other products if you want to the basket\\nStep 4: Fill out the shipping information\\nStep 5: Fill out the payment information\\nStep 6: Finalize the order with payment","Length":"Length","OrderC":"Where do your customers receive the confirmation order?","Email":"Email","Sms":"Sms","Both":"Both","Other":"Other","OtherD":"Other confirmation types (Comma separated)","Eg5":"Eg: Mail, Beaper","OrderCa":"How do you manage order cancellations?","OrderCaD":"- If your order has already been shipped, we cannot cancel the order. In such cases, you may initiate a return as per our return policy.\\n- If your order is in the processing stage, we will do our best to stop the shipment, but we cannot guarantee cancellation. If cancellation is not possible, you may initiate a return once you receive the order.","OrderR":"Where do your customers receive the confirmation order?","InvoiceP":"Physical invoice","InvoiceO":"Online invoice","ConfigurePP":"Configure your payment policy","PaymentM":"What are your payment methods?","CreditC":"Credit Card","DebitC":"Debit Card","Cash":"Cash","BankT":"Bank Transfer","OtherDP":"Other payment methods (Comma separated)","Eg6":"Eg: Paypal, Venmo","Credit":"Do you offer any credit to customers?","CreditD":"We offer 2 ways of credit to our customers.\\n- The app allows the users to pay in credit without owning a credit card.\\n- We give credit to existing customers.","ConfigureSP":"Configure your shipping policy","ShippingT":"How long does it takes for a customer to receive the package?","ShippingTD":"3 business days if you are located in USA, and 15 to 20 days for international shipping.","ShippingC":"How much does the shipping cost?","ShippingCD":"- For US geography the shipping cost is for FREE\\n- For international shipping it has an extra cost of 20 USD.\\n- If the the international order is over 100 USD the shipping is FREE.","ShippingW":"Where do you ship? (Places comma separated)","ShippingWD":"US, Mexico, Caanda, Latin America, Britain","ConfigureRP":"Configure your returns policy","ReturnsC":"Are there any conditions or requirements for items to be eligible for a return?","ReturnsCD":"To be eligible for a return, the item must be unused, in its original condition, and in the original packaging. Certain products, such as perishable goods, intimate or sanitary items, and gift cards, are exempt from being returned.","ReturnsP":"What is the process for initiating a return?","ReturnsPD":"To initiate a return, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the return, we’ll create a ticket on your behalf and start the return process.","ReturnsS":"Is there a return shipping label provided, or do customers need to arrange and cover the shipping costs themselves?","ReturnsSD":"Pack the item securely in the original packaging, if possible, to prevent damage during transit. Include any accessories, manuals, or additional items that were included with the product. You are responsible for covering the return shipping costs unless the return is due to our error or a defective product.","ReturnsT":"How long does it typically take for a return to be processed and for a refund to be issued?","ReturnsTD":"You have 30 days from the date of delivery to initiate a return.If 30 days have passed since your purchase, unfortunately, we cannot offer you a refund or exchange. Once we receive your return, the average time in receiving your return is 5 business days.","ConfigureRFP":"Configure your refunds policy","RefundsT":" How long does it typically take for a refund to be processed?","RefundsTD":"5 business days","RefundsM":"What is the method of refund? Is it returned to the original payment method or provided as store credit?","RefundsMD":"It is provided as a store credit for the value of the refund.","RefundsC":"Are there any specific conditions or requirements for customers to be eligible for a refund?","RefundsCD":"You have 30 days from the date of delivery to initiate a refund.","RefundsF":"Are there any deductions or fees applied to refunded amounts, such as restocking fees or shipping costs?","RefundsFD":"No, we assume all costs in the refund.","ConfigureW":"Configure your warranty policy","WarrantyT":"How long is the duration of the warranty provided for the products?","WarrantyTD":"Our products are covered by a 6 months period warranty from the date of purchase. The warranty period may vary depending on the product category and specific item.","WarrantyC":"What does the warranty cover? Are there any specific components or parts excluded from the warranty?","WarrantyCD":"Our warranty covers defects in materials and workmanship under normal use and conditions. The warranty applies to the original purchaser and is non-transferable.","WarrantyR":"Are there any conditions or requirements for customers to be eligible for warranty coverage?","WarrantyRD":"The warranty does not cover damages caused by misuse, accidents, unauthorized modifications, or any other circumstances beyond normal usage. Consumable or disposable items are not eligible for warranty coverage. Damage caused by natural disasters, acts of God, or other external factors are not covered.","WarrantyP":"What is the process for initiating a warranty claim?","WarrantyPD":"To initiate a warranty claim, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the warranty claim, we’ll create a ticket on your behalf and start the warranty claim process.","ConfigureCP":"Configure your company policy","CompanyP":"What types of products do you sell?","CompanyPD":"Clothing and apparel","CompanyI":"What industry are you in?","Eg7":"Eg: Fashion, Food","CompanyC":"Contact info (for customers)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Company location","Eg8":"Eg: New york, California, Online (There is no location)","Free":"The Free plan was activated successfully","Deactivation":"Deactivation","Error":"There was an error in the plan registering process, please try again","App":"The app has to be uninstalled from shopify to proceed","Error1":"There was an error deleting the actual shop please try again","Error2":"There was an error in the shop setup process: ","Shop":"Your shop: ","SetupU":" Setup was updated succesfully!","Setup":"Setup","Sure":"Are you sure you want to delete ","ShopQ":" shop?","Sure1":"Are you sure you want to cancel your membership?","InitialM":"Hey there! Im online if you need any help...","InitialM1":"Hey there! we have a discount going on, would you like to redeem it?","Delete1":"Delete","Cancel1":"Cancel","ConfigureK":"Configure your knowledge base","Products":"Products","Pages":"Pages","Policies":"Policies","ShopifySync":"Shopify sync","WordPressSync":"Shopify sync","ShopifySyncD":"Keep your store catalog and data always up to date.","Sync":"Sync","SyncingT":"Syncing","SyncingE":"There was an error in the syncing process please try again","Retry":"Retry","SyncingS":"The resyncing process was completed succesfully","SyncingST":"Sinchronization","StartingSync":"Starting sync...","ReloadPage":"Reload page","SyncCompletedWithFailedJobs":"Sync completed with some failed entities","SyncFailedJobsDetails":"Our sync process is completed, however, we couldn\'t sync some entities after may attemps. This migth be due to an error while fetching the information from Shopify. See details below.","FailedJobsSection":"Failed","CatalogConfiguration":"Catalog configuration","ChatS":"Chat bubble size","Large":"Large","Medium":"Medium","Small":"Small","Eg9":"Select the size","ChatSide":"Chat side","ChatSideD":"Choose which side of the screen the chat entry point will appear on.","Left":"Left","Right":"Right","Eg10":"Select the side","PaddingB":"Padding bottom","PaddingS":"Padding side","Eg11":"Pixels from bottom and side","LiveC":"Live Chat","Bot":"Chatbot","ChatbotConfiguration":"Chatbot configuration","Outbound":"Outbound","Account":"Account","InventoryS":"Inventory sync","SyncO":"Sync","SyncN":"Do not sync","ChatV":"Chat visibility","ChatVD":"Control whether the chat is available or hidden for users.","Visible":"Visible","Hidden":"Hidden","Eg12":"Select chat visibility","ChatI":"Imagen del chat","ChatID":"Customize the avatar representing your agent.","Eg13":"Select a picture for the chat","ResetI":"Reset to inicial image","DefaultM":"Hey there! Im online if you need any help...","ProductM":"Hey there! Im online if you need any help with {product}?","CollectionM":"Hey there! are you interested in our {collection} collection?","SearchM":"Hey there! Are you looking for something in particular? I\'m here to help...","PageM":"Hey there! Need any info about {page}? I\'m here to help...","ChatbotP":"Act as a nice and polite customer support agent","DefaultM1":"Hey there! we have a discount going on, would you like to redeem it?","ProductM1":"Hey there! We have an special discount for {product} would you like to redeem it?","CollectionM1":"Hey there! We have an special discount for our {collection} collection would  you like to redeem it?","SearchM1":"Hey there! Are you looking for something in particular? I\'m here to help and could give you a discount","PageM1":"Hey there! Need any info about {page}? I\'m here to help...","Eg14":"Inventory Synchonization","ChatP":"Chat personality ","ChatPD":"Define the style and tone the AI will use to respond to your customers","InitialP":"Data Policy","InitialPN":"None","InitialPP":"Personalized","InitialPM":"Data Policy Message","InitialPMPH":"Before continuing with this conversation, please accept our current data policies...","EmailR":"Data retrieval method","EmailRTD":"Define how customer data will be requested at the start of the conversation","EmailRM":"Mandatory (Activate a form to fill before the chat begins)","EmailRS":"Semantic (Information is asked to the client at the beginning of the chat)","EmailRN":"None","Eg15":"Select the method","CustomM":"Mensajes personalizados","CustomMD":"Would you like to have custom messages or a single simple one?","CustomS":"Send different messages to your customers depending on which page they are standing (40% more interactions guaranteed)","SimpleS":"Send a custom simple message to your customers regardless on which page they are standing","DefaultMP":"Default message","ProductMP":"Products page message","CollectionMP":"Collections page message","SearchMP":"Search page message","PageMP":"Policies page message","Eg16":"Insert message","NotificationsConfiguration":"Notification settings","EmailN":"Notifications email","Eg17":"Eg: wizybot@mail.com","EmailNS":"Do you want to receive notifications form wizybot?","EmailNST":"Yes, I want notifications","EmailNSF":"No, I don\'t want notifications","Eg18":"Select your notifications setting","ManageP":"Manage Plan","AccountP":"Account password","Eg19":"Enter your new password","ChangeP":"Change Password","ClearCacheTitle":"Clear application cache","ClearCacheTitleD":"Clear temporary data if the app shows errors or unusual behavior","PasswordU":" updated the password successfully","PasswordE":"The password can not be the same as the last one please change it","DataRTD":"Select what information you want to request from the customer","DataRT":"Data retrieval type","DataRTName":"Name","DataRTEmail":"Email","DataRTPhone":"Phone","DataRTEmailPhone":"Email and Phone","DataRTNameEmail":"Name and Email","DataRTNamePhone":"Name and Phone","DataRTNameEmailPhone":"Name, Email and Phone","DataRTCustom":"Custom","Eg20":"Select the type","TicketNS":"Ticket notifications through email","TicketND":"Only receive a daily recap of unsolved tickets","TicketNE":"Receive an email every time a ticket is created","TicketNN":"Do not receive notifications for tickets","Eg21":"Select your preferred notification frequency","isActivationScheduleTitle":"Activation Schedule","ActiveAllTime":"Active All Time","SomeHours":"Some hours of the day","TimezoneTitle":"Time Zone","mon":"Monday","tue":"Tuesday","wed":"Wednesday","thu":"Thursday","fri":"Friday","sat":"Saturday","sun":"Sunday","TurnOff":"Turn Off","TurnOn":"Turn On","Eg23":"Choose the timezone","Eg24":"Type the link to which the widget should redirect","DeactivationAction":"When deactivated:","ActionVisibility":"The widget will be hidden","ActionAI":"A.I responses will turn off but live chat is active","ActionRedirect":"Will redirect to another link when widget is clicked","Eg25":"Choose what should Wizybot do when deactivated","RedirectionLink":"Redirection Link","MaxMessagesPerDay":"Maximum messages per customer per day","MaxMessagesPerDayD":"Define the maximum number of messages the AI can send to each customer in a day","Eg26":"Limit the messages per customer to prevent spam","RequestHelp":"What should Wizybot do when the customer\'s request requires human intervention?","CreateTicket":"Summarize the request, retrieve contact information, and create a ticket","Custom":"Custom Instructions","Eg27":"Select what Wizybot should do","CustomRequestHelpPrompt":"Custom Instructions:","DataRetrievalCustomPrompt":"Initial message","DataRetrievalCustomPromptDescription":"Define what the AI will say at the start of the chat to request this data","CustomInstructionsPlaceholder":"Tell the client to send us an email to support@example.com","DataRetrievalCustomPromptPlaceholder":"Ask for the customer\'s email and name in a clear and friendly way","Eg28":"Custom instruction for when human intervention is needed","Eg29":"Custom instruction for when a chat starts","hasLimitBudgetTitle":"Limit monthly budget","No":"No","Yes":"Yes","limitBudgetTitle":"Budget limit","Eg30":"Max. USD that can be charged in a month","limitBudgetActionTitle":"What should be done when the budget limit is reached?","Eg31":"Select what should be done if the budget limit is reached","AiOff":"Turn off AI responses","WidgetOff":"Turn off widget visibility","DefaultMessage":"Send a default message","Redirect":"Redirect to an URL","limitBudgetDefaultMessageTitle":"Default message","Eg32":"Type the default message replied once the budget limit is reached","limitBudgetRedirectionLinkTitle":"Redirect URL","Eg33":"Type the url to redirect once the budget limit is reached","syncBlogs":"Include the blog articles in the chatbot\'s knowledge","Eg34":"Select your data policy","Eg35":"Select your data policy message","DeleteIntegration":"Delete","Deactivate":"Deactivate","Activate":"Activate","PhoneNumber":"Phone Number","PageName":"Page Name","Username":"Username","DeleteWhatsAppAccountError":"Error Deleting Number","DeleteWhatsAppAccountErrorD":"There was an error deleting this number from Wizybot. Please contact support.","DeleteWhatsAppConfirmation":"Delete Confirmation","DeleteWhatsAppConfirmationD":"You will no longer be able to send or receive messages through this phone number in this Wizybot Store","DeleteInstagramAccountError":"Error Deleting Account","DeleteInstagramAccountErrorD":"There was an error deleting this account from Wizybot. Please contact support.","DeleteInstagramConfirmation":"Delete Confirmation","DeleteInstagramConfirmationD":"You will no longer be able to send or receive messages through this account in this Wizybot Store","DeleteMessengerAccountError":"Error Deleting Page","DeleteMessengerAccountErrorD":"There was an error deleting this page from Wizybot. Please contact support.","DeleteMessengerConfirmation":"Delete Confirmation","DeleteMessengerConfirmationD":"You will no longer be able to send or receive messages through this page in this Wizybot Store","DeleteHubspotAccountError":"Error Deleting Account","DeleteHubspotAccountErrorD":"There was an error deleting this account from Wizybot. Please contact support.","DeleteHubspotConfirmation":"Delete Confirmation","DeleteHubspotConfirmationD":"You will not keep syncing information with this Hubspot Account","AddNumber":"Add Another Number","AddAccount":"Add Another Account","AddPage":"Add Another Page","TicketDataR":"Contact data for ticket creation","TicketDataRE":"Email","TicketDataRP":"Phone","TicketDataRB":"Both","Eg36":"Select the data to ask for when creating a ticket","ContinueWithFacebook":"Continue with Facebook","SetWhatsApp":"Set Wizybot on WhatsApp","SetInstagram":"Set Wizybot on Instagram","SetMessenger":"Set Wizybot on Messenger","WhatsAppIntegrationSuccess":"WhatsApp Integration Success","WhatsAppIntegrationSuccessD":"Now Wizybot will be able to receive and respond messages through the selected number","WhatsAppIntegrationFail":"WhatsApp Integration Failed","WhatsAppIntegrationFailD":"There was an error in the integration process. ","InstagramIntegrationSuccess":"Instagram Integration Success","InstagramIntegrationSuccessD":"Now Wizybot will be able to receive and respond messages through the selected account","InstagramIntegrationFail":"Instagram Integration Failed","InstagramIntegrationFailD":"There was an error in the integration process. ","MessengerIntegrationSuccess":"Messenger Integration Success","MessengerIntegrationSuccessD":"Now Wizybot will be able to receive and respond messages through the selected page","MessengerIntegrationFail":"Messenger Integration Failed","MessengerIntegrationFailD":"There was an error in the integration process. ","AdvancedOptions":"Advanced Options","ProductTagsToIncludeInKnowledge":"Only include products with the following tags:","ProductTagsToIncludeInKnowledgePlaceholder":"Type a tag and press Enter","Eg37":"Wizybot will only consider products with these tags","ProductTagsToExcludeFromKnowledge":"Exclude products with the following tags:","ProductTagsToExcludeFromKnowledgePlaceholder":"Type a tag and press Enter","Eg38":"Wizybot will not consider products with these tags","AdditionalResponseDelay":"Additional Response Delay (seconds)","Eg39":"Increase Wizybot\'s response time to make it seem more natural","Eg40":"Connect a whatsapp account using a facebook business account","Eg41":"Connect an instagram account using a facebook business account","Eg42":"Connect a messenger account using a facebook business account","Eg43":"Enable product search filters for Wizybot to improve recommendations","ProductSearchFilters":"Product Search Filters","ManageSearchFilters":"Manage Search Filters","OnlyRecommendAvailableProducts":"Only recommend available products","Eg44":"Wizybot will avoid recommending out-of-stock products","Eg45":"In the next synchronization Wizybot will add the content of the blogs to the general shop information database","ConversationRouting":"Conversation Routing","Eg46":"This is going to distribute chats between your active agents","Integrations":"Integrations","Schedule":"Schedule","Monday":"Mon","Tuesday":"Tue","Wednesday":"Wed","Thursday":"Thu","Friday":"Fri","Saturday":"Sat","Sunday":"Sun","Weekdays":"Weekdays","Action":"Action","Hour":"Hour","Minute":"Minute","CurrentState":"Current State","Active":"Active","Inactive":"Inactive","ForeignScript":"External Script","ForeignScriptD":"Install the chat on other platforms by copying this code.","Eg47":"Wordpress, Vtex","Eg48":"Code to keep the bot alive even when a  message is sent from Instagram or Messenge","MetaCode":"Meta Code","VtexAccessToken":"VTEX Access Token","VtexAccessTokenUpdated":"VTEX access token updated.","VtexAccessTokenUpdateFailed":"Failed to update VTEX access token.","ClearC":"Clear Cache (Update)","EmailInboundLabel":"Copy the following address and redirect your emails to it","EmailOutboundTitle":"Outgoing Email Configuration","EmailOutboundDefaultLabel":"Default","MailOutboundDefault":"Create Default Email","DelMail":"Delete Email","AddMail":"Add Email Configuration","Eg49":"Set up your email to receive notifications","EmailName":"Email Name","Domain":"Domain","AddDomain":"Add Domain","AddHubspot":"Add HubSpot","Eg50":"mydomain.com","DomainPreType":"Record Type","DomainFor":"for","DomainWithValue":"with value","DomainReturnPath":"Return Path","DomainCustomTracking":"Custom Tracking","DomainInboundRouting":"Inbound Routing","DomainVerify":"Verify Domain","EmailInboundTitle":"Incoming Email Configuration","EmailFirstSetupDefaultOutbund":"First set up the default outgoing email","VerifyMail":"Verify Email","Verify":"Verify","FiltersEmail":"Filters","AddFiltersEmail":"Add Filters","NewFilterPattern":"New Filter Pattern","AddFilter":"Add","DelFilter":"Delete","ReplyToStoryMentions":"AI replies to Story Mentions","ReplyToStoryReplies":"AI replies to Story Replies","Reestablish":"Reestablish","Deleted":"Deleted","AiActivationSchedule":"Choose when the AI will be active to reply to messages","AiActivationScheduleT":"AI schedule","WidgetActivationSchedule":"Widget Activation Schedule","IsWidgetAiActive":"Widget AI Responses","IsWidgetAiActiveD":"Configure when the AI will respond to your customers","IsVisible":"Widget Visibility","IsVisibleD":"Define whether the widget is visible on your store","IsRedirect":"Widget URL Redirection","IsRedirectD":"Enable this option to send the customer to a link when clicking","Schedules":"Schedules","Off":"Off","On":"On","activate_ai":"Turn AI On","deactivate_ai":"Turn AI Off","activate_visibility":"Turn Visibility On","deactivate_visibility":"Turn Visibility Off","activate_redirection":"Turn Redirection On","deactivate_redirection":"Turn Redirection Off","SyncWithWizybot":"Download data into Wizybot","SyncWithHubSpot":"Uplod data from Wizybot","SyncShopifyClients":"Sync Shopify Clients","ShopifyClientsSyncError":"Status: Error","Syncing":"Status: Syncing...","DefaultCountryCode":"Default country code","Eg51":"Choose a default prefix for phone numbers saved by AI","Country":"Country:","Eg52":"Connect to monitor a WhatsApp Session","AddWhatsAppSession":"Add WhatsApp Session","AddWhatsAppSessionTitle":"Add WhatsApp Session","CreateProxy":"Create Proxy","CreateWhatsAppSession":"Create Session","MigrateWhatsAppSessionTitle":"Migrate WhatsApp Session","MigrateWhatsAppSession":"Migrate","NoSessionsAvailableTitle":"No Sessions Available","NoSessionsAvailable":"No sessions available. Please contact support to enable more sessions.","SaveProxy":"Save Proxy","SelectProxy":"Select Proxy","SelectProxyPlaceholder":"Select a proxy from the list","SelectWhatsAppBusinessAccount":"Select WhatsApp Business Account","WhatsAppSession":"WhatsApp Session","WhatsAppSessionMigrationSuccess":"Migration successful","WhatsAppSessionMigrationWarn":"Disconnect the device to migrate or delete the session","WhatsAppSessionNoAccount":"No WhatsApp accounts found with the same session number.","WhatsAppSessionProxy":"WhatsApp Session Proxy","WhatsAppSessionProxyTitle":"Proxy","ProxyList":"Proxy List","WhatsAppSessionQRCodeDescription":"Scan the QR code to connect your WhatsApp account","WhatsAppSessionQRCodeTitle":"WhatsApp QR Code","WhatsAppSessionSelect":"Select the account to migrate","DeleteProxy":"Delete","HostProxy":"Host","PasswordProxy":"Password","PortProxy":"Port","UsernameProxy":"Username","EnterHost":"Enter the proxy host","EnterPort":"Enter the proxy port","EnterUsername":"Enter the proxy username","EnterPassword":"Enter the proxy password","EchoAiFreezePeriod":"When a person replies, the AI pauses and will only resume the conversation after a few minutes of inactivity (in minutes).","EchoAiFreezePeriodT":"AI pause after manual reply","EchoAiFreezePeriodEg":"Eg: 5, 10, 15","AdditionalUrlParams":"Add information to your links to track where your visitors come from","AdditionalUrlParamsT":"URL parameters","AdditionalUrlParamsEg":"Eg: utm_source=google, utm_campaign=promo","AdditionalUrlParamsPlaceholder":"utm_source=wizybot&utm_campaign=junio2025","ManageCommentsTitle":"Manage comments","MarketSettingsTitle":"Market Settings","AddEmail":"Add Email","ConversationTags":"Categorize conversations","ConversationTagsD":"Add tags to conversations when closing them based on the topics discussed","ManageConversationTags":"Manage Conversation Tags","Eg53":"Add analytics tags to conversations acoording to relevant topics on closure","ConversationTagsDescription":"Create tags that can be assigned to conversations when they are closed to generate relevant analytics","ConversationClosingAgentMessageTitle":"Closing Agent Message","ConversationClosingAgentNameTitle":"Closing Agent","ConversationClosingAgentConditionTitle":"When to Use Closing Agent","ConversationClosingAgentConditionAlways":"Always","ConversationClosingAgentConditionRecentlyClosedTicket":"Only if ticket was recently closed","ConversationClosingAgentConditionPrompt":"Select when the closing agent should send automatic messages","Name":"Name","Description":"Description","Color":"Color","HubspotObjectType":"HubSpot Object Type","HubspotLoadingProperties":"Loading Properties","HubspotSelectProperties":"Select Properties","HubspotSelectedProperties":"Selected Properties","HubspotRemoveProperty":"Remove Property","HubspotNoPropertiesSelected":"No properties selected. Use the dropdown above to add properties.","HubspotAddObjectType":"Add object type configuration","HubspotInvalidPropertiesMessage":"Some selected properties are invalid and will be ignored","HubspotUnsavedChanges":"You have unsaved changes","HubspotSaving":"Saving...","HubspotSave":"Save","HubspotEdit":"Edit","HubspotId":"ID","HubspotDeleteIntegration":"Delete","HubspotSyncWithWizybot":"Sync with Wizybot","HubspotSyncWithHubSpot":"Sync with HubSpot","HubspotObjectTypes":"Object Types","HubspotPipelineStageMapping":"Pipeline Stage Mapping","HubspotPipelineStageMappingDescription":"Configure which HubSpot pipeline stages correspond to open and closed tickets in Wizybot.","HubspotSelectPipeline":"Select Pipeline:","HubspotSelectPipelinePlaceholder":"Select a pipeline for tickets","HubspotOpenTicketStage":"Open Ticket Stage:","HubspotOpenTicketStagePlaceholder":"Select stage for open tickets","HubspotClosedTicketStage":"Closed Ticket Stage:","HubspotClosedTicketStagePlaceholder":"Select stage for closed tickets","HubspotNotConfigured":"(not configured)","HubspotTickets":"Tickets","HubspotContacts":"Contacts","HubspotUseDefaultCreateTicketFunction":"Use Default Create Ticket Function","TicketAdditionalFields":"Custom ticket fields","ManageTicketAdditionalFields":"Configure custom fields","Eg54":"Create custom fields for your tickets","TicketAdditionalFieldsDescription":"Create custom fields in your tickets to tailor them to your business needs","Options":"Options","OptionsPlaceholder":"Add an option","PolicyMessageMode":"Policy message mode","CustomPerAgent":"Custom per agent","AgentPolicyMessages":"Agent Policy Messages","AgentPolicyMessagesDescription":"Configure custom policy messages for individual agents.","AddPolicyMessageForAgent":"Add Policy Message for Agent...","AllAgentsConfigured":"All available agents already have policy messages configured.","ConversationClosingAgent":"Conversation Closing Agent","ConversationClosingAgentChannelsTitle":"Enabled Channels","ConversationClosingAgentChannelsPrompt":"Select which channels should use the conversation closing agent. Leave empty to enable for all channels.","Eg55":"Enable send message and assign an agent when a conversation is closed","Eg56":"Type the message sent when a conversation is closed","Eg57":"Select the agent assigned when a conversation is closed","MetafieldDisplayTitle":"Display Title Metafield (namespace.key)","MetafieldDisplayPlaceholder":"e.g., global.brand_label_es","MetafieldDisplayPrompt":"This metafield value will be prefixed to the product title","MetafieldEmbeddingTitle":"Embedding Text Metafield (namespace.key)","MetafieldEmbeddingPlaceholder":"e.g., global.brand_label_es","MetafieldEmbeddingPrompt":"This metafield value will be prefixed to the embedding text for AI search","VariantOptionsMetafieldTitle":"Variant Options Metafields (Fancy Options)","VariantOptionsMetafieldPlaceholder":"e.g., color:global.color_name_en,size:global.size_name_en","VariantOptionsMetafieldPrompt":"Specify variant-level metafields to use fancy option names. Format: \'option_name:namespace.key\' separated by commas. These values will replace standard Shopify translations for variant options.","ConfigureMetafields":"Configure Metafields","AgentRequestHelpMessages":"Agent Request Help Messages","AddRequestHelpMessageForAgent":"Add Request Help Message for Agent...","NoAgentRequestHelpMessagesConfigured":"No agents have custom request help messages configured.","RequestHelpMessagePlaceholder":"Request help message for {agentName}...","ChatCounters":"Chat Counters Configuration","myBoardCounterConfig":"My Conversations","needsHelpCounterConfig":"Need Help","aiHandledCounterConfig":"AI Managed","my_board_all":"All","my_board_last_message_from_client":"Last message from client","needs_help":"All","ai_handled":"All","None":"None","Eg58":"Change the counters that are displayed in the Chats page","AddCoexistenceNumber":"Migrate number from WhatsApp Businefss","AddNewNumber":"Add New Number","ContactsSyncSuccessD":"The contacts of your WhatsApp Business will be synced in Wizybot during the following hours","ContactsSyncSuccess":"Contacts Sync Success","ContactsSyncFailD":"The contacts sync initialization failed. Please contact support","ContactsSyncFail":"Contacts Sync Failure","MessagesSyncSuccessD":"The messages of your WhatsApp Business will be synced in Wizybot during the following hours","MessagesSyncSuccess":"Messages Sync Success","MessagesSyncFailD":"The messages sync initialization failed. Please contact support","MessagesSyncFail":"Messages Sync Failure","TriggerContactsSync":"Sync previous contacts","TriggerMessagesSync":"Sync previous messages","UpdatePermissions":"Update permissions","CancelIntegration":"Cancel","Integrate":"Integrate","SelectPages":"Select Pages","LastSyncDate":"Last Sync Date","WebhooksActive":"Receiving Live Updates","WebhooksActiveDescription":"Your store is constantly updated via webhooks","WebhooksInactive":"Not Receiving Live Updates","WebhooksInactiveDescription":"Shopify webhooks are currently disabled","WebhooksStopped":"Shopify webhooks stopped on","MetaUserToken":"Meta General Login","MetaUserTokenIntegrationSuccess":"Meta General Login Success","MetaUserTokenIntegrationSuccessD":"Meta User Login Enabled","MetaUserTokenIntegrationFail":"Meta General Login Failed","MetaUserTokenIntegrationFailD":"There was an error in the integration process. ","MetaAdAccounts":"Meta Ad Accounts","MetaAdIntegrationSuccess":"Meta Ad Account Integration Success","MetaAdIntegrationSuccessD":"Now you can manage your campaigns from Wizybot","MetaAdIntegrationFail":"Meta Ad Account Integration Failed","MetaAdIntegrationFailD":"There was an error in the integration process. ","EgMetaAdAccounts":"Connect a meta ad account using a facebook business account","EgMetaUserToken":"Register a meta user access token using a facebook business account","MessageLimit":"Actual message limit: ","Unlimited":"Unlimited","NoLimitYet":"No limit set yet","OnlyMonitoring":"Only Monitoring","OnlyMonitoringD":"The AI will not reply to messages, it will only display activity","Continue":"Continue","Finish":"Finish","DomainSettingsSubtitle":"Set up and verify your domains","DefaultSignatureValues":"Default signature values","DefaultNewSignature":"For new emails","DefaultReplySignature":"For replies","NoSignature":"No signature","NoSignatureSelected":"No signature selected","ManageSignatures":"Manage signatures","NewSignature":"New signature","SignatureName":"Signature name","SignatureNameDuplicate":"Signature name already exists","SignatureNameRequired":"Name required","SignatureContentRequired":"Signature content can\'t be empty","PaymentMonitoring":"Payment Monitoring","EmailSenders":"Email Senders","PolicyMessagePlaceholder":"Policy message for {{agentName}}...","Loading":"Loading","NoEmailSendersAvailable":"No email senders available","PeriodicallySyncFeed":"Periodically sync feed","AgentSettings":"Agent Settings","ChatStyling":"Chat Styling","Preview":"Preview","PreviewD":"All your changes will be visible here.","PauseAI":"Pause AI","ResumeAI":"Resume AI","IntegrationsEmpty":{"whatsapp":{"title":"Connect WhatsApp","description":"Manage WhatsApp direct messages from your inbox. Automate flows and increase conversions.","feature1":{"title":"Direct messages","desc":"Reply to all your customers\' messages and inquiries."},"feature2":{"title":"24/7 availability","desc":"Improve response time and customer satisfaction."},"feature3":{"title":"Templates & flows","desc":"Boost productivity by automating conversations."}},"messenger":{"title":"Connect Facebook Messenger","description":"Centralize messages and comments from your Facebook page and improve your team\'s productivity.","feature1":{"title":"Messages & comments","desc":"Manage public and private interactions in one place."},"feature2":{"title":"Reply window","desc":"Take advantage of the 24-hour window to interact freely."},"feature3":{"title":"Quick replies","desc":"Use AI and automations for frequently asked questions."}},"instagram":{"title":"Connect Instagram","description":"Connect your professional account and reply to messages, mentions, and stories in one place.","feature1":{"title":"Messages & stories","desc":"Manage DMs and story replies بسهولة."},"feature2":{"title":"Instant interaction","desc":"Don’t leave any customer waiting for a reply."},"feature3":{"title":"Centralized management","desc":"Unify Instagram with your other channels."}},"metaAds":{"title":"Connect Ad Accounts","description":"Link your Meta Ads accounts to optimize campaigns and conversions through conversations.","feature1":{"title":"Synchronization","desc":"Link ads with incoming conversations."},"feature2":{"title":"Real-time metrics","desc":"Measure campaign performance directly."},"feature3":{"title":"Retargeting","desc":"Create audiences based on chat interactions."}}},"WooCommerceConnected":"WooCommerce detected. We will sync your products and collections.","NoWooCommerce":"We only detected WordPress. If you have products, make sure WooCommerce and our plugin are installed.","UnlockIntegration":{"whatsapp":{"title":"Unlock WhatsApp integration","description":"Centralize your customer support by connecting WhatsApp. Reply to messages, automate conversations, and manage everything in one place."},"messenger":{"title":"Unlock Messenger integration","description":"Connect Facebook Messenger and manage messages and comments from a single inbox with automation."},"instagram":{"title":"Unlock Instagram integration","description":"Connect your Instagram account and reply to messages, mentions, and comments in one place."},"email":{"title":"Unlock email integration","description":"Centralize your customer support by connecting your email. Manage tickets, automate replies, and keep all history in one inbox."}},"IntegrationFeatures":{"unifiedInbox":{"title":"Unified inbox","desc":"Manage all messages from one place without switching platforms."},"clientHistory":{"title":"Full history","desc":"Keep full customer context in every conversation."},"automation":{"title":"Smart automation","desc":"Automate replies and flows to boost productivity."}},"ContactSupportToEnable":"Contact support"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/settings.json
@@ -14017,11 +14028,11 @@ const Spanish_settings_namespaceObject = /*#__PURE__*/JSON.parse('{"Events":"Eve
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/settings.json
 const Portuguese_settings_namespaceObject = /*#__PURE__*/JSON.parse('{"Events":"Eventos da loja","EventsD":"Eventos relacionados à loja, como atualizações de cobrança, instalações.","Event":"Evento","Date":"Data","Check":"Ver","Selected":"Loja selecionada","SelectedD":"Loja atualmente selecionada. Mude para outra para ver mais informações.","ShopAndAccountInfo":"Informações da loja e da conta","ShopI":"ID da loja","ShopD":"Domínio da loja","ShopP":"Plano da loja","AccountI":"ID da conta","AccountE":"E-mail da conta","Delete":"Excluir loja","Upgrade":"Aumentar plano gratuito","Cancel":"Cancelar plano atual","CancelB":"Cancelar","Update":"Atualizar","ConfigureLC":"Configure seu chat ao vivo","AgentN":"Nome do agente","AgentND":"O nome que seus clientes verão ao iniciar uma conversa.","AgentL":"Localização do agente","Eg":" Exemplo: Juan, Thomas, Angela","Eg1":"Exemplo: Medellín, Califórnia, Berlim","PrimaryC":"Cor primária","PrimaryColorD":"A cor principal que define a identidade visual do chat.","SecondaryC":"Cor secundária","SecondaryColorD":"Uma cor complementar para destaques e elementos interativos.","GradientC":"Cores degradê","FontC":"Cor da fonte","FontColorD":"Garante boa legibilidade em todos os elementos do chat.","Interact":"Como você gostaria de interagir com seus clientes?","Discount":"Enviar um código de desconto quando o cliente acessar seu site aumentará significativamente suas vendas","Greet":"Apenas cumprimentá-los cordialmente e informá-los que está disponível para qualquer dúvida","Percentage":"Porcentagem de desconto","Eg2":"Exemplo: 10, 20, 30","Phrase":"Frase de exibição","PhraseD":"Uma mensagem breve que indique a disponibilidade ou atitude do agente.","Eg3":"Exemplo: Respondemos imediatamente","WidgetLang":"Idioma do widget","WidgetLangD":"Define o idioma em que a interface do chat será exibida.","InitialMessage":"Mensagem inicial","InitialMessageD":"A primeira mensagem que o usuário verá ao abrir o chat.","Eg4":"Exemplo: Olá! Gostaria de um desconto?","ConfigureOP":"Configure sua política de pedidos","OrderP":"Qual é o seu processo para realizar um pedido em seu site?","OrderPD":"Etapa 1: Escolha o produto que deseja\\nEtapa 2: Selecione as cores, tamanhos ou características necessárias\\nEtapa 3: Adicione outros produtos ao carrinho, se desejar\\nEtapa 4: Preencha as informações de envio\\nEtapa 5: Preencha as informações de pagamento\\nEtapa 6: Finalize o pedido com o pagamento","Length":"Comprimento","OrderC":"Onde seus clientes recebem a confirmação do pedido?","Email":"E-mail","Sms":"SMS","Both":"Ambos","Other":"Outro","OtherD":"Outros tipos de confirmação (separados por vírgula)","Eg5":"Exemplo: E-mail, Bipe","OrderCa":"Como você gerencia os cancelamentos de pedidos?","OrderCaD":"- Se o seu pedido já foi enviado, não podemos cancelá-lo. Nesses casos, você pode iniciar uma devolução de acordo com nossa política de devoluções.\\n- Se seu pedido estiver em processamento, faremos o possível para impedir o envio, mas não garantimos o cancelamento. Se não for possível cancelar, você poderá iniciar uma devolução após receber o pedido.","OrderR":"Onde seus clientes recebem a confirmação do pedido?","InvoiceP":"Fatura física","InvoiceO":"Fatura online","ConfigurePP":"Configure sua política de pagamentos","PaymentM":"Quais são seus métodos de pagamento?","CreditC":"Cartão de crédito","DebitC":"Cartão de débito","Cash":"Dinheiro","BankT":"Transferência bancária","OtherDP":"Outros métodos de pagamento (separados por vírgula)","Eg6":"Exemplo: Paypal, Venmo","Credit":"Você oferece algum crédito aos clientes?","CreditD":"Oferecemos 2 formas de crédito aos nossos clientes.\\n- O aplicativo permite que os usuários paguem a crédito sem possuir um cartão de crédito.\\n- Oferecemos crédito a clientes existentes.","ConfigureSP":"Configure sua política de envio","ShippingT":"Quanto tempo leva para um cliente receber o pacote?","ShippingTD":"3 dias úteis se estiver nos Estados Unidos e de 15 a 20 dias para envios internacionais.","ShippingC":"Quanto custa o envio?","ShippingCD":"- Para os Estados Unidos, o envio é GRATUITO\\n- Para envios internacionais, há um custo adicional de 20 USD.\\n- Se o pedido internacional exceder 100 USD, o envio é GRATUITO.","ShippingW":"Para onde você envia? (Locais separados por vírgula)","ShippingWD":"Estados Unidos, México, Canadá, América Latina, Reino Unido","ConfigureRP":"Configure sua política de devoluções","ReturnsC":"Existem condições ou requisitos para que os itens sejam elegíveis para devolução?","ReturnsCD":"Para ser elegível para devolução, o item deve estar sem uso, em seu estado original e na embalagem original. Alguns produtos, como perecíveis, itens íntimos ou de higiene e cartões-presente, estão isentos de devolução.","ReturnsP":"Qual é o processo para iniciar uma devolução?","ReturnsPD":"Para iniciar uma devolução, entre em contato conosco através deste chat dentro do período de garantia. Forneça seu número de pedido e o motivo da devolução, criaremos um ticket em seu nome e iniciaremos o processo de devolução.","ReturnsS":"Uma etiqueta de envio de devolução é fornecida ou os clientes devem organizar e arcar com os custos de envio por conta própria?","ReturnsSD":"Embale o item com segurança na embalagem original, se possível, para evitar danos durante o transporte. Inclua acessórios, manuais ou quaisquer outros itens adicionais fornecidos com o produto. Você é responsável pelos custos de envio da devolução, a menos que a devolução seja por nosso erro ou um produto defeituoso.","ReturnsT":"Quanto tempo normalmente leva para processar uma devolução e emitir um reembolso?","ReturnsTD":"Você tem 30 dias a partir da data de entrega para iniciar uma devolução. Se se passaram mais de 30 dias desde a compra, infelizmente não podemos oferecer reembolso ou troca. Após recebermos sua devolução, o tempo médio para processá-la é de 5 dias úteis.","ConfigureRFP":"Configure sua política de reembolsos","RefundsT":"Quanto tempo normalmente leva para processar um reembolso?","RefundsTD":"5 dias úteis","RefundsM":"Qual é o método de reembolso? É devolvido ao método de pagamento original ou fornecido como crédito da loja?","RefundsMD":"É fornecido como crédito da loja no valor do reembolso.","RefundsC":"Existem condições ou requisitos específicos para que os clientes sejam elegíveis para um reembolso?","RefundsCD":"Você tem 30 dias a partir da data de entrega para solicitar um reembolso.","RefundsF":"Existem deduções ou taxas aplicadas aos valores reembolsados, como taxas de reposição ou custos de envio?","RefundsFD":"Não, nós arcamos com todos os custos do reembolso.","ConfigureW":"Configure sua política de garantia","WarrantyT":"Qual é a duração da garantia fornecida para os produtos?","WarrantyTD":"Nossos produtos têm garantia de 6 meses a partir da data da compra. O período de garantia pode variar de acordo com a categoria do produto e o item específico.","WarrantyC":"O que a garantia cobre? Existem componentes ou partes específicas excluídas da garantia?","WarrantyCD":"Nossa garantia cobre defeitos de materiais e de fabricação sob uso e condições normais. A garantia se aplica ao comprador original e não é transferível.","WarrantyR":"Existem condições ou requisitos para que os clientes sejam elegíveis à cobertura da garantia?","WarrantyRD":"A garantia não cobre danos causados por uso indevido, acidentes, modificações não autorizadas ou qualquer outra circunstância além do uso normal. Itens consumíveis ou descartáveis não são elegíveis para cobertura de garantia. Danos causados por desastres naturais, força maior ou outros fatores externos não estão cobertos.","WarrantyPD":"Qual é o processo para iniciar uma solicitação de garantia?","WarantyPD":"Para iniciar uma solicitação de garantia, entre em contato conosco através deste chat dentro do período de garantia. Forneça seu número de pedido e o motivo da solicitação, criaremos um ticket em seu nome e iniciaremos o processo.","ConfigureCP":"Configure sua política da empresa","CompanyP":"Que tipos de produtos você vende?","CompanyPD":"Roupas e vestuário","CompanyI":"Em qual setor você atua?","Eg7":"Ex: Moda, Alimentação","CompanyC":"Informações de contato (para os clientes)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Localização da empresa","Eg8":"Ex: Nova Iorque, Califórnia, Online (Sem localização)","Free":"O plano gratuito foi ativado com sucesso","Deactivation":"Desativação","Error":"Houve um erro no processo de registro do plano, por favor tente novamente","App":"O aplicativo deve ser desinstalado do Shopify para continuar","Error1":"Houve um erro ao excluir a loja atual, por favor tente novamente","Error2":"Houve um erro no processo de configuração da loja: ","Shop":"Sua loja: ","SetupU":"foi atualizado com sucesso!","Setup":"Configuração","Sure":"Tem certeza de que deseja excluir a loja ","ShopQ":"?","Sure1":"Tem certeza de que deseja cancelar sua assinatura?","InitialM":"Olá! Estou online se precisar de ajuda...","InitialM1":"Olá! Temos um desconto disponível, gostaria de aproveitá-lo?","Delete1":"Excluir","Cancel1":"Cancelar","ConfigureK":"Configurar seu conteúdo base","Products":"Produtos","Pages":"Páginas","Policies":"Políticas","ShopifySync":"Sincronização com Shopify","WordPressSync":"Sincronização com WordPress","ShopifySyncD":"Mantenha o catálogo e os dados da sua loja sempre atualizados.","Sync":"Sincronizar novamente","SyncingT":"Sincronização","SyncingE":"Houve um erro no processo de sincronização, por favor tente novamente.","Retry":"Tentar novamente","SyncingS":"O processo de resincronização foi concluído com sucesso","SyncingST":"Sincronização","CatalogConfiguration":"Configuração do catálogo","ChatS":"Tamanho do ícone","Large":"Grande","Medium":"Médio","Small":"Pequeno","Eg9":"Selecione o tamanho","ChatSide":"Posição do ícone","ChatSideD":"Escolha em qual lado da tela o acesso ao chat aparecerá.","Left":"Esquerda","Right":"Direita","Eg10":"Selecione o lado","PaddingB":"Espaço inferior","PaddingS":"Espaço lateral","Eg11":"Pixels laterais e inferiores","LiveC":"Chat","Bot":"Chatbot","ChatbotConfiguration":"Configuração do chatbot","Outbound":"Saída","Account":"Conta","InventoryS":"Sincronização de inventário","SyncO":"Sincronizar","SyncN":"Não sincronizar","ChatV":"Visibilidade do chat","ChatVD":"Controla se o chat está disponível ou oculto para os usuários.","Visible":"Visível","Hidden":"Oculto","Eg12":"Selecione a visibilidade do chat","ChatI":"Imagem do chat","ChatID":"Personalize o avatar que representa seu agente.","Eg13":"Selecione uma imagem para o chat","ResetI":"Restaurar imagem inicial","DefaultM":"Olá! Estou online se precisar de ajuda...","ProductM":"Olá! Estou online se precisar de ajuda com {product}?","CollectionM":"Olá! Está interessado em nossa coleção {collection}?","SearchM":"Olá! Está procurando algo em particular? Estou aqui para ajudar...","PageM":"Olá! Precisa de informações sobre {page}? Estou aqui para ajudar...","ChatbotP":"Aja como um agente de atendimento ao cliente amigável e educado","DefaultM1":"Olá! Temos um desconto disponível, gostaria de aproveitá-lo?","ProductM1":"Olá! Temos um desconto disponível para {product}, gostaria de aproveitá-lo?","CollectionM1":"Olá! Temos um desconto disponível para nossa coleção {collection}, gostaria de aproveitá-lo?","SearchM1":"Olá! Está procurando algo em particular? Estou aqui para ajudar e oferecer descontos","PageM1":"Olá! Precisa de informações sobre {page}? Estou aqui para ajudar...","Eg14":"Sincronização do inventário","ChatP":"Personalidade do chat","ChatPD":"Defina o estilo e o tom que a IA usará para responder aos seus clientes","InitialP":"Política de dados","InitialPN":"Nenhuma","InitialPP":"Personalizada","InitialPM":"Mensagem da política de dados","InitialPMPH":"Antes de continuar com esta conversa, por favor aceite nossa política de dados vigente...","EmailR":"Forma de coleta de dados","EmailRTD":"Defina como os dados do cliente serão solicitados no início da conversa","EmailRM":"Obrigatória (Um formulário será ativado no início)","EmailRS":"Semântica (As informações serão solicitadas no início da conversa)","EmailRN":"Nenhuma","Eg15":"Selecione o método","CustomM":"Mensajes personalizados","CustomMD":"Você gostaria de usar mensagens personalizadas ou uma única mensagem simples?","CustomS":"Envie mensagens diferentes aos seus clientes com base na página em que se encontram (aumenta em 40% as interações)","SimpleS":"Envie uma mensagem simples e personalizada aos seus clientes, independentemente da página em que estejam","DefaultMP":"Mensagem padrão","ProductMP":"Mensagem da página de produtos","CollectionMP":"Mensagem da página de coleções","SearchMP":"Mensagem da página de busca","PageMP":"Mensagem da página de políticas","Eg16":"Insira a mensagem","NotificationsConfiguration":"Configuração de notificações","EmailN":"E-mail para notificações","Eg17":"Exemplo: wizybot@mail.com","EmailNS":"Deseja receber notificações do Wizybot?","EmailNST":"Sim, quero notificações","EmailNSF":"Não, não quero notificações","Eg18":"Selecione sua configuração de notificações","ManageP":"Ajustar plano","AccountP":"Senha da conta","Eg19":"Digite sua nova senha","ChangeP":"Alterar senha","ClearCacheTitle":"Limpar cache do aplicativo","ClearCacheTitleD":"Apague dados temporários se o app apresentar erros ou comportamentos incomuns","PasswordU":"Sua senha foi atualizada com sucesso!","PasswordE":"A nova senha não pode ser igual à anterior, por favor insira uma nova","DataRTD":"Selecione quais informações você deseja solicitar ao cliente","DataRT":"Tipo de dados a solicitar","DataRTName":"Nome","DataRTEmail":"E-mail","DataRTPhone":"Celular","DataRTEmailPhone":"E-mail e Celular","DataRTNameEmail":"Nome e E-mail","DataRTNamePhone":"Nome e Celular","DataRTNameEmailPhone":"Nome, E-mail e Celular","DataRTCustom":"Personalizado","Eg20":"Selecione o tipo","TicketNS":"Notificações de tickets por e-mail","TicketND":"Receber apenas um resumo diário de tickets não resolvidos","TicketNE":"Receber um e-mail sempre que um ticket for criado","TicketNN":"Não receber notificações de tickets","Eg21":"Escolha sua frequência de notificações preferida","isActivationScheduleTitle":"Horário de ativação","ActiveAllTime":"Ativo o tempo todo","SomeHours":"Algumas horas do dia","TimezoneTitle":"Fuso horário","mon":"Segunda-feira","tue":"Terça-feira","wed":"Quarta-feira","thu":"Quinta-feira","fri":"Sexta-feira","sat":"Sábado","sun":"Domingo","TurnOff":"Desligar","TurnOn":"Ligar","Eg23":"Escolha seu fuso horário","Eg24":"Digite o link para o qual deve redirecionar ao clicar","DeactivationAction":"Ao desativar:","ActionVisibility":"O widget ficará oculto","ActionAI":"As respostas automáticas serão desativadas, mas o chat continuará funcionando","ActionRedirect":"Será redirecionado para outro link ao clicar","Eg25":"Escolha o que o Wizybot deve fazer ao ser desativado","RedirectionLink":"Link de redirecionamento","MaxMessagesPerDay":"Máximo de mensagens por cliente por dia","MaxMessagesPerDayD":"Defina o número máximo de mensagens que a IA pode enviar para cada cliente em um dia","Eg26":"Limite as mensagens por cliente para evitar spam","RequestHelp":"O que o Wizybot deve fazer quando uma solicitação do cliente exigir intervenção humana?","CreateTicket":"Resumir a solicitação, registrar dados de contato e criar um ticket","Custom":"Instruções personalizadas","Eg27":"Escolha o que o Wizybot deve fazer","CustomRequestHelpPrompt":"Instruções personalizadas:","DataRetrievalCustomPrompt":"Mensagem inicial","DataRetrievalCustomPromptDescription":"Defina o que a IA dirá ao iniciar o chat para solicitar esses dados","CustomInstructionsPlaceholder":"Peça ao cliente para enviar um e-mail para suporte@exemplo.com","DataRetrievalCustomPromptPlaceholder":"Solicite o e-mail e nome do cliente de forma clara e amigável","Eg28":"Instruções personalizadas para quando for necessária intervenção humana","Eg29":"Instruções personalizadas para quando uma conversa começa","hasLimitBudgetTitle":"Limite de orçamento mensal","No":"Não","Yes":"Sim","limitBudgetTitle":"Limite de orçamento","Eg30":"Quantidade máxima de dólares que podem ser cobrados em um mês","limitBudgetActionTitle":"O que fazer quando o orçamento limite for atingido?","Eg31":"Selecione uma opção","AiOff":"Desligar as respostas da IA","WidgetOff":"Desligar a visibilidade do widget","DefaultMessage":"Enviar uma mensagem padrão","Redirect":"Redirecionar para uma URL","limitBudgetDefaultMessageTitle":"Mensagem padrão","Eg32":"Digite a mensagem padrão que será enviada quando o limite for atingido","limitBudgetRedirectionLinkTitle":"URL para redirecionamento","Eg33":"Digite a URL para onde será redirecionado ao atingir o limite","syncBlogs":"Incluir os artigos do blog no conhecimento do chatbot","Eg34":"Selecione sua política de dados","Eg35":"Selecione sua mensagem de política de dados","DeleteIntegration":"Excluir","Deactivate":"Desativar","Activate":"Ativar","PhoneNumber":"Número","PageName":"Página","Username":"Usuário","DeleteWhatsAppAccountError":"Erro ao excluir número","DeleteWhatsAppAccountErrorD":"Ocorreu um erro ao excluir este número. Por favor, entre em contato com o suporte.","DeleteWhatsAppConfirmation":"Confirmação de exclusão","DeleteWhatsAppConfirmationD":"Você não poderá receber ou enviar mensagens através deste número para esta loja do Wizybot","DeleteInstagramAccountError":"Erro ao excluir conta","DeleteInstagramAccountErrorD":"Ocorreu um erro ao excluir esta conta. Por favor, entre em contato com o suporte.","DeleteInstagramConfirmation":"Confirmação de exclusão","DeleteInstagramConfirmationD":"Você não poderá receber ou enviar mensagens através desta conta para esta loja do Wizybot","DeleteMessengerAccountError":"Erro ao excluir conta","DeleteMessengerAccountErrorD":"Ocorreu um erro ao excluir esta página. Por favor, entre em contato com o suporte.","DeleteMessengerConfirmation":"Confirmação de exclusão","DeleteMessengerConfirmationD":"Você não poderá receber ou enviar mensagens através desta página para esta loja do Wizybot","DeleteHubspotAccountError":"Erro ao excluir conta","DeleteHubspotAccountErrorD":"Ocorreu um erro ao excluir esta conta. Por favor, entre em contato com o suporte.","DeleteHubspotConfirmation":"Confirmação de exclusão","DeleteHubspotConfirmationD":"As informações não serão mais sincronizadas com esta conta do HubSpot","AddNumber":"Adicionar outro número","AddAccount":"Adicionar outra conta","AddPage":"Adicionar outra página","TicketDataR":"Dados de contato para criar ticket","TicketDataRE":"Email","TicketDataRP":"Telefone","TicketDataRB":"Ambos","Eg36":"Selecione os dados a solicitar ao criar um ticket","ContinueWithFacebook":"Continuar com o Facebook","SetWhatsApp":"Ativar Wizybot no WhatsApp","SetInstagram":"Ativar Wizybot no Instagram","SetMessenger":"Ativar Wizybot no Messenger","WhatsAppIntegrationSuccess":"Integração bem-sucedida","WhatsAppIntegrationSuccessD":"Agora o Wizybot poderá responder através do número selecionado","WhatsAppIntegrationFail":"Erro na integração","WhatsAppIntegrationFailD":"Ocorreu um erro no processo de integração.","InstagramIntegrationSuccess":"Integração bem-sucedida","InstagramIntegrationSuccessD":"Agora o Wizybot poderá responder através da conta selecionada","InstagramIntegrationFail":"Erro na integração","InstagramIntegrationFailD":"Ocorreu um erro no processo de integração.","MessengerIntegrationSuccess":"Integração bem-sucedida","MessengerIntegrationSuccessD":"Agora o Wizybot poderá responder através da página selecionada","MessengerIntegrationFail":"Erro na integração","MessengerIntegrationFailD":"Ocorreu um erro no processo de integração.","AdvancedOptions":"Opções avançadas","ProductTagsToIncludeInKnowledge":"Incluir apenas produtos com as seguintes etiquetas:","ProductTagsToIncludeInKnowledgePlaceholder":"Digite uma etiqueta e pressione Enter","Eg37":"O Wizybot só considerará produtos com estas etiquetas","ProductTagsToExcludeFromKnowledge":"Excluir produtos com as seguintes etiquetas:","ProductTagsToExcludeFromKnowledgePlaceholder":"Digite uma etiqueta e pressione Enter","Eg38":"O Wizybot não considerará produtos com estas etiquetas","AdditionalResponseDelay":"Atraso adicional na resposta (segundos)","Eg39":"Aumente o tempo de resposta do Wizybot para parecer mais natural","Eg40":"Conecte uma conta do WhatsApp usando uma conta comercial do Facebook","Eg41":"Conecte uma conta do Instagram usando uma conta comercial do Facebook","Eg42":"Conecte uma conta do Messenger usando uma conta comercial do Facebook","Eg43":"Habilite filtros de busca de produtos para melhorar as recomendações do Wizybot","ProductSearchFilters":"Filtros de busca de produtos","ManageSearchFilters":"Configurar busca com filtros","OnlyRecommendAvailableProducts":"Recomendar apenas produtos disponíveis","Eg44":"O Wizybot evitará recomendar produtos fora de estoque","Eg45":"Na próxima sincronização, as informações dos blogs serão adicionadas ao conhecimento geral do chatbot","ConversationRouting":"Roteamento de conversas","Eg46":"Isso distribuirá os chats entre seus agentes ativos","Integrations":"Integrações","Schedule":"Horário","Monday":"Seg","Tuesday":"Ter","Wednesday":"Qua","Thursday":"Qui","Friday":"Sex","Saturday":"Sáb","Sunday":"Dom","Weekdays":"Dias da semana","Action":"Ação","Hour":"Hora","Minute":"Minuto","CurrentState":"Estado atual","Active":"Ativo","Inactive":"Inativo","ForeignScript":"Script externo","ForeignScriptD":"Instale o chat em outras plataformas copiando este código.","Eg47":"WordPress, Vtex","Eg48":"Código para manter o bot ativo mesmo ao enviar mensagens pelo Instagram ou Messenger","MetaCode":"Código Meta","VtexAccessToken":"Token de acesso da VTEX","VtexAccessTokenUpdated":"Token de acesso da VTEX atualizado.","VtexAccessTokenUpdateFailed":"Não foi possível atualizar o token de acesso da VTEX.","ClearC":"Limpar cache (Atualizar)","EmailOutboundTitle":"Configuração de email de saída","EmailInboundLabel":"Copie o seguinte endereço e redirecione seus emails para ele","EmailOutboundDefaultLabel":"Padrão","MailOutboundDefault":"Criar email padrão","DelMail":"Excluir email","AddMail":"Adicionar configuração de email","Eg49":"Configure seu email para receber notificações","EmailName":"Nome do email","Domain":"Domínio","AddDomain":"Adicionar domínio","AddHubspot":"Adicionar HubSpot","Eg50":"meudominio.com","DomainPreType":"Tipo de registro","DomainFor":"para","DomainWithValue":"com valor","DomainReturnPath":"Caminho de retorno","DomainCustomTracking":"Rastreamento personalizado","DomainInboundRouting":"Roteamento de entrada","DomainVerify":"Verificar domínio","Verify":"Verificar","EmailInboundTitle":"Configuração de email de entrada","EmailFirstSetupDefaultOutbund":"Configure primeiro o email de saída padrão","VerifyMail":"Verificar email","FiltersEmail":"Filtros","AddFiltersEmail":"Adicionar filtros","NewFilterPattern":"Novo padrão de filtro","AddFilter":"Adicionar","DelFilter":"Excluir","ReplyToStoryMentions":"Responder com IA a menções em histórias","ReplyToStoryReplies":"Responder com IA a respostas de histórias","Reestablish":"Restabelecer","Deleted":"Excluído","AiActivationSchedule":"Escolha quando a IA estará ativa para responder mensagens","AiActivationScheduleT":"Horário da IA","WidgetActivationSchedule":"Horários do Widget","IsWidgetAiActive":"Respostas de IA","IsWidgetAiActiveD":"Configure quando a IA responderá aos seus clientes","IsVisible":"Visibilidade","IsVisibleD":"Defina se o widget está visível na sua loja","IsRedirect":"Redirecionamento para URL","IsRedirectD":"Ative esta opção para enviar o cliente para um link ao clicar","Schedules":"Horários","Off":"Desligado","On":"Ligado","activate_ai":"Ligar IA","deactivate_ai":"Desligar IA","activate_visibility":"Ligar visibilidade","deactivate_visibility":"Desligar visibilidade","activate_redirection":"Ligar redirecionamento","deactivate_redirection":"Desligar redirecionamento","SyncWithWizybot":"Obter dados do HubSpot","SyncWithHubSpot":"Enviar dados para o HubSpot","Resync":"Ressincronizar","SyncShopifyClients":"Sincronizar clientes do Shopify","ShopifyClientsSyncError":"Status: Erro","Syncing":"Status: Sincronizando...","DefaultCountryCode":"Código de país padrão","Eg51":"Escolha um código padrão para os números salvos pela IA","Country":"País:","WhatsAppSession":"Sessão do WhatsApp","AddWhatsAppSession":"Adicionar outra sessão do WhatsApp","Eg52":"Conecte-se para monitorar uma conta do WhatsApp","MigrateWhatsappSessionTitle":"Migrar sessão do WhatsApp","MigrateWhatsAppSession":"Migrar","WhatsAppSessionMigrationWarn":"Desconecte o dispositivo para migrar ou excluir a sessão","WhatsAppSessionSelect":"Selecione a conta para migrar","MigrateValidatorPrompt":"Por favor, selecione a conta para migrar","MigrateValidatorTitle":"Selecione uma conta","MigrationValidatorOk":"Aceitar","MigrationValidatorCancel":"Cancelar","WhatsAppSessionMigrationSuccess":"Migrado","WhatsAppSessionRemainingHistoryChunks":"Restante","WhatsAppSessionNoAccount":"Não foram encontradas contas do WhatsApp com o mesmo número de sessão.","EchoAiFreezePeriod":"Quando uma pessoa responde, a IA pausa e só retomará a conversa após alguns minutos de inatividade (em minutos).","EchoAiFreezePeriodT":"Pausa da IA após resposta manual","EchoAiFreezePeriodEg":"Ex: 5, 10, 15","AdditionalUrlParams":"Adicione informações aos seus links para saber de onde vêm suas visitas","AdditionalUrlParamsT":"Parâmetros de URL","AdditionalUrlParamsEg":"Ex: utm_source=google, utm_campaign=promo","AdditionalUrlParamsPlaceholder":"utm_source=wizybot&utm_campaign=june2025","ManageCommentsTitle":"Gerenciar comentários","AddEmail":"Adicionar email","ConversationTags":"Classificar conversas","ConversationTagsD":"Adicione etiquetas às conversas ao encerrá-las com base nos temas abordados","ManageConversationTags":"Configurar etiquetas de tipificação","Eg53":"Adicione etiquetas de análise às conversas com base nos temas relevantes ao encerrá-las","ConversationTagsDescription":"Crie etiquetas que podem ser atribuídas às conversas ao serem encerradas para gerar análises relevantes","ConversationClosingAgentMessageTitle":"Mensagem do agente de encerramento","ConversationClosingAgentNameTitle":"Agente de encerramento","ConversationClosingAgentConditionTitle":"Quando usar o agente de encerramento","ConversationClosingAgentConditionAlways":"Sempre","ConversationClosingAgentConditionRecentlyClosedTicket":"Apenas se o ticket foi fechado recentemente","ConversationClosingAgentConditionPrompt":"Selecione quando o agente de encerramento deve enviar mensagens automáticas","Name":"Nome","Description":"Descrição","Color":"Cor","HubspotObjectType":"Tipo de objeto HubSpot","HubspotLoadingProperties":"Carregando propriedades","HubspotSelectProperties":"Selecionar propriedades","HubspotSelectedProperties":"Propriedades selecionadas","HubspotRemoveProperty":"Remover propriedade","HubspotNoPropertiesSelected":"Nenhuma propriedade selecionada. Use o menu suspenso acima para adicionar propriedades.","HubspotAddObjectType":"Adicionar configuração de tipo de objeto","HubspotInvalidPropertiesMessage":"Algumas propriedades selecionadas são inválidas e serão ignoradas","HubspotUnsavedChanges":"Você tem alterações não salvas","HubspotSaving":"Salvando...","HubspotSave":"Salvar","HubspotEdit":"Editar","HubspotId":"ID","HubspotDeleteIntegration":"Excluir","HubspotSyncWithWizybot":"Sincronizar com Wizybot","HubspotSyncWithHubSpot":"Sincronizar com HubSpot","HubspotObjectTypes":"Tipos de objetos","HubspotPipelineStageMapping":"Mapeamento de estágios de pipeline","HubspotPipelineStageMappingDescription":"Configure quais estágios de pipeline do HubSpot correspondem a tickets abertos e fechados no Wizybot.","HubspotSelectPipeline":"Selecionar Pipeline:","HubspotSelectPipelinePlaceholder":"Selecione um pipeline para tickets","HubspotOpenTicketStage":"Estágio de ticket aberto:","HubspotOpenTicketStagePlaceholder":"Selecione estágio para tickets abertos","HubspotClosedTicketStage":"Estágio de ticket fechado:","HubspotClosedTicketStagePlaceholder":"Selecione estágio para tickets fechados","HubspotNotConfigured":"(não configurado)","HubspotTickets":"Tickets","HubspotContacts":"Contatos","HubspotUseDefaultCreateTicketFunction":"Usar criação de ticket padrão","TicketAdditionalFields":"Campos adicionais de ticket","ManageTicketAdditionalFields":"Configurar campos adicionais","Eg54":"Crie campos personalizados para seus tickets","TicketAdditionalFieldsDescription":"Crie campos adicionais em seus tickets para ajustá-los às necessidades do seu negócio","Options":"Opções","OptionsPlaceholder":"Adicione uma opção","PolicyMessageMode":"Modo de mensagem de políticas","CustomPerAgent":"Personalizado por agente","AgentPolicyMessages":"Mensagens de Política por Agente","AgentPolicyMessagesDescription":"Configure mensagens de política personalizadas para agentes individuais.","AddPolicyMessageForAgent":"Adicionar Mensagem de Política para Agente...","AllAgentsConfigured":"Todos os agentes disponíveis já possuem mensagens de política configuradas.","ConversationClosingAgent":"Agente de Fechamento de Conversa","ConversationClosingAgentChannelsTitle":"Canais Habilitados","ConversationClosingAgentChannelsPrompt":"Selecione quais canais devem usar o agente de fechamento de conversa. Deixe vazio para habilitar em todos os canais.","Eg55":"Habilitar envio de mensagem e designar um agente quando uma conversa for fechada","Eg56":"Digite a mensagem enviada quando uma conversa for fechada","Eg57":"Selecione o agente designado quando uma conversa for fechada","MarketSettingsTitle":"Configurações de Mercado","MetafieldDisplayTitle":"Metafield do Título de Exibição (namespace.key)","MetafieldDisplayPlaceholder":"ex., global.brand_label_pt","MetafieldDisplayPrompt":"Este valor do metafield será prefixado ao título do produto","MetafieldEmbeddingTitle":"Metafield do Texto de Incorporação (namespace.key)","MetafieldEmbeddingPlaceholder":"ex., global.brand_label_pt","MetafieldEmbeddingPrompt":"Este valor do metafield será prefixado ao texto de incorporação para busca de IA","VariantOptionsMetafieldTitle":"Metafields de Opções de Variantes (Opções Fancy)","VariantOptionsMetafieldPlaceholder":"ex., cor:global.color_name_pt,tamanho:global.size_name_pt","VariantOptionsMetafieldPrompt":"Especifique metafields de nível de variante para usar nomes de opções personalizados. Formato: \'nome_opcao:namespace.key\' separados por vírgulas. Esses valores substituirão as traduções padrão do Shopify para as opções de variantes.","ConfigureMetafields":"Configurar Metafields","AgentRequestHelpMessages":"Mensagens de Solicitação de Ajuda por Agente","AddRequestHelpMessageForAgent":"Adicionar Mensagem de Solicitação de Ajuda para Agente...","NoAgentRequestHelpMessagesConfigured":"Nenhum agente possui mensagens de solicitação de ajuda personalizadas configuradas.","RequestHelpMessagePlaceholder":"Mensagem de solicitação de ajuda para {agentName}...","ChatCounters":"Configuração de Contadores de Chat","myBoardCounterConfig":"Minhas Conversas","needsHelpCounterConfig":"Precisa de Ajuda","aiHandledCounterConfig":"Gerenciado pela IA","my_board_all":"Todos","my_board_last_message_from_client":"Última mensagem do cliente","needs_help":"Todos","ai_handled":"Todos","None":"Nenhum","Eg58":"Altere os contadores exibidos na página de Chats","AddCoexistenceNumber":"Migrar número do WhatsApp Business","AddNewNumber":"Adicionar Novo Número","ContactsSyncSuccessD":"Os contatos do seu WhatsApp Business serão sincronizados no Wizybot durante as próximas horas","ContactsSyncSuccess":"Sincronização de Contatos Bem-Sucedida","ContactsSyncFailD":"A inicialização da sincronização de contatos falhou. Por favor, entre em contato com o suporte","ContactsSyncFail":"Falha na Sincronização de Contatos","MessagesSyncSuccessD":"As mensagens do seu WhatsApp Business serão sincronizadas no Wizybot durante as próximas horas","MessagesSyncSuccess":"Sincronização de Mensagens Bem-Sucedida","MessagesSyncFailD":"A inicialização da sincronização de mensagens falhou. Por favor, entre em contato com o suporte","MessagesSyncFail":"Falha na Sincronização de Mensagens","TriggerContactsSync":"Sincronizar contatos anteriores","TriggerMessagesSync":"Sincronizar mensagens anteriores","UpdatePermissions":"Atualizar permissões","CancelIntegration":"Cancelar","Integrate":"Integrar","SelectPages":"Selecionar páginas","LastSyncDate":"Última Data de Sincronização","WebhooksActive":"Recebendo Atualizações em Tempo Real","WebhooksActiveDescription":"Sua loja é constantemente atualizada via webhooks","WebhooksInactive":"Não Recebendo Atualizações em Tempo Real","WebhooksInactiveDescription":"Os shopify webhooks estão atualmente desabilitados","WebhooksStopped":"Shopify webhooks interrompidos em","MetaUserToken":"Login Geral do Meta","MetaUserTokenIntegrationSuccess":"Login Geral do Meta Bem-Sucedido","MetaUserTokenIntegrationSuccessD":"Login Geral do Meta Habilitado","MetaUserTokenIntegrationFail":"Login Geral do Meta Falhado","MetaUserTokenIntegrationFailD":"Ocorreu um erro no processo de integração. ","MessageLimit":"Limite de mensagens actual: ","Unlimited":"Ilimitado","NotLimitYet":"Ainda não há limite","OnlyMonitoring":"Somente Monitoreo","OnlyMonitoringD":"A IA não responderá mensagens, apenas exibirá a atividade","Continue":"Continuar","Finish":"Finalizar","DomainSettingsSubtitle":"Configure e verifique seus domínios","DefaultSignatureValues":"Valores padrão de assinatura","DefaultNewSignature":"Para novos e-mails","DefaultReplySignature":"Para respostas","NoSignature":"Sem assinatura","NoSignatureSelected":"Nenhuma assinatura selecionada","ManageSignatures":"Gerenciar assinaturas","NewSignature":"Nova assinatura","SignatureName":"Nome da assinatura","SignatureNameRequired":"Nome obrigatório","SignatureContentRequired":"O conteúdo da assinatura não pode estar vazio","PaymentMonitoring":"Monitoramento de pagamentos","EmailSenders":"Remetentes de e-mail","PolicyMessagePlaceholder":"Mensagem de política para {{agentName}}...","Loading":"Carregando","NoEmailSendersAvailable":"Nenhum remetente de e-mail disponível","PeriodicallySyncFeed":"Sincronizar feed periódicamente","AgentSettings":"Configurações do agente","ChatStyling":"Estilo do chat","Preview":"Pré-visualização","PreviewD":"Todas as suas alterações serão exibidas aqui.","PauseAI":"Pausar IA","ResumeAI":"Retomar IA","IntegrationsEmpty":{"whatsapp":{"title":"Conectar WhatsApp","description":"Gerencie mensagens diretas do WhatsApp pela sua caixa de entrada. Automatize fluxos e aumente suas conversões.","feature1":{"title":"Mensagens diretas","desc":"Responda a todas as mensagens e dúvidas dos seus clientes."},"feature2":{"title":"Disponibilidade 24/7","desc":"Melhore o tempo de resposta e a satisfação do cliente."},"feature3":{"title":"Templates e fluxos","desc":"Aumente a produtividade automatizando conversas."}},"messenger":{"title":"Conectar Facebook Messenger","description":"Centralize mensagens e comentários da sua página do Facebook e aumente a produtividade da equipe.","feature1":{"title":"Mensagens e comentários","desc":"Gerencie interações públicas e privadas em um só lugar."},"feature2":{"title":"Janela de resposta","desc":"Aproveite a janela de 24 horas para interagir livremente."},"feature3":{"title":"Respostas rápidas","desc":"Use IA e automações para perguntas frequentes."}},"instagram":{"title":"Conectar Instagram","description":"Conecte sua conta profissional e responda mensagens, menções e stories em um só lugar.","feature1":{"title":"Mensagens e stories","desc":"Gerencie DMs e respostas aos seus stories facilmente."},"feature2":{"title":"Interação instantânea","desc":"Não deixe nenhum cliente esperando resposta."},"feature3":{"title":"Gestão centralizada","desc":"Unifique o Instagram com seus outros canais."}},"metaAds":{"title":"Conectar contas de anúncios","description":"Vincule suas contas do Meta Ads para otimizar campanhas e conversões através das conversas.","feature1":{"title":"Sincronização","desc":"Vincule anúncios com conversas recebidas."},"feature2":{"title":"Métricas em tempo real","desc":"Meça o desempenho das campanhas diretamente."},"feature3":{"title":"Retargeting","desc":"Crie audiências com base nas interações de chat."}}},"WooCommerceConnected":"WooCommerce detectado. Vamos sincronizar seus produtos e coleções.","NoWooCommerce":"Detectamos apenas WordPress. Se você tem produtos, certifique-se de ter o WooCommerce e nosso plugin instalados.","UnlockIntegration":{"whatsapp":{"title":"Desbloquear integração do WhatsApp","description":"Centralize seu atendimento conectando o WhatsApp. Responda mensagens, automatize conversas e gerencie tudo em um só lugar."},"messenger":{"title":"Desbloquear integração do Messenger","description":"Conecte o Facebook Messenger e gerencie mensagens e comentários em uma única caixa com automação."},"instagram":{"title":"Desbloquear integração do Instagram","description":"Conecte sua conta do Instagram e responda mensagens, menções e comentários em um só lugar."},"email":{"title":"Desbloquear integração de e-mail","description":"Centralize seu atendimento conectando seu e-mail. Gerencie tickets, automatize respostas e mantenha o histórico em uma única caixa."}},"IntegrationFeatures":{"unifiedInbox":{"title":"Caixa unificada","desc":"Gerencie todas as mensagens em um só lugar sem trocar de plataforma."},"clientHistory":{"title":"Histórico completo","desc":"Mantenha todo o contexto do cliente em cada conversa."},"automation":{"title":"Automação inteligente","desc":"Automatize respostas e fluxos para aumentar sua produtividade."}},"ContactSupportToEnable":"Falar com suporte"}');
 ;// CONCATENATED MODULE: ./src/translations/English/home.json
-const home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configure your Live Chat","AgentN":"Agent name","AgentL":"Agent location","Eg":" Eg: Juan, Thomas, Angela","Eg1":"Eg: Medellin, California, Berlín","PrimaryC":"Primary Color","SecondaryC":"Secondary Color","GradientC":"Gradient Colors","FontC":"Font Color","Interact":"How would you like to interact with your customers?","Discount":"Send them a discount code when the customer access your webpage, this will increase your sales sustancially","Greet":"Only greet them warmly and let them know you are available for any inquiry","Percentage":"Discount percentage","Eg2":"Eg: 10, 20, 30","Phrase":"Online phrase","Eg3":"Eg: We reply immediately","Initial":"Initial message","Eg4":"Eg: Hey! would you like a discount?","ConfigureOP":"Configure your order policy","OrderP":"What is your process for placing an order on your website?","OrderPD":"Step 1: Choose the product you want\\nStep 2: Select the colors, sizes or characteristics you need\\nStep 3: Add other products if you want to the basket\\nStep 4: Fill out the shipping information\\nStep 5: Fill out the payment information\\nStep 6: Finalize the order with payment","Length":"Length","OrderC":"Where do your customers receive the confirmation order?","Email":"Email","Sms":"Sms","Both":"Both","Other":"Other","OtherD":"Other confirmation types (Comma separated)","Eg5":"Eg: Mail, Beaper","OrderCa":"How do you manage order cancellations?","OrderCaD":"- If your order has already been shipped, we cannot cancel the order. In such cases, you may initiate a return as per our return policy.\\n- If your order is in the processing stage, we will do our best to stop the shipment, but we cannot guarantee cancellation. If cancellation is not possible, you may initiate a return once you receive the order.","OrderR":"Where do your customers receive the confirmation order?","InvoiceP":"Physical invoice","InvoiceO":"Online invoice","ConfigurePP":"Configure your payment policy","PaymentM":"What are your payment methods?","CreditC":"Credit Card","DebitC":"Debit Card","Cash":"Cash","BankT":"Bank Transfer","OtherDP":"Other payment methods (Comma separated)","Eg6":"Eg: Paypal, Venmo","Credit":"Do you offer any credit to customers?","CreditD":"We offer 2 ways of credit to our customers.\\n- The app allows the users to pay in credit without owning a credit card.\\n- We give credit to existing customers.","ConfigureSP":"Configure your shipping policy","ShippingT":"How long does it takes for a customer to receive the package?","ShippingTD":"3 business days if you are located in USA, and 15 to 20 days for international shipping.","ShippingC":"How much does the shipping cost?","ShippingCD":"- For US geography the shipping cost is for FREE\\n- For international shipping it has an extra cost of 20 USD.\\n- If the the international order is over 100 USD the shipping is FREE.","ShippingW":"Where do you ship? (Places comma separated)","ShippingWD":"US, Mexico, Caanda, Latin America, Britain","ConfigureRP":"Configure your returns policy","ReturnsC":"Are there any conditions or requirements for items to be eligible for a return?","ReturnsCD":"To be eligible for a return, the item must be unused, in its original condition, and in the original packaging. Certain products, such as perishable goods, intimate or sanitary items, and gift cards, are exempt from being returned.","ReturnsP":"What is the process for initiating a return?","ReturnsPD":"To initiate a return, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the return, we’ll create a ticket on your behalf and start the return process.","ReturnsS":"Is there a return shipping label provided, or do customers need to arrange and cover the shipping costs themselves?","ReturnsSD":"Pack the item securely in the original packaging, if possible, to prevent damage during transit. Include any accessories, manuals, or additional items that were included with the product. You are responsible for covering the return shipping costs unless the return is due to our error or a defective product.","ReturnsT":"How long does it typically take for a return to be processed and for a refund to be issued?","ReturnsTD":"You have 30 days from the date of delivery to initiate a return.If 30 days have passed since your purchase, unfortunately, we cannot offer you a refund or exchange. Once we receive your return, the average time in receiving your return is 5 business days.","ConfigureRFP":"Configure your refunds policy","RefundsT":" How long does it typically take for a refund to be processed?","RefundsTD":"5 business days","RefundsM":"What is the method of refund? Is it returned to the original payment method or provided as store credit?","RefundsMD":"It is provided as a store credit for the value of the refund.","RefundsC":"Are there any specific conditions or requirements for customers to be eligible for a refund?","RefundsCD":"You have 30 days from the date of delivery to initiate a refund.","RefundsF":"Are there any deductions or fees applied to refunded amounts, such as restocking fees or shipping costs?","RefundsFD":"No, we assume all costs in the refund.","ConfigureW":"Configure your warranty policy","WarrantyT":"How long is the duration of the warranty provided for the products?","WarrantyTD":"Our products are covered by a 6 months period warranty from the date of purchase. The warranty period may vary depending on the product category and specific item.","WarrantyC":"What does the warranty cover? Are there any specific components or parts excluded from the warranty?","WarrantyCD":"Our warranty covers defects in materials and workmanship under normal use and conditions. The warranty applies to the original purchaser and is non-transferable.","WarrantyR":"Are there any conditions or requirements for customers to be eligible for warranty coverage?","WarrantyRD":"The warranty does not cover damages caused by misuse, accidents, unauthorized modifications, or any other circumstances beyond normal usage. Consumable or disposable items are not eligible for warranty coverage. Damage caused by natural disasters, acts of God, or other external factors are not covered.","WarrantyP":"What is the process for initiating a warranty claim?","WarrantyPD":"To initiate a warranty claim, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the warranty claim, we’ll create a ticket on your behalf and start the warranty claim process.","ConfigureCP":"Configure your company policy","CompanyP":"What types of products do you sell?","CompanyPD":"Clothing and apparel","CompanyI":"What industry are you in?","Eg7":"Eg: Fashion, Food","CompanyC":"Contact info (for customers)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Chat title","Eg8":"Select the language","Deactivation":"Deactivation","Sure":"Are you sure you want to delete ","ShopQ":" shop?","InitialM":"Hey there! Im online if you need any help...","InitialM1":"Hey there! we have a discount going on, would you like to redeem it?","Error":"There was an error in the shop setup process: ","Configuration":"Configuration","ConfigurationD":"The main configuration was setup succesfully","Widget":"The widget was installed succesfully","Check":"Check","App":"The app has to be uninstalled from shopify to proceed","Error1":"There was an error deleting the actual shop please try again","Delete":"Delete","Cancel":"Cancel","Test":"Test","Step":"Step","StepD":" Please fill out these fields to set up your automatic chatbot","ConfigureSW":"Configure your Shopify Widget","Install":"Install it now!","InstallD":"Once you install this widget on your shopify shop, it will be available for all your customers, your chat will be live and working automatically.","WError":"Please install the Shopify Widget!","WError1":" It seems there has been a mistake, please install the Widget!","Continue":"Continue","Submit":"Finalize","Check1":"Check","Cancel1":"Uninstall","GoB":"Go back","Selected":"Selected shop","SelectedD":"Currently selected store. Switch to another store to see more information.","ShopI":"Shop ID","ShopD":"Shop Domain","ShopP":"Shop Plan","AccountI":"Account Id","AccountE":"Account Email","AdvisorsN":"Number of advisors","Manage":"Customize chat","Upgrade":"Upgrade Plan","TotalPS":"Total Paid Shops","TotalIS":"Total Installed Shops","TotalM":"Total Message Count","TotalA":"Total AI Message Count","TotalC":"Total Client Count","TotalT":"Total Ticket Count","MonthlyM":"Monthly Message Count","MonthlyA":"Messages Answered By AI","MonthlyC":"Engaged Clients This Month","YearlyC":"Engaged Clients This Year","MonthlyT":"Tickets Created This Month","MonthlyO":"Pages Loaded This Month","YearlyT":"Tickets Created This Year","YearlyO":"Pages Loaded This Year","KnowledgeCenterT":"Knowledge center","KnowledgeCenterD":"Find out what\'s going on inside Wizybot Customer Support AI Revolution.","English":"Chat with","Spanish":"Hablar con","Italian":"Chat con","Portuguese":"Conversar com","French":"Parler avec","German":"Chatten Sie mit","Warning":"Warning","Missing":"There are missing values in the form, please scroll down!","WelcomeT":"Welcome to Wizybot","WelcomeFirst":"The AI-first ECommerce SuperApp to boost your sales and customer support. Automate conversations, comment replies and outbound messages while increasing sales and reducing costs with Wizybot","WelcomeD":"There are several ways you can improve your store using Wizybot.","StartSync":"Start Sync","SyncPP":"Synchronize your data","SyncD":"Synchronizing your products, policies, and pages","SyncD1":"Finished","Syncing":"Synchronizing","SSyncing":"The synchronization process has not finished yet, please wait a little bit longer.","SyncingT":"Syncing","SyncingE":"There was an error in the syncing process please try again","SyncingE2":"Error","SyncingS":"The synchronization process finished succesfully!","Synchronization":"Synchronization","Synced":"Synced","SyncClose":"This process may take a while. Please don\'t close this tab.","SyncComplete":"Successfully synced","SyncCompleteD":"You\'re now ready to start testing Wizybot","SyncCompleteB":"Start Now","Retry":"Retry","TopUp":"It seems you\'ve ran out of monthly messages would you like to upgrade your plan?","UpgradeP":"Upgrade","Permission":"Permission request","PermissionD":"We need you to grant Wizybot new permissions in order to use all of our features","Later":"Later","OnlineP":"We reply imediately!","Success":"Success","Link":"","Customize":"Customize chat","TTurn":"Widget visibility and tests","Settings":"Account settings","SalesM":"Wizybot Sales This Month","SalesY":"Wizybot Sales This Year","ChargeM":"Total Monthly Charge (USD)","ChargeY":"Total Yearly Charge (USD)","DefaultM":"Hey there! Im online if you need any help...","ProductM":"Hey there! Im online if you need any help with {product}?","CollectionM":"Hey there! are you interested in our {collection} collection?","SearchM":"Hey there! Are you looking for something in particular? I\'m here to help...","PageM":"Hey there! Need any info about {page}? I\'m here to help...","ChatbotP":"Act as a nice and kind customer support agent","Grant":"Grant","FinishSetup":"Finish Set up","GetCloser":"Get closer to your clients personalizing your Wizybot.","WizyStatus":"Wizybot Status","Status":"Status","StatusD":"Active this module to go Live with Wizybot in your site.","StatusA":"Active Wizybot in my site","StatusOn":"Online","StatusOff":"Offline","StatusTogOn":"Turn On Wizybot","StatusTogOff":"Turn Off Wizybot","TrainT":"Train your Bot","TrainWizy":"Train Wizybot","TrainD":"Bring your brand to life with Wizybot. Teach it your brand’s personality and start training now.","Metrics":"Key Metrics","Metric1":"Wizybot Sales","Metric2":"Messages Answered By AI","Metric3":"Open Conversations","Metric4":"Open Tickets vs Closed Tickets","Metric5":"Time Saved with Wizybot","Metric6":"Monthly Use","CostMessagesUsed":"Messages","CostCommentsUsed":"Comments","PerExtraMessage":"/ extra msg.","PerExtraComment":"/ extra com.","CostSubscription":"Subscription Cost","CostExtraMessage":"Extra Messages Cost","CostTotal":"Billyng Cycle Total Cost","Tickets":"Total Tickets","OnboardT1":"Customize your chat","OnboardD1":"Adjust colors, logo, and style to match your brand.","OnboardT2":"Define personality","OnboardD2":"Teach Wizybot how to speak to your customers in your brand\'s tone.","OnboardT3":"Fix responses","OnboardD3":"Review and improve at least 3 replies in the training module.","OnboardT4":"Go Live","OnboardD4":"Put Wizybot online to start replying in your store.","OnboardT5":"Connect a Meta channel","OnboardD5":"Activate a channel like WhatsApp, Instagram, or Messenger to reach clients.","BillingC":"Billing Cycle","BillingF":"From","BillingT":"To","AccountID":"Account ID","AccountIDDes":"For Customer Support","MetricInfo1":"Wizybot tracks sales where it helped the customer make a decision through a conversation. Here you can check the sales recorded over the past months.","MetricInfo2":"Check the number of conversations your customers started through any of Wizybot\'s channels over the past months.","MetricInfo3":"See how much time you saved by letting Wizybot write responses for you in recent months.","MetricInfo4":"View how many messages Wizybot sent using artificial intelligence during the last few months.","MetricInfo5":"Check the number of pending and resolved tickets handled by your team during the past months.","MetricInfo6":"View the information related to your subscription during the current billing period. Remember, each billing cycle lasts 30 days.","Uninstalled":"App Uninstalled","UninstalledD":"It seems the app has been uninstalled from Shopify, please reinstall it to continue using Wizybot. Or delete the shop if you don\'t want to use it anymore.","Reinstall":"Reinstall","DeleteShop":"Delete Shop","InstallWidget":"Enable Widget","InstallWidgetD":"Enable the widget so Wizybot appears on your store.","InstallWidgetStep1":"Turn on the toggle to make Wizybot Chat Widget visible.","InstallWidgetStep2":"Save the changes.","InstallWidgetGo":"Go to Shopify","InstallWidgetSuccessT":"All set!","InstallWidgetSuccessD":"Wizybot is now active and visible on your store."}');
+const home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configure your Live Chat","AgentN":"Agent name","AgentL":"Agent location","Eg":" Eg: Juan, Thomas, Angela","Eg1":"Eg: Medellin, California, Berlín","PrimaryC":"Primary Color","SecondaryC":"Secondary Color","GradientC":"Gradient Colors","FontC":"Font Color","Interact":"How would you like to interact with your customers?","Discount":"Send them a discount code when the customer access your webpage, this will increase your sales sustancially","Greet":"Only greet them warmly and let them know you are available for any inquiry","Percentage":"Discount percentage","Eg2":"Eg: 10, 20, 30","Phrase":"Online phrase","Eg3":"Eg: We reply immediately","Initial":"Initial message","Eg4":"Eg: Hey! would you like a discount?","ConfigureOP":"Configure your order policy","OrderP":"What is your process for placing an order on your website?","OrderPD":"Step 1: Choose the product you want\\nStep 2: Select the colors, sizes or characteristics you need\\nStep 3: Add other products if you want to the basket\\nStep 4: Fill out the shipping information\\nStep 5: Fill out the payment information\\nStep 6: Finalize the order with payment","Length":"Length","OrderC":"Where do your customers receive the confirmation order?","Email":"Email","Sms":"Sms","Both":"Both","Other":"Other","OtherD":"Other confirmation types (Comma separated)","Eg5":"Eg: Mail, Beaper","OrderCa":"How do you manage order cancellations?","OrderCaD":"- If your order has already been shipped, we cannot cancel the order. In such cases, you may initiate a return as per our return policy.\\n- If your order is in the processing stage, we will do our best to stop the shipment, but we cannot guarantee cancellation. If cancellation is not possible, you may initiate a return once you receive the order.","OrderR":"Where do your customers receive the confirmation order?","InvoiceP":"Physical invoice","InvoiceO":"Online invoice","ConfigurePP":"Configure your payment policy","PaymentM":"What are your payment methods?","CreditC":"Credit Card","DebitC":"Debit Card","Cash":"Cash","BankT":"Bank Transfer","OtherDP":"Other payment methods (Comma separated)","Eg6":"Eg: Paypal, Venmo","Credit":"Do you offer any credit to customers?","CreditD":"We offer 2 ways of credit to our customers.\\n- The app allows the users to pay in credit without owning a credit card.\\n- We give credit to existing customers.","ConfigureSP":"Configure your shipping policy","ShippingT":"How long does it takes for a customer to receive the package?","ShippingTD":"3 business days if you are located in USA, and 15 to 20 days for international shipping.","ShippingC":"How much does the shipping cost?","ShippingCD":"- For US geography the shipping cost is for FREE\\n- For international shipping it has an extra cost of 20 USD.\\n- If the the international order is over 100 USD the shipping is FREE.","ShippingW":"Where do you ship? (Places comma separated)","ShippingWD":"US, Mexico, Caanda, Latin America, Britain","ConfigureRP":"Configure your returns policy","ReturnsC":"Are there any conditions or requirements for items to be eligible for a return?","ReturnsCD":"To be eligible for a return, the item must be unused, in its original condition, and in the original packaging. Certain products, such as perishable goods, intimate or sanitary items, and gift cards, are exempt from being returned.","ReturnsP":"What is the process for initiating a return?","ReturnsPD":"To initiate a return, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the return, we’ll create a ticket on your behalf and start the return process.","ReturnsS":"Is there a return shipping label provided, or do customers need to arrange and cover the shipping costs themselves?","ReturnsSD":"Pack the item securely in the original packaging, if possible, to prevent damage during transit. Include any accessories, manuals, or additional items that were included with the product. You are responsible for covering the return shipping costs unless the return is due to our error or a defective product.","ReturnsT":"How long does it typically take for a return to be processed and for a refund to be issued?","ReturnsTD":"You have 30 days from the date of delivery to initiate a return.If 30 days have passed since your purchase, unfortunately, we cannot offer you a refund or exchange. Once we receive your return, the average time in receiving your return is 5 business days.","ConfigureRFP":"Configure your refunds policy","RefundsT":" How long does it typically take for a refund to be processed?","RefundsTD":"5 business days","RefundsM":"What is the method of refund? Is it returned to the original payment method or provided as store credit?","RefundsMD":"It is provided as a store credit for the value of the refund.","RefundsC":"Are there any specific conditions or requirements for customers to be eligible for a refund?","RefundsCD":"You have 30 days from the date of delivery to initiate a refund.","RefundsF":"Are there any deductions or fees applied to refunded amounts, such as restocking fees or shipping costs?","RefundsFD":"No, we assume all costs in the refund.","ConfigureW":"Configure your warranty policy","WarrantyT":"How long is the duration of the warranty provided for the products?","WarrantyTD":"Our products are covered by a 6 months period warranty from the date of purchase. The warranty period may vary depending on the product category and specific item.","WarrantyC":"What does the warranty cover? Are there any specific components or parts excluded from the warranty?","WarrantyCD":"Our warranty covers defects in materials and workmanship under normal use and conditions. The warranty applies to the original purchaser and is non-transferable.","WarrantyR":"Are there any conditions or requirements for customers to be eligible for warranty coverage?","WarrantyRD":"The warranty does not cover damages caused by misuse, accidents, unauthorized modifications, or any other circumstances beyond normal usage. Consumable or disposable items are not eligible for warranty coverage. Damage caused by natural disasters, acts of God, or other external factors are not covered.","WarrantyP":"What is the process for initiating a warranty claim?","WarrantyPD":"To initiate a warranty claim, please contact us through this chat within the warranty period. Provide us with your order number, and reason for the warranty claim, we’ll create a ticket on your behalf and start the warranty claim process.","ConfigureCP":"Configure your company policy","CompanyP":"What types of products do you sell?","CompanyPD":"Clothing and apparel","CompanyI":"What industry are you in?","Eg7":"Eg: Fashion, Food","CompanyC":"Contact info (for customers)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Chat title","Eg8":"Select the language","Deactivation":"Deactivation","Sure":"Are you sure you want to delete ","ShopQ":" shop?","InitialM":"Hey there! Im online if you need any help...","InitialM1":"Hey there! we have a discount going on, would you like to redeem it?","Error":"There was an error in the shop setup process: ","Configuration":"Configuration","ConfigurationD":"The main configuration was setup succesfully","Widget":"The widget was installed succesfully","Check":"Check","App":"The app has to be uninstalled from shopify to proceed","Error1":"There was an error deleting the actual shop please try again","Delete":"Delete","Cancel":"Cancel","Test":"Test","Step":"Step","StepD":" Please fill out these fields to set up your automatic chatbot","ConfigureSW":"Configure your Shopify Widget","Install":"Install it now!","InstallD":"Once you install this widget on your shopify shop, it will be available for all your customers, your chat will be live and working automatically.","WError":"Please install the Shopify Widget!","WError1":" It seems there has been a mistake, please install the Widget!","Continue":"Continue","Submit":"Finalize","Check1":"Check","Cancel1":"Uninstall","GoB":"Go back","Selected":"Selected shop","SelectedD":"Currently selected store. Switch to another store to see more information.","ShopI":"Shop ID","ShopD":"Shop Domain","ShopP":"Shop Plan","AccountI":"Account Id","AccountE":"Account Email","AdvisorsN":"Number of advisors","Manage":"Customize chat","Upgrade":"Upgrade Plan","TotalPS":"Total Paid Shops","TotalIS":"Total Installed Shops","TotalM":"Total Message Count","TotalA":"Total AI Message Count","TotalC":"Total Client Count","TotalT":"Total Ticket Count","MonthlyM":"Monthly Message Count","MonthlyA":"Messages Answered By AI","MonthlyC":"Engaged Clients This Month","YearlyC":"Engaged Clients This Year","MonthlyT":"Tickets Created This Month","MonthlyO":"Pages Loaded This Month","YearlyT":"Tickets Created This Year","YearlyO":"Pages Loaded This Year","KnowledgeCenterT":"Knowledge center","KnowledgeCenterD":"Find out what\'s going on inside Wizybot Customer Support AI Revolution.","English":"Chat with","Spanish":"Hablar con","Italian":"Chat con","Portuguese":"Conversar com","French":"Parler avec","German":"Chatten Sie mit","Warning":"Warning","Missing":"There are missing values in the form, please scroll down!","WelcomeT":"Welcome to Wizybot","WelcomeFirst":"The AI-first ECommerce SuperApp to boost your sales and customer support. Automate conversations, comment replies and outbound messages while increasing sales and reducing costs with Wizybot","WelcomeD":"There are several ways you can improve your store using Wizybot.","StartSync":"Start Sync","SyncPP":"Synchronize your data","SyncD":"Synchronizing your products, policies, and pages","SyncD1":"Finished","Syncing":"Synchronizing","SSyncing":"The synchronization process has not finished yet, please wait a little bit longer.","SyncingT":"Syncing","SyncingE":"There was an error in the syncing process please try again","SyncingE2":"Error","SyncingS":"The synchronization process finished succesfully!","Synchronization":"Synchronization","Synced":"Synced","SyncClose":"This process may take a while. Please don\'t close this tab.","SyncComplete":"Successfully synced","SyncCompleteD":"You\'re now ready to start testing Wizybot","SyncCompleteB":"Start Now","Retry":"Retry","TopUp":"It seems you\'ve ran out of monthly messages would you like to upgrade your plan?","UpgradeP":"Upgrade","Permission":"Permission request","PermissionD":"We need you to grant Wizybot new permissions in order to use all of our features","Later":"Later","OnlineP":"We reply imediately!","Success":"Success","Link":"https://s3-tjlabs-wizybot-frontend-assets-dev.s3.amazonaws.com/english.mp4","Customize":"Customize chat","TTurn":"Widget visibility and tests","Settings":"Account settings","SalesM":"Wizybot Sales This Month","SalesY":"Wizybot Sales This Year","ChargeM":"Total Monthly Charge (USD)","ChargeY":"Total Yearly Charge (USD)","DefaultM":"Hey there! Im online if you need any help...","ProductM":"Hey there! Im online if you need any help with {product}?","CollectionM":"Hey there! are you interested in our {collection} collection?","SearchM":"Hey there! Are you looking for something in particular? I\'m here to help...","PageM":"Hey there! Need any info about {page}? I\'m here to help...","ChatbotP":"Act as a nice and kind customer support agent","Grant":"Grant","FinishSetup":"Finish Set up","GetCloser":"Get closer to your clients personalizing your Wizybot.","WizyStatus":"Wizybot Status","Status":"Status","StatusD":"Active this module to go Live with Wizybot in your site.","StatusA":"Active Wizybot in my site","StatusOn":"Online","StatusOff":"Offline","StatusTogOn":"Turn On Wizybot","StatusTogOff":"Turn Off Wizybot","TrainT":"Train your Bot","TrainWizy":"Train Wizybot","TrainD":"Bring your brand to life with Wizybot. Teach it your brand’s personality and start training now.","Metrics":"Key Metrics","Metric1":"Wizybot Sales","Metric2":"Messages Answered By AI","Metric3":"Open Conversations","Metric4":"Open Tickets vs Closed Tickets","Metric5":"Time Saved with Wizybot","Metric6":"Monthly Use","CostMessagesUsed":"Messages","CostCommentsUsed":"Comments","PerExtraMessage":"/ extra msg.","PerExtraComment":"/ extra com.","CostSubscription":"Subscription Cost","CostExtraMessage":"Extra Messages Cost","CostTotal":"Billyng Cycle Total Cost","Tickets":"Total Tickets","OnboardT1":"Customize your chat","OnboardD1":"Adjust colors, logo, and style to match your brand.","OnboardT2":"Define personality","OnboardD2":"Teach Wizybot how to speak to your customers in your brand\'s tone.","OnboardT3":"Fix responses","OnboardD3":"Review and improve at least 3 replies in the training module.","OnboardT4":"Go Live","OnboardD4":"Put Wizybot online to start replying in your store.","OnboardT5":"Connect a Meta channel","OnboardD5":"Activate a channel like WhatsApp, Instagram, or Messenger to reach clients.","BillingC":"Billing Cycle","BillingF":"From","BillingT":"To","AccountID":"Account ID","AccountIDDes":"For Customer Support","MetricInfo1":"Wizybot tracks sales where it helped the customer make a decision through a conversation. Here you can check the sales recorded over the past months.","MetricInfo2":"Check the number of conversations your customers started through any of Wizybot\'s channels over the past months.","MetricInfo3":"See how much time you saved by letting Wizybot write responses for you in recent months.","MetricInfo4":"View how many messages Wizybot sent using artificial intelligence during the last few months.","MetricInfo5":"Check the number of pending and resolved tickets handled by your team during the past months.","MetricInfo6":"View the information related to your subscription during the current billing period. Remember, each billing cycle lasts 30 days.","Uninstalled":"App Uninstalled","UninstalledD":"It seems the app has been uninstalled from Shopify, please reinstall it to continue using Wizybot. Or delete the shop if you don\'t want to use it anymore.","Reinstall":"Reinstall","DeleteShop":"Delete Shop","InstallWidget":"Enable Widget","InstallWidgetD":"Enable the widget so Wizybot appears on your store.","InstallWidgetStep1":"Turn on the toggle to make Wizybot Chat Widget visible.","InstallWidgetStep2":"Save the changes.","InstallWidgetGo":"Go to Shopify","InstallWidgetSuccessT":"All set!","InstallWidgetSuccessD":"Wizybot is now active and visible on your store."}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/home.json
-const Spanish_home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configura tu chat en vivo","AgentN":"Nombre del agente","AgentL":"Ubicación del agente","Eg":" Ejemplo: Juan, Thomas, Angela","Eg1":"Ejemplo: Medellín, California, Berlín","PrimaryC":"Color primario","SecondaryC":"Color secundario","GradientC":"Colores degradados","FontC":"Color de fuente","Interact":"¿Cómo le gustaría interactuar con sus clientes?","Discount":"Enviarles un código de descuento cuando el cliente acceda a su página web, esto aumentará sus ventas sustancialmente","Greet":"Solo saludarlos cordialmente y hacerles saber que está disponible para cualquier consulta","Percentage":"Porcentaje de descuento","Eg2":"Ejemplo: 10, 20, 30","Phrase":"Frase en línea","Eg3":"Ejemplo: Respondemos de inmediato","Initial":"Mensaje inicial","Eg4":"Ejemplo: ¡Hola! ¿Te gustaría un descuento?","ConfigureOP":"Configura tu política de pedidos","OrderP":"¿Cuál es tu proceso para realizar un pedido en tu sitio web?","OrderPD":"Paso 1: Elija el producto que desea\\nPaso 2: Seleccione los colores, tallas o características que necesita\\nPaso 3: Agregue otros productos al carrito si lo desea\\nPaso 4: Complete la información de envío\\nPaso 5: Complete la información de pago\\nPaso 6: Finalice el pedido con el pago","Length":"Longitud","OrderC":"¿Dónde reciben tus clientes la confirmación del pedido?","Email":"Correo electrónico","Sms":"SMS","Both":"Ambos","Other":"Otro","OtherD":"Otros tipos de confirmación (separados por comas)","Eg5":"Ejemplo: Correo, Bíper","OrderCa":"¿Cómo gestionas las cancelaciones de pedidos?","OrderCaD":"- Si su pedido ya ha sido enviado, no podemos cancelar el pedido. En tales casos, puede iniciar una devolución según nuestra política de devoluciones.\\n- Si su pedido está en etapa de procesamiento, haremos todo lo posible para detener el envío, pero no podemos garantizar la cancelación. Si la cancelación no es posible, puede iniciar una devolución una vez que reciba el pedido.","OrderR":"¿Dónde reciben tus clientes la confirmación del pedido?","InvoiceP":"Factura física","InvoiceO":"Factura en línea","ConfigurePP":"Configura tu política de pagos","PaymentM":"¿Cuáles son tus métodos de pago?","CreditC":"Tarjeta de crédito","DebitC":"Tarjeta de débito","Cash":"Efectivo","BankT":"Transferencia bancaria","OtherDP":"Otros métodos de pago (separados por comas)","Eg6":"Ejemplo: Paypal, Venmo","Credit":"¿Ofreces algún crédito a los clientes?","CreditD":"Ofrecemos 2 formas de crédito a nuestros clientes.\\n- La aplicación permite a los usuarios pagar a crédito sin poseer una tarjeta de crédito.\\n- Ofrecemos crédito a clientes existentes.","ConfigureSP":"Configura tu política de envío","ShippingT":"¿Cuánto tiempo tarda un cliente en recibir el paquete?","ShippingTD":"3 días hábiles si te encuentras en Estados Unidos, y de 15 a 20 días para envíos internacionales.","ShippingC":"¿Cuánto cuesta el envío?","ShippingCD":"- Para la geografía de Estados Unidos, el envío es GRATUITO\\n- Para envíos internacionales, tiene un costo adicional de 20 USD.\\n- Si el pedido internacional supera los 100 USD, el envío es GRATUITO.","ShippingW":"¿A dónde realizas envíos? (Lugares separados por comas)","ShippingWD":"Estados Unidos, México, Canadá, América Latina, Reino Unido","ConfigureRP":"Configura tu política de devoluciones","ReturnsC":"¿Existen condiciones o requisitos para que los artículos sean elegibles para una devolución?","ReturnsCD":"Para ser elegible para una devolución, el artículo debe estar sin usar, en su estado original y en el embalaje original. Algunos productos, como productos perecederos, artículos íntimos o sanitarios y tarjetas de regalo, están exentos de devolución.","ReturnsP":"¿Cuál es el proceso para iniciar una devolución?","ReturnsPD":"Para iniciar una devolución, contáctanos a través de este chat dentro del período de garantía. Proporciona tu número de pedido y el motivo de la devolución, crearemos un ticket en tu nombre y comenzaremos el proceso de devolución.","ReturnsS":"¿Se proporciona una etiqueta de envío de devolución o los clientes deben organizar y cubrir los costos de envío ellos mismos?","ReturnsSD":"Empaca el artículo de forma segura en el embalaje original, si es posible, para evitar daños durante el transporte. Incluye cualquier accesorio, manual u otros elementos adicionales que se incluyeron con el producto. Eres responsable de cubrir los costos de envío de devolución a menos que la devolución sea por nuestro error o un producto defectuoso.","ReturnsT":"¿Cuánto tiempo suele llevar procesar una devolución y emitir un reembolso?","ReturnsTD":"Tienes 30 días a partir de la fecha de entrega para iniciar una devolución. Si han pasado 30 días desde tu compra, lamentablemente no podemos ofrecerte un reembolso o cambio. Una vez que recibamos tu devolución, el tiempo promedio para recibir tu devolución es de 5 días hábiles.","ConfigureRFP":"Configura tu política de reembolsos","RefundsT":"¿Cuánto tiempo suele llevar procesar un reembolso?","RefundsTD":"5 días hábiles","RefundsM":"¿Cuál es el método de reembolso? ¿Se devuelve al método de pago original o se proporciona como crédito de tienda?","RefundsMD":"Se proporciona como crédito de tienda por el valor del reembolso.","RefundsC":"¿Existen condiciones o requisitos específicos para que los clientes sean elegibles para un reembolso?","RefundsCD":"Tienes 30 días a partir de la fecha de entrega para iniciar un reembolso.","RefundsF":"¿Existen deducciones o tarifas aplicadas a los montos reembolsados, como tarifas de reposición o costos de envío?","RefundsFD":"No, asumimos todos los costos del reembolso.","ConfigureW":"Configura tu política de garantía","WarrantyT":"¿Cuál es la duración de la garantía proporcionada para los productos?","WarrantyTD":"Nuestros productos están cubiertos por una garantía de 6 meses a partir de la fecha de compra. El período de garantía puede variar según la categoría del producto y el artículo específico.","WarrantyC":"¿Qué cubre la garantía? ¿Existen componentes o partes específicas excluidas de la garantía?","WarrantyCD":"Nuestra garantía cubre defectos de materiales y mano de obra bajo uso y condiciones normales. La garantía se aplica al comprador original y no es transferible.","WarrantyR":"¿Existen condiciones o requisitos para que los clientes sean elegibles para la cobertura de garantía?","WarrantyRD":"La garantía no cubre los daños causados por un uso indebido, accidentes, modificaciones no autorizadas o cualquier otra circunstancia más allá del uso normal. Los artículos consumibles o desechables no son elegibles para la cobertura de garantía. Los daños causados por desastres naturales, actos de Dios u otros factores externos no están cubiertos.","WarrantyP":"¿Cuál es el proceso para iniciar un reclamo de garantía?","WarrantyPD":"Para iniciar un reclamo de garantía, contáctanos a través de este chat dentro del período de garantía. Proporciona tu número de pedido y el motivo del reclamo de garantía, crearemos un ticket en tu nombre y comenzaremos el proceso de reclamo de garantía.","ConfigureCP":"Configura tu política de la empresa","CompanyP":"¿Qué tipos de productos vendes?","CompanyPD":"Ropa y prendas de vestir","CompanyI":"¿En qué industria te encuentras?","Eg7":"Ej: Moda, Alimentación","CompanyC":"Información de contacto (para los clientes)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Titulo del chat","Eg8":"Seleccionar lenguage","Deactivation":"Desactivación","Sure":"¿Estás seguro de que deseas eliminar la tiemda ","ShopQ":"?","InitialM":"¡Hola! Estoy en línea si necesitas ayuda...","InitialM1":"¡Hola! Tenemos un descuento disponible, ¿te gustaría aprovecharlo?","Error":"Hubo un error en el proceso de configuración de la tienda: ","Configuration":"Configuración","ConfigurationD":"La configuración inicial se guardó con exito","Widget":"El widget fue instalado correctamente","Check":"Verificación","App":"La aplicación debe desinstalarse de Shopify para continuar","Error1":"Hubo un error al eliminar la tienda actual, por favor inténtalo de nuevo","Delete":"Eliminar","Cancel":"Cancelar","Test":"Probar","Step":"Paso","StepD":"Por favor configura tu chatbot automático","ConfigureSW":"Configura tu Widget de Shopify","Install":"¡Instálalo ahora!","InstallD":"Una vez que instales este widget en tu tienda de Shopify, estará disponible para todos tus clientes, y tu chat estará en vivo.","WError":"¡Por favor, instala el Widget de Shopify!","WError1":"Parece que ha habido un error. ¡Por favor, instala el Widget!","Continue":"Continuar","Submit":"Finalizar","Check1":"Verificar","Cancel1":"Desinstalar","GoB":"Volver","Selected":"Tienda seleccionada","SelectedD":"Tienda actualmente seleccionada. Cambie a otra para ver más información.","ShopI":"ID de tienda","ShopD":"Dominio de tienda","ShopP":"Plan de tienda","AccountI":"ID de cuenta","AccountE":"Correo electrónico de cuenta","AdvisorsN":"Número de asesores","Manage":"Configurar chat","Upgrade":"Ampliar Plan","TotalM":"Total Mensajes","TotalA":"Total Mensajes De IA","TotalC":"Total Clientes","TotalT":"Total Tickets","MonthlyM":"Mensajes Mensuales","MonthlyA":"Mensajes Resueltos Por IA","MonthlyC":"Clientes Captados Este Mes","MonthlyT":"Tickets Creados Este Mes","MonthlyO":"Páginas Cargadas Este Mes","What":"¿Qué hay de nuevo?","WhatD":"Descubre qué está sucediendo en el interior de la Revolución de IA del Soporte al Cliente.","English":"Chat with","Spanish":"Hablar con","Italian":"Chat con","Portuguese":"Conversar com","French":"Parler avec","German":"Chatten Sie mit","Warning":"Atención","Missing":"Faltan por llenar campos en la encuesta, baja un poco para ver los faltantes!","WelcomeT":"Bienvenidos a Wizybot","WelcomeFirst":"La SuperApp de eCommerce centrada en IA para aumentar tus ventas y tu atención al cliente. Automatiza conversaciones, respuestas a comentarios y mensajes salientes mientras incrementas las ventas y reduces costos con Wizybot.","WelcomeD":"Hay varias formas de mejorar tu tienda usando Wizybot.","StartSync":"Iniciar sincronización","SyncPP":"Sincroniza tus datos","SyncD":"¡Sincronizar tus productos, políticas y páginas nunca había sido tan fácil!","SyncD1":"Finalizado","Syncing":"Sincronizando","SSyncing":"El proceso de sincronización aún no ha terminado, por favor espera un poco más.","SyncingT":"Sincronización","SyncingE":"Hubo un error en el proceso de sincronización, por favor inténtalo de nuevo.","SyncingE2":"Error","SyncingS":"¡El proceso de sincronización se finalizó correctamente!","Synchronization":"Sincronización","Synced":"Sincronizado","SyncClose":"Este proceso puede tardar un poco. Por favor, no cierres esta pestaña.","SyncComplete":"Sincronizado correctamente","SyncCompleteD":"Todo listo, ya puedes probar Wizybot","SyncCompleteB":"Empezar ahora","Retry":"Reintentar","TopUp":"Parece que se te han acabado tus mensajes mensuales, quieres mejorar tu plan?","UpgradeP":"Comprar","Permission":"Solicitud de permisos","PermissionD":"Requerimos que nos concedas nuevos permisos para poder usar todas nuestras funcionalidades.","Later":"Después","OnlineP":"Respondemos inmediatamente!","Success":"Exito","Link":"","Customize":"Configurar chat","TTurn":"Visibilidad y pruebas del widget","Settings":"Ajustes de la cuenta","SalesM":"Ventas De Wizybot Este Mes","ChargeM":"Cargo Total Mensual (USD)","DefaultM":"¡Hola! Estoy en línea si necesitas ayuda...","ProductM":"¡Hola! Estoy en línea si necesitas ayuda con {product}?","CollectionM":"¡Hola! Estas interesado en nuestra colección {collection}?","SearchM":"¡Hola! Estas buscando algo en particular? Estoy acá para ayudar...","PageM":"¡Hola! Estas necesitas información sobre {page}? Estoy aca para ayudar...","ChatbotP":"Actua comoun agente de servicio al cliente amable y humilde","Grant":"Conceder","YearlyC":"Clientes Captados Este Año","YearlyT":"Tickets Creados Este Año","YearlyO":"Páginas Cargadas Este Año","KnowledgeCenterT":"Knowledge center","KnowledgeCenterD":"Find out what\'s going on inside Wizybot Customer Support AI Revolution.","ChargeY":"Cargo Total Anual (USD)","SalesY":"Ventas De Wizybot Este Año..","FinishSetup":"Completa la configuración","GetCloser":"Personaliza tu Wizybot para estar más cerca de tus clientes.","WizyStatus":"Estado de Wizybot","Status":"Estado","StatusD":"Activa este módulo para poner Wizybot en línea en tu sitio.","StatusA":"Activar Wizybot en mi tienda","StatusOn":"Activado","StatusOff":"Desactivado","StatusTogOn":"Activar Wizybot","StatusTogOff":"Desactivar Wizybot","TrainT":"Entrena tu Bot","TrainWizy":"Entrena Wizybot","TrainD":"Da vida a tu marca con Wizybot. Enséñale su personalidad y empieza a entrenarlo.","Metrics":"Métricas Importantes","Metric1":"Ventas de Wizybot","Metric2":"Mensajes atendidos con AI","Metric3":"Conversaciones Abiertas","Metric4":"Tickets abiertos vs Tickets Cerrados","Metric5":"Tiempo ahorrado con Wizybot","Metric6":"Uso Mensual","CostMessagesUsed":"Mensajes","CostCommentsUsed":"Comentarios","PerExtraMessage":"/ msg. extra","PerExtraComment":"/ com. extra","CostSubscription":"Costo de Suscripción","CostExtraMessage":"Costo por Mensajes Extra","CostTotal":"Costo Total del Ciclo de Facturación","Tickets":"Tickets Totales","OnboardT1":"Personaliza tu chat","OnboardD1":"Ajusta los colores, el logo y el estilo para que combine con tu marca.","OnboardT2":"Define la personalidad","OnboardD2":"Enséñale a Wizybot cómo debe hablar con tus clientes, según el tono de tu marca.","OnboardT3":"Corrige respuestas","OnboardD3":"Revisa y mejora al menos 3 respuestas en el módulo de entrenamiento.","OnboardT4":"Activa el bot","OnboardD4":"Pon a Wizybot en línea para que empiece a responder en tu tienda.","OnboardT5":"Conecta con Meta","OnboardD5":"Activa un canal como WhatsApp, Instagram o Messenger para llegar a tus clientes.","BillingC":"Ciclo de facturación","BillingF":"Desde","BillingT":"Hasta","AccountID":"ID de Cuenta","AccountIDDes":"Para Soporte al Cliente","MetricInfo1":"Wizybot registra las ventas en las que ayudó al cliente a decidirse a través de una conversación. Aquí puedes consultar las ventas registradas durante los últimos meses.","MetricInfo2":"Consulta la cantidad de conversaciones iniciadas por tus clientes a través de alguno de los canales de Wizybot en los últimos meses.","MetricInfo3":"Revisa cuánto tiempo te ahorraste en redactar respuestas gracias a los mensajes generados por Wizybot durante los últimos meses.","MetricInfo4":"Mira cuántos mensajes fueron enviados con inteligencia artificial por Wizybot en los últimos meses.","MetricInfo5":"Observa la cantidad de tickets pendientes y resueltos por tu equipo durante los últimos meses.","MetricInfo6":"Consulta la información asociada a tu suscripción durante el periodo de facturación actual. Recuerda que cada periodo de facturación es de 30 días.","Uninstalled":"Aplicación desinstalada","UninstalledD":"Parece que la aplicación ha sido desinstalada de Shopify, por favor reinstálala para continuar usando Wizybot. O elimina la tienda si no deseas usarla más.","Reinstall":"Reinstalar","DeleteShop":"Eliminar tienda","InstallWidget":"Activar Widget","InstallWidgetD":"Activa el widget para que Wizybot aparezca en tu tienda.","InstallWidgetStep1":"Activa el toggle para hacer visible Wizybot Chat Widget.","InstallWidgetStep2":"Guarda los cambios.","InstallWidgetGo":"Ir a Shopify","InstallWidgetSuccessT":"¡Listo!","InstallWidgetSuccessD":"Wizybot ya está activo y visible en tu tienda."}');
+const Spanish_home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configura tu chat en vivo","AgentN":"Nombre del agente","AgentL":"Ubicación del agente","Eg":" Ejemplo: Juan, Thomas, Angela","Eg1":"Ejemplo: Medellín, California, Berlín","PrimaryC":"Color primario","SecondaryC":"Color secundario","GradientC":"Colores degradados","FontC":"Color de fuente","Interact":"¿Cómo le gustaría interactuar con sus clientes?","Discount":"Enviarles un código de descuento cuando el cliente acceda a su página web, esto aumentará sus ventas sustancialmente","Greet":"Solo saludarlos cordialmente y hacerles saber que está disponible para cualquier consulta","Percentage":"Porcentaje de descuento","Eg2":"Ejemplo: 10, 20, 30","Phrase":"Frase en línea","Eg3":"Ejemplo: Respondemos de inmediato","Initial":"Mensaje inicial","Eg4":"Ejemplo: ¡Hola! ¿Te gustaría un descuento?","ConfigureOP":"Configura tu política de pedidos","OrderP":"¿Cuál es tu proceso para realizar un pedido en tu sitio web?","OrderPD":"Paso 1: Elija el producto que desea\\nPaso 2: Seleccione los colores, tallas o características que necesita\\nPaso 3: Agregue otros productos al carrito si lo desea\\nPaso 4: Complete la información de envío\\nPaso 5: Complete la información de pago\\nPaso 6: Finalice el pedido con el pago","Length":"Longitud","OrderC":"¿Dónde reciben tus clientes la confirmación del pedido?","Email":"Correo electrónico","Sms":"SMS","Both":"Ambos","Other":"Otro","OtherD":"Otros tipos de confirmación (separados por comas)","Eg5":"Ejemplo: Correo, Bíper","OrderCa":"¿Cómo gestionas las cancelaciones de pedidos?","OrderCaD":"- Si su pedido ya ha sido enviado, no podemos cancelar el pedido. En tales casos, puede iniciar una devolución según nuestra política de devoluciones.\\n- Si su pedido está en etapa de procesamiento, haremos todo lo posible para detener el envío, pero no podemos garantizar la cancelación. Si la cancelación no es posible, puede iniciar una devolución una vez que reciba el pedido.","OrderR":"¿Dónde reciben tus clientes la confirmación del pedido?","InvoiceP":"Factura física","InvoiceO":"Factura en línea","ConfigurePP":"Configura tu política de pagos","PaymentM":"¿Cuáles son tus métodos de pago?","CreditC":"Tarjeta de crédito","DebitC":"Tarjeta de débito","Cash":"Efectivo","BankT":"Transferencia bancaria","OtherDP":"Otros métodos de pago (separados por comas)","Eg6":"Ejemplo: Paypal, Venmo","Credit":"¿Ofreces algún crédito a los clientes?","CreditD":"Ofrecemos 2 formas de crédito a nuestros clientes.\\n- La aplicación permite a los usuarios pagar a crédito sin poseer una tarjeta de crédito.\\n- Ofrecemos crédito a clientes existentes.","ConfigureSP":"Configura tu política de envío","ShippingT":"¿Cuánto tiempo tarda un cliente en recibir el paquete?","ShippingTD":"3 días hábiles si te encuentras en Estados Unidos, y de 15 a 20 días para envíos internacionales.","ShippingC":"¿Cuánto cuesta el envío?","ShippingCD":"- Para la geografía de Estados Unidos, el envío es GRATUITO\\n- Para envíos internacionales, tiene un costo adicional de 20 USD.\\n- Si el pedido internacional supera los 100 USD, el envío es GRATUITO.","ShippingW":"¿A dónde realizas envíos? (Lugares separados por comas)","ShippingWD":"Estados Unidos, México, Canadá, América Latina, Reino Unido","ConfigureRP":"Configura tu política de devoluciones","ReturnsC":"¿Existen condiciones o requisitos para que los artículos sean elegibles para una devolución?","ReturnsCD":"Para ser elegible para una devolución, el artículo debe estar sin usar, en su estado original y en el embalaje original. Algunos productos, como productos perecederos, artículos íntimos o sanitarios y tarjetas de regalo, están exentos de devolución.","ReturnsP":"¿Cuál es el proceso para iniciar una devolución?","ReturnsPD":"Para iniciar una devolución, contáctanos a través de este chat dentro del período de garantía. Proporciona tu número de pedido y el motivo de la devolución, crearemos un ticket en tu nombre y comenzaremos el proceso de devolución.","ReturnsS":"¿Se proporciona una etiqueta de envío de devolución o los clientes deben organizar y cubrir los costos de envío ellos mismos?","ReturnsSD":"Empaca el artículo de forma segura en el embalaje original, si es posible, para evitar daños durante el transporte. Incluye cualquier accesorio, manual u otros elementos adicionales que se incluyeron con el producto. Eres responsable de cubrir los costos de envío de devolución a menos que la devolución sea por nuestro error o un producto defectuoso.","ReturnsT":"¿Cuánto tiempo suele llevar procesar una devolución y emitir un reembolso?","ReturnsTD":"Tienes 30 días a partir de la fecha de entrega para iniciar una devolución. Si han pasado 30 días desde tu compra, lamentablemente no podemos ofrecerte un reembolso o cambio. Una vez que recibamos tu devolución, el tiempo promedio para recibir tu devolución es de 5 días hábiles.","ConfigureRFP":"Configura tu política de reembolsos","RefundsT":"¿Cuánto tiempo suele llevar procesar un reembolso?","RefundsTD":"5 días hábiles","RefundsM":"¿Cuál es el método de reembolso? ¿Se devuelve al método de pago original o se proporciona como crédito de tienda?","RefundsMD":"Se proporciona como crédito de tienda por el valor del reembolso.","RefundsC":"¿Existen condiciones o requisitos específicos para que los clientes sean elegibles para un reembolso?","RefundsCD":"Tienes 30 días a partir de la fecha de entrega para iniciar un reembolso.","RefundsF":"¿Existen deducciones o tarifas aplicadas a los montos reembolsados, como tarifas de reposición o costos de envío?","RefundsFD":"No, asumimos todos los costos del reembolso.","ConfigureW":"Configura tu política de garantía","WarrantyT":"¿Cuál es la duración de la garantía proporcionada para los productos?","WarrantyTD":"Nuestros productos están cubiertos por una garantía de 6 meses a partir de la fecha de compra. El período de garantía puede variar según la categoría del producto y el artículo específico.","WarrantyC":"¿Qué cubre la garantía? ¿Existen componentes o partes específicas excluidas de la garantía?","WarrantyCD":"Nuestra garantía cubre defectos de materiales y mano de obra bajo uso y condiciones normales. La garantía se aplica al comprador original y no es transferible.","WarrantyR":"¿Existen condiciones o requisitos para que los clientes sean elegibles para la cobertura de garantía?","WarrantyRD":"La garantía no cubre los daños causados por un uso indebido, accidentes, modificaciones no autorizadas o cualquier otra circunstancia más allá del uso normal. Los artículos consumibles o desechables no son elegibles para la cobertura de garantía. Los daños causados por desastres naturales, actos de Dios u otros factores externos no están cubiertos.","WarrantyP":"¿Cuál es el proceso para iniciar un reclamo de garantía?","WarrantyPD":"Para iniciar un reclamo de garantía, contáctanos a través de este chat dentro del período de garantía. Proporciona tu número de pedido y el motivo del reclamo de garantía, crearemos un ticket en tu nombre y comenzaremos el proceso de reclamo de garantía.","ConfigureCP":"Configura tu política de la empresa","CompanyP":"¿Qué tipos de productos vendes?","CompanyPD":"Ropa y prendas de vestir","CompanyI":"¿En qué industria te encuentras?","Eg7":"Ej: Moda, Alimentación","CompanyC":"Información de contacto (para los clientes)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Titulo del chat","Eg8":"Seleccionar lenguage","Deactivation":"Desactivación","Sure":"¿Estás seguro de que deseas eliminar la tiemda ","ShopQ":"?","InitialM":"¡Hola! Estoy en línea si necesitas ayuda...","InitialM1":"¡Hola! Tenemos un descuento disponible, ¿te gustaría aprovecharlo?","Error":"Hubo un error en el proceso de configuración de la tienda: ","Configuration":"Configuración","ConfigurationD":"La configuración inicial se guardó con exito","Widget":"El widget fue instalado correctamente","Check":"Verificación","App":"La aplicación debe desinstalarse de Shopify para continuar","Error1":"Hubo un error al eliminar la tienda actual, por favor inténtalo de nuevo","Delete":"Eliminar","Cancel":"Cancelar","Test":"Probar","Step":"Paso","StepD":"Por favor configura tu chatbot automático","ConfigureSW":"Configura tu Widget de Shopify","Install":"¡Instálalo ahora!","InstallD":"Una vez que instales este widget en tu tienda de Shopify, estará disponible para todos tus clientes, y tu chat estará en vivo.","WError":"¡Por favor, instala el Widget de Shopify!","WError1":"Parece que ha habido un error. ¡Por favor, instala el Widget!","Continue":"Continuar","Submit":"Finalizar","Check1":"Verificar","Cancel1":"Desinstalar","GoB":"Volver","Selected":"Tienda seleccionada","SelectedD":"Tienda actualmente seleccionada. Cambie a otra para ver más información.","ShopI":"ID de tienda","ShopD":"Dominio de tienda","ShopP":"Plan de tienda","AccountI":"ID de cuenta","AccountE":"Correo electrónico de cuenta","AdvisorsN":"Número de asesores","Manage":"Configurar chat","Upgrade":"Ampliar Plan","TotalM":"Total Mensajes","TotalA":"Total Mensajes De IA","TotalC":"Total Clientes","TotalT":"Total Tickets","MonthlyM":"Mensajes Mensuales","MonthlyA":"Mensajes Resueltos Por IA","MonthlyC":"Clientes Captados Este Mes","MonthlyT":"Tickets Creados Este Mes","MonthlyO":"Páginas Cargadas Este Mes","What":"¿Qué hay de nuevo?","WhatD":"Descubre qué está sucediendo en el interior de la Revolución de IA del Soporte al Cliente.","English":"Chat with","Spanish":"Hablar con","Italian":"Chat con","Portuguese":"Conversar com","French":"Parler avec","German":"Chatten Sie mit","Warning":"Atención","Missing":"Faltan por llenar campos en la encuesta, baja un poco para ver los faltantes!","WelcomeT":"Bienvenidos a Wizybot","WelcomeFirst":"La SuperApp de eCommerce centrada en IA para aumentar tus ventas y tu atención al cliente. Automatiza conversaciones, respuestas a comentarios y mensajes salientes mientras incrementas las ventas y reduces costos con Wizybot.","WelcomeD":"Hay varias formas de mejorar tu tienda usando Wizybot.","StartSync":"Iniciar sincronización","SyncPP":"Sincroniza tus datos","SyncD":"¡Sincronizar tus productos, políticas y páginas nunca había sido tan fácil!","SyncD1":"Finalizado","Syncing":"Sincronizando","SSyncing":"El proceso de sincronización aún no ha terminado, por favor espera un poco más.","SyncingT":"Sincronización","SyncingE":"Hubo un error en el proceso de sincronización, por favor inténtalo de nuevo.","SyncingE2":"Error","SyncingS":"¡El proceso de sincronización se finalizó correctamente!","Synchronization":"Sincronización","Synced":"Sincronizado","SyncClose":"Este proceso puede tardar un poco. Por favor, no cierres esta pestaña.","SyncComplete":"Sincronizado correctamente","SyncCompleteD":"Todo listo, ya puedes probar Wizybot","SyncCompleteB":"Empezar ahora","Retry":"Reintentar","TopUp":"Parece que se te han acabado tus mensajes mensuales, quieres mejorar tu plan?","UpgradeP":"Comprar","Permission":"Solicitud de permisos","PermissionD":"Requerimos que nos concedas nuevos permisos para poder usar todas nuestras funcionalidades.","Later":"Después","OnlineP":"Respondemos inmediatamente!","Success":"Exito","Link":"https://s3-tjlabs-wizybot-frontend-assets-dev.s3.amazonaws.com/spanish.mp4","Customize":"Configurar chat","TTurn":"Visibilidad y pruebas del widget","Settings":"Ajustes de la cuenta","SalesM":"Ventas De Wizybot Este Mes","ChargeM":"Cargo Total Mensual (USD)","DefaultM":"¡Hola! Estoy en línea si necesitas ayuda...","ProductM":"¡Hola! Estoy en línea si necesitas ayuda con {product}?","CollectionM":"¡Hola! Estas interesado en nuestra colección {collection}?","SearchM":"¡Hola! Estas buscando algo en particular? Estoy acá para ayudar...","PageM":"¡Hola! Estas necesitas información sobre {page}? Estoy aca para ayudar...","ChatbotP":"Actua comoun agente de servicio al cliente amable y humilde","Grant":"Conceder","YearlyC":"Clientes Captados Este Año","YearlyT":"Tickets Creados Este Año","YearlyO":"Páginas Cargadas Este Año","KnowledgeCenterT":"Knowledge center","KnowledgeCenterD":"Find out what\'s going on inside Wizybot Customer Support AI Revolution.","ChargeY":"Cargo Total Anual (USD)","SalesY":"Ventas De Wizybot Este Año..","FinishSetup":"Completa la configuración","GetCloser":"Personaliza tu Wizybot para estar más cerca de tus clientes.","WizyStatus":"Estado de Wizybot","Status":"Estado","StatusD":"Activa este módulo para poner Wizybot en línea en tu sitio.","StatusA":"Activar Wizybot en mi tienda","StatusOn":"Activado","StatusOff":"Desactivado","StatusTogOn":"Activar Wizybot","StatusTogOff":"Desactivar Wizybot","TrainT":"Entrena tu Bot","TrainWizy":"Entrena Wizybot","TrainD":"Da vida a tu marca con Wizybot. Enséñale su personalidad y empieza a entrenarlo.","Metrics":"Métricas Importantes","Metric1":"Ventas de Wizybot","Metric2":"Mensajes atendidos con AI","Metric3":"Conversaciones Abiertas","Metric4":"Tickets abiertos vs Tickets Cerrados","Metric5":"Tiempo ahorrado con Wizybot","Metric6":"Uso Mensual","CostMessagesUsed":"Mensajes","CostCommentsUsed":"Comentarios","PerExtraMessage":"/ msg. extra","PerExtraComment":"/ com. extra","CostSubscription":"Costo de Suscripción","CostExtraMessage":"Costo por Mensajes Extra","CostTotal":"Costo Total del Ciclo de Facturación","Tickets":"Tickets Totales","OnboardT1":"Personaliza tu chat","OnboardD1":"Ajusta los colores, el logo y el estilo para que combine con tu marca.","OnboardT2":"Define la personalidad","OnboardD2":"Enséñale a Wizybot cómo debe hablar con tus clientes, según el tono de tu marca.","OnboardT3":"Corrige respuestas","OnboardD3":"Revisa y mejora al menos 3 respuestas en el módulo de entrenamiento.","OnboardT4":"Activa el bot","OnboardD4":"Pon a Wizybot en línea para que empiece a responder en tu tienda.","OnboardT5":"Conecta con Meta","OnboardD5":"Activa un canal como WhatsApp, Instagram o Messenger para llegar a tus clientes.","BillingC":"Ciclo de facturación","BillingF":"Desde","BillingT":"Hasta","AccountID":"ID de Cuenta","AccountIDDes":"Para Soporte al Cliente","MetricInfo1":"Wizybot registra las ventas en las que ayudó al cliente a decidirse a través de una conversación. Aquí puedes consultar las ventas registradas durante los últimos meses.","MetricInfo2":"Consulta la cantidad de conversaciones iniciadas por tus clientes a través de alguno de los canales de Wizybot en los últimos meses.","MetricInfo3":"Revisa cuánto tiempo te ahorraste en redactar respuestas gracias a los mensajes generados por Wizybot durante los últimos meses.","MetricInfo4":"Mira cuántos mensajes fueron enviados con inteligencia artificial por Wizybot en los últimos meses.","MetricInfo5":"Observa la cantidad de tickets pendientes y resueltos por tu equipo durante los últimos meses.","MetricInfo6":"Consulta la información asociada a tu suscripción durante el periodo de facturación actual. Recuerda que cada periodo de facturación es de 30 días.","Uninstalled":"Aplicación desinstalada","UninstalledD":"Parece que la aplicación ha sido desinstalada de Shopify, por favor reinstálala para continuar usando Wizybot. O elimina la tienda si no deseas usarla más.","Reinstall":"Reinstalar","DeleteShop":"Eliminar tienda","InstallWidget":"Activar Widget","InstallWidgetD":"Activa el widget para que Wizybot aparezca en tu tienda.","InstallWidgetStep1":"Activa el toggle para hacer visible Wizybot Chat Widget.","InstallWidgetStep2":"Guarda los cambios.","InstallWidgetGo":"Ir a Shopify","InstallWidgetSuccessT":"¡Listo!","InstallWidgetSuccessD":"Wizybot ya está activo y visible en tu tienda."}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/home.json
-const Portuguese_home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configure seu Chat ao Vivo","AgentN":"Nome do agente","AgentL":"Localização do agente","Eg":"Ex: Juan, Thomas, Angela","Eg1":"Ex: Medellín, Califórnia, Berlim","PrimaryC":"Cor primária","SecondaryC":"Cor secundária","GradientC":"Cores do gradiente","FontC":"Cor da fonte","Interact":"Como você gostaria de interagir com seus clientes?","Discount":"Envie um código de desconto quando o cliente acessar seu site, isso aumentará suas vendas substancialmente","Greet":"Apenas cumprimente calorosamente e informe que está disponível para dúvidas","Percentage":"Porcentagem de desconto","Eg2":"Ex: 10, 20, 30","Phrase":"Frase online","Eg3":"Ex: Respondemos imediatamente","Initial":"Mensagem inicial","Eg4":"Ex: Olá! Gostaria de um desconto?","ConfigureOP":"Configure sua política de pedidos","OrderP":"Qual é o seu processo para fazer um pedido no seu site?","OrderPD":"Etapa 1: Escolha o produto desejado\\nEtapa 2: Selecione as cores, tamanhos ou características necessárias\\nEtapa 3: Adicione outros produtos ao carrinho, se quiser\\nEtapa 4: Preencha as informações de envio\\nEtapa 5: Preencha as informações de pagamento\\nEtapa 6: Finalize o pedido com o pagamento","Length":"Duração","OrderC":"Onde seus clientes recebem a confirmação do pedido?","Email":"E-mail","Sms":"Sms","Both":"Ambos","Other":"Outro","OtherD":"Outros tipos de confirmação (separados por vírgulas)","Eg5":"Ex: Correio, Beeper","OrderCa":"Como você gerencia os cancelamentos de pedidos?","OrderCaD":"- Se o pedido já foi enviado, não podemos cancelá-lo. Nesse caso, você pode iniciar uma devolução conforme nossa política de devoluções.\\n- Se o pedido estiver em processamento, faremos o possível para interromper o envio, mas não podemos garantir o cancelamento. Se não for possível cancelar, você pode iniciar uma devolução após receber o pedido.","OrderR":"Onde seus clientes recebem a confirmação do pedido?","InvoiceP":"Nota fiscal física","InvoiceO":"Nota fiscal online","ConfigurePP":"Configure sua política de pagamento","PaymentM":"Quais são seus métodos de pagamento?","CreditC":"Cartão de crédito","DebitC":"Cartão de débito","Cash":"Dinheiro","BankT":"Transferência bancária","OtherDP":"Outros métodos de pagamento (separados por vírgulas)","Eg6":"Ex: Paypal, Venmo","Credit":"Você oferece crédito aos clientes?","CreditD":"Oferecemos duas formas de crédito aos nossos clientes:\\n- O aplicativo permite que os usuários paguem a crédito sem possuir um cartão de crédito.\\n- Oferecemos crédito para clientes recorrentes.","ConfigureSP":"Configure sua política de envio","ShippingT":"Quanto tempo leva para o cliente receber o pacote?","ShippingTD":"3 dias úteis se estiver nos EUA, e de 15 a 20 dias para envios internacionais.","ShippingC":"Quanto custa o envio?","ShippingCD":"- Para os EUA, o envio é GRATUITO\\n- Para envios internacionais, o custo extra é de 20 USD.\\n- Para pedidos internacionais acima de 100 USD, o envio é GRATUITO.","ShippingW":"Para onde você envia? (lugares separados por vírgulas)","ShippingWD":"EUA, México, Canadá, América Latina, Reino Unido","ConfigureRP":"Configure sua política de devoluções","ReturnsC":"Existem condições ou requisitos para que os itens sejam elegíveis para devolução?","ReturnsCD":"Para ser elegível para devolução, o item deve estar sem uso, em condição original e na embalagem original. Certos produtos, como bens perecíveis, itens íntimos ou sanitários e cartões-presente, não podem ser devolvidos.","ReturnsP":"Qual é o processo para iniciar uma devolução?","ReturnsPD":"Para iniciar uma devolução, entre em contato conosco por este chat dentro do período de garantia. Forneça seu número de pedido e o motivo da devolução. Vamos criar um ticket e iniciar o processo.","ReturnsS":"É fornecida uma etiqueta de devolução ou o cliente precisa providenciar e pagar o envio?","ReturnsSD":"Embale o item de forma segura, de preferência na embalagem original, para evitar danos no transporte. Inclua acessórios, manuais ou itens adicionais. Você é responsável pelo custo de envio da devolução, exceto em caso de erro nosso ou produto com defeito.","ReturnsT":"Quanto tempo leva para processar uma devolução e emitir o reembolso?","ReturnsTD":"Você tem 30 dias a partir da data de entrega para iniciar uma devolução. Após isso, não podemos oferecer reembolso ou troca. Assim que recebermos sua devolução, o prazo médio de processamento é de 5 dias úteis.","ConfigureRFP":"Configure sua política de reembolso","RefundsT":"Quanto tempo leva para processar um reembolso?","RefundsTD":"5 dias úteis","RefundsM":"Qual é o método de reembolso? É feito para o método original ou como crédito na loja?","RefundsMD":"É fornecido como crédito na loja com o valor do reembolso.","RefundsC":"Existem condições para ser elegível ao reembolso?","RefundsCD":"Você tem 30 dias a partir da entrega para solicitar um reembolso.","RefundsF":"Há deduções ou taxas no valor reembolsado, como taxas de reposição ou frete?","RefundsFD":"Não, assumimos todos os custos do reembolso.","ConfigureW":"Configure sua política de garantia","WarrantyT":"Qual é a duração da garantia dos produtos?","WarrantyTD":"Nossos produtos têm garantia de 6 meses a partir da data da compra. Pode variar conforme o tipo de produto.","WarrantyC":"O que a garantia cobre? Existem componentes excluídos?","WarrantyCD":"Nossa garantia cobre defeitos de fabricação e materiais sob uso normal. É válida apenas para o comprador original e não é transferível.","WarrantyR":"Existem condições para ser elegível à garantia?","WarrantyRD":"A garantia não cobre danos causados por mau uso, acidentes, modificações ou causas externas. Itens consumíveis ou descartáveis não têm cobertura.","WarrantyP":"Qual é o processo para acionar a garantia?","WarrantyPD":"Para acionar a garantia, entre em contato por este chat dentro do período de garantia. Informe o número do pedido e o motivo, e criaremos um ticket para iniciar o processo.","ConfigureCP":"Configure a política da sua empresa","CompanyP":"Que tipo de produtos você vende?","CompanyPD":"Roupas e vestuário","CompanyI":"Em que setor você atua?","Eg7":"Ex: Moda, Alimentação","CompanyC":"Informações de contato (para clientes)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Título do chat","Eg8":"Selecione o idioma","Deactivation":"Desativação","Sure":"Tem certeza de que deseja excluir ","ShopQ":" loja?","InitialM":"Olá! Estou online se precisar de ajuda...","InitialM1":"Olá! Temos um desconto disponível, gostaria de resgatar?","Error":"Ocorreu um erro na configuração da loja: ","Configuration":"Configuração","ConfigurationD":"A configuração principal foi realizada com sucesso","Widget":"O widget foi instalado com sucesso","Check":"Verificar","App":"O aplicativo deve ser desinstalado do Shopify para continuar","Error1":"Erro ao excluir a loja atual, tente novamente","Delete":"Excluir","Cancel":"Cancelar","Test":"Testar","Step":"Etapa","StepD":"Preencha os campos para configurar seu chatbot automático","ConfigureSW":"Configure seu Widget do Shopify","Install":"Instale agora!","InstallD":"Após instalar este widget na sua loja Shopify, ele ficará disponível para todos os clientes, e o chat funcionará automaticamente.","WError":"Por favor, instale o Widget do Shopify!","WError1":"Parece que houve um erro, por favor instale o Widget!","Continue":"Continuar","Submit":"Finalizar","Check1":"Verificar","Cancel1":"Desinstalar","GoB":"Voltar","Selected":"Loja selecionada","SelectedD":"Loja atualmente selecionada. Troque para outra loja para ver mais informações.","ShopI":"ID da loja","ShopD":"Domínio da loja","ShopP":"Plano da loja","AccountI":"ID da conta","AccountE":"E-mail da conta","AdvisorsN":"Número de atendentes","Manage":"Personalizar chat","Upgrade":"Atualizar plano","TotalPS":"Total de lojas pagas","TotalIS":"Total de lojas com widget instalado","TotalM":"Total de mensagens","TotalA":"Total de mensagens da IA","TotalC":"Total de clientes","TotalT":"Total de chamados","MonthlyM":"Mensagens este mês","MonthlyA":"Mensagens respondidas pela IA","MonthlyC":"Clientes engajados este mês","YearlyC":"Clientes engajados este ano","MonthlyT":"Chamados criados este mês","MonthlyO":"Páginas carregadas este mês","YearlyT":"Chamados criados este ano","YearlyO":"Páginas carregadas este ano","KnowledgeCenterT":"Central de conhecimento","KnowledgeCenterD":"Descubra o que está acontecendo na revolução de suporte da IA do Wizybot.","English":"Conversar com","Spanish":"Hablar com","Italian":"Chat com","Portuguese":"Conversar com","French":"Parler avec","German":"Conversar com","Warning":"Aviso","Missing":"Há campos faltando no formulário, role para baixo!","WelcomeT":"Bem-vindo ao Wizybot","WelcomeFirst":"A SuperApp de eCommerce centrada em IA para impulsionar suas vendas e o atendimento ao cliente. Automatize conversas, respostas a comentários e mensagens ativas enquanto aumenta as vendas e reduz custos com o Wizybot.","WelcomeD":"Há várias maneiras de melhorar sua loja usando o Wizybot.","StartSync":"Iniciar sincronização","SyncPP":"Sincronize seus dados","SyncD":"Sincronizando seus produtos, políticas e páginas","SyncD1":"Finalizado","Syncing":"Sincronizando","SSyncing":"O processo de sincronização ainda não terminou, aguarde um pouco mais.","SyncingT":"Sincronização","SyncingE":"Erro durante a sincronização, tente novamente","SyncingE2":"Erro","SyncingS":"Sincronização finalizada com sucesso!","Synchronization":"Sincronização","Synced":"Sincronizado","SyncClose":"Este processo pode levar algum tempo. Por favor, não feche esta aba.","SyncComplete":"Sincronizado com sucesso","SyncCompleteD":"Tudo pronto, você já pode testar o Wizybot","SyncCompleteB":"Começar agora","Retry":"Tentar novamente","TopUp":"Você ficou sem mensagens mensais. Deseja atualizar seu plano?","UpgradeP":"Atualizar","Permission":"Solicitação de permissão","PermissionD":"Precisamos que você conceda novas permissões ao Wizybot para usar todos os recursos","Later":"Mais tarde","OnlineP":"Respondemos imediatamente!","Success":"Sucesso","Link":"","Customize":"Personalizar chat","TTurn":"Visibilidade e testes do widget","Settings":"Configurações da conta","SalesM":"Vendas Wizybot este mês","SalesY":"Vendas Wizybot este ano","ChargeM":"Cobrança mensal total (USD)","ChargeY":"Cobrança anual total (USD)","DefaultM":"Olá! Estou online se precisar de ajuda...","ProductM":"Olá! Precisa de ajuda com o produto {product}?","CollectionM":"Olá! Está interessado na nossa coleção {collection}?","SearchM":"Olá! Procurando algo em particular? Posso te ajudar...","PageM":"Olá! Precisa de informações sobre {page}? Posso ajudar...","ChatbotP":"Atue como um agente de suporte ao cliente simpático e gentil","Grant":"Permitir","FinishSetup":"Finalize a configuração","GetCloser":"Aproxime-se dos seus clientes personalizando seu Wizybot.","WizyStatus":"Status do Wizybot","Status":"Status","StatusD":"Ative este módulo para colocar o Wizybot no ar em seu site.","StatusA":"Ativar Wizybot no meu site","StatusOn":"Online","StatusOff":"Offline","StatusTogOn":"Ligar Wizybot","StatusTogOff":"Desligar Wizybot","TrainT":"Treine seu bot","TrainWizy":"Treine o Wizybot","TrainD":"Dê vida à sua marca com o Wizybot. Ensine a personalidade da sua marca e comece o treinamento.","Metrics":"Principais Métricas","Metric1":"Vendas do Wizybot","Metric2":"Mensagens respondidas pela IA","Metric3":"Conversas Abertas","Metric4":"Chamados abertos vs chamados fechados","Metric5":"Tempo economizado com o Wizybot","Metric6":"Uso Mensal","CostMessagesUsed":"Mensagens","CostCommentsUsed":"Comentários","PerExtraMessage":"/ msg. extra","PerExtraComment":"/ com. extra","CostSubscription":"Custo da Assinatura","CostExtraMessage":"Custo de Mensagens Extras","CostTotal":"Custo Total do Ciclo de Faturamento","Tickets":"Chamados Totais","OnboardT1":"Personalize seu chat","OnboardD1":"Ajuste cores, logotipo e estilo para combinar com sua marca.","OnboardT2":"Defina a personalidade","OnboardD2":"Ensine ao Wizybot como falar com seus clientes no tom da sua marca.","OnboardT3":"Ajuste as respostas","OnboardD3":"Revise e melhore pelo menos 3 respostas no módulo de treinamento.","OnboardT4":"Ative","OnboardD4":"Coloque o Wizybot online para começar a responder na sua loja.","OnboardT5":"Conecte um canal Meta","OnboardD5":"Ative um canal como WhatsApp, Instagram ou Messenger para alcançar os clientes.","BillingC":"Ciclo de cobrança","BillingF":"De","BillingT":"Até","AccountID":"ID da Conta","AccountIDDes":"Para Suporte ao Cliente","MetricInfo1":"O Wizybot registra as vendas em que ajudou o cliente a tomar uma decisão por meio de uma conversa. Aqui você pode ver as vendas registradas nos últimos meses.","MetricInfo2":"Confira a quantidade de conversas iniciadas pelos seus clientes por meio de algum dos canais do Wizybot nos últimos meses.","MetricInfo3":"Veja quanto tempo você economizou com as respostas escritas automaticamente pelo Wizybot nos últimos meses.","MetricInfo4":"Veja quantas mensagens foram enviadas pelo Wizybot usando inteligência artificial nos últimos meses.","MetricInfo5":"Acompanhe a quantidade de tickets pendentes e resolvidos pela sua equipe nos últimos meses.","MetricInfo6":"Veja as informações associadas à sua assinatura durante o período atual de faturamento. Lembre-se: cada ciclo de cobrança é de 30 dias.","Uninstalled":"App Uninstalled","UninstalledD":"It seems the app has been uninstalled from Shopify, please reinstall it to continue using Wizybot. Or delete the shop if you don\'t want to use it anymore.","Reinstall":"Reinstall","DeleteShop":"Delete Shop","InstallWidget":"Ativar Widget","InstallWidgetD":"Ative o widget para que o Wizybot apareça na sua loja.","InstallWidgetStep1":"Ative o toggle para tornar Wizybot Chat Widget visível.","InstallWidgetStep2":"Salve as alterações.","InstallWidgetGo":"Ir para o Shopify","InstallWidgetSuccessT":"Tudo pronto!","InstallWidgetSuccessD":"O Wizybot já está ativo e visível na sua loja."}');
+const Portuguese_home_namespaceObject = /*#__PURE__*/JSON.parse('{"ConfigureLC":"Configure seu Chat ao Vivo","AgentN":"Nome do agente","AgentL":"Localização do agente","Eg":"Ex: Juan, Thomas, Angela","Eg1":"Ex: Medellín, Califórnia, Berlim","PrimaryC":"Cor primária","SecondaryC":"Cor secundária","GradientC":"Cores do gradiente","FontC":"Cor da fonte","Interact":"Como você gostaria de interagir com seus clientes?","Discount":"Envie um código de desconto quando o cliente acessar seu site, isso aumentará suas vendas substancialmente","Greet":"Apenas cumprimente calorosamente e informe que está disponível para dúvidas","Percentage":"Porcentagem de desconto","Eg2":"Ex: 10, 20, 30","Phrase":"Frase online","Eg3":"Ex: Respondemos imediatamente","Initial":"Mensagem inicial","Eg4":"Ex: Olá! Gostaria de um desconto?","ConfigureOP":"Configure sua política de pedidos","OrderP":"Qual é o seu processo para fazer um pedido no seu site?","OrderPD":"Etapa 1: Escolha o produto desejado\\nEtapa 2: Selecione as cores, tamanhos ou características necessárias\\nEtapa 3: Adicione outros produtos ao carrinho, se quiser\\nEtapa 4: Preencha as informações de envio\\nEtapa 5: Preencha as informações de pagamento\\nEtapa 6: Finalize o pedido com o pagamento","Length":"Duração","OrderC":"Onde seus clientes recebem a confirmação do pedido?","Email":"E-mail","Sms":"Sms","Both":"Ambos","Other":"Outro","OtherD":"Outros tipos de confirmação (separados por vírgulas)","Eg5":"Ex: Correio, Beeper","OrderCa":"Como você gerencia os cancelamentos de pedidos?","OrderCaD":"- Se o pedido já foi enviado, não podemos cancelá-lo. Nesse caso, você pode iniciar uma devolução conforme nossa política de devoluções.\\n- Se o pedido estiver em processamento, faremos o possível para interromper o envio, mas não podemos garantir o cancelamento. Se não for possível cancelar, você pode iniciar uma devolução após receber o pedido.","OrderR":"Onde seus clientes recebem a confirmação do pedido?","InvoiceP":"Nota fiscal física","InvoiceO":"Nota fiscal online","ConfigurePP":"Configure sua política de pagamento","PaymentM":"Quais são seus métodos de pagamento?","CreditC":"Cartão de crédito","DebitC":"Cartão de débito","Cash":"Dinheiro","BankT":"Transferência bancária","OtherDP":"Outros métodos de pagamento (separados por vírgulas)","Eg6":"Ex: Paypal, Venmo","Credit":"Você oferece crédito aos clientes?","CreditD":"Oferecemos duas formas de crédito aos nossos clientes:\\n- O aplicativo permite que os usuários paguem a crédito sem possuir um cartão de crédito.\\n- Oferecemos crédito para clientes recorrentes.","ConfigureSP":"Configure sua política de envio","ShippingT":"Quanto tempo leva para o cliente receber o pacote?","ShippingTD":"3 dias úteis se estiver nos EUA, e de 15 a 20 dias para envios internacionais.","ShippingC":"Quanto custa o envio?","ShippingCD":"- Para os EUA, o envio é GRATUITO\\n- Para envios internacionais, o custo extra é de 20 USD.\\n- Para pedidos internacionais acima de 100 USD, o envio é GRATUITO.","ShippingW":"Para onde você envia? (lugares separados por vírgulas)","ShippingWD":"EUA, México, Canadá, América Latina, Reino Unido","ConfigureRP":"Configure sua política de devoluções","ReturnsC":"Existem condições ou requisitos para que os itens sejam elegíveis para devolução?","ReturnsCD":"Para ser elegível para devolução, o item deve estar sem uso, em condição original e na embalagem original. Certos produtos, como bens perecíveis, itens íntimos ou sanitários e cartões-presente, não podem ser devolvidos.","ReturnsP":"Qual é o processo para iniciar uma devolução?","ReturnsPD":"Para iniciar uma devolução, entre em contato conosco por este chat dentro do período de garantia. Forneça seu número de pedido e o motivo da devolução. Vamos criar um ticket e iniciar o processo.","ReturnsS":"É fornecida uma etiqueta de devolução ou o cliente precisa providenciar e pagar o envio?","ReturnsSD":"Embale o item de forma segura, de preferência na embalagem original, para evitar danos no transporte. Inclua acessórios, manuais ou itens adicionais. Você é responsável pelo custo de envio da devolução, exceto em caso de erro nosso ou produto com defeito.","ReturnsT":"Quanto tempo leva para processar uma devolução e emitir o reembolso?","ReturnsTD":"Você tem 30 dias a partir da data de entrega para iniciar uma devolução. Após isso, não podemos oferecer reembolso ou troca. Assim que recebermos sua devolução, o prazo médio de processamento é de 5 dias úteis.","ConfigureRFP":"Configure sua política de reembolso","RefundsT":"Quanto tempo leva para processar um reembolso?","RefundsTD":"5 dias úteis","RefundsM":"Qual é o método de reembolso? É feito para o método original ou como crédito na loja?","RefundsMD":"É fornecido como crédito na loja com o valor do reembolso.","RefundsC":"Existem condições para ser elegível ao reembolso?","RefundsCD":"Você tem 30 dias a partir da entrega para solicitar um reembolso.","RefundsF":"Há deduções ou taxas no valor reembolsado, como taxas de reposição ou frete?","RefundsFD":"Não, assumimos todos os custos do reembolso.","ConfigureW":"Configure sua política de garantia","WarrantyT":"Qual é a duração da garantia dos produtos?","WarrantyTD":"Nossos produtos têm garantia de 6 meses a partir da data da compra. Pode variar conforme o tipo de produto.","WarrantyC":"O que a garantia cobre? Existem componentes excluídos?","WarrantyCD":"Nossa garantia cobre defeitos de fabricação e materiais sob uso normal. É válida apenas para o comprador original e não é transferível.","WarrantyR":"Existem condições para ser elegível à garantia?","WarrantyRD":"A garantia não cobre danos causados por mau uso, acidentes, modificações ou causas externas. Itens consumíveis ou descartáveis não têm cobertura.","WarrantyP":"Qual é o processo para acionar a garantia?","WarrantyPD":"Para acionar a garantia, entre em contato por este chat dentro do período de garantia. Informe o número do pedido e o motivo, e criaremos um ticket para iniciar o processo.","ConfigureCP":"Configure a política da sua empresa","CompanyP":"Que tipo de produtos você vende?","CompanyPD":"Roupas e vestuário","CompanyI":"Em que setor você atua?","Eg7":"Ex: Moda, Alimentação","CompanyC":"Informações de contato (para clientes)","CompanyCD":"support@wizybot.com\\n+57 321228908","CompanyL":"Título do chat","Eg8":"Selecione o idioma","Deactivation":"Desativação","Sure":"Tem certeza de que deseja excluir ","ShopQ":" loja?","InitialM":"Olá! Estou online se precisar de ajuda...","InitialM1":"Olá! Temos um desconto disponível, gostaria de resgatar?","Error":"Ocorreu um erro na configuração da loja: ","Configuration":"Configuração","ConfigurationD":"A configuração principal foi realizada com sucesso","Widget":"O widget foi instalado com sucesso","Check":"Verificar","App":"O aplicativo deve ser desinstalado do Shopify para continuar","Error1":"Erro ao excluir a loja atual, tente novamente","Delete":"Excluir","Cancel":"Cancelar","Test":"Testar","Step":"Etapa","StepD":"Preencha os campos para configurar seu chatbot automático","ConfigureSW":"Configure seu Widget do Shopify","Install":"Instale agora!","InstallD":"Após instalar este widget na sua loja Shopify, ele ficará disponível para todos os clientes, e o chat funcionará automaticamente.","WError":"Por favor, instale o Widget do Shopify!","WError1":"Parece que houve um erro, por favor instale o Widget!","Continue":"Continuar","Submit":"Finalizar","Check1":"Verificar","Cancel1":"Desinstalar","GoB":"Voltar","Selected":"Loja selecionada","SelectedD":"Loja atualmente selecionada. Troque para outra loja para ver mais informações.","ShopI":"ID da loja","ShopD":"Domínio da loja","ShopP":"Plano da loja","AccountI":"ID da conta","AccountE":"E-mail da conta","AdvisorsN":"Número de atendentes","Manage":"Personalizar chat","Upgrade":"Atualizar plano","TotalPS":"Total de lojas pagas","TotalIS":"Total de lojas com widget instalado","TotalM":"Total de mensagens","TotalA":"Total de mensagens da IA","TotalC":"Total de clientes","TotalT":"Total de chamados","MonthlyM":"Mensagens este mês","MonthlyA":"Mensagens respondidas pela IA","MonthlyC":"Clientes engajados este mês","YearlyC":"Clientes engajados este ano","MonthlyT":"Chamados criados este mês","MonthlyO":"Páginas carregadas este mês","YearlyT":"Chamados criados este ano","YearlyO":"Páginas carregadas este ano","KnowledgeCenterT":"Central de conhecimento","KnowledgeCenterD":"Descubra o que está acontecendo na revolução de suporte da IA do Wizybot.","English":"Conversar com","Spanish":"Hablar com","Italian":"Chat com","Portuguese":"Conversar com","French":"Parler avec","German":"Conversar com","Warning":"Aviso","Missing":"Há campos faltando no formulário, role para baixo!","WelcomeT":"Bem-vindo ao Wizybot","WelcomeFirst":"A SuperApp de eCommerce centrada em IA para impulsionar suas vendas e o atendimento ao cliente. Automatize conversas, respostas a comentários e mensagens ativas enquanto aumenta as vendas e reduz custos com o Wizybot.","WelcomeD":"Há várias maneiras de melhorar sua loja usando o Wizybot.","StartSync":"Iniciar sincronização","SyncPP":"Sincronize seus dados","SyncD":"Sincronizando seus produtos, políticas e páginas","SyncD1":"Finalizado","Syncing":"Sincronizando","SSyncing":"O processo de sincronização ainda não terminou, aguarde um pouco mais.","SyncingT":"Sincronização","SyncingE":"Erro durante a sincronização, tente novamente","SyncingE2":"Erro","SyncingS":"Sincronização finalizada com sucesso!","Synchronization":"Sincronização","Synced":"Sincronizado","SyncClose":"Este processo pode levar algum tempo. Por favor, não feche esta aba.","SyncComplete":"Sincronizado com sucesso","SyncCompleteD":"Tudo pronto, você já pode testar o Wizybot","SyncCompleteB":"Começar agora","Retry":"Tentar novamente","TopUp":"Você ficou sem mensagens mensais. Deseja atualizar seu plano?","UpgradeP":"Atualizar","Permission":"Solicitação de permissão","PermissionD":"Precisamos que você conceda novas permissões ao Wizybot para usar todos os recursos","Later":"Mais tarde","OnlineP":"Respondemos imediatamente!","Success":"Sucesso","Link":"https://s3-tjlabs-wizybot-frontend-assets-dev.s3.amazonaws.com/english.mp4","Customize":"Personalizar chat","TTurn":"Visibilidade e testes do widget","Settings":"Configurações da conta","SalesM":"Vendas Wizybot este mês","SalesY":"Vendas Wizybot este ano","ChargeM":"Cobrança mensal total (USD)","ChargeY":"Cobrança anual total (USD)","DefaultM":"Olá! Estou online se precisar de ajuda...","ProductM":"Olá! Precisa de ajuda com o produto {product}?","CollectionM":"Olá! Está interessado na nossa coleção {collection}?","SearchM":"Olá! Procurando algo em particular? Posso te ajudar...","PageM":"Olá! Precisa de informações sobre {page}? Posso ajudar...","ChatbotP":"Atue como um agente de suporte ao cliente simpático e gentil","Grant":"Permitir","FinishSetup":"Finalize a configuração","GetCloser":"Aproxime-se dos seus clientes personalizando seu Wizybot.","WizyStatus":"Status do Wizybot","Status":"Status","StatusD":"Ative este módulo para colocar o Wizybot no ar em seu site.","StatusA":"Ativar Wizybot no meu site","StatusOn":"Online","StatusOff":"Offline","StatusTogOn":"Ligar Wizybot","StatusTogOff":"Desligar Wizybot","TrainT":"Treine seu bot","TrainWizy":"Treine o Wizybot","TrainD":"Dê vida à sua marca com o Wizybot. Ensine a personalidade da sua marca e comece o treinamento.","Metrics":"Principais Métricas","Metric1":"Vendas do Wizybot","Metric2":"Mensagens respondidas pela IA","Metric3":"Conversas Abertas","Metric4":"Chamados abertos vs chamados fechados","Metric5":"Tempo economizado com o Wizybot","Metric6":"Uso Mensal","CostMessagesUsed":"Mensagens","CostCommentsUsed":"Comentários","PerExtraMessage":"/ msg. extra","PerExtraComment":"/ com. extra","CostSubscription":"Custo da Assinatura","CostExtraMessage":"Custo de Mensagens Extras","CostTotal":"Custo Total do Ciclo de Faturamento","Tickets":"Chamados Totais","OnboardT1":"Personalize seu chat","OnboardD1":"Ajuste cores, logotipo e estilo para combinar com sua marca.","OnboardT2":"Defina a personalidade","OnboardD2":"Ensine ao Wizybot como falar com seus clientes no tom da sua marca.","OnboardT3":"Ajuste as respostas","OnboardD3":"Revise e melhore pelo menos 3 respostas no módulo de treinamento.","OnboardT4":"Ative","OnboardD4":"Coloque o Wizybot online para começar a responder na sua loja.","OnboardT5":"Conecte um canal Meta","OnboardD5":"Ative um canal como WhatsApp, Instagram ou Messenger para alcançar os clientes.","BillingC":"Ciclo de cobrança","BillingF":"De","BillingT":"Até","AccountID":"ID da Conta","AccountIDDes":"Para Suporte ao Cliente","MetricInfo1":"O Wizybot registra as vendas em que ajudou o cliente a tomar uma decisão por meio de uma conversa. Aqui você pode ver as vendas registradas nos últimos meses.","MetricInfo2":"Confira a quantidade de conversas iniciadas pelos seus clientes por meio de algum dos canais do Wizybot nos últimos meses.","MetricInfo3":"Veja quanto tempo você economizou com as respostas escritas automaticamente pelo Wizybot nos últimos meses.","MetricInfo4":"Veja quantas mensagens foram enviadas pelo Wizybot usando inteligência artificial nos últimos meses.","MetricInfo5":"Acompanhe a quantidade de tickets pendentes e resolvidos pela sua equipe nos últimos meses.","MetricInfo6":"Veja as informações associadas à sua assinatura durante o período atual de faturamento. Lembre-se: cada ciclo de cobrança é de 30 dias.","Uninstalled":"App Uninstalled","UninstalledD":"It seems the app has been uninstalled from Shopify, please reinstall it to continue using Wizybot. Or delete the shop if you don\'t want to use it anymore.","Reinstall":"Reinstall","DeleteShop":"Delete Shop","InstallWidget":"Ativar Widget","InstallWidgetD":"Ative o widget para que o Wizybot apareça na sua loja.","InstallWidgetStep1":"Ative o toggle para tornar Wizybot Chat Widget visível.","InstallWidgetStep2":"Salve as alterações.","InstallWidgetGo":"Ir para o Shopify","InstallWidgetSuccessT":"Tudo pronto!","InstallWidgetSuccessD":"O Wizybot já está ativo e visível na sua loja."}');
 ;// CONCATENATED MODULE: ./src/translations/English/merchants.json
 const merchants_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filters","FiltersD":"You can look for merchants based on the parameters listed below.","Text":"Text based filter","Eg":"Eg: Domain","Installation":"Installation","Status":"Status","WidgetInstallation":"Widget Installation","Widget":"Widget","Installed":"Installed","Uninstalled":"Uninstalled","Plan":"Plan","Free":"Free","Starter":"Starter","Payg":"Pay as you go","Plus":"Plus","Basic":"Basic","Advanced":"Advanced","Custom":"Custom","Frozen":"Frozen","Domain":"Domain","CreateDate":"Creation","Apply":"Apply","Reset":"Reset","Merchants":"Merchants","MerchantsD":"Browse through all the shops in Wizybot","Actions":"Actions","Selected":"Selected","Export":"Export","Cohort":"Cohort","Churn":"Churn","DateC":"Date","State":"State","NoCreation":"No creation date","ShowcaseStatusInstalled":"Status: Installed","ShowcaseStatusUninstalled":"Status: Uninstalled","ShowcaseWidgetInstalled":"Widget: Installed","ShowcaseWidgetUninstalled":"Widget: Uninstalled","MerchantSettings":"Go to Merchant Settings Panel","UpdateWidgets":"Update","AttachW":"Attach Webhooks","DettachW":"Dettach Webhooks","DeleteSI":"Delete Information","RSync":"Sync","WidgetP":"Are you sure you want to update stats?","WidgetT":"Update stats","FlagsP":"Would you like to update the sync flags in all stores?","FlagsT":"Flags reset","SyncP":"Would you like to synchornize all stores?","SyncT":"Synchronize stores","DeleteSIP":"Are you sure you want to delete this shop\'s information?","DeleteSIT":"Delete shop information","DeleteSIPS":"The shop information was deleted successfully","DeleteSIPE":"There was an error trying to delete this shop\'s information","Retry":"Retry","Cancel":"Cancel","MerchantTest":"Test","Login":"Login","CachedResponses":"Go to Default Responses","AdditionalInfo":"Go to Admin Knowledge","ChargeableFilter":"Payment Status","Chargeable":"Active","NotChargeable":"Inactive","ChurnMailT":"Sending mail","ChurnMailD":"An email with the churn report will be sent to tjlabs.prod@gmail.com in the following minutes","WebhooksFilters":"Webhooks state","ActiveWebhooks":"Active Webhooks","InactiveWebhooks":"Inactive Webhooks","None":"None","ReferringFilters":"Referring","IsReferring":"Referring","IsNotReferring":"Not Referring","ReferredFilters":"Referred","IsReferred":"Referred","IsNotReferred":"Not Referred","KamFilters":"Kam","IsKam":"Has Kam","IsNotKam":"Doesn\'t have Kam","ReportReferralShops":"Referrals","ReportReferralShopsConsolidated":"Referrals C","PopulateSuperclients":"Populate Superclients","PopulateSuperclientsD":"This process will create a superclient for every client without one","UpdateAllMetaWebhooks":"Update Meta Webhooks","UpdateAllMetaWebhooksD":"Are you sure that you want to update webhook subscriptions for all Meta Accounts?","PopulateUserShopRelations":"Populate User Shops Relations","PopulateUserShopRelationsD":"This process will create users relations in the new many-to-many relationship","PopulateAiAgents":"Populate AI Agents","PopulateAiAgentsD":"This process will create an AI agent for every client and shop without one","PopulateRecommendAgent":"Populate Recommend Agent","PopulateRecommendAgentD":"This process will create a recommendation AI agent for each shop without one","PopulateClientCartC":"This process will populate client cart from sql to nosql","PopulateMyHuevos":"Populate Recommend Agent for MyHuevos","PopulateMyHuevosD":"This will create the corresponding agent, shop records, aiShopParameters jumpFunction shopParameters. Do you want to proceed?","DeleteMultishopAgent":"Delete Multishop Agent","DeleteMultishopAgentD":"This process will delete an agent and shop records for MultishopAgent. Do you want to proceed?","PopulateAskAndPassAgent":"Populate Ask And Pass Agent","PopulateAskAndPassAgentD":"This process will create an agent and shop records for AskAndPassAgent. Do you want to proceed?","MigrateTags":"Migrate tags","MigrateTagsD":"Are you sure that you want to migrate all the old product recommendations of the app?","MigrateTriggers":"Migrate triggers","MigrateTriggersD":"Are you sure that you want to migrate all the semantical triggers of the app from specialized recommendations to additional knowledge?","MigrateProductAddOns":"Migrate productAddOns","MigrateProductAddOnsD":"Are you sure that you want to migrate all the product add ons of the app from SQL to Mongo?","Proxies":"Proxies","CreateStatuses":"Create statuses","CreateStatusesD":"Are you sure that you want to create all the statuses for all the shops?","CreateCustomShop":"Create custom shop","ShopName":"Shop name","MainDomain":"Main domain","UserName":"User name","UserEmail":"User email","UserPassword":"User password","Create":"Create","ValidatePlan":"Validate plan","PlanVerifiedPaying":"Shop is currently on the {{plan}} plan and paying successfully.","PlanVerifiedFree":"Shop is on the {{plan}} plan and is not paying.","PaymentVerification":"Payment Verification","UnexpectedError":"An unexpected error occurred, please try again."}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/merchants.json
@@ -14161,11 +14172,11 @@ const Spanish_createCampaign_namespaceObject = /*#__PURE__*/JSON.parse('{"Create
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/createCampaign.json
 const Portuguese_createCampaign_namespaceObject = /*#__PURE__*/JSON.parse('{"CreateCampaign":"Criar Campanha","SelectTemplate":"Modelo","SelectClients":"Clientes","Review":"Revisão","CreateCampaignD":"Envie mensagens em massa para seus clientes com um número do WhatsApp associado. Selecione o modelo, os clientes que irão recebê-lo e revise o custo desta nova campanha","NameInput":"Insira um nome para sua campanha","WhatsAppNumberSelection":"Selecione o número do WhatsApp a partir do qual deseja enviar as mensagens","TemplateSelection":"Selecione o modelo que deseja enviar e preencha os campos variáveis","NextStep":"Próximo","ClientSelection":"Selecione as etiquetas associadas aos clientes que você deseja que recebam a mensagem","NoAvailableClientsPrompt":"Não há clientes com um número de WhatsApp registrado para receber Marketing com as etiquetas selecionadas","AvailableClientCountPrompts":"Há {{availableClientsCount}} clientes com um número de WhatsApp registrado para receber Marketing com as etiquetas selecionadas","GoBack":"Voltar","Summary":"Resumo","SelectedTemplate":"Modelo selecionado","TemplateType":"Tipo de modelo","ClientsCount":"Clientes a contatar","EstimateCost":"Estimar custo","Country":"País predominante (O custo variará dependendo do país do número dos seus clientes)","EstimatedCost":"Custo estimado","Success":"Sucesso","SuccessD":"A campanha foi criada com sucesso","Error":"Erro","SelectCountry":"Selecione um país","SendDate":"Data de envio","SendHour":"Hora de envio","OnTheHour":"Na hora","HalfPast":"E meia","Cancel":"Cancelar","PerMessage":"por mensagem","SelectedTags":"Etiquetas de clientes selecionadas","TemplatePreview":"Visualização do modelo","Back":"Voltar","TestCampaign":"Campanha de teste","TestCampaignTooltip":"Selecione uma etiqueta com um máximo de 4 clientes para testar sua campanha antes de criá-la.","ExecuteTest":"Executar teste","IfNoDateSetCampaignWillSendImmediately":"Se você não selecionar uma data e hora, a campanha será enviada automaticamente após sua criação.","ScheduledCampaign":"Execução programada","ScheduledOrImmediateTooltip":"Selecione se a campanha será programada ou enviada imediatamente.","LandingAgentNameHelp":"Se você marcar esta opção, poderá selecionar um agente de IA que atenderá a conversa após o envio da mensagem de campanha.","SendAndAgent":"Enviar e Agente","SendCampaign":"Enviar Campanha","SelectedClientsCount":"Contagem estimada de clientes selecionados","DefaultAgent":"Agente Padrão","ImmediateExecution":"Execução Imediata","ImmediateSendWarning":"Atenção! Se você não agendar o envio, a campanha será enviada imediatamente no momento da criação.","UseTags":"Usar etiquetas","UseSegments":"Usar segmentos","SelectTags":"Selecione etiquetas","SelectShopifySegments":"Selecione segmentos do Shopify","SearchSegments":"Pesquisar segmentos","SelectedSegments":"Segmentos do Shopify selecionados","NoSegmentsSelected":"Nenhum segmento selecionado","ClientCountAdvise":"Este número é uma estimativa levando em consideração todos os clientes do segmento, independentemente de terem ou não um número de contato. O número de clientes considerados no momento do envio pode ser menor ou maior.","CreateSegmentWithAI":"Criar segmento com IA","DescribeSegmentForAI":"Descreva o segmento que você deseja criar: ","SegmentQueryPlaceholder":"ex. Clientes que compraram duas vezes nos últimos 6 meses","Generating":"Gerando...","GenerateSegment":"Gerar segmento","SegmentGenerated":"Segmento gerado","SuggestedName":"Nome sugerido: ","GeneratedQuery":"Consulta gerada: ","Test":"Teste","Testing":"Testando...","SegmentErrorCreationMessage":"Erro ao criar o segmento no Shopify, se você não atualizou as permissões, por favor vá para a página inicial e atualize-as","Creating":"Criando...","CreateSegment":"Criar segmento no Shopify","QueryHasClients":"A consulta retornou {{count}} clientes!","FirstClientResult":"Exemplo de cliente: ","QueryHasNoClients":"A consulta não retornou nenhum cliente.","ErrorTestingQuery":"Erro ao testar a consulta.","Loading":"Carregando...","SearchProducts":"Pesquisar produtos...","OrUseTemplate":"ou usar um modelo","SelectSegmentTemplate":"Selecionar modelo de segmento","FrequentClients":"Clientes frequentes","FrequentClientsDesc":"Clientes que fizeram mais de 5 compras.","InactiveClients":"Clientes inativos","InactiveClientsDesc":"Clientes que não compraram nos últimos 6 meses.","NewClients":"Novos clientes","NewClientsDesc":"Clientes registrados no último mês.","EmailSubscribers":"Assinantes de email","EmailSubscribersDesc":"Clientes com assinatura de email ativa.","RepeatBuyers":"Compradores recorrentes","RepeatBuyersDesc":"Clientes que fizeram mais de uma compra.","HighSpenders":"Clientes de alto gasto","HighSpendersDesc":"Clientes que gastaram mais de R$100.","LowSpenders":"Clientes de baixo gasto","LowSpendersDesc":"Clientes que gastaram menos de R$20.","VIPClients":"Clientes VIP","VIPClientsDesc":"Clientes com a tag VIP.","WholesaleClients":"Clientes atacadistas","WholesaleClientsDesc":"Clientes com a tag MAYORISTA.","PurchasedLastWeek":"Compraram na última semana","PurchasedLastWeekDesc":"Clientes que compraram nos últimos 7 dias.","InactiveYear":"Inativos há um ano","InactiveYearDesc":"Clientes que não compraram no último ano.","FromMexico":"Clientes do México","FromMexicoDesc":"Clientes com endereço registrado no México.","FromSpain":"Clientes da Espanha","FromSpainDesc":"Clientes com endereço registrado na Espanha.","FrequentLastMonth":"Frequentes no último mês","FrequentLastMonthDesc":"Clientes com mais de 3 compras no último mês.","BigSpenders":"Grandes gastadores","BigSpendersDesc":"Clientes que gastaram mais de R$500.","NewsletterClients":"Assinantes da newsletter","NewsletterClientsDesc":"Clientes com a tag NEWSLETTER.","RecentBuyers":"Compradores recentes","RecentBuyersDesc":"Clientes que compraram nos últimos 90 dias.","MediumBuyers":"Compradores médios","MediumBuyersDesc":"Clientes com entre 2 e 5 compras.","FromUSA":"Clientes dos EUA","FromUSADesc":"Clientes com endereço registrado nos Estados Unidos.","BlackFridayClients":"Clientes Black Friday","BlackFridayClientsDesc":"Clientes com a tag BLACKFRIDAY.","OneTimeBuyers":"Compradores de uma vez","OneTimeBuyersDesc":"Clientes que fizeram apenas uma compra.","UseThisTemplate":"Usar este modelo","CreateSegmentTitle":"Criar segmento","QueryTestError":"Houve um erro ao testar a consulta. Por favor, verifique a sintaxe e tente novamente.","UpdateCampaign":"Atualizar campanha","SelectExistingSegments":"Segmentos existentes","ReloadSegments":"Recarregar segmentos","EditSegment":"Editar segmento","SegmentErrorUpdateMessage":"Erro ao atualizar o segmento do shopify","Updating":"Atualizando...","UpdateSegment":"Atualizar segmento","Refining":"Refinando...","RefineSegment":"Refinar segmento","MessageLimitWarning":"Você não pode enviar uma campanha para mais clientes do que o limite da sua conta do WhatsApp. Limite atual: "}');
 ;// CONCATENATED MODULE: ./src/translations/English/campaigns.json
-const campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filters","CampaignCreationDate":"Campaign Creation Date","DateI":"Start Date","DateF":"End Date","Apply":"Apply","Reset":"Reset","Campaigns":"Campaigns","CampaignsD":"Send bulk marketing messages and improve your sales!","Name":"Name","SentStatus":"Sent Status","ClientCount":"Clients","CreateDate":"Creation Date","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","sent":"Sent","active":"Waiting to send","sending":"Sending","Errored":"Errored","SearchCampaigns":"Search","AddCampaign":"Add Campaign","CampaignType":"Campaign type","Old":"Old","New":"New","SendingCampaign":"Sending Campaign","SendingProgress":"Sending {{completed}} of {{total}}...","Hour":"Hour","Archived":"Archived","Archive":"Archive","Unarchive":"Unarchive","Results":"Results: {{count}}","CampaignInQueue":"Your campaign is in the execution queue. Please be patient while it is being processed."}');
+const campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filters","CampaignCreationDate":"Campaign Creation Date","DateI":"Start Date","DateF":"End Date","Apply":"Apply","Reset":"Reset","Campaigns":"Campaigns","CampaignsD":"Send bulk marketing messages and improve your sales!","Name":"Name","SentStatus":"Sent Status","ClientCount":"Clients","CreateDate":"Creation Date","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","sent":"Sent","active":"Waiting to send","sending":"Sending","Errored":"Errored","SearchCampaigns":"Search","AddCampaign":"Add Campaign","CampaignType":"Campaign type","Old":"Old","New":"New","SendingCampaign":"Sending Campaign","SendingProgress":"Sending {{completed}} of {{total}}...","Hour":"Hour","Archived":"Archived","Archive":"Archive","Unarchive":"Unarchive","Results":"Results: {{count}}","CampaignInQueue":"Your campaign is in the execution queue. Please be patient while it is being processed.","cancelled":"Cancelled","CancelCampaign":"Cancel Campaign","CancelCampaignWarning":"Are you sure you want to cancel the campaign? Some messages may have already been sent. If you want to resend the campaign, you\'ll need to create a new one. This action is irreversible.","Cancel":"Cancel","Cancelling":"Cancelling","ConfirmCancel":"Yes, cancel campaign"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/campaigns.json
-const Spanish_campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","CampaignCreationDate":"Fecha de creación de campaña","DateI":"Fecha inicial","DateF":"Fecha final","Apply":"Aplicar","Reset":"Reiniciar","Campaigns":"Campañas","CampaignsD":"¡Envía mensajes masivos e incrementa tus ventas!","Name":"Nombre","SentStatus":"Estado de envío","ClientCount":"Clientes asignados","CreateDate":"Fecha de creación","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","sent":"Enviado","active":"Esperando para enviar","sending":"Enviando","errored":"Fallido","SearchCampaigns":"Buscar","AddCampaign":"Agregar campaña","CampaignType":"Tipo de campaña","Old":"Antiguas","New":"Nuevas","SendingCampaign":"Enviando campaña","SendingProgress":"Enviando {{completed}} de {{total}}...","Hour":"Hora","Archived":"Archivadas","Archive":"Archivar","Unarchive":"Desarchivar","Results":"Resultados: {{count}}","CampaignInQueue":"Tu campaña está en la cola de ejecución. Por favor, sé paciente mientras se procesa."}');
+const Spanish_campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","CampaignCreationDate":"Fecha de creación de campaña","DateI":"Fecha inicial","DateF":"Fecha final","Apply":"Aplicar","Reset":"Reiniciar","Campaigns":"Campañas","CampaignsD":"¡Envía mensajes masivos e incrementa tus ventas!","Name":"Nombre","SentStatus":"Estado de envío","ClientCount":"Clientes asignados","CreateDate":"Fecha de creación","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","sent":"Enviado","active":"Esperando para enviar","sending":"Enviando","errored":"Fallido","SearchCampaigns":"Buscar","AddCampaign":"Agregar campaña","CampaignType":"Tipo de campaña","Old":"Antiguas","New":"Nuevas","SendingCampaign":"Enviando campaña","SendingProgress":"Enviando {{completed}} de {{total}}...","Hour":"Hora","Archived":"Archivadas","Archive":"Archivar","Unarchive":"Desarchivar","Results":"Resultados: {{count}}","CampaignInQueue":"Tu campaña está en la cola de ejecución. Por favor, sé paciente mientras se procesa.","cancelled":"Cancelada","CancelCampaign":"Cancelar campaña","CancelCampaignWarning":"¿Estás seguro de que deseas cancelar el envío de la campaña? Algunos mensajes pueden ya haberse enviado. Si deseas volver a enviar la campaña deberás crear una nueva. Esta acción es irreversible.","Cancel":"Cancelar","Cancelling":"Cancelando","ConfirmCancel":"Sí, cancelar campaña"}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/campaigns.json
-const Portuguese_campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","CampaignCreationDate":"Data de criação da campanha","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Reiniciar","Campaigns":"Campanhas","CampaignsD":"Envie mensagens em massa e aumente suas vendas!","Name":"Nome","SentStatus":"Status de envio","ClientCount":"Clientes atribuídos","CreateDate":"Data de criação","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","sent":"Enviado","active":"Esperando para enviar","sending":"Enviando","errored":"Fracassado","SearchCampaigns":"Pesquisar","AddCampaign":"Adicionar campanha","CampaignType":"Tipo de campanha","Old":"Antigas","New":"Novas","SendingCampaign":"Enviando campanha","SendingProgress":"Enviando {{completed}} de {{total}}...","Hour":"Hora","Archived":"Arquivadas","Archive":"Arquivar","Unarchive":"Desarquivar","Results":"Resultados: {{count}}","CampaignInQueue":"Sua campanha está na fila de execução. Por favor, seja paciente enquanto ela está sendo processada."}');
+const Portuguese_campaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","CampaignCreationDate":"Data de criação da campanha","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Reiniciar","Campaigns":"Campanhas","CampaignsD":"Envie mensagens em massa e aumente suas vendas!","Name":"Nome","SentStatus":"Status de envio","ClientCount":"Clientes atribuídos","CreateDate":"Data de criação","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","sent":"Enviado","active":"Esperando para enviar","sending":"Enviando","errored":"Fracassado","SearchCampaigns":"Pesquisar","AddCampaign":"Adicionar campanha","CampaignType":"Tipo de campanha","Old":"Antigas","New":"Novas","SendingCampaign":"Enviando campanha","SendingProgress":"Enviando {{completed}} de {{total}}...","Hour":"Hora","Archived":"Arquivadas","Archive":"Arquivar","Unarchive":"Desarquivar","Results":"Resultados: {{count}}","CampaignInQueue":"Sua campanha está na fila de execução. Por favor, seja paciente enquanto ela está sendo processada.","cancelled":"Cancelada","CancelCampaign":"Cancelar campanha","CancelCampaignWarning":"Tem certeza de que deseja cancelar o envio da campanha? Algumas mensagens podem já ter sido enviadas. Se você deseja reenviar a campanha, precisará criar uma nova. Esta ação é irreversível.","Cancel":"Cancelar","Cancelling":"Cancelando","ConfirmCancel":"Sim, cancelar campanha"}');
 ;// CONCATENATED MODULE: ./src/translations/English/campaignDetails.json
 const campaignDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"CampaignDetails":"Campaign Details","CampaignName":"Campaign Name","WhatsAppTemplate":"WhatsApp Template","AssignedCount":"Assigned Customers","EstimatedCost":"Estimated Cost","SendCampaign":"Send Campaign","LatestResults":"Latest Results","SendSuccessCount":"Messages Sent","SendErrorCount":"Messages with Sending Errors","DeliverySuccessCount":"Messages Delivered","DeliveryErrorCount":"Messages with Delivery Errors","ReadCount":"Messages Read","SaleCount":"Sales Generated","SalesSumLocalCurrency":"Total Sales Value","ConvertionRate":"Conversion Rate","RealCost":"Campaign Cost","RoiMultiple":"Return on Investment (ROI)","Return":"Return","ErrorTitle":"There was an error during the campaign sending process: ","Retry":"Retry"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/campaignDetails.json
@@ -14179,11 +14190,11 @@ const Spanish_automations_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/automations.json
 const Portuguese_automations_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","Text":"Texto","EgText":"Nome","AutomationDate":"Data de criação","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Reiniciar","Automations":"Automações","AutomationsD":"Crie fluxos de mensagens automáticas!","Name":"Nome","isActive":"Ativo","CreateDate":"Data de criação","Active":"ATIVA","Inactive":"INATIVA","Results":"Resultados: {{count}}","SearchAutomations":"Pesquisar","AddAutomation":"Adicionar automação","MustBePaying":"Você deve ter um plano pago ativo para acessar as automações.","MustBePayingD":"As automações são um recurso premium. Por favor, atualize seu plano para acessar esta funcionalidade.","MustBePayingCampaigns":"Você deve ter um plano pago ativo para acessar as campanhas.","MustBePayingCampaignsD":"As campanhas são um recurso premium. Por favor, atualize seu plano para acessar esta funcionalidade."}');
 ;// CONCATENATED MODULE: ./src/translations/English/createAutomation.json
-const createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"New Automation","NewAutomationD":"Create automated message flows to proactively interact with your customers","Automation":"Automation","Parameters":"Parameters","Review":"Review","NameInput":"Give your automation a name to identify it","AutomationSelection":"Choose the type of automation you want to create","ABANDONED_CHECKOUTS_RECOVERY":"Abandoned Cart Recovery","ABANDONED_CHECKOUTS_RECOVERYD":"Send a WhatsApp message to customers who haven’t completed their purchase to bring them back","SHOPIFY_FULFILLMENT_NOTIFICATION":"Fulfillment Notification","SHOPIFY_FULFILLMENT_NOTIFICATIOND":"Notify your customers when their order is fulfilled through WhatsApp","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATION":"Fulfillment Event Creation Notification","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATIOND":"Notify your customers when their order is confirmed, delivered, in transit, etc. Useful for third-party fulfillment services","SHOPIFY_COD_ORDER_CONFIRMATION":"COD Order Confirmation","SHOPIFY_COD_ORDER_CONFIRMATIOND":"Send a WhatsApp message with buttons to confirm or cancel when a cash-on-delivery order is created","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Tracking Information Notification","FULFILLMENT_TRACKING_INFO_NOTIFICATIOND":"Notify your customers with a WhatsApp message when a tracking number or URL is generated for their order","ORDER_CREATE_FOLLOW_UP":"Order Creation Follow-Up","ORDER_CREATE_FOLLOW_UPD":"Notify your customers with a WhatsApp message when a new order is created","NextStep":"Next","GoBack":"Go Back","TimePeriodPickerInput":"When a cart is abandoned, a recovery message will be sent after:","MINUTES":"minutes","HOURS":"hours","DAYS":"days","WhatsAppAccountIdSelection":"Select the WhatsApp number from which you want to send messages","WhatsAppTemplateSelection":"Select the WhatsApp template you want to send","AbandonedCheckoutReviewPrompt":"When a cart is abandoned, a recovery message will be sent after {{timeAgo.amount}} {{timeAgo.unit}} from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","ShopifyFulfillmentCreateReviewPrompt":"When a fulfillment is created, a notification message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","ShopifyCodOrderCreateReviewPrompt":"When a COD order is created, a confirmation message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}, which has Confirm and Cancel buttons that when pressed will result in the corresponding tags in the Shopify Order Dashboard","FulfillmentTrackingInfoNotificationReviewPrompt":"When the tracking number of an order is updated, a notification message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","CreateAutomation":"Create Automation","CODButtonsAlert":"For the integration to work correctly, the template must have 2 quick reply buttons with the texts \\"Confirm\\" and \\"Cancel\\"","PaymentGatewayNamesInput":"Limit the message to the following payment methods (if none are selected, it will be sent with all payment methods)","PaymentGatewayNamesPlaceholder":"Select payment methods","OrderCreateFollowUpReviewPrompt":"When an order is created{{validPaymentGatewayNames}}, a follow-up message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","PaymentMethods":"Payment Methods: ","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","ConfirmationReplyPrompt":"Confirmation Reply (only for templates that include \\"Confirm\\" button)","CancellationReplyPrompt":"Cancellation Reply (only for templates that include \\"Cancel\\" button)","FollowUpsPrompt":"Follow-up Messages","FollowUp":"Follow-up","FollowUps":"Follow-ups","FollowUpsWaitTimePrompt":"Send after:","CancelOrderOnSendPrompt":"Tag order as \\"Canceled\\" on send","AddFollowUp":"Add Follow-up","Cancel":"Cancel","UpdateAutomation":"Update Automation","AutomationStatus":"Automation Status","LandingAgentNameHelp":"If you check this option, you will be able to select an AI agent that will attend the conversation after the automated message is sent.","FollowUpsHelp":"If you check this option, you will be able to add programmed follow-up messages that will be sent after the initial automated message.","Trigger":"Trigger","Action":"Action","ABANDONED_CHECKOUT":"Abandoned Checkout","FULFILLMENT_TRACKING_INFO_UPDATE":"Fulfillment Tracking Info Update","ORDER_CREATE":"Order Creation","WORDPRESS_ORDER_CREATE":"Order Creation (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Abandoned Checkout (WordPress)","SEND_WHATSAPP_MESSAGE":"Send WhatsApp Message","IF_CONDITION":"Condition","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Add tag to order in Shopify","FETCH_INFO_FROM_SHOPIFY":"Fetch info from Shopify","FETCH_INFO_FROM_WORDPRESS":"Fetch info from WordPress","WAIT":"Wait","Save":"Save","Collapse":"Collapse","Expand":"Expand","Triggers":"Triggers","Actions":"Actions","Loading":"Loading...","EditNodeName":"Edit node name","NodeNamePlaceholder":"Node name","whatsAppAccountId":"Select the WhatsApp number from which you want to send messages","SelectAccountPlaceholder":"Select an account","whatsAppTemplate":"Select the WhatsApp template you want to send","landingAgentName":"Select the name of the agent that will take the conversation","timeAgo":"When a cart is abandoned, a recovery message will be sent after:","validPaymentGatewayNames":"Limit the message to the following payment methods","confirmationReply":"Confirmation Reply (only for templates that include \\"Confirm\\" button)","cancellationReply":"Cancellation Reply (only for templates that include \\"Cancel\\" button)","DefaultAgent":"Default Agent","ChooseAgent":"Choose Agent","WithoutValue":"Without Value","UseX":"Use {{x}}","ChooseValidPaymentMethods":"Choose valid payment methods","WriteConfirmationReply":"Write confirmation reply","WriteCancellationReply":"Write cancellation reply","UseTemplate":"Use a template","UseTemplateD":"Start quickly with predefined and tested automations","CreateCustom":"Create custom","CreateCustomD":"Design your own automation by dragging triggers and actions","TemplatesAvailable":"templates","True":"True","False":"False","FieldPlaceholder":"Field to evaluate","ValuePlaceholder":"Value to compare with","Conditions":"Conditions","AddCondition":"Add Condition","LogicalOperator":"Logical Operator","EQUALS":"Equals to","NOT_EQUALS":"Not equals to","GREATER_THAN":"Greater than","GREATER_THAN_OR_EQUALS":"Greater or equals than","LESS_THAN":"Less than","LESS_THAN_OR_EQUALS":"Less or equals than","IS_AT_LEAST_ONE_OF":"Is at least one of","IS_NOT_ANY_OF":"Is not any of","IS_EMPTY":"Is empty","IS_NOT_EMPTY":"Is not empty","AutomationSaved":"Automation saved successfully!","SendSuccess":"Send Success","SendError":"Send Error","DeliverySuccess":"Delivery Success","DeliveryError":"Delivery Error","Sale":"Sale","ShopifyCodOrderConfirm":"Order Confirmation","ShopifyCodOrderCancel":"Order Cancellation","Skip":"Skip","waitTime":"Wait time","tags":"Tags","fieldToExtractOrderId":"Field to extract Order ID from","SelectFieldPlaceholder":"Select a field","RAW":"Raw Value","FIELD":"Field Value","fieldToExtractEntityId":"Field to extract Entity ID from","entityType":"Entity Type","SelectEntityTypePlaceholder":"Select an entity type","AbandonedCheckout":"Abandoned Checkout","Order":"Order","Product":"Product","Read":"Read","QuickReply":"Quick Reply","SearchVariants":"Search variants","REPURCHASE_FOLLOW_UP":"Repurchase Tracking","REPURCHASE_FOLLOW_UPD":"Send a WhatsApp message to customer who purchased a specific product after a expected product duration time for repurchase.","ON_CONVERSATION_CLOSED":"On Conversation Closed","CONVERSATION_CLOSED_MESSAGE":"Conversation Closed Message","CONVERSATION_CLOSED_MESSAGED":"Send a WhatsApp message when the conversation is closed in wizybot","triggerId":"Trigger ID","bearerTokenHash":"Authentication Bearer Token","bearerTokenLast4":"Last 4 characters of the Bearer Token","tokenRotatedAt":"Token rotation date","bodyStructure":"JSON Body expected structure","whatsappNumberProviders":"Phone Number Providers","GenerateUUID":"Generate Identifier","GenerateToken":"Generate Token","TokenGenerated":"Token generated","CopyTokenWarning":"¡Important! Copy this token now. You will only be able to see and copy it in this window. If you lose it, you will have to generate a new one.","CUSTOM_WEBHOOK":"Custom Webhook","CopyToken":"Copy Token","JsonSchema":"JSON Schema (validations will use this schema)","SelectFields":"Select fields","TriggerIdPlaceholder":"Here will go the generated trigger ID for your webhook.","PleaseGenerateTriggerIdFirst":"Please generate the trigger ID first","TokenCopied":"Token copied to clipboard!","UUIDInfo":"This ID will be the one you should use to make the HTTP request and send webhooks. The URL should look something like this:","InvalidJsonExample":"The example JSON is not valid.","JsonSchemaEditable":"// Editable JSON Schema will appear here after you paste a JSON example","PasteJsonExample":"// Paste here a JSON example of the body you expect to receive in the webhook to generate the JSON schema for validations","TokenExample":"Authorization: Bearer [Your token here]","BearerTokenInfo":"This token should be attached in a header called \\"Authorization\\" and the value must be: Bearer followed by the generated token, something like: ","SomeOfYourFieldsIsAPhoneNumber":"Some of your fields is a phone number?","SCHEDULE_NEXT_ACTIONS":"Schedule Next Actions","anchorDate":"Anchor Date","FixedDate":"Fixed Date","FromField":"From Field","timeOffset":"Time Offset","fixedHour":"Fixed hour","ProgramAtFixedHour":"Program at fixed hour","FixedHourTimezoneInfo":"The hour will be taken according to the store\'s time zone:","FixedHourTimezoneMessage":"The selected hour will be automatically adjusted to UTC for execution.","SelectDateFields":"Select date fields","DateFieldsInfo":"This fields will be treated as date and converted to UTC","SelectTimezonePlaceholder":"Select default timezone","TimezoneInfo":"This timezone will be used to convert dates without timezone information (select the time zone your dates are in)","SomeOfYourFieldsIsADate":"Some of your fields is a date?","dateFields":"Date fields","defaultTimezone":"Default timezone","WhatsAppNumberProvidersInfo":"Select the fields from which the phone number will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","ManualPhoneNumber":"Manual phone number","DynamicFields":"Dynamic fields","EnterPhoneNumber":"Enter the phone number to which the message will be sent","PhoneNumberManualInfo":"If you want to send the message to a fixed phone number instead of extracting it from the data, you can enter it here.","isSaleIntentMessage":"Is this message intended to close a sale?","isPaymentRequestMessage":"Is this message intended to request a photo of payment receipt?","Yes":"Yes","No":"No","ChannelIdPlaceholder":"Select the channel","SEND_INSTAGRAM_MESSAGE":"Send Instagram Message","instagramIdProviders":"Instagram ID Providers","instagramAccountId":"Instagram Account","TemplateTypeInfo":"For Generic templates you can add an image, but your text will be max 80 characters, in Button templates you cant add an image but your text can be up to 540 characters.","templateType":"Template type","GenericTemplate":"Generic","ButtonTemplate":"Buttons","SEND_MESSENGER_MESSAGE":"Send Messenger Message","messengerIdProviders":"Messenger ID Providers","messengerAccountId":"Messenger Account","ShippingLineCodesPlaceholder":"Select shipping line codes","SetWaitTime":"Set wait time","url":"URL to send the request to","method":"HTTP method","AddQueryParams":"Add query parameters","SetRequestBody":"Set request body","SetRequestHeaders":"Set request headers","SelectHttpMethod":"Select HTTP method","authType":"Authentication type","SetAuthConfig":"Set authentication configuration","SetRequestTimeout":"Set request timeout","CUSTOM_HTTP_REQUEST":"Custom HTTP Request","Key":"Key","Value":"Value","Remove":"Remove","Add":"Add","HeadersInfo":"The headers usually are fixed values but yo can also add variables if you want it. Write {{ to add a variable.","BodyInfo":"The body will be sent as a JSON, but you can also add variables if you want it. Write {{ to add a variable.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Assign Client to Funnel","SelectFunnel":"Select funnel...","SelectStage":"Select stage...","NoFunnels":"No funnels yet","clientIdProviders":"Client ID","funnelStageId":"Funnel","ClientIdProvidersInfo":"Fields used to identify and extract the client","SelectAuthType":"Select authentication type","CustomUrlPlaceholder":"Enter the URL to send the request to","InstagramIdProvidersInfo":"Select the fields from which the Instagram ID will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","MessengerIdProvidersInfo":"Select the fields from which the Messenger ID will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","Customer":"Customer","CREATE_UPDATE_CLIENT":"Create/Update Client","CreateUpdateClient":"Create/Update Client","clientUpdateFields":"Select Client Fields to Update","SetClientUpdateFields":"Set client update fields","ClientUpdateFieldsInfo":"Leave a field blank to keep its current value. Use {{context.field}} to pull a value from a previous step.","ValueOrContextField":"Value or {{context.field}}","firstName":"First name","lastName":"Last name","phone":"Phone","email":"Email","FetchStatusSuccess":"Success","FetchStatusNotFound":"Not found","FetchStatusError":"Error","FetchStatusException":"Exception","SomeOfYourFieldsIsACountryCode":"Some of your fields is a country code?","CountryCodeProvidersInfo":"Select the fields from which the country code will be extracted to adjust phone numbers according to the country. This is useful if you have an international store and your phone number fields don\'t include the country code. If you select several, the order of priority to extract will be the order in which you choose them.","countryCodeProviders":"Country Code Providers"}');
+const createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"New Automation","NewAutomationD":"Create automated message flows to proactively interact with your customers","Automation":"Automation","Parameters":"Parameters","Review":"Review","NameInput":"Give your automation a name to identify it","AutomationSelection":"Choose the type of automation you want to create","ABANDONED_CHECKOUTS_RECOVERY":"Abandoned Cart Recovery","ABANDONED_CHECKOUTS_RECOVERYD":"Send a WhatsApp message to customers who haven’t completed their purchase to bring them back","SHOPIFY_FULFILLMENT_NOTIFICATION":"Fulfillment Notification","SHOPIFY_FULFILLMENT_NOTIFICATIOND":"Notify your customers when their order is fulfilled through WhatsApp","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATION":"Fulfillment Event Creation Notification","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATIOND":"Notify your customers when their order is confirmed, delivered, in transit, etc. Useful for third-party fulfillment services","SHOPIFY_COD_ORDER_CONFIRMATION":"COD Order Confirmation","SHOPIFY_COD_ORDER_CONFIRMATIOND":"Send a WhatsApp message with buttons to confirm or cancel when a cash-on-delivery order is created","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Tracking Information Notification","FULFILLMENT_TRACKING_INFO_NOTIFICATIOND":"Notify your customers with a WhatsApp message when a tracking number or URL is generated for their order","ORDER_CREATE_FOLLOW_UP":"Order Creation Follow-Up","ORDER_CREATE_FOLLOW_UPD":"Notify your customers with a WhatsApp message when a new order is created","NextStep":"Next","GoBack":"Go Back","TimePeriodPickerInput":"When a cart is abandoned, a recovery message will be sent after:","MINUTES":"minutes","HOURS":"hours","DAYS":"days","WhatsAppAccountIdSelection":"Select the WhatsApp number from which you want to send messages","WhatsAppTemplateSelection":"Select the WhatsApp template you want to send","AbandonedCheckoutReviewPrompt":"When a cart is abandoned, a recovery message will be sent after {{timeAgo.amount}} {{timeAgo.unit}} from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","ShopifyFulfillmentCreateReviewPrompt":"When a fulfillment is created, a notification message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","ShopifyCodOrderCreateReviewPrompt":"When a COD order is created, a confirmation message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}, which has Confirm and Cancel buttons that when pressed will result in the corresponding tags in the Shopify Order Dashboard","FulfillmentTrackingInfoNotificationReviewPrompt":"When the tracking number of an order is updated, a notification message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","CreateAutomation":"Create Automation","CODButtonsAlert":"For the integration to work correctly, the template must have 2 quick reply buttons with the texts \\"Confirm\\" and \\"Cancel\\"","PaymentGatewayNamesInput":"Limit the message to the following payment methods (if none are selected, it will be sent with all payment methods)","PaymentGatewayNamesPlaceholder":"Select payment methods","OrderCreateFollowUpReviewPrompt":"When an order is created{{validPaymentGatewayNames}}, a follow-up message will be sent from the number {{whatsAppAccount.displayPhone}}, containing the template {{whatsAppTemplate.name}}","PaymentMethods":"Payment Methods: ","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","ConfirmationReplyPrompt":"Confirmation Reply (only for templates that include \\"Confirm\\" button)","CancellationReplyPrompt":"Cancellation Reply (only for templates that include \\"Cancel\\" button)","FollowUpsPrompt":"Follow-up Messages","FollowUp":"Follow-up","FollowUps":"Follow-ups","FollowUpsWaitTimePrompt":"Send after:","CancelOrderOnSendPrompt":"Tag order as \\"Canceled\\" on send","AddFollowUp":"Add Follow-up","Cancel":"Cancel","UpdateAutomation":"Update Automation","AutomationStatus":"Automation Status","LandingAgentNameHelp":"If you check this option, you will be able to select an AI agent that will attend the conversation after the automated message is sent.","FollowUpsHelp":"If you check this option, you will be able to add programmed follow-up messages that will be sent after the initial automated message.","Trigger":"Trigger","Action":"Action","ABANDONED_CHECKOUT":"Abandoned Checkout","FULFILLMENT_TRACKING_INFO_UPDATE":"Fulfillment Tracking Info Update","ORDER_CREATE":"Order Creation","WORDPRESS_ORDER_CREATE":"Order Creation (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Abandoned Checkout (WordPress)","SEND_WHATSAPP_MESSAGE":"Send WhatsApp Message","IF_CONDITION":"Condition","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Add tag to order in Shopify","FETCH_INFO_FROM_SHOPIFY":"Fetch info from Shopify","FETCH_INFO_FROM_WORDPRESS":"Fetch info from WordPress","WAIT":"Wait","Save":"Save","Collapse":"Collapse","Expand":"Expand","Triggers":"Triggers","Actions":"Actions","Loading":"Loading...","EditNodeName":"Edit node name","NodeNamePlaceholder":"Node name","whatsAppAccountId":"Select the WhatsApp number from which you want to send messages","SelectAccountPlaceholder":"Select an account","whatsAppTemplate":"Select the WhatsApp template you want to send","landingAgentName":"Select the name of the agent that will take the conversation","timeAgo":"When a cart is abandoned, a recovery message will be sent after:","validPaymentGatewayNames":"Limit the message to the following payment methods","confirmationReply":"Confirmation Reply (only for templates that include \\"Confirm\\" button)","cancellationReply":"Cancellation Reply (only for templates that include \\"Cancel\\" button)","DefaultAgent":"Default Agent","ChooseAgent":"Choose Agent","WithoutValue":"Without Value","UseX":"Use {{x}}","ChooseValidPaymentMethods":"Choose valid payment methods","WriteConfirmationReply":"Write confirmation reply","WriteCancellationReply":"Write cancellation reply","UseTemplate":"Use a template","UseTemplateD":"Start quickly with predefined and tested automations","CreateCustom":"Create custom","CreateCustomD":"Design your own automation by dragging triggers and actions","TemplatesAvailable":"templates","True":"True","False":"False","FieldPlaceholder":"Field to evaluate","ValuePlaceholder":"Value to compare with","Conditions":"Conditions","AddCondition":"Add Condition","LogicalOperator":"Logical Operator","EQUALS":"Equals to","NOT_EQUALS":"Not equals to","GREATER_THAN":"Greater than","GREATER_THAN_OR_EQUALS":"Greater or equals than","LESS_THAN":"Less than","LESS_THAN_OR_EQUALS":"Less or equals than","IS_AT_LEAST_ONE_OF":"Is at least one of","IS_NOT_ANY_OF":"Is not any of","IS_EMPTY":"Is empty","IS_NOT_EMPTY":"Is not empty","AutomationSaved":"Automation saved successfully!","SendSuccess":"Send Success","SendError":"Send Error","DeliverySuccess":"Delivery Success","DeliveryError":"Delivery Error","Sale":"Sale","ShopifyCodOrderConfirm":"Order Confirmation","ShopifyCodOrderCancel":"Order Cancellation","Skip":"Skip","waitTime":"Wait time","tags":"Tags","fieldToExtractOrderId":"Field to extract Order ID from","SelectFieldPlaceholder":"Select a field","RAW":"Raw Value","FIELD":"Field Value","fieldToExtractEntityId":"Field to extract Entity ID from","entityType":"Entity Type","SelectEntityTypePlaceholder":"Select an entity type","AbandonedCheckout":"Abandoned Checkout","Order":"Order","Product":"Product","Read":"Read","QuickReply":"Quick Reply","SearchVariants":"Search variants","REPURCHASE_FOLLOW_UP":"Repurchase Tracking","REPURCHASE_FOLLOW_UPD":"Send a WhatsApp message to customer who purchased a specific product after a expected product duration time for repurchase.","ON_CONVERSATION_CLOSED":"On Conversation Closed","CONVERSATION_CLOSED_MESSAGE":"Conversation Closed Message","CONVERSATION_CLOSED_MESSAGED":"Send a WhatsApp message when the conversation is closed in wizybot","triggerId":"Trigger ID","bearerTokenHash":"Authentication Bearer Token","bearerTokenLast4":"Last 4 characters of the Bearer Token","tokenRotatedAt":"Token rotation date","bodyStructure":"JSON Body expected structure","whatsappNumberProviders":"Phone Number Providers","GenerateUUID":"Generate Identifier","GenerateToken":"Generate Token","TokenGenerated":"Token generated","CopyTokenWarning":"¡Important! Copy this token now. You will only be able to see and copy it in this window. If you lose it, you will have to generate a new one.","CUSTOM_WEBHOOK":"Custom Webhook","CopyToken":"Copy Token","JsonSchema":"JSON Schema (validations will use this schema)","SelectFields":"Select fields","TriggerIdPlaceholder":"Here will go the generated trigger ID for your webhook.","PleaseGenerateTriggerIdFirst":"Please generate the trigger ID first","TokenCopied":"Token copied to clipboard!","UUIDInfo":"This ID will be the one you should use to make the HTTP request and send webhooks. The URL should look something like this:","InvalidJsonExample":"The example JSON is not valid.","JsonSchemaEditable":"// Editable JSON Schema will appear here after you paste a JSON example","PasteJsonExample":"// Paste here a JSON example of the body you expect to receive in the webhook to generate the JSON schema for validations","TokenExample":"Authorization: Bearer [Your token here]","BearerTokenInfo":"This token should be attached in a header called \\"Authorization\\" and the value must be: Bearer followed by the generated token, something like: ","SomeOfYourFieldsIsAPhoneNumber":"Some of your fields is a phone number?","SCHEDULE_NEXT_ACTIONS":"Schedule Next Actions","anchorDate":"Anchor Date","FixedDate":"Fixed Date","FromField":"From Field","timeOffset":"Time Offset","fixedHour":"Fixed hour","ProgramAtFixedHour":"Program at fixed hour","FixedHourTimezoneInfo":"The hour will be taken according to the store\'s time zone:","FixedHourTimezoneMessage":"The selected hour will be automatically adjusted to UTC for execution.","SelectDateFields":"Select date fields","DateFieldsInfo":"This fields will be treated as date and converted to UTC","SelectTimezonePlaceholder":"Select default timezone","TimezoneInfo":"This timezone will be used to convert dates without timezone information (select the time zone your dates are in)","SomeOfYourFieldsIsADate":"Some of your fields is a date?","dateFields":"Date fields","defaultTimezone":"Default timezone","WhatsAppNumberProvidersInfo":"Select the fields from which the phone number will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","ManualPhoneNumber":"Manual phone number","DynamicFields":"Dynamic fields","EnterPhoneNumber":"Enter the phone number to which the message will be sent","PhoneNumberManualInfo":"If you want to send the message to a fixed phone number instead of extracting it from the data, you can enter it here.","isSaleIntentMessage":"Is this message intended to close a sale?","isPaymentRequestMessage":"Is this message intended to request a photo of payment receipt?","Yes":"Yes","No":"No","ChannelIdPlaceholder":"Select the channel","SEND_INSTAGRAM_MESSAGE":"Send Instagram Message","instagramIdProviders":"Instagram ID Providers","instagramAccountId":"Instagram Account","TemplateTypeInfo":"For Generic templates you can add an image, but your text will be max 80 characters, in Button templates you cant add an image but your text can be up to 540 characters.","templateType":"Template type","GenericTemplate":"Generic","ButtonTemplate":"Buttons","SEND_MESSENGER_MESSAGE":"Send Messenger Message","messengerIdProviders":"Messenger ID Providers","messengerAccountId":"Messenger Account","ShippingLineCodesPlaceholder":"Select shipping line codes","SetWaitTime":"Set wait time","url":"URL to send the request to","method":"HTTP method","AddQueryParams":"Add query parameters","SetRequestBody":"Set request body","SetRequestHeaders":"Set request headers","SelectHttpMethod":"Select HTTP method","authType":"Authentication type","SetAuthConfig":"Set authentication configuration","SetRequestTimeout":"Set request timeout","CUSTOM_HTTP_REQUEST":"Custom HTTP Request","Key":"Key","Value":"Value","Remove":"Remove","Add":"Add","HeadersInfo":"The headers usually are fixed values but yo can also add variables if you want it. Write {{ to add a variable.","BodyInfo":"The body will be sent as a JSON, but you can also add variables if you want it. Write {{ to add a variable.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Assign Client to Funnel","SelectFunnel":"Select funnel...","SelectStage":"Select stage...","NoFunnels":"No funnels yet","clientIdProviders":"Client ID","funnelStageId":"Funnel","ClientIdProvidersInfo":"Fields used to identify and extract the client","SelectAuthType":"Select authentication type","CustomUrlPlaceholder":"Enter the URL to send the request to","InstagramIdProvidersInfo":"Select the fields from which the Instagram ID will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","MessengerIdProvidersInfo":"Select the fields from which the Messenger ID will be extracted to send the message. If you select several, the order of priority to extract will be the order in which you choose them.","Customer":"Customer","CREATE_UPDATE_CLIENT":"Create/Update Client","CreateUpdateClient":"Create/Update Client","clientUpdateFields":"Select Client Fields to Update","SetClientUpdateFields":"Set client update fields","ClientUpdateFieldsInfo":"Leave a field blank to keep its current value. Use {{context.field}} to pull a value from a previous step.","ValueOrContextField":"Value or {{context.field}}","firstName":"First name","lastName":"Last name","phone":"Phone","email":"Email","FetchStatusSuccess":"Success","FetchStatusNotFound":"Not found","FetchStatusError":"Error","FetchStatusException":"Exception","SomeOfYourFieldsIsACountryCode":"Some of your fields is a country code?","CountryCodeProvidersInfo":"Select the fields from which the country code will be extracted to adjust phone numbers according to the country. This is useful if you have an international store and your phone number fields don\'t include the country code. If you select several, the order of priority to extract will be the order in which you choose them.","countryCodeProviders":"Country Code Providers","Pending":"Pending","Paid":"Paid","ticketStatusId":"Ticket status","name":"Name","description":"Description","WriteTemplateWithVars":"Write the text that you want and add variables if you need to.","AddVariable":"Add variable","CREATE_TICKET":"Create Ticket","WithoutDepartments":"Without departments","SelectDepartments":"Select departments","WithoutTags":"Without tags","SelectTags":"Select tags","notifyViaEmail":"Notify via email","ticketAdditionalFields":"Ticket additional fields","SelectOption":"Select an option","SelectOrders":"Select orders","SelectProducts":"Select products","SelectField":"Select a field","WriteNumberWithVars":"Write the number that you want and add variables if you need to.","FixedValue":"Fixed value","Field":"Dynamic field","DefaultValue":"Default value","SelectTicketTags":"Select ticket tags"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/createAutomation.json
-const Spanish_createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"Nueva Automatización","NewAutomationD":"Crea flujos de mensajes automatizados para interactuar proactivamente con tus clientes","Automation":"Automatización","Parameters":"Parámetros","Review":"Revisión","NameInput":"Ponle un nombre a tu automatización para poder identificarla","AutomationSelection":"Elige el tipo de automatización que quieres crear","ABANDONED_CHECKOUTS_RECOVERY":"Recuperación de carritos abandonados","ABANDONED_CHECKOUTS_RECOVERYD":"Envía un mensaje de WhatsApp a los clientes que no hayan finalizado su compra para recuperarlos","SHOPIFY_FULFILLMENT_NOTIFICATION":"Notificación de Fulfillment","SHOPIFY_FULFILLMENT_NOTIFICATIOND":"Notifica a tus clientes cuando su pedido ha sido procesado a través de WhatsApp.","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATION":"Notificación de Creación de Evento de Fulfillment","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATIOND":"Notifica a tus clientes cuando su pedido ha sido confirmado, entregado, en tránsito, etc. Útil para servicios de fulfillment de terceros","SHOPIFY_COD_ORDER_CONFIRMATION":"Confirmación de ordenes contraentrega","SHOPIFY_COD_ORDER_CONFIRMATIOND":"Envía un mensaje por WhatsApp con botones para confirmar o cancelar cuando se crea una orden contraentrega","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Notificación de información de seguimiento","FULFILLMENT_TRACKING_INFO_NOTIFICATIOND":"Notifica a tus clientes con un mensaje de WhatsApp cuando se genere un número o URL de seguimiento de pedido","ORDER_CREATE_FOLLOW_UP":"Notificación de creación de orden","ORDER_CREATE_FOLLOW_UPD":"Notifica a tus clientes con un mensaje de WhatsApp cuando se cree una nueva orden","NextStep":"Siguiente","GoBack":"Volver","TimePeriodPickerInput":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de:","MINUTES":"minutos","HOURS":"horas","DAYS":"días","WhatsAppAccountIdSelection":"Selecciona el número de WhatsApp desde el cual deseas que se envíen los mensajes","WhatsAppTemplateSelection":"Selecciona la plantilla de WhatsApp que deseas enviar","AbandonedCheckoutReviewPrompt":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de {{timeAgo.amount}} {{timeAgo.unit}} desde el número {{whatsAppAccount.displayPhone}}, el cual contendrá la plantilla {{whatsAppTemplate.name}}","ShopifyFulfillmentCreateReviewPrompt":"Cuando se cree un fulfillment, se enviará un mensaje de notificación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","ShopifyCodOrderCreateReviewPrompt":"Cuando se crea una orden contra entrega (COD), se enviará un mensaje de confirmación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}, la cual tiene botones de Confirmar y Cancelar que, al ser presionados, generarán las etiquetas correspondientes en el panel de órdenes de Shopify","FulfillmentTrackingInfoNotificationReviewPrompt":"Cuando se actualice el agregue el número de seguimiento de una orden, se enviará un mensaje de notificación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","CreateAutomation":"Crear automatización","CODButtonsAlert":"Para que la integración funcione correctamente la plantilla debe tener 2 botones de respuesta rápida con los textos \\"Confirmar\\" y \\"Cancelar\\"","PaymentGatewayNamesInput":"Limitar el mensaje a los siguientes métodos de pago (si no se selecciona se enviará con todos los métodos de pago)","PaymentGatewayNamesPlaceholder":"Selecciona métodos de pago","OrderCreateFollowUpReviewPrompt":"Cuando se cree una orden{{validPaymentGatewayNames}}, se enviará un mensaje de seguimiento desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","PaymentMethods":"Métodos de pago: ","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","ConfirmationReplyPrompt":"Respuesta a confirmación (solo para plantillas que incluyan el botón \\"Confirmar\\")","CancellationReplyPrompt":"Respuesta a cancelación (solo para plantillas que incluyan el botón \\"Cancelar\\")","FollowUpsPrompt":"Mensajes de seguimiento","FollowUp":"Seguimiento","FollowUps":"Seguimientos","FollowUpsWaitTimePrompt":"Enviar después de:","CancelOrderOnSendPrompt":"Etiquetar orden como \\"Cancelada\\" al envío","AddFollowUp":"Agregar seguimiento","Cancel":"Cancelar","UpdateAutomation":"Actualizar automatización","AutomationStatus":"Estado de la automatización","LandingAgentNameHelp":"Si marcas esta opción, podrás seleccionar un agente de IA que atenderá la conversación después de que se envíe el mensaje automatizado.","FollowUpsHelp":"Si marcas esta opción, podrás agregar mensajes de seguimiento programados que se enviarán después del mensaje automatizado inicial.","Trigger":"Disparador","Action":"Acción","ABANDONED_CHECKOUT":"Carrito abandonado","FULFILLMENT_TRACKING_INFO_UPDATE":"Actualización de información de seguimiento de pedido","ORDER_CREATE":"Creación de orden","WORDPRESS_ORDER_CREATE":"Creación de orden (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Carrito abandonado (WordPress)","SEND_WHATSAPP_MESSAGE":"Enviar mensaje de WhatsApp","IF_CONDITION":"Condición","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Agregar etiqueta a orden en Shopify","FETCH_INFO_FROM_SHOPIFY":"Obtener información de Shopify","FETCH_INFO_FROM_WORDPRESS":"Obtener información de WordPress","WAIT":"Esperar","Save":"Guardar","Collapse":"Colapsar","Expand":"Expandir","Triggers":"Disparadores","Actions":"Acciones","Loading":"Cargando...","EditNodeName":"Editar nombre del nodo","NodeNamePlaceholder":"Nombre del nodo","whatsAppAccountId":"Selecciona el número de WhatsApp desde el cual deseas que se envíen los mensajes","SelectAccountPlaceholder":"Selecciona una cuenta","whatsAppTemplate":"Selecciona la plantilla de WhatsApp que deseas enviar","landingAgentName":"Selecciona el nombre del agente que tomará la conversación","timeAgo":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de:","validPaymentGatewayNames":"Limitar el mensaje a los siguientes métodos de pago","confirmationReply":"Respuesta a confirmación (solo para plantillas que incluyan el botón \\"Confirmar\\")","cancellationReply":"Respuesta a cancelación (solo para plantillas que incluyan el botón \\"Cancelar\\")","DefaultAgent":"Agente por defecto","ChooseAgent":"Elegir agente","WithoutValue":"Sin valor","UseX":"Usar {{x}}","ChooseValidPaymentMethods":"Elegir métodos de pago válidos","WriteConfirmationReply":"Escribir respuesta de confirmación","WriteCancellationReply":"Escribir respuesta de cancelación","UseTemplate":"Usar una plantilla","UseTemplateD":"Empieza rápido con automatizaciones predefinidas y probadas","CreateCustom":"Crear desde cero","CreateCustomD":"Diseña tu propia automatización arrastrando disparadores y acciones","TemplatesAvailable":"plantillas","True":"Verdadero","False":"Falso","FieldPlaceholder":"Campo a evaluar","ValuePlaceholder":"Valor para comparar","Conditions":"Condiciones","AddCondition":"Agregar condición","LogicalOperator":"Operador lógico","EQUALS":"Igual a","NOT_EQUALS":"Diferente de","GREATER_THAN":"Mayor que","GREATER_THAN_OR_EQUALS":"Mayor o igual que","LESS_THAN":"Menor que","LESS_THAN_OR_EQUALS":"Menor o igual que","IS_AT_LEAST_ONE_OF":"Es al menos uno de","IS_NOT_ANY_OF":"No es ninguno de","IS_EMPTY":"Esta vacio","IS_NOT_EMPTY":"No esta vacio","AutomationSaved":"¡Automatización guardada exitosamente!","SendSuccess":"Envío exitoso","SendError":"Error al enviar","DeliverySuccess":"Entrega exitosa","DeliveryError":"Error de entrega","Sale":"Venta","ShopifyCodOrderConfirm":"Confirmación de orden","ShopifyCodOrderCancel":"Cancelación de orden","Skip":"Omitir","waitTime":"Tiempo de espera","tags":"Etiquetas","fieldToExtractOrderId":"Campo para extraer el ID de la orden","SelectFieldPlaceholder":"Selecciona un campo","RAW":"Valor directo","FIELD":"Valor de campo","fieldToExtractEntityId":"Campo para extraer el ID de la entidad","entityType":"Tipo de entidad","SelectEntityTypePlaceholder":"Selecciona un tipo de entidad","AbandonedCheckout":"Carrito abandonado","Order":"Orden","Product":"Producto","Read":"Lectura","QuickReply":"Respuesta rápida","SearchProducts":"Buscar productos","SearchVariants":"Buscar variantes","REPURCHASE_FOLLOW_UP":"Seguimiento de recompra","REPURCHASE_FOLLOW_UPD":"Enviar un mensaje de WhatsApp a clientes que compraron un producto específico después de un tiempo esperado de duración del producto para recompra.","ON_CONVERSATION_CLOSED":"Al cerrar la conversación","CONVERSATION_CLOSED_MESSAGE":"Mensaje de conversación cerrada","CONVERSATION_CLOSED_MESSAGED":"Enviar un mensaje de WhatsApp cuando la conversación se cierre en wizybot","triggerId":"ID del disparador","bearerTokenHash":"Token de autenticación Bearer","bearerTokenLast4":"Últimos 4 caracteres del token Bearer","tokenRotatedAt":"Fecha de rotación del token","bodyStructure":"Estructura esperada del cuerpo JSON","whatsAppNumberProviders":"Proveedores de números de teléfono","GenerateUUID":"Generar identificador","GenerateToken":"Generar token","TokenGenerated":"Token generado","CopyTokenWarning":"¡Importante! Copia este token ahora. Solo podrás verlo y copiarlo en esta ventana. Si lo pierdes, deberás generar uno nuevo.","CUSTOM_WEBHOOK":"Webhook personalizado","CopyToken":"Copiar token","JsonSchema":"Esquema JSON (las validaciones usarán este esquema)","SelectFields":"Seleccionar campos","TriggerIdPlaceholder":"Aquí irá el ID del disparador generado para tu webhook.","PleaseGenerateTriggerIdFirst":"Por favor, genera el ID del disparador primero","TokenCopied":"¡Token copiado al portapapeles!","UUIDInfo":"Este ID será el que deberás usar para hacer la petición HTTP y enviar webhooks. La URL debería lucir algo así:","InvalidJsonExample":"El JSON de ejemplo no es válido.","JsonSchemaEditable":"// Aquí aparecerá el esquema JSON editable después de pegar un ejemplo de JSON","PasteJsonExample":"// Pega aquí un ejemplo de JSON del cuerpo que esperas recibir en el webhook para generar el esquema JSON para las validaciones","BearerTokenInfo":"Este token deberá adjuntarse en un header llamado \\"Authorization\\" y el valor debe ser: Bearer seguido del token generado, algo así: ","TokenExample":"Authorization: Bearer [Tu token aquí]","SomeOfYourFieldsIsAPhoneNumber":"¿Alguno de tus campos es un teléfono?","SCHEDULE_NEXT_ACTIONS":"Programar siguientes acciones","anchorDate":"Fecha ancla","FixedDate":"Fecha fija","FromField":"Desde campo","timeOffset":"Diferencia de tiempo","fixedHour":"Hora fija","ProgramAtFixedHour":"Programar a hora fija","FixedHourTimezoneInfo":"La hora se tomará según la zona horaria de la tienda:","FixedHourTimezoneMessage":"La hora seleccionada será ajustada automáticamente a UTC para la ejecución.","SelectDateFields":"Selecciona los campos de fecha","DateFieldsInfo":"Estos campos serán tratados como fechas y convertidos a UTC.","SelectTimezonePlaceholder":"Selecciona la zona horaria","TimezoneInfo":"La zona horaria se usará para convertir fechas sin información de zona horaria (selecciona la zona horaria en la que vienen tus fechas).","SomeOfYourFieldsIsADate":"¿Alguno de tus campos es una fecha?","dateFields":"Campos de fecha","defaultTimezone":"Zona horaria por defecto","WhatsAppNumberProvidersInfo":"Selecciona los campos de los cuales se extraerá el número de teléfono para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","ManualPhoneNumber":"Número de teléfono manual","DynamicFields":"Campos dinámicos","EnterPhoneNumber":"Ingresa el número de teléfono al que se enviará el mensaje","PhoneNumberManualInfo":"Si deseas enviar el mensaje a un número de teléfono fijo en lugar de extraerlo de los datos, puedes ingresarlo aquí.","isSaleIntentMessage":"¿Este mensaje está destinado a cerrar una venta?","isPaymentRequestMessage":"¿Este mensaje está destinado a solicitar una foto de comprobante de pago?","Yes":"Sí","No":"No","ChannelIdPlaceholder":"Selecciona el canal","SEND_INSTAGRAM_MESSAGE":"Enviar mensaje de Instagram","instagramIdProviders":"Proveedores de ID de Instagram","instagramAccountId":"Cuenta de Instagram","TemplateTypeInfo":"Para plantillas Genéricas puedes agregar una imagen, pero tu texto será de máximo 80 caracteres, en plantillas de Botones no puedes agregar una imagen pero tu texto puede ser de hasta 540 caracteres.","templateType":"Tipo de plantilla","GenericTemplate":"Genérica","ButtonTemplate":"De botones","SEND_MESSENGER_MESSAGE":"Enviar mensaje de Messenger","messengerIdProviders":"Proveedores de ID de Messenger","messengerAccountId":"Cuenta de Messenger","ShippingLineCodesPlaceholder":"Selecciona códigos de líneas de envío","SetWaitTime":"Establecer tiempo de espera","url":"URL a la que se enviará la solicitud","method":"Método HTTP","AddQueryParams":"Agregar parámetros de consulta","SetRequestBody":"Establecer cuerpo de la solicitud","SetRequestHeaders":"Establecer encabezados de la solicitud","SelectHttpMethod":"Seleccionar método HTTP","authType":"Tipo de autenticación","SetAuthConfig":"Establecer configuración de autenticación","SetRequestTimeout":"Establecer tiempo de espera de la solicitud","CUSTOM_HTTP_REQUEST":"Solicitud HTTP personalizada","Key":"Clave","Value":"Valor","Remove":"Eliminar","Add":"Agregar","HeadersInfo":"Normalmente los encabezados son valores fijos, pero también puedes agregar variables si lo necesias. Escribe {{ para agregar una variable.","BodyInfo":"El cuerpo se enviará como un JSON, pero también puedes agregar variables si lo deseas. Escribe {{ para agregar una variable.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Asignar cliente al embudo","SelectFunnel":"Seleccionar embudo...","SelectStage":"Seleccionar etapa...","NoFunnels":"Aún no hay embudos","clientIdProviders":"ID del cliente","funnelStageId":"Embudo","ClientIdProvidersInfo":"Campos utilizados para identificar y extraer el cliente","SelectAuthType":"Selecciona tipo de autenticación","CustomUrlPlaceholder":"Ingresa la URL a la que se enviará la solicitud","InstagramIdProvidersInfo":"Selecciona los campos de los cuales se extraerá el ID de Instagram para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","MessengerIdProvidersInfo":"Selecciona los campos de los cuales se extraerá el ID de Messenger para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","Customer":"Cliente","CREATE_UPDATE_CLIENT":"Crear/Actualizar cliente","CreateUpdateClient":"Crear/Actualizar cliente","clientUpdateFields":"Selecciona los campos del cliente para actualizar","SetClientUpdateFields":"Configurar campos del cliente","ClientUpdateFieldsInfo":"Deja un campo vacío para conservar su valor actual. Usa {{context.field}} para extraer un valor de un paso anterior.","ValueOrContextField":"Valor o {{context.field}}","firstName":"Nombre","lastName":"Apellido","phone":"Teléfono","email":"Correo electrónico","FetchStatusSuccess":"Exitoso","FetchStatusNotFound":"No encontrado","FetchStatusError":"Error","FetchStatusException":"Excepción","SomeOfYourFieldsIsACountryCode":"¿Alguno de tus campos es un código de país?","CountryCodeProvidersInfo":"Selecciona los campos de los cuales se extraerá el código de país para ajustar los números de teléfono según el país. Esto es útil si tienes una tienda internacional y tus campos de número de teléfono no incluyen el código de país. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","countryCodeProviders":"Proveedores de código de país"}');
+const Spanish_createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"Nueva Automatización","NewAutomationD":"Crea flujos de mensajes automatizados para interactuar proactivamente con tus clientes","Automation":"Automatización","Parameters":"Parámetros","Review":"Revisión","NameInput":"Ponle un nombre a tu automatización para poder identificarla","AutomationSelection":"Elige el tipo de automatización que quieres crear","ABANDONED_CHECKOUTS_RECOVERY":"Recuperación de carritos abandonados","ABANDONED_CHECKOUTS_RECOVERYD":"Envía un mensaje de WhatsApp a los clientes que no hayan finalizado su compra para recuperarlos","SHOPIFY_FULFILLMENT_NOTIFICATION":"Notificación de Fulfillment","SHOPIFY_FULFILLMENT_NOTIFICATIOND":"Notifica a tus clientes cuando su pedido ha sido procesado a través de WhatsApp.","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATION":"Notificación de Creación de Evento de Fulfillment","SHOPIFY_FULFILLMENT_EVENT_NOTIFICATIOND":"Notifica a tus clientes cuando su pedido ha sido confirmado, entregado, en tránsito, etc. Útil para servicios de fulfillment de terceros","SHOPIFY_COD_ORDER_CONFIRMATION":"Confirmación de ordenes contraentrega","SHOPIFY_COD_ORDER_CONFIRMATIOND":"Envía un mensaje por WhatsApp con botones para confirmar o cancelar cuando se crea una orden contraentrega","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Notificación de información de seguimiento","FULFILLMENT_TRACKING_INFO_NOTIFICATIOND":"Notifica a tus clientes con un mensaje de WhatsApp cuando se genere un número o URL de seguimiento de pedido","ORDER_CREATE_FOLLOW_UP":"Notificación de creación de orden","ORDER_CREATE_FOLLOW_UPD":"Notifica a tus clientes con un mensaje de WhatsApp cuando se cree una nueva orden","NextStep":"Siguiente","GoBack":"Volver","TimePeriodPickerInput":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de:","MINUTES":"minutos","HOURS":"horas","DAYS":"días","WhatsAppAccountIdSelection":"Selecciona el número de WhatsApp desde el cual deseas que se envíen los mensajes","WhatsAppTemplateSelection":"Selecciona la plantilla de WhatsApp que deseas enviar","AbandonedCheckoutReviewPrompt":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de {{timeAgo.amount}} {{timeAgo.unit}} desde el número {{whatsAppAccount.displayPhone}}, el cual contendrá la plantilla {{whatsAppTemplate.name}}","ShopifyFulfillmentCreateReviewPrompt":"Cuando se cree un fulfillment, se enviará un mensaje de notificación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","ShopifyCodOrderCreateReviewPrompt":"Cuando se crea una orden contra entrega (COD), se enviará un mensaje de confirmación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}, la cual tiene botones de Confirmar y Cancelar que, al ser presionados, generarán las etiquetas correspondientes en el panel de órdenes de Shopify","FulfillmentTrackingInfoNotificationReviewPrompt":"Cuando se actualice el agregue el número de seguimiento de una orden, se enviará un mensaje de notificación desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","CreateAutomation":"Crear automatización","CODButtonsAlert":"Para que la integración funcione correctamente la plantilla debe tener 2 botones de respuesta rápida con los textos \\"Confirmar\\" y \\"Cancelar\\"","PaymentGatewayNamesInput":"Limitar el mensaje a los siguientes métodos de pago (si no se selecciona se enviará con todos los métodos de pago)","PaymentGatewayNamesPlaceholder":"Selecciona métodos de pago","OrderCreateFollowUpReviewPrompt":"Cuando se cree una orden{{validPaymentGatewayNames}}, se enviará un mensaje de seguimiento desde el número {{whatsAppAccount.displayPhone}}, que contiene la plantilla {{whatsAppTemplate.name}}","PaymentMethods":"Métodos de pago: ","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","ConfirmationReplyPrompt":"Respuesta a confirmación (solo para plantillas que incluyan el botón \\"Confirmar\\")","CancellationReplyPrompt":"Respuesta a cancelación (solo para plantillas que incluyan el botón \\"Cancelar\\")","FollowUpsPrompt":"Mensajes de seguimiento","FollowUp":"Seguimiento","FollowUps":"Seguimientos","FollowUpsWaitTimePrompt":"Enviar después de:","CancelOrderOnSendPrompt":"Etiquetar orden como \\"Cancelada\\" al envío","AddFollowUp":"Agregar seguimiento","Cancel":"Cancelar","UpdateAutomation":"Actualizar automatización","AutomationStatus":"Estado de la automatización","LandingAgentNameHelp":"Si marcas esta opción, podrás seleccionar un agente de IA que atenderá la conversación después de que se envíe el mensaje automatizado.","FollowUpsHelp":"Si marcas esta opción, podrás agregar mensajes de seguimiento programados que se enviarán después del mensaje automatizado inicial.","Trigger":"Disparador","Action":"Acción","ABANDONED_CHECKOUT":"Carrito abandonado","FULFILLMENT_TRACKING_INFO_UPDATE":"Actualización de información de seguimiento de pedido","ORDER_CREATE":"Creación de orden","WORDPRESS_ORDER_CREATE":"Creación de orden (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Carrito abandonado (WordPress)","SEND_WHATSAPP_MESSAGE":"Enviar mensaje de WhatsApp","IF_CONDITION":"Condición","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Agregar etiqueta a orden en Shopify","FETCH_INFO_FROM_SHOPIFY":"Obtener información de Shopify","FETCH_INFO_FROM_WORDPRESS":"Obtener información de WordPress","WAIT":"Esperar","Save":"Guardar","Collapse":"Colapsar","Expand":"Expandir","Triggers":"Disparadores","Actions":"Acciones","Loading":"Cargando...","EditNodeName":"Editar nombre del nodo","NodeNamePlaceholder":"Nombre del nodo","whatsAppAccountId":"Selecciona el número de WhatsApp desde el cual deseas que se envíen los mensajes","SelectAccountPlaceholder":"Selecciona una cuenta","whatsAppTemplate":"Selecciona la plantilla de WhatsApp que deseas enviar","landingAgentName":"Selecciona el nombre del agente que tomará la conversación","timeAgo":"Cuando se abandone un carrito, se enviará un mensaje de recuperación luego de:","validPaymentGatewayNames":"Limitar el mensaje a los siguientes métodos de pago","confirmationReply":"Respuesta a confirmación (solo para plantillas que incluyan el botón \\"Confirmar\\")","cancellationReply":"Respuesta a cancelación (solo para plantillas que incluyan el botón \\"Cancelar\\")","DefaultAgent":"Agente por defecto","ChooseAgent":"Elegir agente","WithoutValue":"Sin valor","UseX":"Usar {{x}}","ChooseValidPaymentMethods":"Elegir métodos de pago válidos","WriteConfirmationReply":"Escribir respuesta de confirmación","WriteCancellationReply":"Escribir respuesta de cancelación","UseTemplate":"Usar una plantilla","UseTemplateD":"Empieza rápido con automatizaciones predefinidas y probadas","CreateCustom":"Crear desde cero","CreateCustomD":"Diseña tu propia automatización arrastrando disparadores y acciones","TemplatesAvailable":"plantillas","True":"Verdadero","False":"Falso","FieldPlaceholder":"Campo a evaluar","ValuePlaceholder":"Valor para comparar","Conditions":"Condiciones","AddCondition":"Agregar condición","LogicalOperator":"Operador lógico","EQUALS":"Igual a","NOT_EQUALS":"Diferente de","GREATER_THAN":"Mayor que","GREATER_THAN_OR_EQUALS":"Mayor o igual que","LESS_THAN":"Menor que","LESS_THAN_OR_EQUALS":"Menor o igual que","IS_AT_LEAST_ONE_OF":"Es al menos uno de","IS_NOT_ANY_OF":"No es ninguno de","IS_EMPTY":"Esta vacio","IS_NOT_EMPTY":"No esta vacio","AutomationSaved":"¡Automatización guardada exitosamente!","SendSuccess":"Envío exitoso","SendError":"Error al enviar","DeliverySuccess":"Entrega exitosa","DeliveryError":"Error de entrega","Sale":"Venta","ShopifyCodOrderConfirm":"Confirmación de orden","ShopifyCodOrderCancel":"Cancelación de orden","Skip":"Omitir","waitTime":"Tiempo de espera","tags":"Etiquetas","fieldToExtractOrderId":"Campo para extraer el ID de la orden","SelectFieldPlaceholder":"Selecciona un campo","RAW":"Valor directo","FIELD":"Valor de campo","fieldToExtractEntityId":"Campo para extraer el ID de la entidad","entityType":"Tipo de entidad","SelectEntityTypePlaceholder":"Selecciona un tipo de entidad","AbandonedCheckout":"Carrito abandonado","Order":"Orden","Product":"Producto","Read":"Lectura","QuickReply":"Respuesta rápida","SearchProducts":"Buscar productos","SearchVariants":"Buscar variantes","REPURCHASE_FOLLOW_UP":"Seguimiento de recompra","REPURCHASE_FOLLOW_UPD":"Enviar un mensaje de WhatsApp a clientes que compraron un producto específico después de un tiempo esperado de duración del producto para recompra.","ON_CONVERSATION_CLOSED":"Al cerrar la conversación","CONVERSATION_CLOSED_MESSAGE":"Mensaje de conversación cerrada","CONVERSATION_CLOSED_MESSAGED":"Enviar un mensaje de WhatsApp cuando la conversación se cierre en wizybot","triggerId":"ID del disparador","bearerTokenHash":"Token de autenticación Bearer","bearerTokenLast4":"Últimos 4 caracteres del token Bearer","tokenRotatedAt":"Fecha de rotación del token","bodyStructure":"Estructura esperada del cuerpo JSON","whatsAppNumberProviders":"Proveedores de números de teléfono","GenerateUUID":"Generar identificador","GenerateToken":"Generar token","TokenGenerated":"Token generado","CopyTokenWarning":"¡Importante! Copia este token ahora. Solo podrás verlo y copiarlo en esta ventana. Si lo pierdes, deberás generar uno nuevo.","CUSTOM_WEBHOOK":"Webhook personalizado","CopyToken":"Copiar token","JsonSchema":"Esquema JSON (las validaciones usarán este esquema)","SelectFields":"Seleccionar campos","TriggerIdPlaceholder":"Aquí irá el ID del disparador generado para tu webhook.","PleaseGenerateTriggerIdFirst":"Por favor, genera el ID del disparador primero","TokenCopied":"¡Token copiado al portapapeles!","UUIDInfo":"Este ID será el que deberás usar para hacer la petición HTTP y enviar webhooks. La URL debería lucir algo así:","InvalidJsonExample":"El JSON de ejemplo no es válido.","JsonSchemaEditable":"// Aquí aparecerá el esquema JSON editable después de pegar un ejemplo de JSON","PasteJsonExample":"// Pega aquí un ejemplo de JSON del cuerpo que esperas recibir en el webhook para generar el esquema JSON para las validaciones","BearerTokenInfo":"Este token deberá adjuntarse en un header llamado \\"Authorization\\" y el valor debe ser: Bearer seguido del token generado, algo así: ","TokenExample":"Authorization: Bearer [Tu token aquí]","SomeOfYourFieldsIsAPhoneNumber":"¿Alguno de tus campos es un teléfono?","SCHEDULE_NEXT_ACTIONS":"Programar siguientes acciones","anchorDate":"Fecha ancla","FixedDate":"Fecha fija","FromField":"Desde campo","timeOffset":"Diferencia de tiempo","fixedHour":"Hora fija","ProgramAtFixedHour":"Programar a hora fija","FixedHourTimezoneInfo":"La hora se tomará según la zona horaria de la tienda:","FixedHourTimezoneMessage":"La hora seleccionada será ajustada automáticamente a UTC para la ejecución.","SelectDateFields":"Selecciona los campos de fecha","DateFieldsInfo":"Estos campos serán tratados como fechas y convertidos a UTC.","SelectTimezonePlaceholder":"Selecciona la zona horaria","TimezoneInfo":"La zona horaria se usará para convertir fechas sin información de zona horaria (selecciona la zona horaria en la que vienen tus fechas).","SomeOfYourFieldsIsADate":"¿Alguno de tus campos es una fecha?","dateFields":"Campos de fecha","defaultTimezone":"Zona horaria por defecto","WhatsAppNumberProvidersInfo":"Selecciona los campos de los cuales se extraerá el número de teléfono para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","ManualPhoneNumber":"Número de teléfono manual","DynamicFields":"Campos dinámicos","EnterPhoneNumber":"Ingresa el número de teléfono al que se enviará el mensaje","PhoneNumberManualInfo":"Si deseas enviar el mensaje a un número de teléfono fijo en lugar de extraerlo de los datos, puedes ingresarlo aquí.","isSaleIntentMessage":"¿Este mensaje está destinado a cerrar una venta?","isPaymentRequestMessage":"¿Este mensaje está destinado a solicitar una foto de comprobante de pago?","Yes":"Sí","No":"No","ChannelIdPlaceholder":"Selecciona el canal","SEND_INSTAGRAM_MESSAGE":"Enviar mensaje de Instagram","instagramIdProviders":"Proveedores de ID de Instagram","instagramAccountId":"Cuenta de Instagram","TemplateTypeInfo":"Para plantillas Genéricas puedes agregar una imagen, pero tu texto será de máximo 80 caracteres, en plantillas de Botones no puedes agregar una imagen pero tu texto puede ser de hasta 540 caracteres.","templateType":"Tipo de plantilla","GenericTemplate":"Genérica","ButtonTemplate":"De botones","SEND_MESSENGER_MESSAGE":"Enviar mensaje de Messenger","messengerIdProviders":"Proveedores de ID de Messenger","messengerAccountId":"Cuenta de Messenger","ShippingLineCodesPlaceholder":"Selecciona códigos de líneas de envío","SetWaitTime":"Establecer tiempo de espera","url":"URL a la que se enviará la solicitud","method":"Método HTTP","AddQueryParams":"Agregar parámetros de consulta","SetRequestBody":"Establecer cuerpo de la solicitud","SetRequestHeaders":"Establecer encabezados de la solicitud","SelectHttpMethod":"Seleccionar método HTTP","authType":"Tipo de autenticación","SetAuthConfig":"Establecer configuración de autenticación","SetRequestTimeout":"Establecer tiempo de espera de la solicitud","CUSTOM_HTTP_REQUEST":"Solicitud HTTP personalizada","Key":"Clave","Value":"Valor","Remove":"Eliminar","Add":"Agregar","HeadersInfo":"Normalmente los encabezados son valores fijos, pero también puedes agregar variables si lo necesias. Escribe {{ para agregar una variable.","BodyInfo":"El cuerpo se enviará como un JSON, pero también puedes agregar variables si lo deseas. Escribe {{ para agregar una variable.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Asignar cliente al embudo","SelectFunnel":"Seleccionar embudo...","SelectStage":"Seleccionar etapa...","NoFunnels":"Aún no hay embudos","clientIdProviders":"ID del cliente","funnelStageId":"Embudo","ClientIdProvidersInfo":"Campos utilizados para identificar y extraer el cliente","SelectAuthType":"Selecciona tipo de autenticación","CustomUrlPlaceholder":"Ingresa la URL a la que se enviará la solicitud","InstagramIdProvidersInfo":"Selecciona los campos de los cuales se extraerá el ID de Instagram para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","MessengerIdProvidersInfo":"Selecciona los campos de los cuales se extraerá el ID de Messenger para enviar el mensaje. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","Customer":"Cliente","CREATE_UPDATE_CLIENT":"Crear/Actualizar cliente","CreateUpdateClient":"Crear/Actualizar cliente","clientUpdateFields":"Selecciona los campos del cliente para actualizar","SetClientUpdateFields":"Configurar campos del cliente","ClientUpdateFieldsInfo":"Deja un campo vacío para conservar su valor actual. Usa {{context.field}} para extraer un valor de un paso anterior.","ValueOrContextField":"Valor o {{context.field}}","firstName":"Nombre","lastName":"Apellido","phone":"Teléfono","email":"Correo electrónico","FetchStatusSuccess":"Exitoso","FetchStatusNotFound":"No encontrado","FetchStatusError":"Error","FetchStatusException":"Excepción","SomeOfYourFieldsIsACountryCode":"¿Alguno de tus campos es un código de país?","CountryCodeProvidersInfo":"Selecciona los campos de los cuales se extraerá el código de país para ajustar los números de teléfono según el país. Esto es útil si tienes una tienda internacional y tus campos de número de teléfono no incluyen el código de país. Si seleccionas varios, el orden de prioridad para extracción será el orden en que los elijas.","countryCodeProviders":"Proveedores de código de país","Pending":"Pendiente","Paid":"Pagado","ticketStatusId":"Estado del ticket","name":"Nombre","description":"Descripción","WriteTemplateWithVars":"Escribe el texto que deseas y agrega variables si necesitas.","AddVariable":"Agregar variable","CREATE_TICKET":"Crear ticket","WithoutDepartments":"Sin departamentos","SelectDepartments":"Seleccionar departamentos","WithoutTags":"Sin etiquetas","SelectTags":"Seleccionar etiquetas","notifyViaEmail":"Notificar por email","ticketAdditionalFields":"Campos adicionales del ticket","SelectOption":"Selecciona una opción","SelectOrders":"Seleccionar órdenes","SelectProducts":"Seleccionar productos","SelectField":"Selecciona un campo","WriteNumberWithVars":"Escribe el número que deseas y agrega variables si necesitas.","FixedValue":"Valor fijo","Field":"Campo dinámico","DefaultValue":"Valor por defecto","SelectTicketTags":"Seleccionar etiquetas del ticket"}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/createAutomation.json
-const Portuguese_createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"Nova Automação","NewAutomationD":"Crie fluxos de mensagens automatizadas para interagir proativamente com seus clientes","Automation":"Automação","Parameters":"Parâmetros","Review":"Revisão","NameInput":"Dê um nome à sua automação para poder identificá-la","AutomationSelection":"Escolha o tipo de automação que deseja criar","ABANDONED_CHECKOUTS_RECOVERY":"Recuperação de carrinhos abandonados","ABANDONED_CHECKOUTS_RECOVERYD":"Envie uma mensagem pelo WhatsApp aos clientes que não finalizaram a compra para recuperá-los","NextStep":"Próximo","GoBack":"Voltar","TimePeriodPickerInput":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após:","MINUTES":"minutos","HOURS":"horas","DAYS":"dias","WhatsAppAccountIdSelection":"Selecione o número do WhatsApp a partir do qual deseja enviar as mensagens","WhatsAppTemplateSelection":"Selecione o modelo do WhatsApp que deseja enviar","AbandonedCheckoutReviewPrompt":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após {{timeAgo.amount}} {{timeAgo.unit}} do número {{whatsAppAccount.displayPhone}}, contendo o modelo {{whatsAppTemplate.name}}","CreateAutomation":"Criar automação","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","ConfirmationReplyPrompt":"Resposta de Confirmação (apenas para modelos que incluem o botão \\"Confirmar\\")","CancellationReplyPrompt":"Resposta de Cancelamento (apenas para modelos que incluem o botão \\"Cancelar\\")","FollowUpsPrompt":"Mensagens de acompanhamento","FollowUp":"Acompanhamento","FollowUps":"Acompanhamentos","FollowUpsWaitTimePrompt":"Enviar após:","CancelOrderOnSendPrompt":"Marcar pedido como \\"Cancelado\\" ao enviar","AddFollowUp":"Adicionar acompanhamento","Cancel":"Cancelar","UpdateAutomation":"Atualizar automação","AutomationStatus":"Status da automação","LandingAgentNameHelp":"Se você marcar esta opção, poderá selecionar um agente de IA que atenderá a conversa após o envio da mensagem automatizada.","FollowUpsHelp":"Se você marcar esta opção, poderá adicionar mensagens de acompanhamento programadas que serão enviadas após a mensagem automatizada inicial.","Trigger":"Gatilho","Action":"Ação","ABANDONED_CHECKOUT":"Carrinho abandonado","FULFILLMENT_TRACKING_INFO_UPDATE":"Atualização de informações de rastreamento de pedido","ORDER_CREATE":"Criação de pedido","WORDPRESS_ORDER_CREATE":"Criação de pedido (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Carrinho abandonado (WordPress)","SEND_WHATSAPP_MESSAGE":"Enviar mensagem pelo WhatsApp","IF_CONDITION":"Condição","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Adicionar tag ao pedido no Shopify","FETCH_INFO_FROM_SHOPIFY":"Buscar informações do Shopify","FETCH_INFO_FROM_WORDPRESS":"Buscar informações do WordPress","WAIT":"Esperar","Save":"Salvar","Collapse":"Recolher","Expand":"Expandir","Triggers":"Gatilhos","Actions":"Ações","Loading":"Carregando...","EditNodeName":"Editar nome do nó","NodeNamePlaceholder":"Nome do nó","whatsAppAccountId":"Selecione o número do WhatsApp a partir do qual deseja enviar as mensagens","SelectAccountPlaceholder":"Selecione uma conta","whatsAppTemplate":"Selecione o modelo do WhatsApp que deseja enviar","landingAgentName":"Selecione o agente de IA que continuará a conversa","timeAgo":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após:","validPaymentGatewayNames":"Limitar o mensagem aos seguintes métodos de pagamento","confirmationReply":"Resposta de Confirmação (apenas para modelos que incluem o botão \\"Confirmar\\")","cancellationReply":"Resposta de Cancelamento (apenas para modelos que incluem o botão \\"Cancelar\\")","DefaultAgent":"Agente Padrão","ChooseAgent":"Escolher Agente","WithoutValue":"Sem Valor","UseX":"Usar {{x}}","ChooseValidPaymentMethods":"Escolher métodos de pagamento válidos","WriteConfirmationReply":"Escrever resposta de confirmação","WriteCancellationReply":"Escrever resposta de cancelamento","UseTemplate":"Usar um modelo","UseTemplateD":"Comece rapidamente com automações pré-definidas e testadas","CreateCustom":"Criar do zero","CreateCustomD":"Desenhe sua própria automação arrastando gatilhos e ações","TemplatesAvailable":"modelos","True":"Verdadeiro","False":"Falso","FieldPlaceholder":"Campo a ser avaliado","ValuePlaceholder":"Valor para comparar","Conditions":"Condições","AddCondition":"Adicionar condição","LogicalOperator":"Operador lógico","OperatorEquals":"Igual a","OperatorNotEquals":"Diferente de","OperatorGreaterThan":"Maior que","OperatorLessThan":"Menor que","OperatorGreaterThanOrEquals":"Maior ou igual a","OperatorLessThanOrEquals":"Menor ou igual a","OperatorIsEmpty":"Está vazio","OperatorIsNotEmpty":"Não está vazio","OperatorIsAtLeastOneOf":"É um dos","OperatorIsNotAnyOf":"Não é nenhum dos","AutomationSaved":"Automação salva com sucesso!","SendSuccess":"Envio bem-sucedido","SendError":"Erro ao enviar","DeliverySuccess":"Entrega bem-sucedida","DeliveryError":"Erro de entrega","Sale":"Venda","ShopifyCodOrderConfirm":"Confirmação de pedido","ShopifyCodOrderCancel":"Cancelamento de pedido","Skip":"Pular","waitTime":"Tempo de espera","tags":"Tags","fieldToExtractOrderId":"Campo para extrair o ID do pedido","SelectFieldPlaceholder":"Selecione um campo","RAW":"Valor bruto","FIELD":"Valor do campo","fieldToExtractEntityId":"Campo para extrair o ID da entidade","entityType":"Tipo de entidade","SelectEntityTypePlaceholder":"Selecione um tipo de entidade","AbandonedCheckout":"Carrinho abandonado","Order":"Pedido","Product":"Produto","Read":"Leitura","QuickReply":"Resposta rápida","SearchProducts":"Buscar produtos","SearchVariants":"Buscar variantes","REPURCHASE_FOLLOW_UP":"Rastreamento de recompra","REPURCHASE_FOLLOW_UPD":"Enviar uma mensagem de WhatsApp para clientes que compraram um produto específico após um tempo esperado de duração do produto para recompra.","ON_CONVERSATION_CLOSED":"Ao fechar a conversa","CONVERSATION_CLOSED_MESSAGE":"Mensagem de conversa fechada","CONVERSATION_CLOSED_MESSAGED":"Enviar uma mensagem de WhatsApp quando a conversa for fechada no wizybot","triggerId":"ID do gatilho","bearerTokenHash":"Token de autenticação Bearer","bearerTokenLast4":"Últimos 4 caracteres do token Bearer","tokenRotatedAt":"Data de rotação do token","bodyStructure":"Estrutura esperada do corpo JSON","whatsAppNumberProviders":"Provedores de números do telefone","GenerateUUID":"Gerar identificador","GenerateToken":"Gerar token","TokenGenerated":"Token gerado","CopyTokenWarning":"¡Importante! Copie este token ahora. Solo podrá verlo y copiarlo en esta ventana. Si lo pierde, tendrá que generar uno nuevo.","CUSTOM_WEBHOOK":"Webhook personalizado","CopyToken":"Copiar token","JsonSchema":"Esquema JSON (as validações usarão este esquema)","SelectFields":"Selecionar campos","TriggerIdPlaceholder":"Aqui irá o ID do gatilho gerado para seu webhook.","PleaseGenerateTriggerIdFirst":"Por favor, gere o ID do gatilho primeiro","TokenCopied":"Token copiado para a área de transferência!","UUIDInfo":"Este ID será o que você deve usar para fazer a solicitação HTTP e enviar webhooks. A URL deve ser algo como:","InvalidJsonExample":"O JSON de exemplo não é válido.","JsonSchemaEditable":"// O esquema JSON editável aparecerá aqui depois de você colar um exemplo de JSON","PasteJsonExample":"// Cole aqui um exemplo de JSON do corpo que você espera receber no webhook para gerar o esquema JSON para as validações","BearerTokenInfo":"Este token deve ser anexado em um header chamado \\"Authorization\\" e o valor deve ser: Bearer seguido do token gerado, algo como: ","TokenExample":"Authorization: Bearer [Seu token aqui]","SomeOfYourFieldsIsAPhoneNumber":"¿Alguns dos seus campos são números de telefone?","SCHEDULE_NEXT_ACTIONS":"Programar próximas ações","anchorDate":"Data de referência","FixedDate":"Data fixa","FromField":"A partir do campo","timeOffset":"Deslocamento de tempo","fixedHour":"Hora fixa","ProgramAtFixedHour":"Programar para hora fixa","FixedHourTimezoneInfo":"A hora será considerada de acordo com o fuso horário da loja:","FixedHourTimezoneMessage":"A hora selecionada será ajustada automaticamente para UTC para execução.","SelectDateFields":"Selecione os campos de data","DateFieldsInfo":"Esses campos serão tratados como datas e convertidos para UTC.","SelectTimezonePlaceholder":"Selecione o fuso horário","TimezoneInfo":"O fuso horário será usado para converter datas sem informação de fuso horário para UTC (selecione o fuso horário das suas datas).","SomeOfYourFieldsIsADate":"Alguns dos seus campos são datas?","dateFields":"Campos de data","defaultTimezone":"Fuso horário padrão","WhatsAppNumberProvidersInfo":"Selecione os campos dos quais o número de telefone será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade será a ordem em que você os escolher.","ManualPhoneNumber":"Número de telefone manual","DynamicFields":"Campos dinâmicos","EnterPhoneNumber":"Digite o número de telefone para o qual a mensagem será enviada","PhoneNumberManualInfo":"Se você deseja enviar a mensagem para um número de telefone fixo em vez de extraí-lo dos dados, pode inseri-lo aqui.","isSaleIntentMessage":"Esta mensagem tem a intenção de fechar uma venda?","isPaymentRequestMessage":"Esta mensagem tem a intenção de solicitar uma foto de comprovante de pagamento?","Yes":"Sim","No":"Não","ChannelIdPlaceholder":"Selecione o canal","SEND_INSTAGRAM_MESSAGE":"Enviar mensagem de Instagram","instagramIdProviders":"Provedores de ID de Instagram","instagramAccountId":"Conta de Instagram","TemplateTypeInfo":"Para modelos Genéricos você pode adicionar uma imagem, mas seu texto será de no máximo 80 caracteres, em modelos de Botões você não pode adicionar uma imagem mas seu texto pode ser de até 540 caracteres.","templateType":"Tipo de modelo","GenericTemplate":"Genérico","ButtonTemplate":"De botões","SEND_MESSENGER_MESSAGE":"Enviar mensagem de Messenger","messengerAccountId":"Conta de Messenger","ShippingLineCodesPlaceholder":"Selecione códigos de linhas de envio","SetWaitTime":"Definir tempo de espera","url":"URL para enviar a solicitação","method":"Método HTTP","AddQueryParams":"Adicionar parâmetros de consulta","SetRequestBody":"Definir corpo da solicitação","SetRequestHeaders":"Definir cabeçalhos da solicitação","SelectHttpMethod":"Selecione o método HTTP","authType":"Tipo de autenticação","SetAuthConfig":"Definir configuração de autenticação","SetRequestTimeout":"Definir tempo de espera da solicitação","CUSTOM_HTTP_REQUEST":"Requisição HTTP personalizada","Key":"Chave","Value":"Valor","Add":"Adicionar","Remove":"Remover","HeadersInfo":"Os cabeçalhos geralmente são valores fixos, mas você também pode adicionar variáveis, se necessário. Digite {{ para adicionar uma variável.","BodyInfo":"O corpo da mensagem será enviado em formato JSON, mas você também pode adicionar variáveis, se desejar. Escreva {{ para adicionar uma variável.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Atribuir cliente ao funil","SelectFunnel":"Selecionar funil...","SelectStage":"Selecionar etapa...","NoFunnels":"Ainda não há funis","clientIdProviders":"ID do cliente","funnelStageId":"Funil","ClientIdProvidersInfo":"Campos usados para identificar e extrair o cliente","SelectAuthType":"Selecione o tipo de autenticação","CustomUrlPlaceholder":"Digite a URL para a qual a solicitação será enviada","InstagramIdProvidersInfo":"Selecione os campos dos quais o ID do Instagram será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","MessengerIdProvidersInfo":"Selecione os campos dos quais o ID do Messenger será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","Customer":"Cliente","CREATE_UPDATE_CLIENT":"Criar/Atualizar cliente","CreateUpdateClient":"Criar/Atualizar cliente","clientUpdateFields":"Selecione os campos do cliente para atualizar","SetClientUpdateFields":"Configurar campos do cliente","ClientUpdateFieldsInfo":"Deixe um campo em branco para manter o valor atual. Use {{context.field}} para puxar um valor de uma etapa anterior.","ValueOrContextField":"Valor ou {{context.field}}","firstName":"Nome","lastName":"Sobrenome","phone":"Telefone","email":"E-mail","FetchStatusSuccess":"Sucesso","FetchStatusNotFound":"Não encontrado","FetchStatusError":"Erro","FetchStatusException":"Exceção","SomOfYourFieldsIsACountryCode":"Alguns dos seus campos são um código de país?","CountryCodeProvidersInfo":"Selecione os campos dos quais o código do país será extraído para ajustar os números de telefone de acordo com o país. Isso é útil se você tem uma loja internacional e seus campos de número de telefone não incluem o código do país. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","countryCodeProviders":"Provedores de código de país"}');
+const Portuguese_createAutomation_namespaceObject = /*#__PURE__*/JSON.parse('{"NewAutomation":"Nova Automação","NewAutomationD":"Crie fluxos de mensagens automatizadas para interagir proativamente com seus clientes","Automation":"Automação","Parameters":"Parâmetros","Review":"Revisão","NameInput":"Dê um nome à sua automação para poder identificá-la","AutomationSelection":"Escolha o tipo de automação que deseja criar","ABANDONED_CHECKOUTS_RECOVERY":"Recuperação de carrinhos abandonados","ABANDONED_CHECKOUTS_RECOVERYD":"Envie uma mensagem pelo WhatsApp aos clientes que não finalizaram a compra para recuperá-los","NextStep":"Próximo","GoBack":"Voltar","TimePeriodPickerInput":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após:","MINUTES":"minutos","HOURS":"horas","DAYS":"dias","WhatsAppAccountIdSelection":"Selecione o número do WhatsApp a partir do qual deseja enviar as mensagens","WhatsAppTemplateSelection":"Selecione o modelo do WhatsApp que deseja enviar","AbandonedCheckoutReviewPrompt":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após {{timeAgo.amount}} {{timeAgo.unit}} do número {{whatsAppAccount.displayPhone}}, contendo o modelo {{whatsAppTemplate.name}}","CreateAutomation":"Criar automação","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","ConfirmationReplyPrompt":"Resposta de Confirmação (apenas para modelos que incluem o botão \\"Confirmar\\")","CancellationReplyPrompt":"Resposta de Cancelamento (apenas para modelos que incluem o botão \\"Cancelar\\")","FollowUpsPrompt":"Mensagens de acompanhamento","FollowUp":"Acompanhamento","FollowUps":"Acompanhamentos","FollowUpsWaitTimePrompt":"Enviar após:","CancelOrderOnSendPrompt":"Marcar pedido como \\"Cancelado\\" ao enviar","AddFollowUp":"Adicionar acompanhamento","Cancel":"Cancelar","UpdateAutomation":"Atualizar automação","AutomationStatus":"Status da automação","LandingAgentNameHelp":"Se você marcar esta opção, poderá selecionar um agente de IA que atenderá a conversa após o envio da mensagem automatizada.","FollowUpsHelp":"Se você marcar esta opção, poderá adicionar mensagens de acompanhamento programadas que serão enviadas após a mensagem automatizada inicial.","Trigger":"Gatilho","Action":"Ação","ABANDONED_CHECKOUT":"Carrinho abandonado","FULFILLMENT_TRACKING_INFO_UPDATE":"Atualização de informações de rastreamento de pedido","ORDER_CREATE":"Criação de pedido","WORDPRESS_ORDER_CREATE":"Criação de pedido (WordPress)","WORDPRESS_ABANDONED_CHECKOUT":"Carrinho abandonado (WordPress)","SEND_WHATSAPP_MESSAGE":"Enviar mensagem pelo WhatsApp","IF_CONDITION":"Condição","ADD_TAG_TO_ORDER_IN_SHOPIFY":"Adicionar tag ao pedido no Shopify","FETCH_INFO_FROM_SHOPIFY":"Buscar informações do Shopify","FETCH_INFO_FROM_WORDPRESS":"Buscar informações do WordPress","WAIT":"Esperar","Save":"Salvar","Collapse":"Recolher","Expand":"Expandir","Triggers":"Gatilhos","Actions":"Ações","Loading":"Carregando...","EditNodeName":"Editar nome do nó","NodeNamePlaceholder":"Nome do nó","whatsAppAccountId":"Selecione o número do WhatsApp a partir do qual deseja enviar as mensagens","SelectAccountPlaceholder":"Selecione uma conta","whatsAppTemplate":"Selecione o modelo do WhatsApp que deseja enviar","landingAgentName":"Selecione o agente de IA que continuará a conversa","timeAgo":"Quando um carrinho for abandonado, uma mensagem de recuperação será enviada após:","validPaymentGatewayNames":"Limitar o mensagem aos seguintes métodos de pagamento","confirmationReply":"Resposta de Confirmação (apenas para modelos que incluem o botão \\"Confirmar\\")","cancellationReply":"Resposta de Cancelamento (apenas para modelos que incluem o botão \\"Cancelar\\")","DefaultAgent":"Agente Padrão","ChooseAgent":"Escolher Agente","WithoutValue":"Sem Valor","UseX":"Usar {{x}}","ChooseValidPaymentMethods":"Escolher métodos de pagamento válidos","WriteConfirmationReply":"Escrever resposta de confirmação","WriteCancellationReply":"Escrever resposta de cancelamento","UseTemplate":"Usar um modelo","UseTemplateD":"Comece rapidamente com automações pré-definidas e testadas","CreateCustom":"Criar do zero","CreateCustomD":"Desenhe sua própria automação arrastando gatilhos e ações","TemplatesAvailable":"modelos","True":"Verdadeiro","False":"Falso","FieldPlaceholder":"Campo a ser avaliado","ValuePlaceholder":"Valor para comparar","Conditions":"Condições","AddCondition":"Adicionar condição","LogicalOperator":"Operador lógico","OperatorEquals":"Igual a","OperatorNotEquals":"Diferente de","OperatorGreaterThan":"Maior que","OperatorLessThan":"Menor que","OperatorGreaterThanOrEquals":"Maior ou igual a","OperatorLessThanOrEquals":"Menor ou igual a","OperatorIsEmpty":"Está vazio","OperatorIsNotEmpty":"Não está vazio","OperatorIsAtLeastOneOf":"É um dos","OperatorIsNotAnyOf":"Não é nenhum dos","AutomationSaved":"Automação salva com sucesso!","SendSuccess":"Envio bem-sucedido","SendError":"Erro ao enviar","DeliverySuccess":"Entrega bem-sucedida","DeliveryError":"Erro de entrega","Sale":"Venda","ShopifyCodOrderConfirm":"Confirmação de pedido","ShopifyCodOrderCancel":"Cancelamento de pedido","Skip":"Pular","waitTime":"Tempo de espera","tags":"Tags","fieldToExtractOrderId":"Campo para extrair o ID do pedido","SelectFieldPlaceholder":"Selecione um campo","RAW":"Valor bruto","FIELD":"Valor do campo","fieldToExtractEntityId":"Campo para extrair o ID da entidade","entityType":"Tipo de entidade","SelectEntityTypePlaceholder":"Selecione um tipo de entidade","AbandonedCheckout":"Carrinho abandonado","Order":"Pedido","Product":"Produto","Read":"Leitura","QuickReply":"Resposta rápida","SearchProducts":"Buscar produtos","SearchVariants":"Buscar variantes","REPURCHASE_FOLLOW_UP":"Rastreamento de recompra","REPURCHASE_FOLLOW_UPD":"Enviar uma mensagem de WhatsApp para clientes que compraram um produto específico após um tempo esperado de duração do produto para recompra.","ON_CONVERSATION_CLOSED":"Ao fechar a conversa","CONVERSATION_CLOSED_MESSAGE":"Mensagem de conversa fechada","CONVERSATION_CLOSED_MESSAGED":"Enviar uma mensagem de WhatsApp quando a conversa for fechada no wizybot","triggerId":"ID do gatilho","bearerTokenHash":"Token de autenticação Bearer","bearerTokenLast4":"Últimos 4 caracteres do token Bearer","tokenRotatedAt":"Data de rotação do token","bodyStructure":"Estrutura esperada do corpo JSON","whatsAppNumberProviders":"Provedores de números do telefone","GenerateUUID":"Gerar identificador","GenerateToken":"Gerar token","TokenGenerated":"Token gerado","CopyTokenWarning":"¡Importante! Copie este token ahora. Solo podrá verlo y copiarlo en esta ventana. Si lo pierde, tendrá que generar uno nuevo.","CUSTOM_WEBHOOK":"Webhook personalizado","CopyToken":"Copiar token","JsonSchema":"Esquema JSON (as validações usarão este esquema)","SelectFields":"Selecionar campos","TriggerIdPlaceholder":"Aqui irá o ID do gatilho gerado para seu webhook.","PleaseGenerateTriggerIdFirst":"Por favor, gere o ID do gatilho primeiro","TokenCopied":"Token copiado para a área de transferência!","UUIDInfo":"Este ID será o que você deve usar para fazer a solicitação HTTP e enviar webhooks. A URL deve ser algo como:","InvalidJsonExample":"O JSON de exemplo não é válido.","JsonSchemaEditable":"// O esquema JSON editável aparecerá aqui depois de você colar um exemplo de JSON","PasteJsonExample":"// Cole aqui um exemplo de JSON do corpo que você espera receber no webhook para gerar o esquema JSON para as validações","BearerTokenInfo":"Este token deve ser anexado em um header chamado \\"Authorization\\" e o valor deve ser: Bearer seguido do token gerado, algo como: ","TokenExample":"Authorization: Bearer [Seu token aqui]","SomeOfYourFieldsIsAPhoneNumber":"¿Alguns dos seus campos são números de telefone?","SCHEDULE_NEXT_ACTIONS":"Programar próximas ações","anchorDate":"Data de referência","FixedDate":"Data fixa","FromField":"A partir do campo","timeOffset":"Deslocamento de tempo","fixedHour":"Hora fixa","ProgramAtFixedHour":"Programar para hora fixa","FixedHourTimezoneInfo":"A hora será considerada de acordo com o fuso horário da loja:","FixedHourTimezoneMessage":"A hora selecionada será ajustada automaticamente para UTC para execução.","SelectDateFields":"Selecione os campos de data","DateFieldsInfo":"Esses campos serão tratados como datas e convertidos para UTC.","SelectTimezonePlaceholder":"Selecione o fuso horário","TimezoneInfo":"O fuso horário será usado para converter datas sem informação de fuso horário para UTC (selecione o fuso horário das suas datas).","SomeOfYourFieldsIsADate":"Alguns dos seus campos são datas?","dateFields":"Campos de data","defaultTimezone":"Fuso horário padrão","WhatsAppNumberProvidersInfo":"Selecione os campos dos quais o número de telefone será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade será a ordem em que você os escolher.","ManualPhoneNumber":"Número de telefone manual","DynamicFields":"Campos dinâmicos","EnterPhoneNumber":"Digite o número de telefone para o qual a mensagem será enviada","PhoneNumberManualInfo":"Se você deseja enviar a mensagem para um número de telefone fixo em vez de extraí-lo dos dados, pode inseri-lo aqui.","isSaleIntentMessage":"Esta mensagem tem a intenção de fechar uma venda?","isPaymentRequestMessage":"Esta mensagem tem a intenção de solicitar uma foto de comprovante de pagamento?","Yes":"Sim","No":"Não","ChannelIdPlaceholder":"Selecione o canal","SEND_INSTAGRAM_MESSAGE":"Enviar mensagem de Instagram","instagramIdProviders":"Provedores de ID de Instagram","instagramAccountId":"Conta de Instagram","TemplateTypeInfo":"Para modelos Genéricos você pode adicionar uma imagem, mas seu texto será de no máximo 80 caracteres, em modelos de Botões você não pode adicionar uma imagem mas seu texto pode ser de até 540 caracteres.","templateType":"Tipo de modelo","GenericTemplate":"Genérico","ButtonTemplate":"De botões","SEND_MESSENGER_MESSAGE":"Enviar mensagem de Messenger","messengerAccountId":"Conta de Messenger","ShippingLineCodesPlaceholder":"Selecione códigos de linhas de envio","SetWaitTime":"Definir tempo de espera","url":"URL para enviar a solicitação","method":"Método HTTP","AddQueryParams":"Adicionar parâmetros de consulta","SetRequestBody":"Definir corpo da solicitação","SetRequestHeaders":"Definir cabeçalhos da solicitação","SelectHttpMethod":"Selecione o método HTTP","authType":"Tipo de autenticação","SetAuthConfig":"Definir configuração de autenticação","SetRequestTimeout":"Definir tempo de espera da solicitação","CUSTOM_HTTP_REQUEST":"Requisição HTTP personalizada","Key":"Chave","Value":"Valor","Add":"Adicionar","Remove":"Remover","HeadersInfo":"Os cabeçalhos geralmente são valores fixos, mas você também pode adicionar variáveis, se necessário. Digite {{ para adicionar uma variável.","BodyInfo":"O corpo da mensagem será enviado em formato JSON, mas você também pode adicionar variáveis, se desejar. Escreva {{ para adicionar uma variável.","ASSIGN_CLIENT_TO_FUNNEL_STAGE":"Atribuir cliente ao funil","SelectFunnel":"Selecionar funil...","SelectStage":"Selecionar etapa...","NoFunnels":"Ainda não há funis","clientIdProviders":"ID do cliente","funnelStageId":"Funil","ClientIdProvidersInfo":"Campos usados para identificar e extrair o cliente","SelectAuthType":"Selecione o tipo de autenticação","CustomUrlPlaceholder":"Digite a URL para a qual a solicitação será enviada","InstagramIdProvidersInfo":"Selecione os campos dos quais o ID do Instagram será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","MessengerIdProvidersInfo":"Selecione os campos dos quais o ID do Messenger será extraído para enviar a mensagem. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","Customer":"Cliente","CREATE_UPDATE_CLIENT":"Criar/Atualizar cliente","CreateUpdateClient":"Criar/Atualizar cliente","clientUpdateFields":"Selecione os campos do cliente para atualizar","SetClientUpdateFields":"Configurar campos do cliente","ClientUpdateFieldsInfo":"Deixe um campo em branco para manter o valor atual. Use {{context.field}} para puxar um valor de uma etapa anterior.","ValueOrContextField":"Valor ou {{context.field}}","firstName":"Nome","lastName":"Sobrenome","phone":"Telefone","email":"E-mail","FetchStatusSuccess":"Sucesso","FetchStatusNotFound":"Não encontrado","FetchStatusError":"Erro","FetchStatusException":"Exceção","SomOfYourFieldsIsACountryCode":"Alguns dos seus campos são um código de país?","CountryCodeProvidersInfo":"Selecione os campos dos quais o código do país será extraído para ajustar os números de telefone de acordo com o país. Isso é útil se você tem uma loja internacional e seus campos de número de telefone não incluem o código do país. Se você selecionar vários, a ordem de prioridade para extração será a ordem em que você os escolher.","countryCodeProviders":"Provedores de código de país","Pending":"Pendente","Paid":"Pago","ticketStatusId":"Status do ticket","name":"Nome","description":"Descrição","WriteTemplateWithVars":"Escreva o texto que você deseja e adicione variáveis se precisar.","AddVariable":"Adicionar variável","CREATE_TICKET":"Criar ticket","WithoutDepartments":"Sem departamentos","SelectDepartments":"Selecionar departamentos","WithoutTags":"Sem tags","SelectTags":"Selecionar tags","notifyViaEmail":"Notificar via email","ticketAdditionalFields":"Campos adicionais do ticket","SelectOption":"Selecione uma opção","SelectOrders":"Selecionar pedidos","SelectProducts":"Selecionar produtos","SelectField":"Selecione um campo","WriteNumberWithVars":"Escreva o número que deseja e adicione variáveis se precisar.","FixedValue":"Valor fixo","Field":"Campo dinâmico","DefaultValue":"Valor padrão","SelectTicketTags":"Selecione as tags do ticket"}');
 ;// CONCATENATED MODULE: ./src/translations/English/aiAgentAdmin.json
 const aiAgentAdmin_namespaceObject = /*#__PURE__*/JSON.parse('{"SyncDefaultAgent":"Sync public AI agents","SyncDefaultT":"Sync agents","SyncDefaultD":"You are about to sync all public AI agents with their definition in the code. Do you want to continue?","Ok":"Accept","Cancel":"Cancel","AgentType":"Agent Type","AgentName":"Agent Name","ShopDomain":"Shop Domain","Search":"Search","CreateAgent":"Create","CreateAgentT":"Create Agent","CreateAgentD":"Are you sure you want to create this agent?","DiscardChanges":"Discard","DiscardChangesT":"Discard Changes","DiscardChangesD":"Are you sure you want to discard all changes?","SaveChanges":"Save","SaveChangesT":"Save Changes","SaveChangesD":"Are you sure you want to save all changes?","DeleteAgent":"Delete","DeleteAgentT":"Delete Agent","DeleteAgentD":"Are you sure you want to delete this agent?","Default":"Default","Previous":"Previous","Next":"Next","Page":"Page","of":"of","Shop":"Shop","Description":"Description","Value":"Value","InitialPrompt":"Initial Prompt","StepParameters":"Step Parameters","Functions":"Functions","SelectAgentType":"Select Agent Type","SelectShopDomain":"Select Shop Domain","EnterAgentName":"Enter Agent Name","AddAgent":"+ Add Agent","DefaultFunctions":"Default Functions","CustomFunctions":"Custom Functions","SelectedFunctions":"Selected Functions","FunctionsEditor":"Functions Editor","AgentAlreadyExists":"Agent already exists","AddParameterButton":"Add","AddParameterValue":"Parameter Value","Required":"Required","ExpirationTime":"Expiration Time","Agents":"Agents","AgentsD":"Manage and configure your AI Agents","Filters":"Filters","AddFunction":"Add Function","SelectFunction":"Select or search function","NewFunctions":"New Functions","FollowUps":"Follow-ups","FollowUpTimeWindow":"Follow-up Time Window","StartTime":"Start Time (HH:MM)","EndTime":"End Time (HH:MM)","TimeWindowDescription":"Follow-ups will only be sent within this time window. Leave empty to send at any time.","FollowUpNumber":"Follow-up {{number}}","TimeFromLastResponse":"Time from last response (minutes)","FollowUpLogic":"Logic to determine if follow-up should be sent","FollowUpLogicPlaceholder":"// Write TypeScript code to determine if follow-up should be sent\\n// Return true to send the follow-up, false otherwise\\n// Available context: conversation, lastMessageTime, etc.","FollowUpPrompt":"Prompt to create follow-up message","FollowUpPromptPlaceholder":"Enter the prompt that will be used to generate the follow-up message...","AddNewFollowUp":"+ Add New Follow-up","DeleteFollowUp":"Delete Follow-up","BlockFollowUpsCascade":"Block subsequent follow-ups if this one is not sent","BlockFollowUpsCascadeDescription":"When enabled, if this follow-up is not sent (e.g., validation fails), all subsequent follow-ups will not be scheduled.","AgentLogicConfiguration":"Agent Logic Configuration","ConfigureShopLevelAgentLogic":"Configure shop-level agent logic","AgentChoosingLogic":"Choosing Logic","JavaScriptCode":"JavaScript Code","AgentChoosingLogicPlaceholder":"// Enter JavaScript code for agent choosing logic...","AgentChoosingLogicDescription":"This code determines which agent to use initially. It should return an agent name as a string.","AgentMessagingLogic":"Messaging Logic","AgentMessagingLogicPlaceholder":"// Enter JavaScript code for agent messaging logic...","AgentMessagingLogicDescription":"This code determines how the agent should respond to messages.","AgentClosingLogic":"Closing Agent","AgentClosingLogicPlaceholder":"// Enter JavaScript code for agent closing logic...","AgentClosingLogicDescription":"This code determines when and how to close a conversation.","EditFlowConfigurationAndLogic":"Edit flow configuration and logic","FlowName":"Flow Name","EnterFlowName":"Enter flow name...","AgentsInThisFlow":"Agents in this Flow","NoAgentsInThisFlow":"No agents in this flow yet","ClickAgentToEdit":"Click an agent to edit it","FlowContainsGlobalAgents":"This flow contains agents from the global view","CreateNewFlow":"Create New Flow","FlowNameRequired":"Flow Name *","AgentNameRequired":"Agent Name *","AgentTypeRequired":"Agent Type *","EnterDescription":"Enter description...","AgentNameAlreadyExists":"Agent name already exists","SearchPlaceholder":"Search...","GlobalLogicView":"Global Logic View","Flows":"Flows","NoResultsFound":"No results found","New":"NEW","Create":"Create","Creating":"Creating...","AddANewAgentFlow":"Add a new agent flow","AddANewAIAgent":"Add a new AI agent","GoToMainLogicConfiguration":"Go to main logic configuration","Home":"Home","Flow":"Flow","Agent":"Agent","SelectAgentToAdd":"Select an agent to add...","NoAgentsFoundInShop":"No agents found in shop. Create one first.","AllAgentsAlreadyInFlow":"All visible agents are already in this flow.","ImmediateExecution":"Immediate Execution","ImmediateExecutionDescription":"When enabled, the agent will process user input immediately without sending an initial message first","DefaultMessagePlaceholder":"Message when no option matches","Option":"Option","TriggersKeywords":"Triggers (keywords)","RegexPlaceholder":"e.g. \'^\\\\d+$\', \'\\\\b(option|choice)\\\\s+\\\\d+\\\\b\'","IncludesPlaceholder":"e.g. \'1\', \'option 1\', \'yes\'","TriggerEmptyError":"Trigger cannot be empty","RegexInvalidError":"Invalid regex pattern","TriggerNoMatchWarning":"This trigger doesn\'t match the initial prompt","MatchFound":"MATCH FOUND","NoMatch":"NO MATCH","Preview":"Preview:","MatchType":"Match Type","Contains":"Contains","RegularExpression":"Regular Expression","ContainsDescription":"Matches if the user input contains this text (case insensitive, ignores accents)","RegexDescription":"Matches using regular expression pattern. Example: \'^\\\\d+$\' for numbers only","Action":"Action","JumpToAgent":"Jump to Agent","CustomLogic":"Custom Logic","ActionConfiguration":"Action Configuration","AddNewOption":"+ Add New Option","Add":"Add","CreateFirstAgent":"Create Your First Agent","AddYourFirstAgentToStartBuildingYourFlow":"Add your first agent to start building this flow\'s automation","FunctionName":"Function Name","FunctionLogic":"Function Logic","Discard":"Discard","Save":"Save","DumbOptions":"Dumb Options","CreateNewAgent":"Create New Agent","LogicUpdatedSuccessfully":"Logic updated successfully","Success":"Success","FlowCreatedSuccessfully":"Flow created successfully","AgentCreatedSuccessfully":"Agent created successfully","AgentCreatedAndAddedToFlowSuccessfully":"Agent created and added to flow successfully","FlowDeletedSuccessfully":"Flow deleted successfully","FlowUpdatedSuccessfully":"Flow updated successfully","AgentUpdatedSuccessfully":"Agent updated successfully","DeleteFlow":"Delete","AreYouSureDeleteFlow":"Are you sure you want to delete this flow?","PasteAgent":"Paste","PasteAgentT":"Paste Agent","PasteAgentD":"Are you sure you want to paste the configuration from the clipboard? This will overwrite existing parameters.","CopyAgent":"Copy","CopyAgentT":"Copy Agent","CopyAgentD":"Are you sure you want to copy this agent\'s configuration to the clipboard?","DefaultMessage":"Default Message","AgentCopiedSuccessfully":"Agent configuration copied to clipboard","AgentPastedSuccessfully":"Agent parameters pasted from clipboard","AIFlows":"AI Flows","AIFLowsD":"Create AI flows to automate responses and actions.","FlowInfo":"Flow information","NoSelected":"Global Logic","ConfirmCopyAgentT":"Confirm Copy","ConfirmCopyAgentD":"Are you sure you want to copy the configuration of this agent?","ConfirmPasteAgentT":"Confirm Paste","ConfirmPasteAgentD":"Are you sure you want to paste the configuration? This will replace the current agent parameters.","Copy":"Copy","Paste":"Paste","TransferClientsTitle":"Transfer Clients","TransferClientsDescPrefix":"There are","TransferClientsDescMiddle":"clients currently associated with agent","TransferClientsDescInstruction":"Please select a new agent to transfer them to before deletion.","TransferClientsLabel":"Transfer to:","TransferClientsPlaceholder":"Select an agent...","TransferClientsConfirm":"Transfer & Delete","TransferClientsTransferring":"Transferring...","FlowCopiedToClipboard":"Flow configuration copied to clipboard","ConfirmPasteFlowT":"Confirm Paste Flow","ConfirmPasteFlowD":"Are you sure you want to paste the flow configuration? This will create a new flow (or update if naming matches) with all its agents."}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/aiAgentAdmin.json
@@ -14203,11 +14214,11 @@ const Spanish_departments_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/departments.json
 const Portuguese_departments_namespaceObject = /*#__PURE__*/JSON.parse('{"Filters":"Filtros","FiltersD":"Você pode procurar departamentos com base nos parâmetros listados abaixo.","Eg":"Ex: Nome, Descrição","Status":"Estado","Active":"Ativo","Inactive":"Inativo","Eg1":"Estado do departamento","Date":"Filtro por data","DateI":"Data inicial","DateF":"Data final","Apply":"Aplicar","Reset":"Redefinir","Departments":"Departamentos","DepartmentsD":"Explore todos os departamentos","Selected":"Selecionado","ReportDepartments":"Relatório de Departamentos","Name":"Nome","Description":"Descrição","CreateD":"Data de criação","UpdateD":"Data de atualização","AddDepartment":"Adicionar Departamento","AddDepartmentSubtitle":"Adicione as informações do departamento para criá-lo","DepartmentName":"Nome do Departamento","DepartmentNamePlaceholder":"Vendas, Contabilidade","DepartmentDescription":"Descrição do Departamento","DepartmentDescriptionPlaceholder":"Responsável por devoluções","CreateDepartment":"Criar Departamento","UpdateDepartment":"Atualizar Departamento","UpdateDepartmentSubtitle":"Adicione as informações do departamento para atualizá-lo","MissingFields":"Campos ausentes","AlreadyCreated":"Já existe","Delete":"Excluir","DeleteDepartmentTitle":"Excluir Departamento","DeleteDepartmentPrompt":"Tem certeza de que deseja excluir este departamento?","Add":"Adicionar","AddMember":"Adicionar membro","CurrentMembers":"Membros atuais","State":"Estado","AutomaticTicketRouting":"Roteamento automático de tickets","Update":"Atualizar","DeleteSI":"Excluir","DeleteSIT":"Excluir departamento","DeleteSIP":"Tem certeza de que deseja excluir este departamento?","Text":"Buscar","DepartmentInfo":"informações do departamento","TicketsAssing":"Bilhetes","Members":"Membros","SearchUsers":"Pesquisar usuários","NoMembers":"Nenhum membro atribuído"}');
 ;// CONCATENATED MODULE: ./src/translations/English/automationDetails.json
-const automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Automation Details","Name":"Name","PublicHandle":"Type","ABANDONED_CHECKOUTS_RECOVERY":"Abandoned Cart Recovery","SHOPIFY_FULFILLMENT_NOTIFICATION":"Fulfillment Notification","SHOPIFY_COD_ORDER_CONFIRMATION":"COD Order Confirmation","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Tracking Information Notification","ORDER_CREATE_FOLLOW_UP":"Order Creation Follow-Up","WHATSAPP_OUTBOUND_CAMPAIGN":"Masive WhatsApp Campaign","State":"State","Inactive":"Inactive","Active":"Active","TimeAgo":"Wait Time","WhatsAppNumber":"WhatsApp Number","WhatsAppTemplateName":"WhatsApp Template","Delete":"Delete","Update":"Update","DeleteSuccess":"Deletion Successful","DeleteSuccessD":"The automation has been successfully deleted","DeleteError":"Deletion Error","DeleteErrorD":"There was an error deleting the automation","DeleteConfirm":"Confirmation","DeleteConfirmD":"Are you sure you want to delete this automation?","Confirm":"Confirm","Return":"Return","Configuration":"Configuration","Metrics":"Metrics","Records":"Records","AbandonedCheckoutsCount":"Abandoned Carts Considered","FulfillmentsCount":"Fulfillments considered","CodOrdersCount":"COD Orders considered","SendSuccessCount":"Successfully Sent Messages","SendErrorCount":"Message Sending Errors","DeliverySuccessCount":"Successfully Delivered Messages","DeliveryErrorCount":"Message Delivery Errors","ReadCount":"Read Messages","TotalMessageCost":"Total Cost","ShopifyCodOrderConfirmedCount":"Confirmed orders","ShopifyCodOrderCancelledCount":"Cancelled orders","SaleCount":"Recorded Sales","TotalSalesPrice":"Total Sales Value","AbandonedCheckout":"Abandoned Cart","LastAction":"Last Action","SendWhatsAppMessage":"Sending WhatsApp Message","Events":"Events","Products":"Products","SEND_SUCCESS":"SENT","SEND_ERROR":"SENDING ERROR","DELIVERY_SUCCESS":"DELIVERED","DELIVERY_ERROR":"DELIVERY ERROR","READ":"READ","SALE":"SALE","SHOPIFY_COD_ORDER_CANCEL":"ORDER CANCELLED","SHOPIFY_COD_ORDER_CONFIRM":"ORDER CONFIRMED","WhatsAppMessage":"WhatsApp Message","MessageCost":"Cost","SaleOrderNumber":"Order Number","SalePrice":"Sale Price","FulfillmentName":"Fulfillment","CODOrder":"COD Order","OrdersCount":"Orders considered","PaymentGatewayNames":"Payment methods","Order":"Order","OrderNumber":"Order Number","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","FollowUp":"Follow-up","ClientSelection":"Client Selection","Triggers":"Triggers","Actions":"Actions","SendDate":"Send Date","OnTheHour":"On the hour","HalfPast":"Half past","SuperClientTags":"Client Tags","CampaignAlreadySent":"The campaign has already been sent, you cannot modify the tags.","GeneralInfo":"General information","MINUTES":"Minutes","HOURS":"Hours","DAYS":"Days","SECONDS":"Seconds","ConfirmationReply":"Confirmation reply","CancellationReply":"Cancellation reply","SendHour":"Send hour","Yes":"Yes","No":"No","LandingAgent":"AI Agent that continues the conversation","ViewMetrics":"View metrics","Edit":"Edit","TotalClients":"Total clients (estimated)","MetricsAndRecords":"Metrics and Records","SelectDateRange":"Select date range","ROIMultiple":"ROI (Cost / Sales)","NotEnoughDataForTimeline":"Not enough data to display the timeline","NoMetricsAvailable":"No metrics available to display.","NotAvailable":"Not available","SKIPPED_NON_AI_OPEN_CLIENT":"Skipped message because client state is open and assigned to human agent","SkippedMessagesCount":"Skipped Messages Count","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Message skipped because the client has opted out of marketing messages on WhatsApp","SKIP":"SKIPPED","Segments":"Segments","SendWhatsappMessageActions":"Send WhatsApp message actions","WaitActions":"Wait actions","TotalExecutions":"Total Executions","PendingExecutions":"Pending Executions","IfConditionActions":"Condition actions","TrueExecutions":"Executions where condition was true","FalseExecutions":"Executions where condition was false","Activate":"Activate","Deactivate":"Deactivate","DeleteAutomationTitle":"Delete Automation","DeleteAutomationPrompt":"Are you sure you want to delete this automation? This action cannot be undone.","Cancel":"Cancel","NoMetricsForThisAction":"No metrics available for this action","TryAnotherActionOrDate":"Try selecting another action or date range","NoAction":"None","QUICK_REPLY":"QUICK REPLY","WaitCompleted":"Wait completed","WaitScheduled":"Wait scheduled","WaitStarted":"Wait started","Wait":"Wait","ConditionResults":"Condition results","True":"True","False":"False","IfCondition":"Condition","ExecutionStartedAt":"Execution started at","ScheduledFor":"Scheduled for","ExecutionCompletedAt":"Execution completed at","ConditionResult":"Condition result","AddTagToOrder":"Tag added to order","TaggedOrderId":"Tagged order ID","TaggingStatus":"Tagging status","TaggingDate":"Tagging date: ","SUCCESS":"SUCCESS","ERROR":"ERROR","SHOPIFY_ERROR":"SHOPIFY ERROR","EXCEPTION":"EXCEPTION","AddTagToOrderActions":"Add tag to order in Shopify actions","TotalOrdersTagged":"Total orders tagged","QuickReplyEvents":"Quick reply events","FetchInfoFromShopify":"Fetch info from Shopify","EntityType":"Entity type","ABANDONED_CHECKOUT":"Abandoned Checkout","ORDER":"Order","PRODUCT":"Product","FetchStatus":"Fetch status","FetchedEntityId":"Fetched entity ID","FetchedAt":"Fetched at","FetchInfoFromShopifyActions":"Fetch info from Shopify actions","FetchInfoFromWordPress":"Fetch info from WordPress","FetchInfoFromWordPressActions":"Fetch info from WordPress actions","TotalEntitiesFetched":"Total entities fetched","View":"View","ConversationClosed":"Conversation Closed","ScheduleNextActions":"Schedule next actions","CustomWebhook":"Webhook received","ScheduleNextActionsCompleted":"Shcedule next actions completed","ScheduleNextActionsScheduled":"Schedule next actions scheduled","ScheduleNextActionsAnchorDate":"Anchor date for scheduling next actions","AnchorDateResolved":"Anchor date resolved","PAYMENT_VERIFIED":"PAYMENT VERIFIED","PaymentVerifiedCount":"Payment verified count","SendInstagramMessageActions":"Send Instagram message actions","InstagramMessage":"Instagram Message","InstagramId":"Instagram ID","POSTBACK_REPLY":"POSTBACK REPLY","PostBackReplyEvents":"Postback reply events","SendMessengerMessageActions":"Send Messenger message actions","MessengerMessage":"Messenger Message","MessengerId":"Messenger ID","NoRecordsAvailable":"No records available to display.","CustomHttpRequestActions":"Custom HTTP Request actions","SuccessRequestsCount":"Successful requests count","FailedRequestsCount":"Failed requests count","CustomHttpRequest":"Custom HTTP Request","StatusCode":"Status code","RequestUrl":"Request URL","Method":"Method","Success":"Success","RequestBody":"Request Body","DurationMs":"Duration (ms)","AssignClientToFunnelStage":"Assign Client to Funnel","AssignClientToFunnelStageActions":"Assign Client to Funnel Stage Actions","MoveSuccess":"Moves successful","MoveError":"Move failed","SkippedMoves":"Skipped moves","MOVE_SUCCESS":"Move successful","MOVE_ERROR":"Move failed","SKIPPED_MOVE":"Skipped move","ClientId":"Client ID","SuperClientId":"Super Client ID","FunnelStage":"Funnel stage","FilterRecords":"Filter records","All":"All","Error":"Error","StartDate":"Start date","EndDate":"End date","EventType":"Event type","PostBackText":"Postback text","QuickReplyText":"Quick reply text","ActionType":"Action type","FulfillmentTrackingInfoUpdate":"Fulfillment tracking info update","CUSTOMER":"Customer","CreateUpdateClientActions":"Client Creation/Update Actions","CreateUpdateClient":"Create/Update Client","SUCCEEDED":"Succeeded","FAILED":"Failed","SKIPPED":"Skipped","Succeeded":"Succeeded","Failed":"Failed","Skipped":"Skipped"}');
+const automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Automation Details","Name":"Name","PublicHandle":"Type","ABANDONED_CHECKOUTS_RECOVERY":"Abandoned Cart Recovery","SHOPIFY_FULFILLMENT_NOTIFICATION":"Fulfillment Notification","SHOPIFY_COD_ORDER_CONFIRMATION":"COD Order Confirmation","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Tracking Information Notification","ORDER_CREATE_FOLLOW_UP":"Order Creation Follow-Up","WHATSAPP_OUTBOUND_CAMPAIGN":"Masive WhatsApp Campaign","State":"State","Inactive":"Inactive","Active":"Active","TimeAgo":"Wait Time","WhatsAppNumber":"WhatsApp Number","WhatsAppTemplateName":"WhatsApp Template","Delete":"Delete","Update":"Update","DeleteSuccess":"Deletion Successful","DeleteSuccessD":"The automation has been successfully deleted","DeleteError":"Deletion Error","DeleteErrorD":"There was an error deleting the automation","DeleteConfirm":"Confirmation","DeleteConfirmD":"Are you sure you want to delete this automation?","Confirm":"Confirm","Return":"Return","Configuration":"Configuration","Metrics":"Metrics","Records":"Records","AbandonedCheckoutsCount":"Abandoned Carts Considered","FulfillmentsCount":"Fulfillments considered","CodOrdersCount":"COD Orders considered","SendSuccessCount":"Successfully Sent Messages","SendErrorCount":"Message Sending Errors","DeliverySuccessCount":"Successfully Delivered Messages","DeliveryErrorCount":"Message Delivery Errors","ReadCount":"Read Messages","TotalMessageCost":"Total Cost","ShopifyCodOrderConfirmedCount":"Confirmed orders","ShopifyCodOrderCancelledCount":"Cancelled orders","SaleCount":"Recorded Sales","TotalSalesPrice":"Total Sales Value","AbandonedCheckout":"Abandoned Cart","LastAction":"Last Action","SendWhatsAppMessage":"Sending WhatsApp Message","Events":"Events","Products":"Products","SEND_SUCCESS":"SENT","SEND_ERROR":"SENDING ERROR","DELIVERY_SUCCESS":"DELIVERED","DELIVERY_ERROR":"DELIVERY ERROR","READ":"READ","SALE":"SALE","SHOPIFY_COD_ORDER_CANCEL":"ORDER CANCELLED","SHOPIFY_COD_ORDER_CONFIRM":"ORDER CONFIRMED","WhatsAppMessage":"WhatsApp Message","MessageCost":"Cost","SaleOrderNumber":"Order Number","SalePrice":"Sale Price","FulfillmentName":"Fulfillment","CODOrder":"COD Order","OrdersCount":"Orders considered","PaymentGatewayNames":"Payment methods","Order":"Order","OrderNumber":"Order Number","ChooseLandingAgentName":"Choose AI Agent that will follow the conversation","FollowUp":"Follow-up","ClientSelection":"Client Selection","Triggers":"Triggers","Actions":"Actions","SendDate":"Send Date","OnTheHour":"On the hour","HalfPast":"Half past","SuperClientTags":"Client Tags","CampaignAlreadySent":"The campaign has already been sent, you cannot modify the tags.","GeneralInfo":"General information","MINUTES":"Minutes","HOURS":"Hours","DAYS":"Days","SECONDS":"Seconds","ConfirmationReply":"Confirmation reply","CancellationReply":"Cancellation reply","SendHour":"Send hour","Yes":"Yes","No":"No","LandingAgent":"AI Agent that continues the conversation","ViewMetrics":"View metrics","Edit":"Edit","TotalClients":"Total clients (estimated)","MetricsAndRecords":"Metrics and Records","SelectDateRange":"Select date range","ROIMultiple":"ROI (Cost / Sales)","NotEnoughDataForTimeline":"Not enough data to display the timeline","NoMetricsAvailable":"No metrics available to display.","NotAvailable":"Not available","SKIPPED_NON_AI_OPEN_CLIENT":"Skipped message because client state is open and assigned to human agent","SkippedMessagesCount":"Skipped Messages Count","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Message skipped because the client has opted out of marketing messages on WhatsApp","SKIP":"SKIPPED","Segments":"Segments","SendWhatsappMessageActions":"Send WhatsApp message actions","WaitActions":"Wait actions","TotalExecutions":"Total Executions","PendingExecutions":"Pending Executions","IfConditionActions":"Condition actions","TrueExecutions":"Executions where condition was true","FalseExecutions":"Executions where condition was false","Activate":"Activate","Deactivate":"Deactivate","DeleteAutomationTitle":"Delete Automation","DeleteAutomationPrompt":"Are you sure you want to delete this automation? This action cannot be undone.","Cancel":"Cancel","NoMetricsForThisAction":"No metrics available for this action","TryAnotherActionOrDate":"Try selecting another action or date range","NoAction":"None","QUICK_REPLY":"QUICK REPLY","WaitCompleted":"Wait completed","WaitScheduled":"Wait scheduled","WaitStarted":"Wait started","Wait":"Wait","ConditionResults":"Condition results","True":"True","False":"False","IfCondition":"Condition","ExecutionStartedAt":"Execution started at","ScheduledFor":"Scheduled for","ExecutionCompletedAt":"Execution completed at","ConditionResult":"Condition result","AddTagToOrder":"Tag added to order","TaggedOrderId":"Tagged order ID","TaggingStatus":"Tagging status","TaggingDate":"Tagging date: ","SUCCESS":"SUCCESS","ERROR":"ERROR","SHOPIFY_ERROR":"SHOPIFY ERROR","EXCEPTION":"EXCEPTION","AddTagToOrderActions":"Add tag to order in Shopify actions","TotalOrdersTagged":"Total orders tagged","QuickReplyEvents":"Quick reply events","FetchInfoFromShopify":"Fetch info from Shopify","EntityType":"Entity type","ABANDONED_CHECKOUT":"Abandoned Checkout","ORDER":"Order","PRODUCT":"Product","FetchStatus":"Fetch status","FetchedEntityId":"Fetched entity ID","FetchedAt":"Fetched at","FetchInfoFromShopifyActions":"Fetch info from Shopify actions","FetchInfoFromWordPress":"Fetch info from WordPress","FetchInfoFromWordPressActions":"Fetch info from WordPress actions","TotalEntitiesFetched":"Total entities fetched","View":"View","ConversationClosed":"Conversation Closed","ScheduleNextActions":"Schedule next actions","CustomWebhook":"Webhook received","ScheduleNextActionsCompleted":"Shcedule next actions completed","ScheduleNextActionsScheduled":"Schedule next actions scheduled","ScheduleNextActionsAnchorDate":"Anchor date for scheduling next actions","AnchorDateResolved":"Anchor date resolved","PAYMENT_VERIFIED":"PAYMENT VERIFIED","PaymentVerifiedCount":"Payment verified count","SendInstagramMessageActions":"Send Instagram message actions","InstagramMessage":"Instagram Message","InstagramId":"Instagram ID","POSTBACK_REPLY":"POSTBACK REPLY","PostBackReplyEvents":"Postback reply events","SendMessengerMessageActions":"Send Messenger message actions","MessengerMessage":"Messenger Message","MessengerId":"Messenger ID","NoRecordsAvailable":"No records available to display.","CustomHttpRequestActions":"Custom HTTP Request actions","SuccessRequestsCount":"Successful requests count","FailedRequestsCount":"Failed requests count","CustomHttpRequest":"Custom HTTP Request","StatusCode":"Status code","RequestUrl":"Request URL","Method":"Method","Success":"Success","RequestBody":"Request Body","DurationMs":"Duration (ms)","AssignClientToFunnelStage":"Assign Client to Funnel","AssignClientToFunnelStageActions":"Assign Client to Funnel Stage Actions","MoveSuccess":"Moves successful","MoveError":"Move failed","SkippedMoves":"Skipped moves","MOVE_SUCCESS":"Move successful","MOVE_ERROR":"Move failed","SKIPPED_MOVE":"Skipped move","ClientId":"Client ID","SuperClientId":"Super Client ID","FunnelStage":"Funnel stage","FilterRecords":"Filter records","All":"All","Error":"Error","StartDate":"Start date","EndDate":"End date","EventType":"Event type","PostBackText":"Postback text","QuickReplyText":"Quick reply text","ActionType":"Action type","FulfillmentTrackingInfoUpdate":"Fulfillment tracking info update","CUSTOMER":"Customer","CreateUpdateClientActions":"Client Creation/Update Actions","CreateUpdateClient":"Create/Update Client","SUCCEEDED":"Succeeded","FAILED":"Failed","SKIPPED":"Skipped","Succeeded":"Succeeded","Failed":"Failed","Skipped":"Skipped","CreateTicketActions":"Create ticket actions","CreatedTickets":"Created tickets","ErroredTickets":"Errored ticket","CreateTicket":"Create ticket","TicketId":"Ticket ID","Departments":"Departments","Tags":"Tags","TicketName":"Ticket name","TicketDescription":"Ticket description","NotifiedViaEmail":"Notified via email"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/automationDetails.json
-const Spanish_automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Detalles de la automatización","Name":"Nombre","PublicHandle":"Tipo","ABANDONED_CHECKOUTS_RECOVERY":"Recuperación de carritos abandonados","SHOPIFY_FULFILLMENT_NOTIFICATION":"Notificación de Fulfillment","SHOPIFY_COD_ORDER_CONFIRMATION":"Confirmación de ordenes contraentrega","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Notificación de información de seguimiento","ORDER_CREATE_FOLLOW_UP":"Notificación de creación de orden","WHATSAPP_OUTBOUND_CAMPAIGN":"Campaña masiva de WhatsApp","State":"Estado","Inactive":"Desactivado","Active":"Activado","TimeAgo":"Tiempo de espera","WhatsAppNumber":"Número de WhatsApp","WhatsAppTemplateName":"Plantilla de WhatsApp","Delete":"Eliminar","Update":"Actualizar","DeleteSuccess":"Eliminación exitosa","DeleteSuccessD":"La automatización ha sido eliminada exitosamente","DeleteError":"Error en la eliminación","DeleteErrorD":"Hubo un error eliminando la eliminación","DeleteConfirm":"Confirmación","DeleteConfirmD":"¿Está seguro de que desea eliminar esta automatización?","Confirm":"Confirmar","Return":"Volver","Configuration":"Configuración","Metrics":"Métricas","Records":"Registros","AbandonedCheckoutsCount":"Carritos abandonados considerados","FulfillmentsCount":"Fulfillments considerados","CodOrdersCount":"Ordenes contraentrega consideradas","SendSuccessCount":"Mensajes enviados exitosamente","SendErrorCount":"Mensajes con error en envío","DeliverySuccessCount":"Mensajes entregados exitosamente","DeliveryErrorCount":"Mensajes con error en entrega","ReadCount":"Mensajes leídos","TotalMessageCost":"Costo acumulado","SaleCount":"Ventas registradas","TotalSalesPrice":"Valor total en ventas","ShopifyCodOrderConfirmedCount":"Ordenes confirmadas","ShopifyCodOrderCancelledCount":"Ordenes canceladas","AbandonedCheckout":"Carrito abandonado","LastAction":"Última acción","SendWhatsAppMessage":"Envío de mensaje de WhatsApp","Events":"Eventos","Products":"Productos","SEND_SUCCESS":"ENVIADO","SEND_ERROR":"ERROR DE ENVIO","DELIVERY_SUCCESS":"ENTREGADO","DELIVERY_ERROR":"ERROR EN ENTREGA","READ":"LEÍDO","SALE":"VENTA","SHOPIFY_COD_ORDER_CANCEL":"ORDER CANCELADA","SHOPIFY_COD_ORDER_CONFIRM":"ORDER CONFIRMADA","WhatsAppMessage":"Mensaje de WhatsApp","MessageCost":"Costo","SaleOrderNumber":"No. de orden","SalePrice":"Precio de venta","FulfillmentName":"Fulfillment","CODOrder":"Orden contraentrega","OrdersCount":"Ordenes consideradas","PaymentGatewayNames":"Métodos de pago","Order":"Orden","OrderNumber":"Número de orden","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","FollowUp":"Seguimiento","ClientSelection":"Selección de cliente","Triggers":"Disparadores","Actions":"Acciones","SendDate":"Fecha de envío","OnTheHour":"En punto","HalfPast":"Y media","SuperClientTags":"Etiquetas de clientes","CampaignAlreadySent":"La campaña ya fue enviada, no puedes modificar las etiquetas.","GeneralInfo":"Información general","MINUTES":"Minutos","HOURS":"Horas","DAYS":"Días","SECONDS":"Segundos","ConfirmationReply":"Respuesta de confirmación","CancellationReply":"Respuesta de cancelación","SendHour":"Hora de envío","Yes":"Sí","No":"No","LandingAgent":"Agente de IA que continúa la conversación","ViewMetrics":"Ver métricas","Edit":"Editar","TotalClients":"Total de clientes (estimados)","MetricsAndRecords":"Métricas y registros","SelectDateRange":"Seleccionar rango de fechas","ROIMultiple":"Múltiplo de ROI (Costo / Ventas)","NotEnoughDataForTimeline":"No hay suficientes datos para mostrar la línea de tiempo","NoMetricsAvailable":"No hay métricas disponibles para mostrar.","NotAvailable":"No disponible","SKIPPED_NON_AI_OPEN_CLIENT":"Mensaje omitido porque el estado del cliente está abierto y asignado a un agente humano","SkippedMessagesCount":"Cantidad de mensajes omitidos","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Mensaje omitido porque el cliente optó por no recibir mensajes de marketing en WhatsApp","SKIP":"OMITIDO","Segments":"Segmentos","SendWhatsappMessageActions":"Acciones de envío de mensaje de WhatsApp","WaitActions":"Acciones de espera","TotalExecutions":"Total de ejecuciones","PendingExecutions":"Ejecuciones pendientes","IfConditionActions":"Acciones de condición","TrueExecutions":"Ejecuciones donde la condición fue verdadera","FalseExecutions":"Ejecuciones donde la condición fue falsa","Activate":"Activar","Deactivate":"Desactivar","DeleteAutomationTitle":"Eliminar automatización","DeleteAutomationPrompt":"¿Estás seguro de que deseas eliminar esta automatización? Esta acción no se puede deshacer.","Cancel":"Cancelar","NoMetricsForThisAction":"No hay métricas disponibles para esta acción","TryAnotherActionOrDate":"Intenta seleccionar otra acción o rango de fechas","NoAction":"Ninguna","QUICK_REPLY":"RESPUESTA RÁPIDA","WaitCompleted":"Espera completada","WaitScheduled":"Espera programada","WaitStarted":"Espera iniciada","Wait":"Espera","ConditionResults":"Resultados de la condición","True":"Verdadero","False":"Falso","IfCondition":"Condición","ExecutionStartedAt":"Ejecución iniciada el","ScheduledFor":"Programada para","ExecutionCompletedAt":"Ejecución completada el","ConditionResult":"Resultado de la condición","AddTagToOrder":"Etiqueta añadida al pedido: ","TaggedOrderId":"ID de pedido etiquetado","TaggingStatus":"Estado del etiquetado","TaggingDate":"Fecha del etiquetado","SUCCESS":"ÉXITO","ERROR":"ERROR","SHOPIFY_ERROR":"ERROR DE SHOPIFY","EXCEPTION":"EXCEPCIÓN","AddTagToOrderActions":"Acciones de añadir etiqueta a pedido en Shopify","TotalOrdersTagged":"Total de pedidos etiquetados","QuickReplyEvents":"Eventos de respuesta rápida","FetchInfoFromShopify":"Obtener información de Shopify","EntityType":"Tipo de entidad","ABANDONED_CHECKOUT":"Carrito abandonado","ORDER":"Orden","PRODUCT":"Producto","FetchStatus":"Estado de la obtención","FetchedEntityId":"ID de entidad obtenida","FetchedAt":"Obtenido el","FetchInfoFromShopifyActions":"Acciones de obtener información de Shopify","FetchInfoFromWordPress":"Obtener información de WordPress","FetchInfoFromWordPressActions":"Acciones de obtener información de WordPress","TotalEntitiesFetched":"Total de entidades obtenidas","View":"Ver","ConversationClosed":"Conversación cerrada","ScheduleNextActions":"Programar próximas acciones","CustomWebhook":"Webhook recibido","ScheduleNextActionsCompleted":"Programar próximas acciones completado","ScheduleNextActionsScheduled":"Programar próximas acciones programado","ScheduleNextActionsAnchorDate":"Fecha de referencia para programar próximas acciones","AnchorDateResolved":"Fecha de referencia resuelta","PAYMENT_VERIFIED":"PAGO VERIFICADO","PaymentVerifiedCount":"Cantidad de pagos verificados","SendInstagramMessageActions":"Acciones de envío de mensaje de Instagram","InstagramMessage":"Mensaje de Instagram","InstagramId":"ID de Instagram","POSTBACK_REPLY":"RESPUESTA DE POSTBACK","PostBackReplyEvents":"Eventos de respuesta de postback","SendMessengerMessageActions":"Acciones de envío de mensaje de Messenger","MessengerMessage":"Mensaje de Messenger","MessengerId":"ID de Messenger","NoRecordsAvailable":"No hay registros disponibles para mostrar.","CustomHttpRequestActions":"Acciones de solicitud HTTP personalizada","SuccessRequestsCount":"Cantidad de solicitudes exitosas","FailedRequestsCount":"Cantidad de solicitudes fallidas","CustomHttpRequest":"Solicitud HTTP personalizada","StatusCode":"Código de estado","RequestUrl":"URL de la solicitud","Method":"Método","Success":"Éxito","RequestBody":"Cuerpo de la solicitud","DurationMs":"Duración (ms)","AssignClientToFunnelStage":"Asignar cliente al embudo","AssignClientToFunnelStageActions":"Acciones de asignar cliente al embudo","MoveSuccess":"Movimientos exitosos","MoveError":"Error al mover","SkippedMoves":"Movimientos omitidos","MOVE_SUCCESS":"Movimiento exitoso","MOVE_ERROR":"Error al mover","SKIPPED_MOVE":"Movimiento omitido","ClientId":"ID de cliente","SuperClientId":"ID de supercliente","FunnelStage":"Etapa del embudo","FilterRecords":"Filtrar registros","All":"Todos","StartDate":"Fecha de inicio","EndDate":"Fecha de fin","EventType":"Tipo de evento","PostBackText":"Texto de postback","QuickReplyText":"Texto de respuesta rápida","ActionType":"Tipo de acción","FulfillmentTrackingInfoUpdate":"Actualización de información de seguimiento de fulfillment","CUSTOMER":"Cliente","CreateUpdateClientActions":"Acciones de creación/actualización de cliente","CreateUpdateClient":"Crear/Actualizar cliente","SUCCEEDED":"Exitosos","FAILED":"Fallidos","SKIPPED":"Omitidos","Succeeded":"Exitosos","Failed":"Fallidos","Skipped":"Omitidos"}');
+const Spanish_automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Detalles de la automatización","Name":"Nombre","PublicHandle":"Tipo","ABANDONED_CHECKOUTS_RECOVERY":"Recuperación de carritos abandonados","SHOPIFY_FULFILLMENT_NOTIFICATION":"Notificación de Fulfillment","SHOPIFY_COD_ORDER_CONFIRMATION":"Confirmación de ordenes contraentrega","FULFILLMENT_TRACKING_INFO_NOTIFICATION":"Notificación de información de seguimiento","ORDER_CREATE_FOLLOW_UP":"Notificación de creación de orden","WHATSAPP_OUTBOUND_CAMPAIGN":"Campaña masiva de WhatsApp","State":"Estado","Inactive":"Desactivado","Active":"Activado","TimeAgo":"Tiempo de espera","WhatsAppNumber":"Número de WhatsApp","WhatsAppTemplateName":"Plantilla de WhatsApp","Delete":"Eliminar","Update":"Actualizar","DeleteSuccess":"Eliminación exitosa","DeleteSuccessD":"La automatización ha sido eliminada exitosamente","DeleteError":"Error en la eliminación","DeleteErrorD":"Hubo un error eliminando la eliminación","DeleteConfirm":"Confirmación","DeleteConfirmD":"¿Está seguro de que desea eliminar esta automatización?","Confirm":"Confirmar","Return":"Volver","Configuration":"Configuración","Metrics":"Métricas","Records":"Registros","AbandonedCheckoutsCount":"Carritos abandonados considerados","FulfillmentsCount":"Fulfillments considerados","CodOrdersCount":"Ordenes contraentrega consideradas","SendSuccessCount":"Mensajes enviados exitosamente","SendErrorCount":"Mensajes con error en envío","DeliverySuccessCount":"Mensajes entregados exitosamente","DeliveryErrorCount":"Mensajes con error en entrega","ReadCount":"Mensajes leídos","TotalMessageCost":"Costo acumulado","SaleCount":"Ventas registradas","TotalSalesPrice":"Valor total en ventas","ShopifyCodOrderConfirmedCount":"Ordenes confirmadas","ShopifyCodOrderCancelledCount":"Ordenes canceladas","AbandonedCheckout":"Carrito abandonado","LastAction":"Última acción","SendWhatsAppMessage":"Envío de mensaje de WhatsApp","Events":"Eventos","Products":"Productos","SEND_SUCCESS":"ENVIADO","SEND_ERROR":"ERROR DE ENVIO","DELIVERY_SUCCESS":"ENTREGADO","DELIVERY_ERROR":"ERROR EN ENTREGA","READ":"LEÍDO","SALE":"VENTA","SHOPIFY_COD_ORDER_CANCEL":"ORDER CANCELADA","SHOPIFY_COD_ORDER_CONFIRM":"ORDER CONFIRMADA","WhatsAppMessage":"Mensaje de WhatsApp","MessageCost":"Costo","SaleOrderNumber":"No. de orden","SalePrice":"Precio de venta","FulfillmentName":"Fulfillment","CODOrder":"Orden contraentrega","OrdersCount":"Ordenes consideradas","PaymentGatewayNames":"Métodos de pago","Order":"Orden","OrderNumber":"Número de orden","ChooseLandingAgentName":"Elegir agente de IA que seguirá la conversación","FollowUp":"Seguimiento","ClientSelection":"Selección de cliente","Triggers":"Disparadores","Actions":"Acciones","SendDate":"Fecha de envío","OnTheHour":"En punto","HalfPast":"Y media","SuperClientTags":"Etiquetas de clientes","CampaignAlreadySent":"La campaña ya fue enviada, no puedes modificar las etiquetas.","GeneralInfo":"Información general","MINUTES":"Minutos","HOURS":"Horas","DAYS":"Días","SECONDS":"Segundos","ConfirmationReply":"Respuesta de confirmación","CancellationReply":"Respuesta de cancelación","SendHour":"Hora de envío","Yes":"Sí","No":"No","LandingAgent":"Agente de IA que continúa la conversación","ViewMetrics":"Ver métricas","Edit":"Editar","TotalClients":"Total de clientes (estimados)","MetricsAndRecords":"Métricas y registros","SelectDateRange":"Seleccionar rango de fechas","ROIMultiple":"Múltiplo de ROI (Costo / Ventas)","NotEnoughDataForTimeline":"No hay suficientes datos para mostrar la línea de tiempo","NoMetricsAvailable":"No hay métricas disponibles para mostrar.","NotAvailable":"No disponible","SKIPPED_NON_AI_OPEN_CLIENT":"Mensaje omitido porque el estado del cliente está abierto y asignado a un agente humano","SkippedMessagesCount":"Cantidad de mensajes omitidos","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Mensaje omitido porque el cliente optó por no recibir mensajes de marketing en WhatsApp","SKIP":"OMITIDO","Segments":"Segmentos","SendWhatsappMessageActions":"Acciones de envío de mensaje de WhatsApp","WaitActions":"Acciones de espera","TotalExecutions":"Total de ejecuciones","PendingExecutions":"Ejecuciones pendientes","IfConditionActions":"Acciones de condición","TrueExecutions":"Ejecuciones donde la condición fue verdadera","FalseExecutions":"Ejecuciones donde la condición fue falsa","Activate":"Activar","Deactivate":"Desactivar","DeleteAutomationTitle":"Eliminar automatización","DeleteAutomationPrompt":"¿Estás seguro de que deseas eliminar esta automatización? Esta acción no se puede deshacer.","Cancel":"Cancelar","NoMetricsForThisAction":"No hay métricas disponibles para esta acción","TryAnotherActionOrDate":"Intenta seleccionar otra acción o rango de fechas","NoAction":"Ninguna","QUICK_REPLY":"RESPUESTA RÁPIDA","WaitCompleted":"Espera completada","WaitScheduled":"Espera programada","WaitStarted":"Espera iniciada","Wait":"Espera","ConditionResults":"Resultados de la condición","True":"Verdadero","False":"Falso","IfCondition":"Condición","ExecutionStartedAt":"Ejecución iniciada el","ScheduledFor":"Programada para","ExecutionCompletedAt":"Ejecución completada el","ConditionResult":"Resultado de la condición","AddTagToOrder":"Etiqueta añadida al pedido: ","TaggedOrderId":"ID de pedido etiquetado","TaggingStatus":"Estado del etiquetado","TaggingDate":"Fecha del etiquetado","SUCCESS":"ÉXITO","ERROR":"ERROR","SHOPIFY_ERROR":"ERROR DE SHOPIFY","EXCEPTION":"EXCEPCIÓN","AddTagToOrderActions":"Acciones de añadir etiqueta a pedido en Shopify","TotalOrdersTagged":"Total de pedidos etiquetados","QuickReplyEvents":"Eventos de respuesta rápida","FetchInfoFromShopify":"Obtener información de Shopify","EntityType":"Tipo de entidad","ABANDONED_CHECKOUT":"Carrito abandonado","ORDER":"Orden","PRODUCT":"Producto","FetchStatus":"Estado de la obtención","FetchedEntityId":"ID de entidad obtenida","FetchedAt":"Obtenido el","FetchInfoFromShopifyActions":"Acciones de obtener información de Shopify","FetchInfoFromWordPress":"Obtener información de WordPress","FetchInfoFromWordPressActions":"Acciones de obtener información de WordPress","TotalEntitiesFetched":"Total de entidades obtenidas","View":"Ver","ConversationClosed":"Conversación cerrada","ScheduleNextActions":"Programar próximas acciones","CustomWebhook":"Webhook recibido","ScheduleNextActionsCompleted":"Programar próximas acciones completado","ScheduleNextActionsScheduled":"Programar próximas acciones programado","ScheduleNextActionsAnchorDate":"Fecha de referencia para programar próximas acciones","AnchorDateResolved":"Fecha de referencia resuelta","PAYMENT_VERIFIED":"PAGO VERIFICADO","PaymentVerifiedCount":"Cantidad de pagos verificados","SendInstagramMessageActions":"Acciones de envío de mensaje de Instagram","InstagramMessage":"Mensaje de Instagram","InstagramId":"ID de Instagram","POSTBACK_REPLY":"RESPUESTA DE POSTBACK","PostBackReplyEvents":"Eventos de respuesta de postback","SendMessengerMessageActions":"Acciones de envío de mensaje de Messenger","MessengerMessage":"Mensaje de Messenger","MessengerId":"ID de Messenger","NoRecordsAvailable":"No hay registros disponibles para mostrar.","CustomHttpRequestActions":"Acciones de solicitud HTTP personalizada","SuccessRequestsCount":"Cantidad de solicitudes exitosas","FailedRequestsCount":"Cantidad de solicitudes fallidas","CustomHttpRequest":"Solicitud HTTP personalizada","StatusCode":"Código de estado","RequestUrl":"URL de la solicitud","Method":"Método","Success":"Éxito","RequestBody":"Cuerpo de la solicitud","DurationMs":"Duración (ms)","AssignClientToFunnelStage":"Asignar cliente al embudo","AssignClientToFunnelStageActions":"Acciones de asignar cliente al embudo","MoveSuccess":"Movimientos exitosos","MoveError":"Error al mover","SkippedMoves":"Movimientos omitidos","MOVE_SUCCESS":"Movimiento exitoso","MOVE_ERROR":"Error al mover","SKIPPED_MOVE":"Movimiento omitido","ClientId":"ID de cliente","SuperClientId":"ID de supercliente","FunnelStage":"Etapa del embudo","FilterRecords":"Filtrar registros","All":"Todos","StartDate":"Fecha de inicio","EndDate":"Fecha de fin","EventType":"Tipo de evento","PostBackText":"Texto de postback","QuickReplyText":"Texto de respuesta rápida","ActionType":"Tipo de acción","FulfillmentTrackingInfoUpdate":"Actualización de información de seguimiento de fulfillment","CUSTOMER":"Cliente","CreateUpdateClientActions":"Acciones de creación/actualización de cliente","CreateUpdateClient":"Crear/Actualizar cliente","SUCCEEDED":"Exitosos","FAILED":"Fallidos","SKIPPED":"Omitidos","Succeeded":"Exitosos","Failed":"Fallidos","Skipped":"Omitidos","CreateTicketActions":"Acciones de creación de ticket","CreatedTickets":"Tickets creados","ErroredTickets":"Tickets con error","CreateTicket":"Crear ticket","TicketId":"ID del ticket","Departments":"Departamentos","Tags":"Etiquetas","TicketName":"Nombre del ticket","TicketDescription":"Descripción del ticket","NotifiedViaEmail":"Notificado por correo electrónico"}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/automationDetails.json
-const Portuguese_automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Detalhes da automação","Name":"Nome","PublicHandle":"Tipo","ABANDONED_CHECKOUTS_RECOVERY":"Recuperação de carrinhos abandonados","State":"Estado","Inactive":"Desativado","Active":"Ativado","TimeAgo":"Tempo de espera","WhatsAppNumber":"Número do WhatsApp","WhatsAppTemplateName":"Modelo do WhatsApp","Delete":"Excluir","Update":"Atualizar","DeleteSuccess":"Exclusão bem-sucedida","DeleteSuccessD":"A automação foi excluída com sucesso","DeleteError":"Erro na exclusão","DeleteErrorD":"Ocorreu um erro ao excluir a automação","DeleteConfirm":"Confirmação","DeleteConfirmD":"Tem certeza de que deseja excluir esta automação?","Confirm":"Confirmar","Return":"Voltar","Configuration":"Configuração","Metrics":"Métricas","Records":"Registros","AbandonedCheckoutsCount":"Carrinhos abandonados considerados","SendSuccessCount":"Mensagens enviadas com sucesso","SendErrorCount":"Mensagens com erro de envio","DeliverySuccessCount":"Mensagens entregues com sucesso","DeliveryErrorCount":"Mensagens com erro de entrega","ReadCount":"Mensagens lidas","TotalMessageCost":"Custo acumulado","SaleCount":"Vendas registradas","TotalSalesPrice":"Valor total em vendas","AbandonedCheckout":"Carrinho abandonado","LastAction":"Última ação","SendWhatsAppMessage":"Envio de mensagem do WhatsApp","Events":"Eventos","Products":"Produtos","SEND_SUCCESS":"ENVIADO","SEND_ERROR":"ERRO DE ENVIO","DELIVERY_SUCCESS":"ENTREGUE","DELIVERY_ERROR":"ERRO NA ENTREGA","READ":"LIDO","SALE":"VENDA","WhatsAppMessage":"Mensagem do WhatsApp","MessageCost":"Custo","SaleOrderNumber":"Nº do pedido","SalePrice":"Preço de venda","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","FollowUp":"Acompanhamento","ClientSelection":"Seleção de cliente","WHATSAPP_OUTBOUND_CAMPAIGN":"Campanha massiva do WhatsApp","Triggers":"Gatilhos","Actions":"Ações","SendDate":"Data de envio","OnTheHour":"Na hora","HalfPast":"E meia","SuperClientTags":"Etiquetas de clientes","CampaignAlreadySent":"A campanha já foi enviada, você não pode modificar as etiquetas.","GeneralInfo":"Informações gerais","MINUTES":"Minutos","HOURS":"Horas","DAYS":"Dias","SECONDS":"Segundos","ConfirmationReply":"Resposta de confirmação","CancellationReply":"Resposta de cancelamento","SendHour":"Hora de envio","Yes":"Sim","No":"Não","LandingAgent":"Agente de IA de destino","ViewMetrics":"Ver métricas","Edit":"Editar","TotalClients":"Total de clientes (estimados)","MetricsAndRecords":"Métricas e registros","SelectDateRange":"Selecionar intervalo de datas","ROIMUltiple":"ROI múltiplo (Custo / Vendas)","NotEnoughDataForTimeline":"Não há dados suficientes para exibir a linha do tempo.","NoMetricsAvailable":"Não há métricas disponíveis para exibição.","NotAvailable":"Não disponível","SKIPPED_NON_AI_OPEN_CLIENT":"Mensagem ignorada porque o estado do cliente está aberto e atribuído a um agente humano","SkippedMessagesCount":"Contagem de mensagens ignoradas","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Mensagem ignorada porque o cliente optou por não receber mensagens de marketing no WhatsApp","SKIP":"IGNORADO","Segments":"Segmentos","SendWhatsappMessageActions":"Ações de envio de mensagem do WhatsApp","WaitActions":"Ações de espera","TotalExecutions":"Total de execuções","PendingExecutions":"Execuções pendentes","IfConditionActions":"Ações de condição","TrueExecutions":"Execuções onde a condição foi verdadeira","FalseExecutions":"Execuções onde a condição foi falsa","Activate":"Ativar","Deactivate":"Desativar","DeleteAutomationTitle":"Excluir automação","DeleteAutomationPrompt":"Tem certeza de que deseja excluir esta automação? Esta ação não pode ser desfeita.","Cancel":"Cancelar","NoMetricsForThisAction":"Não há métricas disponíveis para esta ação","TryAnotherActionOrDate":"Tente selecionar outra ação ou intervalo de datas","NoAction":"Nenhuma","QUICK_REPLY":"RESPOSTA RÁPIDA","WaitCompleted":"Espera concluída","WaitScheduled":"Espera programada","WaitStarted":"Espera iniciada","Wait":"Espera","ConditionResults":"Resultados da condição","True":"Verdadeiro","False":"Falso","IfCondition":"Condição","ExecutionStartedAt":"Execução iniciada em","ScheduledFor":"Programada para","ExecutionCompletedAt":"Execução concluída em","ConditionResult":"Resultado da condição","AddTagToOrder":"Etiqueta adicionada ao pedido ","TaggedOrderId":"ID do pedido etiquetado","TaggingStatus":"Status da etiquetagem","TaggingDate":"Data da etiquetagem:","SUCCESS":"SUCESSO","ERROR":"ERRO","SHOPIFY_ERROR":"ERRO DO SHOPIFY","EXCEPTION":"EXCEÇÃO","AddTagToOrderActions":"Ações de adicionar etiqueta ao pedido no Shopify","TotalOrdersTagged":"Total de pedidos etiquetados","QuickReplyEvents":"Eventos de resposta rápida","FetchInfoFromShopify":"Obter informações do Shopify","EntityType":"Tipo de entidade","ABANDONED_CHECKOUT":"Carrinho abandonado","ORDER":"Pedido","PRODUCT":"Produto","FetchStatus":"Status da obtenção","FetchedEntityId":"ID da entidade obtida","FetchedAt":"Obtido em","FetchInfoFromShopifyActions":"Ações de obter informações do Shopify","FetchInfoFromWordPress":"Obter informações do WordPress","FetchInfoFromWordPressActions":"Ações de obter informações do WordPress","TotalEntitiesFetched":"Total de entidades obtidas","View":"Visualizar","ConversationClosed":"Conversa encerrada","ScheduleNextActions":"Agendar próximas ações","CustomWebhook":"Webhook recebido","ScheduleNextActionsCompleted":"Agendamento de próximas ações concluído","ScheduleNextActionsScheduled":"Agendamento de próximas ações programado","ScheduleNextActionsAnchorDate":"Data de referência para agendamento de próximas ações","AnchorDateResolved":"Data de referência resolvida","PAYMENT_VERIFIED":"PAGAMENTO VERIFICADO","PaymentVerifiedCount":"Contagem de pagamentos verificados","SendInstagramMessageActions":"Ações de envio de mensagem do Instagram","InstagramMessage":"Mensagem do Instagram","InstagramId":"ID do Instagram","POSTBACK_REPLY":"RESPOSTA DE POSTBACK","PostBackReplyEvents":"Eventos de resposta de postback","SendMessengerMessageActions":"Ações de envio de mensagem do Messenger","MessengerMessage":"Mensagem do Messenger","MessengerId":"ID do Messenger","NoRecordsAvailable":"Nenhum registro disponível para exibir.","CustomHttpRequestActions":"Ações de solicitação HTTP personalizada","SuccessRequestsCount":"Contagem de solicitações bem-sucedidas","FailedRequestsCount":"Contagem de solicitações com falha","CustomHttpRequest":"Solicitação HTTP personalizada","StatusCode":"Código de status","RequestUrl":"URL da solicitação","Method":"Método","Success":"Sucesso","RequestBody":"Corpo da solicitação","DurationMs":"Duração (ms)","AssignClientToFunnelStage":"Atribuir cliente ao funil","AssignClientToFunnelStageActions":"Ações de atribuir cliente ao funil","MoveSuccess":"Movimentos bem-sucedidos","MoveError":"Erro ao mover","SkippedMoves":"Movimentos ignorados","MOVE_SUCCESS":"Movimento bem-sucedido","MOVE_ERROR":"Erro ao mover","SKIPPED_MOVE":"Movimento ignorado","ClientId":"ID do cliente","SuperClientId":"ID do supercliente","FunnelStage":"Etapa do funil","FilterRecords":"Filtrar registros","All":"Todos","StartDate":"Data de início","EndDate":"Data de término","EventType":"Tipo de evento","PostBackText":"Texto de postback","QuickReplyText":"Texto de resposta rápida","ActionType":"Tipo de ação","FulfillmentTrackingInfoUpdate":"Atualização de informações de rastreamento de fulfillment","CUSTOMER":"Cliente","CreateUpdateClientActions":"Ações de criação/atualização de cliente","CreateUpdateClient":"Criar/Atualizar cliente","SUCCEEDED":"Bem-sucedidos","FAILED":"Falhos","SKIPPED":"Ignorados","Succeeded":"Bem-sucedidos","Failed":"Falhos","Skipped":"Ignorados"}');
+const Portuguese_automationDetails_namespaceObject = /*#__PURE__*/JSON.parse('{"AutomationDetails":"Detalhes da automação","Name":"Nome","PublicHandle":"Tipo","ABANDONED_CHECKOUTS_RECOVERY":"Recuperação de carrinhos abandonados","State":"Estado","Inactive":"Desativado","Active":"Ativado","TimeAgo":"Tempo de espera","WhatsAppNumber":"Número do WhatsApp","WhatsAppTemplateName":"Modelo do WhatsApp","Delete":"Excluir","Update":"Atualizar","DeleteSuccess":"Exclusão bem-sucedida","DeleteSuccessD":"A automação foi excluída com sucesso","DeleteError":"Erro na exclusão","DeleteErrorD":"Ocorreu um erro ao excluir a automação","DeleteConfirm":"Confirmação","DeleteConfirmD":"Tem certeza de que deseja excluir esta automação?","Confirm":"Confirmar","Return":"Voltar","Configuration":"Configuração","Metrics":"Métricas","Records":"Registros","AbandonedCheckoutsCount":"Carrinhos abandonados considerados","SendSuccessCount":"Mensagens enviadas com sucesso","SendErrorCount":"Mensagens com erro de envio","DeliverySuccessCount":"Mensagens entregues com sucesso","DeliveryErrorCount":"Mensagens com erro de entrega","ReadCount":"Mensagens lidas","TotalMessageCost":"Custo acumulado","SaleCount":"Vendas registradas","TotalSalesPrice":"Valor total em vendas","AbandonedCheckout":"Carrinho abandonado","LastAction":"Última ação","SendWhatsAppMessage":"Envio de mensagem do WhatsApp","Events":"Eventos","Products":"Produtos","SEND_SUCCESS":"ENVIADO","SEND_ERROR":"ERRO DE ENVIO","DELIVERY_SUCCESS":"ENTREGUE","DELIVERY_ERROR":"ERRO NA ENTREGA","READ":"LIDO","SALE":"VENDA","WhatsAppMessage":"Mensagem do WhatsApp","MessageCost":"Custo","SaleOrderNumber":"Nº do pedido","SalePrice":"Preço de venda","ChooseLandingAgentName":"Escolha o agente de IA que continuará a conversa","FollowUp":"Acompanhamento","ClientSelection":"Seleção de cliente","WHATSAPP_OUTBOUND_CAMPAIGN":"Campanha massiva do WhatsApp","Triggers":"Gatilhos","Actions":"Ações","SendDate":"Data de envio","OnTheHour":"Na hora","HalfPast":"E meia","SuperClientTags":"Etiquetas de clientes","CampaignAlreadySent":"A campanha já foi enviada, você não pode modificar as etiquetas.","GeneralInfo":"Informações gerais","MINUTES":"Minutos","HOURS":"Horas","DAYS":"Dias","SECONDS":"Segundos","ConfirmationReply":"Resposta de confirmação","CancellationReply":"Resposta de cancelamento","SendHour":"Hora de envio","Yes":"Sim","No":"Não","LandingAgent":"Agente de IA de destino","ViewMetrics":"Ver métricas","Edit":"Editar","TotalClients":"Total de clientes (estimados)","MetricsAndRecords":"Métricas e registros","SelectDateRange":"Selecionar intervalo de datas","ROIMUltiple":"ROI múltiplo (Custo / Vendas)","NotEnoughDataForTimeline":"Não há dados suficientes para exibir a linha do tempo.","NoMetricsAvailable":"Não há métricas disponíveis para exibição.","NotAvailable":"Não disponível","SKIPPED_NON_AI_OPEN_CLIENT":"Mensagem ignorada porque o estado do cliente está aberto e atribuído a um agente humano","SkippedMessagesCount":"Contagem de mensagens ignoradas","SKIPPED_WHATSAPP_MARKETING_OPT_OUT":"Mensagem ignorada porque o cliente optou por não receber mensagens de marketing no WhatsApp","SKIP":"IGNORADO","Segments":"Segmentos","SendWhatsappMessageActions":"Ações de envio de mensagem do WhatsApp","WaitActions":"Ações de espera","TotalExecutions":"Total de execuções","PendingExecutions":"Execuções pendentes","IfConditionActions":"Ações de condição","TrueExecutions":"Execuções onde a condição foi verdadeira","FalseExecutions":"Execuções onde a condição foi falsa","Activate":"Ativar","Deactivate":"Desativar","DeleteAutomationTitle":"Excluir automação","DeleteAutomationPrompt":"Tem certeza de que deseja excluir esta automação? Esta ação não pode ser desfeita.","Cancel":"Cancelar","NoMetricsForThisAction":"Não há métricas disponíveis para esta ação","TryAnotherActionOrDate":"Tente selecionar outra ação ou intervalo de datas","NoAction":"Nenhuma","QUICK_REPLY":"RESPOSTA RÁPIDA","WaitCompleted":"Espera concluída","WaitScheduled":"Espera programada","WaitStarted":"Espera iniciada","Wait":"Espera","ConditionResults":"Resultados da condição","True":"Verdadeiro","False":"Falso","IfCondition":"Condição","ExecutionStartedAt":"Execução iniciada em","ScheduledFor":"Programada para","ExecutionCompletedAt":"Execução concluída em","ConditionResult":"Resultado da condição","AddTagToOrder":"Etiqueta adicionada ao pedido ","TaggedOrderId":"ID do pedido etiquetado","TaggingStatus":"Status da etiquetagem","TaggingDate":"Data da etiquetagem:","SUCCESS":"SUCESSO","ERROR":"ERRO","SHOPIFY_ERROR":"ERRO DO SHOPIFY","EXCEPTION":"EXCEÇÃO","AddTagToOrderActions":"Ações de adicionar etiqueta ao pedido no Shopify","TotalOrdersTagged":"Total de pedidos etiquetados","QuickReplyEvents":"Eventos de resposta rápida","FetchInfoFromShopify":"Obter informações do Shopify","EntityType":"Tipo de entidade","ABANDONED_CHECKOUT":"Carrinho abandonado","ORDER":"Pedido","PRODUCT":"Produto","FetchStatus":"Status da obtenção","FetchedEntityId":"ID da entidade obtida","FetchedAt":"Obtido em","FetchInfoFromShopifyActions":"Ações de obter informações do Shopify","FetchInfoFromWordPress":"Obter informações do WordPress","FetchInfoFromWordPressActions":"Ações de obter informações do WordPress","TotalEntitiesFetched":"Total de entidades obtidas","View":"Visualizar","ConversationClosed":"Conversa encerrada","ScheduleNextActions":"Agendar próximas ações","CustomWebhook":"Webhook recebido","ScheduleNextActionsCompleted":"Agendamento de próximas ações concluído","ScheduleNextActionsScheduled":"Agendamento de próximas ações programado","ScheduleNextActionsAnchorDate":"Data de referência para agendamento de próximas ações","AnchorDateResolved":"Data de referência resolvida","PAYMENT_VERIFIED":"PAGAMENTO VERIFICADO","PaymentVerifiedCount":"Contagem de pagamentos verificados","SendInstagramMessageActions":"Ações de envio de mensagem do Instagram","InstagramMessage":"Mensagem do Instagram","InstagramId":"ID do Instagram","POSTBACK_REPLY":"RESPOSTA DE POSTBACK","PostBackReplyEvents":"Eventos de resposta de postback","SendMessengerMessageActions":"Ações de envio de mensagem do Messenger","MessengerMessage":"Mensagem do Messenger","MessengerId":"ID do Messenger","NoRecordsAvailable":"Nenhum registro disponível para exibir.","CustomHttpRequestActions":"Ações de solicitação HTTP personalizada","SuccessRequestsCount":"Contagem de solicitações bem-sucedidas","FailedRequestsCount":"Contagem de solicitações com falha","CustomHttpRequest":"Solicitação HTTP personalizada","StatusCode":"Código de status","RequestUrl":"URL da solicitação","Method":"Método","Success":"Sucesso","RequestBody":"Corpo da solicitação","DurationMs":"Duração (ms)","AssignClientToFunnelStage":"Atribuir cliente ao funil","AssignClientToFunnelStageActions":"Ações de atribuir cliente ao funil","MoveSuccess":"Movimentos bem-sucedidos","MoveError":"Erro ao mover","SkippedMoves":"Movimentos ignorados","MOVE_SUCCESS":"Movimento bem-sucedido","MOVE_ERROR":"Erro ao mover","SKIPPED_MOVE":"Movimento ignorado","ClientId":"ID do cliente","SuperClientId":"ID do supercliente","FunnelStage":"Etapa do funil","FilterRecords":"Filtrar registros","All":"Todos","StartDate":"Data de início","EndDate":"Data de término","EventType":"Tipo de evento","PostBackText":"Texto de postback","QuickReplyText":"Texto de resposta rápida","ActionType":"Tipo de ação","FulfillmentTrackingInfoUpdate":"Atualização de informações de rastreamento de fulfillment","CUSTOMER":"Cliente","CreateUpdateClientActions":"Ações de criação/atualização de cliente","CreateUpdateClient":"Criar/Atualizar cliente","SUCCEEDED":"Bem-sucedidos","FAILED":"Falhos","SKIPPED":"Ignorados","Succeeded":"Bem-sucedidos","Failed":"Falhos","Skipped":"Ignorados","CreateTicketActions":"Ações de criação de ticket","CreatedTickets":"Tickets criados","ErroredTickets":"Tickets com erro","CreateTicket":"Criar ticket","TicketId":"ID do ticket","Departments":"Departamentos","Tags":"Etiquetas","TicketName":"Nome do ticket","TicketDescription":"Descrição do ticket","NotifiedViaEmail":"Notificado por email"}');
 ;// CONCATENATED MODULE: ./src/translations/English/metrics.json
 const metrics_namespaceObject = /*#__PURE__*/JSON.parse('{"Metrics":"Metrics","CHATS":"Conversations","ROI":"Usage","TEAM":"Team","LastWeek":"Last Week","LastMonth":"Last Month","InitialDate":"Initial Date","FinalDate":"Final Date","Apply":"Apply","AiMessagesCount":"Messages by AI","TotalSales":"Total Sales","TotalCost":"Total Cost","AiMessages":"AI Messages","Sales":"Sales","AdditionalCosts":"Overage Cost","SubscriptionCosts":"Subscription Cost","NoSales":"There are no Wizybot-related sales registered for this period of time","RoiMultiple":"Return Multiple","Order":"Order","ApprovalDate":"Approval Date","SeeConversation":"Go to conversation","Price":"Price","Period":"Period:","DAY":"Day","MONTH":"Month","InitialMonth":"Initial Month","FinalMonth":"Final Month","Last6M":"Last 6 months","Last3M":"Last 3 months","TotalChats":"Total Opened Conversations","TotalUniqueSuperClients":"Total Unique Clients","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sun":"Sun","IncomingMessages":"Incoming Messages: ","HourlyMessagesHeatmap":"Incoming Messages Schedule Heatmap","OpenedConversations":"Opened Conversations","TeamMetrics":"Team Metrics","MemberMetrics":"Member Metrics","AverageChatClosingTime":"Average time to close a conversation from opening","AverageResponseTime":"Average response time to a client message","TotalChatsOpen":"Total open conversations","TotalChatsClosed":"Total closed conversations","AverageChatClosingTimeSinceTransfer":"Average time to close a conversation from reception","TotalChatsReceived":"Total conversations received","TotalIncomingMessages":"Total incoming messages","CurrentlyAssignedCount":"Currently assigned conversations","ConversationTagging":"Conversation Tagging","CurrentSinceAssignedAverageTime":"Average time elapsed since the assignment of current clients","AdMessages":"Messages by Ad","Export":"Export"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/metrics.json
@@ -14297,11 +14308,11 @@ const Spanish_dateRangePicker_namespaceObject = /*#__PURE__*/JSON.parse('{"Selec
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/dateRangePicker.json
 const Portuguese_dateRangePicker_namespaceObject = /*#__PURE__*/JSON.parse('{"SelectDateRange":"Selecione o intervalo de datas...","PerDay":"Por día","PerMonth":"Por mês","Clear":"Limpar","Apply":"Aplicar"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/metaErrors.json
-const metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Tu sesión ha expirado o el token es inválido. Por favor, vuelve a iniciar sesión.","NOT_ENOUGH_PERMISSIONS":"No tienes permisos suficientes para realizar esta acción.","PERMISSION_DENIED":"Permiso denegado. Verifica tu cuenta y permisos.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Tu cuenta ha sido bloqueada temporalmente por violar las políticas de WhatsApp.","CHARACTER_LIMIT_EXCEEDED":"El mensaje supera el límite de caracteres permitido.","HEADER_INVALID_CHARACTERS":"El encabezado contiene caracteres inválidos.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"El cuerpo del mensaje tiene caracteres inválidos o formato incorrecto.","FOOTER_INVALID_CHARACTERS":"El pie de mensaje contiene caracteres inválidos.","TOO_MANY_VARIABLES":"Hay demasiadas variables en la plantilla.","VARIABLES_CANNOT_BE_START_OR_END":"Las variables no pueden estar al inicio o al final del mensaje.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"Has excedido el límite de mensajes de plantilla permitidos.","PHONE_NEEDS_CONFIRMATION":"El número de teléfono necesita confirmación.","NUMBER_ALREADY_EXISTS":"El número ya está registrado en WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"La verificación no está disponible para este número.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"Debes agregar el número a tu cuenta de WhatsApp antes de continuar.","NUMBER_IN_MAINTENANCE_MODE":"El número está en modo de mantenimiento.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"No hay información disponible para esta plantilla.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"No se puede desactivar la información de la plantilla.","TEMPLATE_INSIGHTS_NOT_ENABLED":"La información de la plantilla no está habilitada.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"La cuenta de WhatsApp Business no está disponible para movilidad OBO.","SYNC_LIMIT_EXCEEDED":"Se ha excedido el límite de sincronización.","TOO_MANY_CALLS":"Demasiadas solicitudes. Por favor, espera antes de intentar nuevamente.","WABA_REACHED_RATE_LIMIT":"Se ha alcanzado el límite de tasa de la cuenta de WhatsApp Business.","API_THROUGHPUT_LIMIT_EXCEEDED":"Se ha excedido el límite de procesamiento de la API.","SPAM_RATE_LIMIT":"Se ha alcanzado el límite de mensajes considerados como spam.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Se ha excedido el límite de mensajes entre los mismos usuarios.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Se ha excedido el límite de registro o desregistro.","UNKNOWN_ERROR":"Ha ocurrido un error desconocido. Por favor, contacta con soporte.","SERVICE_UNAVAILABLE":"El servicio no está disponible en este momento.","NUMBER_DELETED":"El número ha sido eliminado.","PARAMETER_INVALID":"Uno de los parámetros enviados es inválido.","MARKETING_MESSAGES_NOT_ALLOWED":"No está permitido enviar mensajes de marketing.","META_SERVER_ERROR":"Error interno de Meta. Intenta nuevamente más tarde.","MISSING_PARAMETERS_IN_REQUEST":"Faltan parámetros en la solicitud.","ONE_OR_MORE_PARAMETERS_INVALID":"Uno o más parámetros son inválidos.","SERVICE_TEMPORARILY_UNAVAILABLE":"El servicio está temporalmente fuera de servicio.","RECIPIENT_CANNOT_BE_SENDER":"El destinatario no puede ser el remitente.","UNABLE_TO_DELIVER":"No se pudo entregar el mensaje.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"El número no tiene un nombre de visualización aprobado.","PAYMENT_METHOD_PROBLEM":"Hay un problema con el método de pago vinculado a tu cuenta de meta.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"El envío falló porque el número no está verificado.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"Han pasado más de 24 horas para responder a este mensaje.","META_DECIDED_NOT_TO_SEND":"Meta decidió no enviar este mensaje. Intenta con un plantilla de utilidad o debes esperar a que te respondan.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"El destinatario ha bloqueado los mensajes de marketing.","UNSUPPORTED_MESSAGE_TYPE":"El tipo de mensaje no es compatible.","MEDIA_DOWNLOAD_FAILED":"La descarga del archivo multimedia ha fallado.","MEDIA_UPLOAD_FAILED":"La carga del archivo multimedia ha fallado.","ACCOUNT_IN_MAINTENANCE_MODE":"La cuenta está en modo de mantenimiento.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Faltan variables en la plantilla o se han proporcionado variables extra.","TEMPLATE_NOT_FOUND":"No se encontró la plantilla.","TEMPLATE_TEXT_TOO_LONG":"El texto de la plantilla es demasiado largo.","TEMPLAE_CONTENT_POLICY_VIOLATION":"La plantilla viola la política de contenido.","TEMPLATE_PARAMETER_FORMAT_INVALID":"El formato de los parámetros de la plantilla es inválido.","PAUSED_TEMPLATED":"La plantilla está pausada.","DISABLED_TEMPLATE":"La plantilla está deshabilitada.","FLOW_NOT_AVAILABLE":"El flujo no está disponible.","THROTTLED_FLOW":"El flujo ha sido limitado.","INCOMPLETE_DEREGISTRATION":"La desregistración está incompleta.","META_SERVER_TEMPORARILY_UNAVAILABLE":"El servidor de Meta está temporalmente fuera de servicio.","TWO_STEP_PIN_INCORRECT":"El PIN de verificación en dos pasos es incorrecto.","PHONE_NUMBER_NEED_RE_VERIFICATION":"El número de teléfono necesita ser verificado nuevamente.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Demasiados intentos de verificación en dos pasos.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Intentos de verificación en dos pasos demasiado rápidos.","PHONE_NUMBER_NOT_REGISTERED":"El número de teléfono no está registrado.","PHONE_NUMBER_DELETED":"El número de teléfono ha sido eliminado.","PAYMENT_TERMS_NOT_ACCEPTED":"No se han aceptado los términos de pago de meta.","UNKWON_ERROR":"Error desconocido.","MESSAGE_MUST_BE_A_TEMPLATE":"El mensaje debe ser una plantilla para este tipo de envío.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"Uno o más parámetros son inválidos para mensajes de marketing.","ONLY_MARKETING_MESSAGES_ALLOWED":"Solo se permiten mensajes de marketing.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"Solo puedes enviar mensajes de marketing.","TEMPLATE_STILL_SYNCING":"La plantilla aún se está sincronizando.","TEMPLATE_UNAVAILABLE_FOR_USE":"La plantilla no está disponible para su uso.","DUPLICATE_REQUEST":"Solicitud duplicada. Por favor, revisa tu envío."}');
+const metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Tu sesión ha expirado o el token es inválido. Por favor, vuelve a iniciar sesión.","NOT_ENOUGH_PERMISSIONS":"No tienes permisos suficientes para realizar esta acción.","PERMISSION_DENIED":"Permiso denegado. Verifica tu cuenta y permisos.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Tu cuenta ha sido bloqueada temporalmente por violar las políticas de WhatsApp.","CHARACTER_LIMIT_EXCEEDED":"El mensaje supera el límite de caracteres permitido.","HEADER_INVALID_CHARACTERS":"El encabezado contiene caracteres inválidos.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"El cuerpo del mensaje tiene caracteres inválidos o formato incorrecto.","FOOTER_INVALID_CHARACTERS":"El pie de mensaje contiene caracteres inválidos.","TOO_MANY_VARIABLES":"Hay demasiadas variables en la plantilla.","VARIABLES_CANNOT_BE_START_OR_END":"Las variables no pueden estar al inicio o al final del mensaje.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"Has excedido el límite de mensajes de plantilla permitidos.","PHONE_NEEDS_CONFIRMATION":"El número de teléfono necesita confirmación.","NUMBER_ALREADY_EXISTS":"El número ya está registrado en WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"La verificación no está disponible para este número.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"Debes agregar el número a tu cuenta de WhatsApp antes de continuar.","NUMBER_IN_MAINTENANCE_MODE":"El número está en modo de mantenimiento.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"No hay información disponible para esta plantilla.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"No se puede desactivar la información de la plantilla.","TEMPLATE_INSIGHTS_NOT_ENABLED":"La información de la plantilla no está habilitada.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"La cuenta de WhatsApp Business no está disponible para movilidad OBO.","SYNC_LIMIT_EXCEEDED":"Se ha excedido el límite de sincronización.","TOO_MANY_CALLS":"Demasiadas solicitudes. Por favor, espera antes de intentar nuevamente.","WABA_REACHED_RATE_LIMIT":"Se ha alcanzado el límite de tasa de la cuenta de WhatsApp Business.","API_THROUGHPUT_LIMIT_EXCEEDED":"Se ha excedido el límite de procesamiento de la API.","SPAM_RATE_LIMIT":"Se ha alcanzado el límite de mensajes considerados como spam.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Se ha excedido el límite de mensajes entre los mismos usuarios.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Se ha excedido el límite de registro o desregistro.","UNKNOWN_ERROR":"Ha ocurrido un error desconocido. Por favor, contacta con soporte.","SERVICE_UNAVAILABLE":"Meta no está disponible en este momento, por favor intenta de nuevo.","NUMBER_DELETED":"El número ha sido eliminado.","PARAMETER_INVALID":"Uno de los parámetros enviados es inválido.","MARKETING_MESSAGES_NOT_ALLOWED":"No está permitido enviar mensajes de marketing.","META_SERVER_ERROR":"Error interno de Meta. Intenta nuevamente más tarde.","MISSING_PARAMETERS_IN_REQUEST":"Faltan parámetros en la solicitud.","ONE_OR_MORE_PARAMETERS_INVALID":"Uno o más parámetros son inválidos.","SERVICE_TEMPORARILY_UNAVAILABLE":"El servicio está temporalmente fuera de servicio.","RECIPIENT_CANNOT_BE_SENDER":"El destinatario no puede ser el remitente.","UNABLE_TO_DELIVER":"No se pudo entregar el mensaje.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"El número no tiene un nombre de visualización aprobado.","PAYMENT_METHOD_PROBLEM":"Hay un problema con el método de pago vinculado a tu cuenta de meta.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"El envío falló porque el número no está verificado.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"Han pasado más de 24 horas para responder a este mensaje.","META_DECIDED_NOT_TO_SEND":"Meta decidió no enviar este mensaje. Intenta con un plantilla de utilidad o debes esperar a que te respondan.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"El destinatario ha bloqueado los mensajes de marketing.","UNSUPPORTED_MESSAGE_TYPE":"El tipo de mensaje no es compatible.","MEDIA_DOWNLOAD_FAILED":"La descarga del archivo multimedia ha fallado.","MEDIA_UPLOAD_FAILED":"La carga del archivo multimedia ha fallado.","ACCOUNT_IN_MAINTENANCE_MODE":"La cuenta está en modo de mantenimiento.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Faltan variables en la plantilla o se han proporcionado variables extra.","TEMPLATE_NOT_FOUND":"No se encontró la plantilla.","TEMPLATE_TEXT_TOO_LONG":"El texto de la plantilla es demasiado largo.","TEMPLAE_CONTENT_POLICY_VIOLATION":"La plantilla viola la política de contenido.","TEMPLATE_PARAMETER_FORMAT_INVALID":"El formato de los parámetros de la plantilla es inválido.","PAUSED_TEMPLATED":"La plantilla está pausada.","DISABLED_TEMPLATE":"La plantilla está deshabilitada.","FLOW_NOT_AVAILABLE":"El flujo no está disponible.","THROTTLED_FLOW":"El flujo ha sido limitado.","INCOMPLETE_DEREGISTRATION":"La desregistración está incompleta.","META_SERVER_TEMPORARILY_UNAVAILABLE":"El servidor de Meta está temporalmente fuera de servicio.","TWO_STEP_PIN_INCORRECT":"El PIN de verificación en dos pasos es incorrecto.","PHONE_NUMBER_NEED_RE_VERIFICATION":"El número de teléfono necesita ser verificado nuevamente.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Demasiados intentos de verificación en dos pasos.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Intentos de verificación en dos pasos demasiado rápidos.","PHONE_NUMBER_NOT_REGISTERED":"El número de teléfono no está registrado.","PHONE_NUMBER_DELETED":"El número de teléfono ha sido eliminado.","PAYMENT_TERMS_NOT_ACCEPTED":"No se han aceptado los términos de pago de meta.","UNKWON_ERROR":"Error desconocido.","MESSAGE_MUST_BE_A_TEMPLATE":"El mensaje debe ser una plantilla para este tipo de envío.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"Uno o más parámetros son inválidos para mensajes de marketing.","ONLY_MARKETING_MESSAGES_ALLOWED":"Solo se permiten mensajes de marketing.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"Solo puedes enviar mensajes de marketing.","TEMPLATE_STILL_SYNCING":"La plantilla aún se está sincronizando.","TEMPLATE_UNAVAILABLE_FOR_USE":"La plantilla no está disponible para su uso.","DUPLICATE_REQUEST":"Solicitud duplicada. Por favor, revisa tu envío."}');
 ;// CONCATENATED MODULE: ./src/translations/English/metaErrors.json
-const English_metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Your session has expired or the token is invalid. Please log in again.","NOT_ENOUGH_PERMISSIONS":"You do not have enough permissions to perform this action.","PERMISSION_DENIED":"Permission denied. Please check your account and permissions.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Your account has been temporarily blocked due to WhatsApp policy violations.","CHARACTER_LIMIT_EXCEEDED":"The message exceeds the allowed character limit.","HEADER_INVALID_CHARACTERS":"The header contains invalid characters.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"The message body has invalid characters or incorrect formatting.","FOOTER_INVALID_CHARACTERS":"The footer contains invalid characters.","TOO_MANY_VARIABLES":"There are too many variables in the template.","VARIABLES_CANNOT_BE_START_OR_END":"Variables cannot be at the start or end of the message.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"You have exceeded the allowed template message limit.","PHONE_NEEDS_CONFIRMATION":"The phone number needs confirmation.","NUMBER_ALREADY_EXISTS":"The number is already registered on WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"Verification is not available for this number.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"You must add the number to your WhatsApp account before continuing.","NUMBER_IN_MAINTENANCE_MODE":"The number is in maintenance mode.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"No insights available for this template.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"Cannot disable template insights.","TEMPLATE_INSIGHTS_NOT_ENABLED":"Template insights are not enabled.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"WhatsApp Business Account is not available for OBO mobility.","SYNC_LIMIT_EXCEEDED":"Sync limit exceeded.","TOO_MANY_CALLS":"Too many requests. Please wait before trying again.","WABA_REACHED_RATE_LIMIT":"WhatsApp Business Account rate limit reached.","API_THROUGHPUT_LIMIT_EXCEEDED":"API throughput limit exceeded.","SPAM_RATE_LIMIT":"Spam rate limit reached.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Message limit between the same users exceeded.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Register or deregister limit exceeded.","UNKNOWN_ERROR":"An unknown error occurred. Please contact support.","SERVICE_UNAVAILABLE":"Service is currently unavailable.","NUMBER_DELETED":"The number has been deleted.","PARAMETER_INVALID":"One of the parameters sent is invalid.","MARKETING_MESSAGES_NOT_ALLOWED":"Marketing messages are not allowed.","META_SERVER_ERROR":"Meta internal error. Please try again later.","MISSING_PARAMETERS_IN_REQUEST":"Missing parameters in the request.","ONE_OR_MORE_PARAMETERS_INVALID":"One or more parameters are invalid.","SERVICE_TEMPORARILY_UNAVAILABLE":"Service is temporarily unavailable.","RECIPIENT_CANNOT_BE_SENDER":"Recipient cannot be the sender.","UNABLE_TO_DELIVER":"Unable to deliver the message.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"The number does not have an approved display name.","PAYMENT_METHOD_PROBLEM":"There is a problem with the payment method.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"Sending failed because the number is not verified.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"More than 24 hours have passed to reply to this message.","META_DECIDED_NOT_TO_SEND":"Meta decided not to send this message. Try with a utility template or wait the answer.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"Recipient has blocked marketing messages.","UNSUPPORTED_MESSAGE_TYPE":"Unsupported message type.","MEDIA_DOWNLOAD_FAILED":"Media download failed.","MEDIA_UPLOAD_FAILED":"Media upload failed.","ACCOUNT_IN_MAINTENANCE_MODE":"Account is in maintenance mode.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Missing template variables to fill or extra variables provided.","TEMPLATE_NOT_FOUND":"Template not found.","TEMPLATE_TEXT_TOO_LONG":"Template text is too long.","TEMPLAE_CONTENT_POLICY_VIOLATION":"Template violates content policy.","TEMPLATE_PARAMETER_FORMAT_INVALID":"Template parameter format is invalid.","PAUSED_TEMPLATED":"Template is paused.","DISABLED_TEMPLATE":"Template is disabled.","FLOW_NOT_AVAILABLE":"Flow is not available.","THROTTLED_FLOW":"Flow has been throttled.","INCOMPLETE_DEREGISTRATION":"Incomplete deregistration.","META_SERVER_TEMPORARILY_UNAVAILABLE":"Meta server is temporarily unavailable.","TWO_STEP_PIN_INCORRECT":"Two-step verification PIN is incorrect.","PHONE_NUMBER_NEED_RE_VERIFICATION":"Phone number needs to be re-verified.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Too many two-step verification attempts.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Two-step verification attempts are too quick.","PHONE_NUMBER_NOT_REGISTERED":"Phone number is not registered.","PHONE_NUMBER_DELETED":"Phone number has been deleted.","PAYMENT_TERMS_NOT_ACCEPTED":"Payment terms have not been accepted.","UNKWON_ERROR":"Unknown error.","MESSAGE_MUST_BE_A_TEMPLATE":"The message must be a template for this type of sending.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"One or more parameters are invalid for marketing messages.","ONLY_MARKETING_MESSAGES_ALLOWED":"Only marketing messages are allowed.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"You can only send marketing messages.","TEMPLATE_STILL_SYNCING":"Template is still syncing.","TEMPLATE_UNAVAILABLE_FOR_USE":"Template is unavailable for use.","DUPLICATE_REQUEST":"Duplicate request. Please check your submission."}');
+const English_metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Your session has expired or the token is invalid. Please log in again.","NOT_ENOUGH_PERMISSIONS":"You do not have enough permissions to perform this action.","PERMISSION_DENIED":"Permission denied. Please check your account and permissions.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Your account has been temporarily blocked due to WhatsApp policy violations.","CHARACTER_LIMIT_EXCEEDED":"The message exceeds the allowed character limit.","HEADER_INVALID_CHARACTERS":"The header contains invalid characters.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"The message body has invalid characters or incorrect formatting.","FOOTER_INVALID_CHARACTERS":"The footer contains invalid characters.","TOO_MANY_VARIABLES":"There are too many variables in the template.","VARIABLES_CANNOT_BE_START_OR_END":"Variables cannot be at the start or end of the message.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"You have exceeded the allowed template message limit.","PHONE_NEEDS_CONFIRMATION":"The phone number needs confirmation.","NUMBER_ALREADY_EXISTS":"The number is already registered on WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"Verification is not available for this number.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"You must add the number to your WhatsApp account before continuing.","NUMBER_IN_MAINTENANCE_MODE":"The number is in maintenance mode.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"No insights available for this template.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"Cannot disable template insights.","TEMPLATE_INSIGHTS_NOT_ENABLED":"Template insights are not enabled.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"WhatsApp Business Account is not available for OBO mobility.","SYNC_LIMIT_EXCEEDED":"Sync limit exceeded.","TOO_MANY_CALLS":"Too many requests. Please wait before trying again.","WABA_REACHED_RATE_LIMIT":"WhatsApp Business Account rate limit reached.","API_THROUGHPUT_LIMIT_EXCEEDED":"API throughput limit exceeded.","SPAM_RATE_LIMIT":"Spam rate limit reached.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Message limit between the same users exceeded.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Register or deregister limit exceeded.","UNKNOWN_ERROR":"An unknown error occurred. Please contact support.","SERVICE_UNAVAILABLE":"Meta is currently unavailable, please try again.","NUMBER_DELETED":"The number has been deleted.","PARAMETER_INVALID":"One of the parameters sent is invalid.","MARKETING_MESSAGES_NOT_ALLOWED":"Marketing messages are not allowed.","META_SERVER_ERROR":"Meta internal error. Please try again later.","MISSING_PARAMETERS_IN_REQUEST":"Missing parameters in the request.","ONE_OR_MORE_PARAMETERS_INVALID":"One or more parameters are invalid.","SERVICE_TEMPORARILY_UNAVAILABLE":"Service is temporarily unavailable.","RECIPIENT_CANNOT_BE_SENDER":"Recipient cannot be the sender.","UNABLE_TO_DELIVER":"Unable to deliver the message.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"The number does not have an approved display name.","PAYMENT_METHOD_PROBLEM":"There is a problem with the payment method.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"Sending failed because the number is not verified.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"More than 24 hours have passed to reply to this message.","META_DECIDED_NOT_TO_SEND":"Meta decided not to send this message. Try with a utility template or wait the answer.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"Recipient has blocked marketing messages.","UNSUPPORTED_MESSAGE_TYPE":"Unsupported message type.","MEDIA_DOWNLOAD_FAILED":"Media download failed.","MEDIA_UPLOAD_FAILED":"Media upload failed.","ACCOUNT_IN_MAINTENANCE_MODE":"Account is in maintenance mode.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Missing template variables to fill or extra variables provided.","TEMPLATE_NOT_FOUND":"Template not found.","TEMPLATE_TEXT_TOO_LONG":"Template text is too long.","TEMPLAE_CONTENT_POLICY_VIOLATION":"Template violates content policy.","TEMPLATE_PARAMETER_FORMAT_INVALID":"Template parameter format is invalid.","PAUSED_TEMPLATED":"Template is paused.","DISABLED_TEMPLATE":"Template is disabled.","FLOW_NOT_AVAILABLE":"Flow is not available.","THROTTLED_FLOW":"Flow has been throttled.","INCOMPLETE_DEREGISTRATION":"Incomplete deregistration.","META_SERVER_TEMPORARILY_UNAVAILABLE":"Meta server is temporarily unavailable.","TWO_STEP_PIN_INCORRECT":"Two-step verification PIN is incorrect.","PHONE_NUMBER_NEED_RE_VERIFICATION":"Phone number needs to be re-verified.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Too many two-step verification attempts.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Two-step verification attempts are too quick.","PHONE_NUMBER_NOT_REGISTERED":"Phone number is not registered.","PHONE_NUMBER_DELETED":"Phone number has been deleted.","PAYMENT_TERMS_NOT_ACCEPTED":"Payment terms have not been accepted.","UNKWON_ERROR":"Unknown error.","MESSAGE_MUST_BE_A_TEMPLATE":"The message must be a template for this type of sending.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"One or more parameters are invalid for marketing messages.","ONLY_MARKETING_MESSAGES_ALLOWED":"Only marketing messages are allowed.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"You can only send marketing messages.","TEMPLATE_STILL_SYNCING":"Template is still syncing.","TEMPLATE_UNAVAILABLE_FOR_USE":"Template is unavailable for use.","DUPLICATE_REQUEST":"Duplicate request. Please check your submission."}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/metaErrors.json
-const Portuguese_metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Sua sessão expirou ou o token é inválido. Por favor, faça login novamente.","NOT_ENOUGH_PERMISSIONS":"Você não tem permissões suficientes para realizar esta ação.","PERMISSION_DENIED":"Permissão negada. Verifique sua conta e permissões.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Sua conta foi bloqueada temporariamente por violar as políticas do WhatsApp.","CHARACTER_LIMIT_EXCEEDED":"A mensagem excede o limite de caracteres permitido.","HEADER_INVALID_CHARACTERS":"O cabeçalho contém caracteres inválidos.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"O corpo da mensagem possui caracteres inválidos ou formatação incorreta.","FOOTER_INVALID_CHARACTERS":"O rodapé contém caracteres inválidos.","TOO_MANY_VARIABLES":"Há muitas variáveis no modelo.","VARIABLES_CANNOT_BE_START_OR_END":"As variáveis não podem estar no início ou no final da mensagem.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"Você excedeu o limite de mensagens de modelo permitidas.","PHONE_NEEDS_CONFIRMATION":"O número de telefone precisa de confirmação.","NUMBER_ALREADY_EXISTS":"O número já está registrado no WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"A verificação não está disponível para este número.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"Você deve adicionar o número à sua conta do WhatsApp antes de continuar.","NUMBER_IN_MAINTENANCE_MODE":"O número está em modo de manutenção.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"Não há informações disponíveis para este modelo.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"Não é possível desativar as informações do modelo.","TEMPLATE_INSIGHTS_NOT_ENABLED":"As informações do modelo não estão ativadas.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"A conta WhatsApp Business não está disponível para mobilidade OBO.","SYNC_LIMIT_EXCEEDED":"Limite de sincronização excedido.","TOO_MANY_CALLS":"Muitas solicitações. Por favor, aguarde antes de tentar novamente.","WABA_REACHED_RATE_LIMIT":"Limite de taxa da conta WhatsApp Business atingido.","API_THROUGHPUT_LIMIT_EXCEEDED":"Limite de processamento da API excedido.","SPAM_RATE_LIMIT":"Limite de mensagens consideradas spam atingido.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Limite de mensagens entre os mesmos usuários excedido.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Limite de registro ou cancelamento excedido.","UNKNOWN_ERROR":"Ocorreu um erro desconhecido. Por favor, entre em contato com o suporte.","SERVICE_UNAVAILABLE":"O serviço não está disponível no momento.","NUMBER_DELETED":"O número foi excluído.","PARAMETER_INVALID":"Um dos parâmetros enviados é inválido.","MARKETING_MESSAGES_NOT_ALLOWED":"Não é permitido enviar mensagens de marketing.","META_SERVER_ERROR":"Erro interno do Meta. Tente novamente mais tarde.","MISSING_PARAMETERS_IN_REQUEST":"Faltam parâmetros na solicitação.","ONE_OR_MORE_PARAMETERS_INVALID":"Um ou mais parâmetros são inválidos.","SERVICE_TEMPORARILY_UNAVAILABLE":"O serviço está temporariamente indisponível.","RECIPIENT_CANNOT_BE_SENDER":"O destinatário não pode ser o remetente.","UNABLE_TO_DELIVER":"Não foi possível entregar a mensagem.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"O número não possui um nome de exibição aprovado.","PAYMENT_METHOD_PROBLEM":"Há um problema com o método de pagamento.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"O envio falhou porque o número não está verificado.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"Já se passaram mais de 24 horas para responder a esta mensagem.","META_DECIDED_NOT_TO_SEND":"O Meta decidiu não enviar esta mensagem. Tente enviar uma modelo de utilitário ou aguarde uma resposta.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"O destinatário bloqueou mensagens de marketing.","UNSUPPORTED_MESSAGE_TYPE":"Tipo de mensagem não suportado.","MEDIA_DOWNLOAD_FAILED":"Falha ao baixar o arquivo de mídia.","MEDIA_UPLOAD_FAILED":"Falha ao enviar o arquivo de mídia.","ACCOUNT_IN_MAINTENANCE_MODE":"A conta está em modo de manutenção.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Faltam variáveis no modelo ou foram fornecidas variáveis extras.","TEMPLATE_NOT_FOUND":"Modelo não encontrado.","TEMPLATE_TEXT_TOO_LONG":"O texto do modelo é muito longo.","TEMPLAE_CONTENT_POLICY_VIOLATION":"O modelo viola a política de conteúdo.","TEMPLATE_PARAMETER_FORMAT_INVALID":"O formato dos parâmetros do modelo é inválido.","PAUSED_TEMPLATED":"O modelo está pausado.","DISABLED_TEMPLATE":"O modelo está desativado.","FLOW_NOT_AVAILABLE":"O fluxo não está disponível.","THROTTLED_FLOW":"O fluxo foi limitado.","INCOMPLETE_DEREGISTRATION":"Cancelamento incompleto.","META_SERVER_TEMPORARILY_UNAVAILABLE":"O servidor Meta está temporariamente indisponível.","TWO_STEP_PIN_INCORRECT":"O PIN de verificação em duas etapas está incorreto.","PHONE_NUMBER_NEED_RE_VERIFICATION":"O número de telefone precisa ser verificado novamente.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Muitas tentativas de verificação em duas etapas.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Tentativas de verificação em duas etapas muito rápidas.","PHONE_NUMBER_NOT_REGISTERED":"O número de telefone não está registrado.","PHONE_NUMBER_DELETED":"O número de telefone foi excluído.","PAYMENT_TERMS_NOT_ACCEPTED":"Os termos de pagamento não foram aceitos.","UNKWON_ERROR":"Erro desconhecido.","MESSAGE_MUST_BE_A_TEMPLATE":"A mensagem deve ser um modelo para este tipo de envio.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"Um ou mais parâmetros são inválidos para mensagens de marketing.","ONLY_MARKETING_MESSAGES_ALLOWED":"Somente mensagens de marketing são permitidas.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"Você só pode enviar mensagens de marketing.","TEMPLATE_STILL_SYNCING":"O modelo ainda está sincronizando.","TEMPLATE_UNAVAILABLE_FOR_USE":"O modelo não está disponível para uso.","DUPLICATE_REQUEST":"Solicitação duplicada. Por favor, verifique seu envio."}');
+const Portuguese_metaErrors_namespaceObject = /*#__PURE__*/JSON.parse('{"TOKEN_EXPIRED_OR_INVALID":"Sua sessão expirou ou o token é inválido. Por favor, faça login novamente.","NOT_ENOUGH_PERMISSIONS":"Você não tem permissões suficientes para realizar esta ação.","PERMISSION_DENIED":"Permissão negada. Verifique sua conta e permissões.","TEMPORALLY_BLOCKED_DUE_TO_POLICY_VIOLATIONS":"Sua conta foi bloqueada temporariamente por violar as políticas do WhatsApp.","CHARACTER_LIMIT_EXCEEDED":"A mensagem excede o limite de caracteres permitido.","HEADER_INVALID_CHARACTERS":"O cabeçalho contém caracteres inválidos.","BODY_INVALID_CHARACTERS_OR_FORMATTING":"O corpo da mensagem possui caracteres inválidos ou formatação incorreta.","FOOTER_INVALID_CHARACTERS":"O rodapé contém caracteres inválidos.","TOO_MANY_VARIABLES":"Há muitas variáveis no modelo.","VARIABLES_CANNOT_BE_START_OR_END":"As variáveis não podem estar no início ou no final da mensagem.","TEMPLATE_MESSAGES_LIMIT_EXCEEDED":"Você excedeu o limite de mensagens de modelo permitidas.","PHONE_NEEDS_CONFIRMATION":"O número de telefone precisa de confirmação.","NUMBER_ALREADY_EXISTS":"O número já está registrado no WhatsApp.","VERIFICATION_NOT_AVAILABLE_FOR_NUMBER":"A verificação não está disponível para este número.","ADD_NUMBER_TO_WHATSAPP_ACCOUNT_FIRST":"Você deve adicionar o número à sua conta do WhatsApp antes de continuar.","NUMBER_IN_MAINTENANCE_MODE":"O número está em modo de manutenção.","TEMPLATE_INSIGHTS_NOT_AVAILABLE":"Não há informações disponíveis para este modelo.","CANNOT_DISABLE_TEMPLATE_INSIGHTS":"Não é possível desativar as informações do modelo.","TEMPLATE_INSIGHTS_NOT_ENABLED":"As informações do modelo não estão ativadas.","WABA_NOT_AVAILABLE_FOR_OBO_MOBILITY":"A conta WhatsApp Business não está disponível para mobilidade OBO.","SYNC_LIMIT_EXCEEDED":"Limite de sincronização excedido.","TOO_MANY_CALLS":"Muitas solicitações. Por favor, aguarde antes de tentar novamente.","WABA_REACHED_RATE_LIMIT":"Limite de taxa da conta WhatsApp Business atingido.","API_THROUGHPUT_LIMIT_EXCEEDED":"Limite de processamento da API excedido.","SPAM_RATE_LIMIT":"Limite de mensagens consideradas spam atingido.","MESSAGE_FROM_THE_SAME_TO_THE_SAME_USER_LIMIT_EXCEEDED":"Limite de mensagens entre os mesmos usuários excedido.","REGISTER_OR_DEREGISTER_LIMIT_EXCEEDED":"Limite de registro ou cancelamento excedido.","UNKNOWN_ERROR":"Ocorreu um erro desconhecido. Por favor, entre em contato com o suporte.","SERVICE_UNAVAILABLE":"Meta não está disponível no momento.","NUMBER_DELETED":"O número foi excluído.","PARAMETER_INVALID":"Um dos parâmetros enviados é inválido.","MARKETING_MESSAGES_NOT_ALLOWED":"Não é permitido enviar mensagens de marketing.","META_SERVER_ERROR":"Erro interno do Meta. Tente novamente mais tarde.","MISSING_PARAMETERS_IN_REQUEST":"Faltam parâmetros na solicitação.","ONE_OR_MORE_PARAMETERS_INVALID":"Um ou mais parâmetros são inválidos.","SERVICE_TEMPORARILY_UNAVAILABLE":"O serviço está temporariamente indisponível.","RECIPIENT_CANNOT_BE_SENDER":"O destinatário não pode ser o remetente.","UNABLE_TO_DELIVER":"Não foi possível entregar a mensagem.","NUMBER_DOES_NOT_HAVE_AN_APPROVED_DISPLAY_NAME":"O número não possui um nome de exibição aprovado.","PAYMENT_METHOD_PROBLEM":"Há um problema com o método de pagamento.","SENT_FAILED_BECAUSE_NUMBER_NOT_VERIFIED":"O envio falhou porque o número não está verificado.","MORE_THAN_24HOURS_WINDOW_TO_REPLY":"Já se passaram mais de 24 horas para responder a esta mensagem.","META_DECIDED_NOT_TO_SEND":"O Meta decidiu não enviar esta mensagem. Tente enviar uma modelo de utilitário ou aguarde uma resposta.","RECIPIENT_BLOCKED_MARKETING_MESSAGES":"O destinatário bloqueou mensagens de marketing.","UNSUPPORTED_MESSAGE_TYPE":"Tipo de mensagem não suportado.","MEDIA_DOWNLOAD_FAILED":"Falha ao baixar o arquivo de mídia.","MEDIA_UPLOAD_FAILED":"Falha ao enviar o arquivo de mídia.","ACCOUNT_IN_MAINTENANCE_MODE":"A conta está em modo de manutenção.","MISSING_TEMPLATE_VARIABLES_TO_FILL_OR_EXTRA_VARIABLES_PROVIDED":"Faltam variáveis no modelo ou foram fornecidas variáveis extras.","TEMPLATE_NOT_FOUND":"Modelo não encontrado.","TEMPLATE_TEXT_TOO_LONG":"O texto do modelo é muito longo.","TEMPLAE_CONTENT_POLICY_VIOLATION":"O modelo viola a política de conteúdo.","TEMPLATE_PARAMETER_FORMAT_INVALID":"O formato dos parâmetros do modelo é inválido.","PAUSED_TEMPLATED":"O modelo está pausado.","DISABLED_TEMPLATE":"O modelo está desativado.","FLOW_NOT_AVAILABLE":"O fluxo não está disponível.","THROTTLED_FLOW":"O fluxo foi limitado.","INCOMPLETE_DEREGISTRATION":"Cancelamento incompleto.","META_SERVER_TEMPORARILY_UNAVAILABLE":"O servidor Meta está temporariamente indisponível.","TWO_STEP_PIN_INCORRECT":"O PIN de verificação em duas etapas está incorreto.","PHONE_NUMBER_NEED_RE_VERIFICATION":"O número de telefone precisa ser verificado novamente.","TOO_MANY_TWO_STEP_VERIFICATION_ATTEMPTS":"Muitas tentativas de verificação em duas etapas.","TOO_QUICK_TWO_STEP_VERIFICATION_ATTEMPTS":"Tentativas de verificação em duas etapas muito rápidas.","PHONE_NUMBER_NOT_REGISTERED":"O número de telefone não está registrado.","PHONE_NUMBER_DELETED":"O número de telefone foi excluído.","PAYMENT_TERMS_NOT_ACCEPTED":"Os termos de pagamento não foram aceitos.","UNKWON_ERROR":"Erro desconhecido.","MESSAGE_MUST_BE_A_TEMPLATE":"A mensagem deve ser um modelo para este tipo de envio.","ONE_OR_MORE_PARAMETERS_INVALID_FOR_MARKETING_MESSAGE":"Um ou mais parâmetros são inválidos para mensagens de marketing.","ONLY_MARKETING_MESSAGES_ALLOWED":"Somente mensagens de marketing são permitidas.","ONLY_ABLE_TO_SEND_MARKETING_MESSAGES":"Você só pode enviar mensagens de marketing.","TEMPLATE_STILL_SYNCING":"O modelo ainda está sincronizando.","TEMPLATE_UNAVAILABLE_FOR_USE":"O modelo não está disponível para uso.","DUPLICATE_REQUEST":"Solicitação duplicada. Por favor, verifique seu envio."}');
 ;// CONCATENATED MODULE: ./src/translations/English/metaCampaigns.json
 const metaCampaigns_namespaceObject = /*#__PURE__*/JSON.parse('{"ManageCampaigns":"Manage Campaigns","Campaigns":"Campaigns","AdSets":"Ad Sets","Ads":"Ads","AdDetails":"Ad Details","AdInformation":"Ad Information","CreativeInformation":"Creative Information","Preview":"Preview","Name":"Name","Type":"Type","Title":"Title","Body":"Body","Objective":"Objective","OptimizationGoal":"Optimization Goal","BidStrategy":"Bid Strategy","DailyBudget":"Daily Budget","StartTime":"Start Time","StopTime":"Stop Time","CreatedTime":"Created Time","Status":"Status","Actions":"Actions","Select":"Select","Selected":"Selected","GoToPost":"Go to Post","Next":"Next","Previous":"Previous","NoCampaigns":"No campaigns found","NoAdSets":"No ad sets found for this campaign","NoAds":"No ads found for this ad set"}');
 ;// CONCATENATED MODULE: ./src/translations/Spanish/metaCampaigns.json
@@ -14332,12 +14343,21 @@ const support_namespaceObject = /*#__PURE__*/JSON.parse('{"title":"Frequently As
 const Spanish_support_namespaceObject = /*#__PURE__*/JSON.parse('{"title":"Preguntas Frecuentes","faq1Question":"¿Cómo activar Wizybot en mi página web?","faq1Answer":"Para habilitar la visibilidad de Wizybot en tu tienda, sigue estos pasos desde tu administrador de Shopify:\\n\\n- Ve al menú de la izquierda y selecciona Online Store (Tienda en línea).\\n- Entra en el submenú Themes (Temas).\\n- Haz clic en el botón Customize (Personalizar).\\n- En la barra lateral izquierda, selecciona el icono de App embeds (Aplicaciones incrustadas).\\n- Localiza Wizybot y activa el interruptor.\\n- Importante: Haz clic en el botón Save (Guardar) en la esquina superior derecha.","faq2Question":"¿Cómo conectar WhatsApp, Instagram o Facebook?","faq2Answer":"Para integrar tus canales de Meta, es necesario agendar una sesión con nuestro equipo técnico. Puedes contactarnos de las siguientes formas:\\n\\n- Escribe directamente en el grupo de WhatsApp asignado a tu tienda.\\n- Si aún no tienes un grupo, contáctanos al: +57 350 256 6085.","faq3Question":"¿Cómo corrijo una respuesta de Wizybot?","faq3Answer":"Si deseas ajustar o mejorar las respuestas de la IA:\\n\\n- Dirígete al menú principal de la aplicación y selecciona la opción Conocimientos.\\n- Desde allí, podrás agregar o editar la información que el bot utiliza para responder.\\n- Si necesitas ayuda adicional, recuerda que puedes escribirnos a través de tu grupo de soporte en WhatsApp. Si aún no tienes un grupo, contáctanos al: +57 350 256 6085.","faq4Question":"Planes y precios","faq4Answer":"Actualmente ofrecemos dos modalidades diseñadas para escalar con tu negocio:\\n\\n- Plan Básico ($69.99 USD/mes): Incluye hasta 1,250 mensajes y 2,500 comentarios mensuales.\\n- Plan Personalizado: Si tu flujo de mensajes es superior, diseñamos un plan a la medida de tus necesidades operativas.","faq5Question":"¿Qué incluyen nuestros planes?","faq5Answer":"Al contratar Wizybot, obtienes acceso total a nuestro ecosistema de herramientas:\\n\\n- IA Avanzada: Respuesta automática de conversaciones y comentarios.\\n- Gestión de Clientes (CRM): Control total de tus prospectos.\\n- Marketing: Mensajería masiva y automatizaciones vía WhatsApp.\\n- Equipo Ilimitado: Crea todos los usuarios que necesites, asignando roles y departamentos específicos.\\n- Soporte VIP: Acompañamiento prioritario para que tu operación nunca se detenga.","noResults":"No encontramos FAQs con ese criterio.","contactTitle":"¿Todavía tienes dudas?","contactDescription":"Nuestro equipo de soporte está disponible para ayudarte por correo o WhatsApp con cualquier consulta técnica o comercial.","contactButton":"Contactar Soporte"}');
 ;// CONCATENATED MODULE: ./src/translations/Portuguese/support.json
 const Portuguese_support_namespaceObject = /*#__PURE__*/JSON.parse('{"title":"Perguntas Frequentes","faq1Question":"Como ativar o Wizybot na minha loja online?","faq1Answer":"Para habilitar a visibilidade do Wizybot na sua loja, siga estes passos no administrador da Shopify:\\n\\n- No menu da esquerda, selecione Online Store (Loja online).\\n- Entre no submenu Themes (Temas).\\n- Clique em Customize (Personalizar).\\n- Na barra lateral esquerda, selecione o icone de App embeds (Aplicativos incorporados).\\n- Localize o Wizybot e ative o interruptor.\\n- Importante: Clique em Save (Salvar) no canto superior direito.","faq2Question":"Como conectar WhatsApp, Instagram ou Facebook?","faq2Answer":"Para integrar seus canais da Meta, e necessario agendar uma sessao com nossa equipe tecnica. Voce pode nos contatar assim:\\n\\n- Escreva diretamente no grupo de WhatsApp atribuido a sua loja.\\n- Se ainda nao tiver um grupo, entre em contato pelo: +57 350 256 6085.","faq3Question":"Como corrijo uma resposta do Wizybot?","faq3Answer":"Se quiser ajustar ou melhorar as respostas da IA:\\n\\n- Va ao menu principal do aplicativo e selecione Conhecimentos.\\n- A partir dai, voce pode adicionar ou editar as informacoes que o bot usa para responder.\\n- Se precisar de mais ajuda, escreva pelo seu grupo de suporte no WhatsApp. Se ainda nao tiver um grupo, entre em contato pelo: +57 350 256 6085.","faq4Question":"Planos e precos","faq4Answer":"Atualmente oferecemos duas modalidades pensadas para escalar com o seu negocio:\\n\\n- Plano Basico ($69.99 USD/mes): Inclui ate 1.250 mensagens e 2.500 comentarios mensais.\\n- Plano Personalizado: Se o seu fluxo de mensagens for maior, desenhamos um plano sob medida para as suas necessidades operacionais.","faq5Question":"O que incluem nossos planos?","faq5Answer":"Ao contratar o Wizybot, voce tem acesso total ao nosso ecossistema de ferramentas:\\n\\n- IA avancada: Resposta automatica de conversas e comentarios.\\n- Gestao de clientes (CRM): Controle total dos seus prospectos.\\n- Marketing: Mensageria em massa e automacoes via WhatsApp.\\n- Equipe ilimitada: Crie quantos usuarios precisar, com funcoes e departamentos especificos.\\n- Suporte VIP: Acompanhamento prioritario para que sua operacao nao pare.","noResults":"Nao encontramos FAQs com esse criterio.","contactTitle":"Ainda tem duvidas?","contactDescription":"Nosso time de suporte esta disponivel para ajudar por email ou WhatsApp com qualquer duvida tecnica ou comercial.","contactButton":"Contatar Suporte"}');
+;// CONCATENATED MODULE: ./src/translations/English/helpCenter.json
+const helpCenter_namespaceObject = /*#__PURE__*/JSON.parse('{"HelpCenter":"Help Center","TutorialVideos":"Tutorial videos","FaqsTitle":"Frequently Asked Questions (FAQs)","ContactSupport":"Contact support","home":{"faq1":{"title":"How do I complete the initial setup?","content":"You must complete the 5 steps in the left panel: customize the chat, define the personality, correct at least 3 responses in the training module, activate the bot, and connect it with Meta (WhatsApp/Instagram)."},"faq2":{"title":"My bot is activated but it doesn\'t appear on my Shopify store. What should I do?","content":"Make sure the Wizybot Status switch is set to “On”. If you use Shopify, click the activation button to view the installation instructions in the theme editor."},"faq3":{"title":"How do I change the currency of my sales reports?","content":"In the Wizybot Sales metric, you will find a selector next to the currency symbol. Click it to change the display to your local currency."},"faq4":{"title":"What does the “Time saved” metric mean?","content":"It is an estimate based on the number of messages successfully answered by the AI without human agent intervention."},"faq5":{"title":"Where can I find my account ID for support?","content":"You can find your account ID and current store plan by expanding the store information panel below the setup checklist."},"faq6":{"title":"How do I change the app language or appearance (dark mode)?","content":"Click the user icon in the top-right corner. There you will find the Interface options to switch between light and dark mode, as well as the Language selector to adjust the platform to your preference."},"faq7":{"title":"How can I mute notifications?","content":"Inside the same user menu (top-right corner), look for the Sound option. From there you can enable or disable the platform\'s sound alerts as needed."},"faq8":{"title":"Where can I upgrade or change my current plan?","content":"You have two options: go to the user menu and select Upgrade Subscription, or expand the store information panel on the home page and click the Upgrade Plan button."},"faq9":{"title":"How do I safely log out?","content":"Simply open the user panel in the top-right corner and select the Log out option at the bottom of the list."},"faq10":{"title":"How can I switch between my different stores?","content":"Click the user icon in the top-right corner to open your account panel. There you will see a selector with all your linked stores, such as Shopify or WordPress. Simply select the store you want to review to view its specific metrics and settings."}}}');
+;// CONCATENATED MODULE: ./src/translations/Spanish/helpCenter.json
+const Spanish_helpCenter_namespaceObject = /*#__PURE__*/JSON.parse('{"HelpCenter":"Centro de ayuda","TutorialVideos":"Videos tutoriales","FaqsTitle":"Preguntas frecuentes (FAQs)","ContactSupport":"Contactar soporte","home":{"faq1":{"title":"¿Cómo completo la configuración inicial?","content":"Debes seguir los 5 pasos del panel izquierdo: personalizar el chat, definir la personalidad, corregir al menos 3 respuestas en el módulo de entrenamiento, activar el bot y conectarlo con Meta (WhatsApp/Instagram)."},"faq2":{"title":"Mi bot está activado pero no se ve en mi tienda Shopify, ¿qué hago?","content":"Asegúrate de que el switch en Estado de Wizybot esté en “On”. Si usas Shopify, haz clic en el botón de activación para ver las instrucciones de instalación en el editor de temas."},"faq3":{"title":"¿Cómo cambio la moneda de mis reportes de ventas?","content":"En la métrica de Ventas de Wizybot encontrarás un selector junto al símbolo de moneda. Haz clic allí para cambiar la visualización a tu moneda local."},"faq4":{"title":"¿Qué significa la métrica “Tiempo ahorrado”?","content":"Es una estimación basada en la cantidad de mensajes respondidos exitosamente por la IA sin intervención de un agente humano."},"faq5":{"title":"¿Dónde encuentro mi ID de cuenta para soporte?","content":"Puedes ver tu ID de cuenta y tu plan actual expandiendo el panel de información de tu tienda debajo del checklist de configuración."},"faq6":{"title":"¿Cómo cambio el idioma o la apariencia de la app (modo oscuro)?","content":"Haz clic en el ícono de usuario arriba a la derecha. Allí encontrarás las opciones de Interfaz para elegir entre el modo claro u oscuro, y el selector de Idioma para ajustar la plataforma a tu preferencia."},"faq7":{"title":"¿Cómo puedo silenciar las notificaciones?","content":"Dentro del mismo menú de usuario (arriba a la derecha), busca la opción de Sonido. Desde ahí puedes activar o desactivar las alertas sonoras de la plataforma según lo necesites."},"faq8":{"title":"¿Dónde puedo mejorar o cambiar mi plan actual?","content":"Tienes dos opciones: puedes ir al menú de usuario y seleccionar Mejorar suscripción, o expandir el panel de información de tu tienda en el inicio y hacer clic en el botón Ampliar Plan."},"faq9":{"title":"¿Cómo cierro mi sesión de forma segura?","content":"Solo debes abrir el panel de usuario en la esquina superior derecha y seleccionar la opción Cerrar sesión al final de la lista."},"faq10":{"title":"¿Cómo puedo cambiar entre mis diferentes tiendas?","content":"Haz clic en el ícono de usuario arriba a la derecha para desplegar el panel de tu cuenta. Allí verás un selector con los nombres de todas tus tiendas vinculadas (como Shopify o WordPress); simplemente selecciona la tienda que quieras revisar para ver sus métricas y configuración específicas."}}}');
+;// CONCATENATED MODULE: ./src/translations/Portuguese/helpCenter.json
+const Portuguese_helpCenter_namespaceObject = /*#__PURE__*/JSON.parse('{"HelpCenter":"Central de ajuda","TutorialVideos":"Vídeos tutoriais","FaqsTitle":"Perguntas frequentes (FAQs)","ContactSupport":"Entrar em contato com o suporte","home":{"faq1":{"title":"Como concluo a configuração inicial?","content":"Você deve seguir os 5 passos do painel esquerdo: personalizar o chat, definir a personalidade, corrigir pelo menos 3 respostas no módulo de treinamento, ativar o bot e conectá-lo ao Meta (WhatsApp/Instagram)."},"faq2":{"title":"Meu bot está ativado, mas não aparece na minha loja Shopify. O que faço?","content":"Certifique-se de que o botão de Status do Wizybot esteja em “On”. Se você usa Shopify, clique no botão de ativação para ver as instruções de instalação no editor de temas."},"faq3":{"title":"Como altero a moeda dos meus relatórios de vendas?","content":"Na métrica de Vendas do Wizybot, você encontrará um seletor ao lado do símbolo da moeda. Clique nele para alterar a visualização para sua moeda local."},"faq4":{"title":"O que significa a métrica “Tempo economizado”?","content":"É uma estimativa baseada na quantidade de mensagens respondidas com sucesso pela IA sem intervenção humana."},"faq5":{"title":"Onde encontro meu ID de conta para suporte?","content":"Você pode ver seu ID de conta e o plano atual da loja expandindo o painel de informações da loja abaixo do checklist de configuração."},"faq6":{"title":"Como altero o idioma ou a aparência do app (modo escuro)?","content":"Clique no ícone de usuário no canto superior direito. Lá você encontrará as opções de Interface para alternar entre o modo claro e escuro, além do seletor de Idioma para ajustar a plataforma à sua preferência."},"faq7":{"title":"Como posso silenciar as notificações?","content":"Dentro do mesmo menu de usuário (canto superior direito), procure a opção de Som. A partir daí você pode ativar ou desativar os alertas sonoros da plataforma conforme necessário."},"faq8":{"title":"Onde posso melhorar ou alterar meu plano atual?","content":"Você tem duas opções: acessar o menu do usuário e selecionar Upgrade da assinatura, ou expandir o painel de informações da loja na página inicial e clicar no botão Upgrade do plano."},"faq9":{"title":"Como encerro minha sessão com segurança?","content":"Basta abrir o painel do usuário no canto superior direito e selecionar a opção Sair no final da lista."},"faq10":{"title":"Como posso alternar entre minhas diferentes lojas?","content":"Clique no ícone de usuário no canto superior direito para abrir o painel da sua conta. Lá você verá um seletor com todas as suas lojas vinculadas, como Shopify ou WordPress. Basta selecionar a loja que deseja revisar para visualizar suas métricas e configurações específicas."}}}');
 ;// CONCATENATED MODULE: ./src/translations/I18n.tsx
 
 
 
 
 //Import all translation files
+
+
+
 
 
 
@@ -14619,7 +14639,8 @@ const resources = {
     time: time_namespaceObject,
     roles: roles_namespaceObject,
     metaTemplates: English_metaTemplates_namespaceObject,
-    support: support_namespaceObject
+    support: support_namespaceObject,
+    helpCenter: helpCenter_namespaceObject
   },
   es: {
     login: Spanish_login_namespaceObject,
@@ -14683,7 +14704,8 @@ const resources = {
     time: Spanish_time_namespaceObject,
     roles: Spanish_roles_namespaceObject,
     metaTemplates: metaTemplates_namespaceObject,
-    support: Spanish_support_namespaceObject
+    support: Spanish_support_namespaceObject,
+    helpCenter: Spanish_helpCenter_namespaceObject
   },
   pt: {
     login: Portuguese_login_namespaceObject,
@@ -14746,7 +14768,8 @@ const resources = {
     time: Portuguese_time_namespaceObject,
     roles: Portuguese_roles_namespaceObject,
     metaTemplates: Portuguese_metaTemplates_namespaceObject,
-    support: Portuguese_support_namespaceObject
+    support: Portuguese_support_namespaceObject,
+    helpCenter: Portuguese_helpCenter_namespaceObject
   }
 };
 instance.use(initReactI18next).init({
@@ -14786,10 +14809,11 @@ const ReactIframe = props => {
 
 // Default exported function
 /* harmony default export */ const components_ReactIframe = (ReactIframe);
-// EXTERNAL MODULE: ./src/components/ShopifyWidget.tsx
-var ShopifyWidget = __webpack_require__(822);
-;// CONCATENATED MODULE: ./src/components/ShopifyWidgetWrapper.tsx
+// EXTERNAL MODULE: ./src/components/WordpressWidget.tsx
+var WordpressWidget = __webpack_require__(509);
+;// CONCATENATED MODULE: ./src/components/WordpressWidgetWrapper.tsx
 // Import React Dependencies
+
 
 
 
@@ -14799,11 +14823,10 @@ var ShopifyWidget = __webpack_require__(822);
 // Declare types and interfaces
 
 // Page main functional component
-const ShopifyWidgetWrapper = _ref => {
+const WordpressWidgetWrapper = _ref => {
   let {
     domain,
     isRelative,
-    ipRegistryKey,
     globalSelectedBackend,
     chatProfileImage,
     curvyBorderImage,
@@ -14830,39 +14853,39 @@ const ShopifyWidgetWrapper = _ref => {
   const [isOpen, setIsOpen] = (0,react.useState)(isRelative);
   const [width, setWidth] = (0,react.useState)(80);
   const [widget, setWidget] = (0,react.useState)({
-    domain: "",
+    domain: '',
     setup: {
-      primaryColor: "",
-      secondaryColor: "",
-      fontColor: "",
-      agentName: "",
-      onlinePhrase: "",
-      mainLanguage: ShopifyWidget/* EMainLanguage */.PW.ENGLISH,
-      side: ShopifyWidget/* ESide */.ju.RIGHT,
+      primaryColor: '',
+      secondaryColor: '',
+      fontColor: '',
+      agentName: '',
+      onlinePhrase: '',
+      mainLanguage: WordpressWidget/* EMainLanguage */.PW.ENGLISH,
+      side: WordpressWidget/* ESide */.ju.RIGHT,
       paddingBottom: 0,
       paddingSide: 0,
-      image: "",
+      image: '',
       isVisible: false,
-      emailRetrievalMethod: ShopifyWidget/* EEmailRetrievalMethod */.rb.NONE,
-      dataRetrievalType: ShopifyWidget/* EDataRetrievalType */.oj.EMAIL,
-      dataRetrievalCustomPrompt: "",
+      emailRetrievalMethod: WordpressWidget/* EEmailRetrievalMethod */.rb.NONE,
+      dataRetrievalType: WordpressWidget/* EDataRetrievalType */.oj.EMAIL,
+      dataRetrievalCustomPrompt: '',
       isRedirect: false,
-      redirectionLink: "",
+      redirectionLink: '',
       isOverLimitBudget: false,
-      limitBudgetAction: ShopifyWidget/* ELimitBudgetAction */.wP.REDIRECT,
-      limitBudgetRedirectionLink: "",
+      limitBudgetAction: WordpressWidget/* ELimitBudgetAction */.wP.REDIRECT,
+      limitBudgetRedirectionLink: '',
       hideNotificationSign: false,
       hideWizybotBanner: false,
       hideOutboundMessage: false,
       preventSaleNoteCreation: false,
-      customWidgetCode: "",
-      pagesToExcludeWidget: "",
-      defaultCountryCode: "CO"
+      customWidgetCode: '',
+      pagesToExcludeWidget: '',
+      defaultCountryCode: 'CO'
     }
   });
   const [shouldShow, setShouldShow] = (0,react.useState)(true);
   const [isRedirect, setIsRedirect] = (0,react.useState)(false);
-  const [redirectionLink, setRedirectionLink] = (0,react.useState)("");
+  const [redirectionLink, setRedirectionLink] = (0,react.useState)('');
   const [actualDate, setActualDate] = (0,react.useState)(0);
   const cookies = new es6/* default */.A();
 
@@ -14878,9 +14901,9 @@ const ShopifyWidgetWrapper = _ref => {
     // Check for params in the url
     const urlParams = new URLSearchParams(window.location.search);
     // Client conversation param
-    const wizyClient = urlParams.get("wizyclient");
+    const wizyClient = urlParams.get('wizyclient');
     // Referral from another Wizybot channel param
-    const wizyReferral = urlParams.get("wizyreferral");
+    const wizyReferral = urlParams.get('wizyreferral');
 
     // If there is a wizyclient parameter
     if (wizyClient !== null) {
@@ -14888,24 +14911,24 @@ const ShopifyWidgetWrapper = _ref => {
       createSaleOption(wizyClient);
 
       // Remove client id
-      cookies.remove(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain, {
-        path: "/"
+      cookies.remove(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, {
+        path: '/'
       });
       // Set the new one
-      cookies.set(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain, wizyClient, {
-        path: "/",
+      cookies.set(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain, wizyClient, {
+        path: '/',
         maxAge: 60 * 60 * 24 * 365
       });
       // Remove super client id
-      cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-        path: "/"
+      cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+        path: '/'
       });
       // Set the new one
       const clientSuperClientId = await clientId2SuperClientId(wizyClient);
       if (clientSuperClientId) {
         // Set it as cookie
-        cookies.set("WIZY_SUPERCLIENT_" + domain, clientSuperClientId, {
-          path: "/",
+        cookies.set('WIZY_SUPERCLIENT_' + domain, clientSuperClientId, {
+          path: '/',
           maxAge: 60 * 60 * 24 * 365
         });
       }
@@ -14917,8 +14940,8 @@ const ShopifyWidgetWrapper = _ref => {
       createSaleOption(wizyReferral);
 
       // Get cookies
-      const superClientCookie = cookies.get("WIZY_SUPERCLIENT_" + domain);
-      const clientCookie = cookies.get(isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain);
+      const superClientCookie = cookies.get('WIZY_SUPERCLIENT_' + domain);
+      const clientCookie = cookies.get(isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain);
 
       // If no client has been previously created on the webpage chat
       if (clientCookie === undefined && superClientCookie === undefined) {
@@ -14926,8 +14949,8 @@ const ShopifyWidgetWrapper = _ref => {
         const referralSuperClientId = await clientId2SuperClientId(wizyReferral);
         if (referralSuperClientId) {
           // Set it as cookie
-          cookies.set("WIZY_SUPERCLIENT_" + domain, referralSuperClientId, {
-            path: "/",
+          cookies.set('WIZY_SUPERCLIENT_' + domain, referralSuperClientId, {
+            path: '/',
             maxAge: 60 * 60 * 24 * 365
           });
         }
@@ -14939,14 +14962,14 @@ const ShopifyWidgetWrapper = _ref => {
         const mergedSuperClientId = await mergeSuperClientByClientId(wizyReferral, clientCookie);
         // If there was an old superclient cookie remove it
         if (superClientCookie) {
-          cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-            path: "/"
+          cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+            path: '/'
           });
         }
         // Set the merged superclient id as the new superclient cookie
         if (mergedSuperClientId) {
-          cookies.set("WIZY_SUPERCLIENT_" + domain, mergedSuperClientId, {
-            path: "/",
+          cookies.set('WIZY_SUPERCLIENT_' + domain, mergedSuperClientId, {
+            path: '/',
             maxAge: 60 * 60 * 24 * 365
           });
         }
@@ -14960,11 +14983,11 @@ const ShopifyWidgetWrapper = _ref => {
         if (newReferralSuperClientId && newReferralSuperClientId !== oldReferralSuperClientId) {
           const mergedSuperClientId = await mergeSuperClientBySuperClientId(newReferralSuperClientId, oldReferralSuperClientId);
           if (mergedSuperClientId) {
-            cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-              path: "/"
+            cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+              path: '/'
             });
-            cookies.set("WIZY_SUPERCLIENT_" + domain, mergedSuperClientId, {
-              path: "/",
+            cookies.set('WIZY_SUPERCLIENT_' + domain, mergedSuperClientId, {
+              path: '/',
               maxAge: 60 * 60 * 24 * 365
             });
           }
@@ -14977,12 +15000,12 @@ const ShopifyWidgetWrapper = _ref => {
   // Get widget variables based on the domain
   const getWidgetVariables = async () => {
     const url = new URL("".concat(globalSelectedBackend, "/shops/").concat(domain, "/widgetvariables"));
-    if (marketId) url.searchParams.append("marketId", marketId);
-    if (languageCode) url.searchParams.append("languageCode", languageCode);
+    if (marketId) url.searchParams.append('marketId', marketId);
+    if (languageCode) url.searchParams.append('languageCode', languageCode);
     await fetch(url.toString(), {
-      method: "GET",
-      credentials: "include",
-      redirect: "follow"
+      method: 'GET',
+      credentials: 'include',
+      redirect: 'follow'
     }).then(async response => {
       if (!response.ok) {
         let errorText = await response.text();
@@ -15004,7 +15027,7 @@ const ShopifyWidgetWrapper = _ref => {
           side: JSONresult.setup.side,
           paddingBottom: +JSONresult.setup.paddingBottom,
           paddingSide: +JSONresult.setup.paddingSide,
-          image: JSONresult.setup.image !== "Default" ? globalSelectedBackend !== "https://api.wizybot.com" ? "" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "" + JSONresult.setup.image + "?nocache=" + new Date()[Symbol.toPrimitive]("number") : "",
+          image: JSONresult.setup.image !== 'Default' ? globalSelectedBackend !== 'https://api.wizybot.com' ? 'https://s3-tjlabs-wizybot-widget-images-dev.s3.amazonaws.com/' + JSONresult.setup.image + '?nocache=' + new Date()[Symbol.toPrimitive]('number') : 'https://s3-tjlabs-wizybot-widget-images-prod.s3.amazonaws.com/' + JSONresult.setup.image + '?nocache=' + new Date()[Symbol.toPrimitive]('number') : '',
           isVisible: JSONresult.setup.isVisible,
           emailRetrievalMethod: JSONresult.setup.emailRetrievalMethod,
           dataRetrievalType: JSONresult.setup.dataRetrievalType,
@@ -15024,10 +15047,10 @@ const ShopifyWidgetWrapper = _ref => {
         }
       });
       // The widget should be shown if:
-      var shouldShowWidget = isDashboard || JSONresult.setup.isVisible && (shopifyCurrentPath === null || JSONresult.setup.pagesToExcludeWidget === null ? true : !JSONresult.setup.pagesToExcludeWidget.split(",").some(pageToExclude => shopifyCurrentPath.includes(pageToExclude)));
+      var shouldShowWidget = isDashboard || JSONresult.setup.isVisible && (shopifyCurrentPath === null || JSONresult.setup.pagesToExcludeWidget === null ? true : !JSONresult.setup.pagesToExcludeWidget.split(',').some(pageToExclude => shopifyCurrentPath.includes(pageToExclude)));
       // Initially widget should not redirect
       var shouldRedirect = false;
-      var redirectionLink = "";
+      var redirectionLink = '';
       // But in case is not in the dashboard
       if (!isDashboard) {
         // The widget should be redirecting if is redirect flag
@@ -15038,10 +15061,10 @@ const ShopifyWidgetWrapper = _ref => {
 
         // Check limit budgests and what to do if over the limit
         if (JSONresult.setup.isOverLimitBudget) {
-          if (JSONresult.setup.limitBudgetAction === "widget off") {
+          if (JSONresult.setup.limitBudgetAction === 'widget off') {
             shouldShowWidget = false;
           }
-          if (JSONresult.setup.limitBudgetAction === "redirect") {
+          if (JSONresult.setup.limitBudgetAction === 'redirect') {
             shouldRedirect = true;
             redirectionLink = JSONresult.setup.limitBudgetRedirectionLink;
           }
@@ -15058,8 +15081,8 @@ const ShopifyWidgetWrapper = _ref => {
           const extractedVersion = match[2];
 
           // Extract numeric parts of the versions
-          const actualVersionNumber = parseInt(actualWidgetVersion.split("-").pop(), 10);
-          const extractedVersionNumber = parseInt(extractedVersion.split("-").pop(), 10);
+          const actualVersionNumber = parseInt(actualWidgetVersion.split('-').pop(), 10);
+          const extractedVersionNumber = parseInt(extractedVersion.split('-').pop(), 10);
 
           // Compare versions and post if actualWidgetVersion is greater
           if (actualVersionNumber < extractedVersionNumber) {
@@ -15082,9 +15105,9 @@ const ShopifyWidgetWrapper = _ref => {
   const postWidgetVersion = async (actualWidgetVersion, actualWidgetVUuid) => {
     try {
       const response = await fetch("".concat(globalSelectedBackend, "/shopifywidgetrest/updatewidgetversion"), {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           actualWidgetVersion,
@@ -15096,43 +15119,43 @@ const ShopifyWidgetWrapper = _ref => {
         throw new Error(errorText);
       }
       const result = await response.json();
-      console.log("Widget version updated successfully:", result.message);
+      console.log('Widget version updated successfully:', result.message);
     } catch (error) {
-      console.error("Error updating widget version:", error);
+      console.error('Error updating widget version:', error);
     }
   };
 
   // Create a sale option for a possible referral
   const createSaleOption = async clientId => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "" && !isDashboard) {
-      await fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
+    if (shopifyRootPath !== null && shopifyRootPath !== '' && !isDashboard) {
+      await fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           attributes: {
             wizybot: true
           },
-          note: widget.setup.preventSaleNoteCreation ? "" : "Wizybot sale!"
+          note: widget.setup.preventSaleNoteCreation ? '' : 'Wizybot sale!'
         })
       }).then(async response => {
-        await fetch(shopifyRootPath + "cart.js", {
-          method: "GET"
+        await fetch(shopifyRootPath + 'cart.js', {
+          method: 'GET'
         }).then(response => {
           return response.json();
         }).then(async data => {
           var raw = JSON.stringify({
-            cartId: data.token.split("?")[0]
+            cartId: data.token.split('?')[0]
           });
           var myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          await fetch(globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale", {
-            method: "POST",
+          myHeaders.append('Content-Type', 'application/json');
+          await fetch(globalSelectedBackend + '/sale/' + domain + '/' + clientId + '/createsale', {
+            method: 'POST',
             headers: myHeaders,
             body: raw,
-            credentials: "include",
-            redirect: "follow"
+            credentials: 'include',
+            redirect: 'follow'
           }).then(async response => {
             if (!response.ok) {
               let errorText = await response.text();
@@ -15142,29 +15165,29 @@ const ShopifyWidgetWrapper = _ref => {
               return response.text();
             }
           }).then(result => JSON.parse(result)).then(JSONresult => {}).catch(error => {
-            console.log("Error:", error);
+            console.log('Error:', error);
           });
         }).catch(error => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
       }).catch(error => {
-        console.error("Error:", error);
+        console.error('Error:', error);
       });
-    } else if (platform === "WORDPRESS" && !isDashboard) {
+    } else if (platform === 'WORDPRESS' && !isDashboard) {
       try {
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        await fetch(globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale", {
-          method: "POST",
+        myHeaders.append('Content-Type', 'application/json');
+        await fetch(globalSelectedBackend + '/sale/' + domain + '/' + clientId + '/createsale', {
+          method: 'POST',
           headers: myHeaders,
           body: JSON.stringify({
             cartId: wizyCartId || null
           }),
-          credentials: "include",
-          redirect: "follow"
+          credentials: 'include',
+          redirect: 'follow'
         });
       } catch (error) {
-        console.error("Error creating WordPress sale:", error);
+        console.error('Error creating WordPress sale:', error);
       }
     }
   };
@@ -15173,12 +15196,12 @@ const ShopifyWidgetWrapper = _ref => {
   const clientId2SuperClientId = async clientId => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      const response = await fetch(globalSelectedBackend + "/superclients/clientid2superclientid/" + clientId, {
-        method: "GET",
+      myHeaders.append('Content-Type', 'application/json');
+      const response = await fetch(globalSelectedBackend + '/superclients/clientid2superclientid/' + clientId, {
+        method: 'GET',
         headers: myHeaders,
-        credentials: "include",
-        redirect: "follow"
+        credentials: 'include',
+        redirect: 'follow'
       });
       if (!response.ok) {
         let errorText = await response.text();
@@ -15195,17 +15218,17 @@ const ShopifyWidgetWrapper = _ref => {
   const mergeSuperClientByClientId = async (referralClientId, webpageClientId) => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
       var raw = JSON.stringify({
         fromClientId: referralClientId,
         toClientId: webpageClientId
       });
-      const response = await fetch(globalSelectedBackend + "/superclients/mergebyclientids/", {
-        method: "POST",
+      const response = await fetch(globalSelectedBackend + '/superclients/mergebyclientids/', {
+        method: 'POST',
         headers: myHeaders,
         body: raw,
-        credentials: "include",
-        redirect: "follow"
+        credentials: 'include',
+        redirect: 'follow'
       });
       if (!response.ok) {
         let errorText = await response.text();
@@ -15222,17 +15245,17 @@ const ShopifyWidgetWrapper = _ref => {
   const mergeSuperClientBySuperClientId = async (referralSuperClientId, webpageSuperClientId) => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
       var raw = JSON.stringify({
         fromSuperClientId: referralSuperClientId,
         toSuperClientId: webpageSuperClientId
       });
-      const response = await fetch(globalSelectedBackend + "/superclients/mergebysuperclientids/", {
-        method: "POST",
+      const response = await fetch(globalSelectedBackend + '/superclients/mergebysuperclientids/', {
+        method: 'POST',
         headers: myHeaders,
         body: raw,
-        credentials: "include",
-        redirect: "follow"
+        credentials: 'include',
+        redirect: 'follow'
       });
       if (!response.ok) {
         let errorText = await response.text();
@@ -15263,23 +15286,23 @@ const ShopifyWidgetWrapper = _ref => {
   if (isLoaded) {
     return !shouldShow ? /*#__PURE__*/react.createElement(react.Fragment, null) : /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("link", {
       rel: "stylesheet",
-      href: isRelative ? stylesPathOutter + "?randomID=" + actualDate : stylesPathOutter
+      href: isRelative ? stylesPathOutter + '?randomID=' + actualDate : stylesPathOutter
     }), /*#__PURE__*/react.createElement("div", {
       id: "WizybotShopifyWidget__data__div",
       "data-storesetup": JSON.stringify(widget)
     }), /*#__PURE__*/react.createElement(components_ReactIframe, {
       iframetitle: "wizybot-chat-iframe",
-      className: isRelative ? "WizybotShopifyWidget__iframe__outter__open__relative" : isOpen ? widget.setup.side === ShopifyWidget/* ESide */.ju.RIGHT ? "WizybotShopifyWidget__iframe__outter__open__right" : "WizybotShopifyWidget__iframe__outter__open__left" : "WizybotShopifyWidget__iframe__outter__close",
+      className: isRelative ? 'WizybotShopifyWidget__iframe__outter__open__relative' : isOpen ? widget.setup.side === WordpressWidget/* ESide */.ju.RIGHT ? 'WizybotShopifyWidget__iframe__outter__open__right' : 'WizybotShopifyWidget__iframe__outter__open__left' : 'WizybotShopifyWidget__iframe__outter__close',
       id: "WizybotShopifyWidget__iframe__outter__id",
       style: {
-        right: !isOpen ? widget.setup.side === ShopifyWidget/* ESide */.ju.RIGHT ? widget.setup.paddingSide : "calc(100% - " + (widget.setup.paddingSide + width) + "px)" : "",
-        bottom: !isOpen ? widget.setup.paddingBottom : "",
-        width: !isOpen ? width + "px" : "",
-        height: !isOpen ? "80px" : ""
+        right: !isOpen ? widget.setup.side === WordpressWidget/* ESide */.ju.RIGHT ? widget.setup.paddingSide : 'calc(100% - ' + (widget.setup.paddingSide + width) + 'px)' : '',
+        bottom: !isOpen ? widget.setup.paddingBottom : '',
+        width: !isOpen ? width + 'px' : '',
+        height: !isOpen ? '80px' : ''
       }
     }, /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("link", {
       rel: "stylesheet",
-      href: isRelative ? stylesPathInner + "?randomID=" + actualDate : stylesPathInner
+      href: isRelative ? stylesPathInner + '?randomID=' + actualDate : stylesPathInner
     }), /*#__PURE__*/react.createElement("link", {
       rel: "preconnect",
       href: "https://fonts.googleapis.com"
@@ -15289,14 +15312,13 @@ const ShopifyWidgetWrapper = _ref => {
     }), /*#__PURE__*/react.createElement("link", {
       href: "https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
       rel: "stylesheet"
-    }), /*#__PURE__*/react.createElement(ShopifyWidget/* default */.Ay, {
+    }), /*#__PURE__*/react.createElement(WordpressWidget/* default */.Ay, {
       domain: domain,
       widget: widget,
       isTest: isTest,
       isAdmin: isAdmin,
       isDashboard: isDashboard,
       isRelative: isRelative,
-      ipRegistryKey: ipRegistryKey,
       globalSelectedBackend: globalSelectedBackend,
       chatProfileImage: chatProfileImage,
       curvyBorderImage: curvyBorderImage,
@@ -15304,7 +15326,7 @@ const ShopifyWidgetWrapper = _ref => {
       noImageImage: noImageImage,
       widgetLoader: widgetLoader,
       shopifyRootPath: shopifyRootPath,
-      shopifyCurrentPath: shopifyCurrentPath === null ? "/" : shopifyCurrentPath,
+      shopifyCurrentPath: shopifyCurrentPath === null ? '/' : shopifyCurrentPath,
       isShopifyForeing: isShopifyForeing,
       isRedirect: isRedirect,
       redirectionLink: redirectionLink,
@@ -15324,7 +15346,7 @@ const ShopifyWidgetWrapper = _ref => {
 };
 
 // Default exported function
-/* harmony default export */ const components_ShopifyWidgetWrapper = (ShopifyWidgetWrapper);
+/* harmony default export */ const components_WordpressWidgetWrapper = (WordpressWidgetWrapper);
 // EXTERNAL MODULE: ./node_modules/google-libphonenumber/dist/libphonenumber.js
 var libphonenumber = __webpack_require__(0);
 ;// CONCATENATED MODULE: ./src/wordpress/widget/indexWidget.wordpress.tsx
@@ -15343,7 +15365,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
 const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
 const isValidPhone = (phone, countryCode) => {
   try {
-    const parsed = phoneUtil.parseAndKeepRawInput(phone, countryCode || "CO");
+    const parsed = phoneUtil.parseAndKeepRawInput(phone, countryCode || 'CO');
     return phoneUtil.isValidNumber(parsed);
   } catch (_unused) {
     return false;
@@ -15351,35 +15373,34 @@ const isValidPhone = (phone, countryCode) => {
 };
 
 // Append wizybot to the body
-const dataDiv = document.createElement("div");
-dataDiv.id = "wizydiv";
+const dataDiv = document.createElement('div');
+dataDiv.id = 'wizydiv';
 document.body.appendChild(dataDiv);
 const data = window.wizybot;
-console.log("data: ", data);
+console.log('data: ', data);
 const root = client.createRoot(dataDiv);
-root.render( /*#__PURE__*/react.createElement(components_ShopifyWidgetWrapper, {
+root.render( /*#__PURE__*/react.createElement(components_WordpressWidgetWrapper, {
   isTest: false,
   isAdmin: false,
   isRelative: false,
   isDashboard: false,
-  domain: (data === null || data === void 0 ? void 0 : data.shopDomain) || "",
-  ipRegistryKey: (data === null || data === void 0 ? void 0 : data.ipRegistryKey) || "",
-  globalSelectedBackend: (data === null || data === void 0 ? void 0 : data.globalSelectedBackend) || "",
-  chatProfileImage: (data === null || data === void 0 ? void 0 : data.chatProfileImage) || "",
-  curvyBorderImage: (data === null || data === void 0 ? void 0 : data.curvyBorderImage) || "",
-  wizyLogoImage: (data === null || data === void 0 ? void 0 : data.wizyLogoImage) || "",
-  noImageImage: (data === null || data === void 0 ? void 0 : data.noImageImage) || "",
-  widgetLoader: (data === null || data === void 0 ? void 0 : data.widgetLoader) || "",
-  stylesPathOutter: (data === null || data === void 0 ? void 0 : data.stylesPathOutter) || "",
-  stylesPathInner: (data === null || data === void 0 ? void 0 : data.stylesPathInner) || "",
-  shopifyRootPath: (data === null || data === void 0 ? void 0 : data.shopifyRootPath) || "",
-  shopifyCurrentPath: (data === null || data === void 0 ? void 0 : data.shopifyCurrentPath) || "",
-  isShopifyForeing: (data === null || data === void 0 ? void 0 : data.isShopifyForeing) === "true" ? true :  false || false,
-  marketId: (data === null || data === void 0 ? void 0 : data.marketId) || "",
-  languageCode: (data === null || data === void 0 ? void 0 : data.languageCode) || "",
-  languageUrl: (data === null || data === void 0 ? void 0 : data.languageUrl) || "",
+  domain: (data === null || data === void 0 ? void 0 : data.shopDomain) || '',
+  globalSelectedBackend: (data === null || data === void 0 ? void 0 : data.globalSelectedBackend) || '',
+  chatProfileImage: (data === null || data === void 0 ? void 0 : data.chatProfileImage) || '',
+  curvyBorderImage: (data === null || data === void 0 ? void 0 : data.curvyBorderImage) || '',
+  wizyLogoImage: (data === null || data === void 0 ? void 0 : data.wizyLogoImage) || '',
+  noImageImage: (data === null || data === void 0 ? void 0 : data.noImageImage) || '',
+  widgetLoader: (data === null || data === void 0 ? void 0 : data.widgetLoader) || '',
+  stylesPathOutter: (data === null || data === void 0 ? void 0 : data.stylesPathOutter) || '',
+  stylesPathInner: (data === null || data === void 0 ? void 0 : data.stylesPathInner) || '',
+  shopifyRootPath: (data === null || data === void 0 ? void 0 : data.shopifyRootPath) || '',
+  shopifyCurrentPath: (data === null || data === void 0 ? void 0 : data.shopifyCurrentPath) || '',
+  isShopifyForeing: (data === null || data === void 0 ? void 0 : data.isShopifyForeing) === 'true' ? true :  false || false,
+  marketId: (data === null || data === void 0 ? void 0 : data.marketId) || '',
+  languageCode: (data === null || data === void 0 ? void 0 : data.languageCode) || '',
+  languageUrl: (data === null || data === void 0 ? void 0 : data.languageUrl) || '',
   platform: "WORDPRESS",
-  wizyCartId: (data === null || data === void 0 ? void 0 : data.wizyCartId) || ""
+  wizyCartId: (data === null || data === void 0 ? void 0 : data.wizyCartId) || ''
 }));
 
 // ── Abandoned checkout capture ──────────────────────────────────────────────
@@ -15387,8 +15408,8 @@ root.render( /*#__PURE__*/react.createElement(components_ShopifyWidgetWrapper, {
 // Supports both classic and block-based WooCommerce checkout.
 if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== null && data !== void 0 && data.shopDomain) {
   let alreadySent = false;
-  let lastPhone = "";
-  let lastEmail = "";
+  let lastPhone = '';
+  let lastEmail = '';
 
   // ── Block checkout: intercept WooCommerce Store API fetch calls ──────────
   // Block checkout sends a batch request: POST /wc/store/v1/batch
@@ -15401,7 +15422,7 @@ if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== n
     // Blocks checkout: wp.data has the live cart state
     try {
       var _wp, _wp$getCartData, _cartData$items;
-      const cartData = (_wp = window.wp) === null || _wp === void 0 || (_wp = _wp.data) === null || _wp === void 0 || (_wp = _wp.select("wc/store/cart")) === null || _wp === void 0 || (_wp$getCartData = _wp.getCartData) === null || _wp$getCartData === void 0 ? void 0 : _wp$getCartData.call(_wp);
+      const cartData = (_wp = window.wp) === null || _wp === void 0 || (_wp = _wp.data) === null || _wp === void 0 || (_wp = _wp.select('wc/store/cart')) === null || _wp === void 0 || (_wp$getCartData = _wp.getCartData) === null || _wp$getCartData === void 0 ? void 0 : _wp$getCartData.call(_wp);
       if (cartData !== null && cartData !== void 0 && (_cartData$items = cartData.items) !== null && _cartData$items !== void 0 && _cartData$items.length) {
         return cartData.items.map(item => {
           var _item$prices$price, _item$prices, _item$images$0$src, _item$images;
@@ -15409,7 +15430,7 @@ if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== n
             id: item.id,
             name: item.name,
             quantity: item.quantity,
-            price: (_item$prices$price = (_item$prices = item.prices) === null || _item$prices === void 0 ? void 0 : _item$prices.price) !== null && _item$prices$price !== void 0 ? _item$prices$price : "0",
+            price: (_item$prices$price = (_item$prices = item.prices) === null || _item$prices === void 0 ? void 0 : _item$prices.price) !== null && _item$prices$price !== void 0 ? _item$prices$price : '0',
             image: (_item$images$0$src = (_item$images = item.images) === null || _item$images === void 0 || (_item$images = _item$images[0]) === null || _item$images === void 0 ? void 0 : _item$images.src) !== null && _item$images$0$src !== void 0 ? _item$images$0$src : undefined
           };
         });
@@ -15423,35 +15444,36 @@ if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== n
     return [];
   };
   const sendAbandonedCheckout = async fields => {
-    console.log("Attempting to send abandoned checkout data:", fields);
+    console.log('Attempting to send abandoned checkout data:', fields);
     console.log(lastPhone, lastEmail, alreadySent);
     if (!fields.phone || !fields.email) return;
-    if (!isValidPhone(fields.phone, fields.country || "")) return;
+    if (!isValidPhone(fields.phone, fields.country || '')) return;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) return;
     if (alreadySent && fields.phone === lastPhone && fields.email === lastEmail) return;
-    console.log("Sending abandoned checkout data to backend:", fields);
+    console.log('Sending abandoned checkout data to backend:', fields);
     alreadySent = true;
     lastPhone = fields.phone;
     lastEmail = fields.email;
     try {
       var _document$cookie$spli;
       const items = getCartItems();
-      const clientCookieKey = "WIZY_CLIENT_".concat(data.shopDomain).replace(/\./g, "_");
-      const clientId = (_document$cookie$spli = document.cookie.split("; ").find(row => row.startsWith(clientCookieKey + "="))) === null || _document$cookie$spli === void 0 ? void 0 : _document$cookie$spli.split("=")[1];
+      const clientCookieKey = "WIZY_CLIENT_".concat(data.shopDomain).replace(/\./g, '_');
+      const clientId = (_document$cookie$spli = document.cookie.split('; ').find(row => row.startsWith(clientCookieKey + '='))) === null || _document$cookie$spli === void 0 ? void 0 : _document$cookie$spli.split('=')[1];
       await originalFetch("".concat(data.globalSelectedBackend, "/webhooks/wordpress/abandoned-checkout"), {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(_objectSpread(_objectSpread({}, fields), {}, {
-          cartId: data.wizyCartId || "",
-          shopDomain: data.shopDomain || "",
+          cartId: data.wizyCartId || '',
+          shopDomain: data.shopDomain || '',
           clientId: clientId || undefined,
+          checkoutUrl: data.checkoutUrl || undefined,
           items
         }))
       });
     } catch (e) {
-      console.error("Wizybot - abandoned checkout error:", e);
+      console.error('Wizybot - abandoned checkout error:', e);
     }
   };
   window.fetch = async function () {
@@ -15466,7 +15488,7 @@ if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== n
         const requests = (_body$requests = body === null || body === void 0 ? void 0 : body.requests) !== null && _body$requests !== void 0 ? _body$requests : [];
         const updateCustomer = requests.find(r => {
           var _r$path;
-          return (_r$path = r.path) === null || _r$path === void 0 ? void 0 : _r$path.includes("/wc/store/v1/cart/update-customer");
+          return (_r$path = r.path) === null || _r$path === void 0 ? void 0 : _r$path.includes('/wc/store/v1/cart/update-customer');
         });
         if (updateCustomer) {
           var _ref, _updateCustomer$body$, _updateCustomer$body, _updateCustomer$data;
@@ -15493,30 +15515,30 @@ if (data !== null && data !== void 0 && data.globalSelectedBackend && data !== n
   // ── Classic checkout: listen to blur on billing fields ───────────────────
   const getVal = id => {
     var _document$getElementB;
-    return ((_document$getElementB = document.getElementById(id)) === null || _document$getElementB === void 0 || (_document$getElementB = _document$getElementB.value) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.trim()) || "";
+    return ((_document$getElementB = document.getElementById(id)) === null || _document$getElementB === void 0 || (_document$getElementB = _document$getElementB.value) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.trim()) || '';
   };
   const sendFromClassicFields = () => {
-    const phone = getVal("billing_phone");
-    const email = getVal("billing_email");
+    const phone = getVal('billing_phone');
+    const email = getVal('billing_email');
     if (!phone || !email) return;
     sendAbandonedCheckout({
       phone,
-      firstName: getVal("billing_first_name"),
-      lastName: getVal("billing_last_name"),
+      firstName: getVal('billing_first_name'),
+      lastName: getVal('billing_last_name'),
       email,
-      city: getVal("billing_city"),
-      country: getVal("billing_country"),
-      zipCode: getVal("billing_postcode")
+      city: getVal('billing_city'),
+      country: getVal('billing_country'),
+      zipCode: getVal('billing_postcode')
     });
   };
   const attachClassicListeners = () => {
-    const phoneField = document.getElementById("billing_phone");
-    const emailField = document.getElementById("billing_email");
-    if (phoneField) phoneField.addEventListener("blur", sendFromClassicFields);
-    if (emailField) emailField.addEventListener("blur", sendFromClassicFields);
+    const phoneField = document.getElementById('billing_phone');
+    const emailField = document.getElementById('billing_email');
+    if (phoneField) phoneField.addEventListener('blur', sendFromClassicFields);
+    if (emailField) emailField.addEventListener('blur', sendFromClassicFields);
   };
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", attachClassicListeners);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachClassicListeners);
   } else {
     attachClassicListeners();
   }
