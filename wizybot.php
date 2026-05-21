@@ -543,17 +543,18 @@ if (!class_exists('Wizybot')):
             WC()->cart->empty_cart();
 
             $recovery_token = $this->get_query_param('wizy_recovery_token');
-            $recovery_data = $recovery_token ? get_transient('wizybot_cart_recovery_' . $recovery_token) : null;
-            if (!is_array($recovery_data)) {
-                $recovery_data = array();
+            if (!$recovery_token) {
+                return;
             }
 
-            $products_param = $recovery_data['products'] ?? $this->get_query_param('products');
-            $cart_id_param = $recovery_data['cart_id'] ?? $this->get_query_param('wizy_recover');
-            $client_id_param = $recovery_data['client_id'] ?? $this->get_query_param('wizy_client');
-            if (!$client_id_param) {
-                $client_id_param = $this->get_query_param('wizyreferral');
+            $recovery_data = get_transient('wizybot_cart_recovery_' . $recovery_token);
+            if (!is_array($recovery_data)) {
+                return;
             }
+
+            $products_param = $recovery_data['products'] ?? '';
+            $cart_id_param = $recovery_data['cart_id'] ?? '';
+            $client_id_param = $recovery_data['client_id'] ?? '';
 
             // Parse products param: "productId:quantity,productId:quantity"
             if ($products_param) {
