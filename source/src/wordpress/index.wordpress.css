@@ -5,25 +5,25 @@
 /* FONTS */
 @font-face {
   font-family: "Euclid";
-  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidLight.ttf");
+  src: url(../../../assets/EuclidRegular.ttf);
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Euclid";
-  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidRegular.ttf");
+  src: url(../../../assets/EuclidMedium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Euclid";
-  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidSemibold.ttf");
+  src: url(../../../assets/EuclidSemibold.ttf);
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Euclid";
-  src: url("https://s3-tjlabs-wizybot-fonts-dev.s3.amazonaws.com/EuclidBold.ttf");
+  src: url(../../../assets/EuclidBold.ttf);
   font-weight: 1000;
 }
 
