@@ -105,8 +105,10 @@ if (!class_exists('Wizybot')):
             update_option('wizybot_shop_name', $shopName);
 
             // Shop Email
-            $shopEmail = wp_get_current_user()->user_email;
-            update_option('wizybot_shop_email', $shopEmail);
+            if (is_admin() && is_user_logged_in()) {
+                $shopEmail = wp_get_current_user()->user_email;
+                if ($shopEmail) update_option('wizybot_shop_email', $shopEmail);
+            }
 
 
             $is_already_installed = $this->request_is_already_installed();
