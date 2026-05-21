@@ -453,30 +453,50 @@ if (!class_exists('Wizybot')):
          */
         public function request_is_already_installed()
         {
-            $url_backend = WIZYBOT_GLOBAL_SELECTED_BACKEND;
             $shopDomain = get_option('wizybot_shop_domain');
+
+            $cache_key = 'wizybot_installed_' . md5($shopDomain);
+
+            // Return cached value if exists
+            $cached = get_transient($cache_key);
+
+            if ($cached !== false) {
+                return (bool) $cached;
+            }
+
+            $url_backend = WIZYBOT_GLOBAL_SELECTED_BACKEND;
+
             $url = WIZYBOT_STAGE === 'local'
                 ? 'https://host.docker.internal:3001/wordpress/isinstalled/' . urlencode($shopDomain)
                 : $url_backend . '/wordpress/isinstalled/' . urlencode($shopDomain);
 
-            if (WIZYBOT_STAGE === 'local') {
-                $options = [
-                    'sslverify' => false,
-                ];
-                $response = wp_remote_get($url, $options);
+            $args = array(
+                'timeout' => 5,
+            );
 
-            } else {
-                $response = wp_remote_get(($url));
+            if (WIZYBOT_STAGE === 'local') {
+                $args['sslverify'] = false;
             }
+
+            $response = wp_remote_get($url, $args);
 
             if (is_wp_error($response)) {
                 return false;
             }
 
             $body = wp_remote_retrieve_body($response);
+
             $data = json_decode($body, true);
 
             $installed = !empty($data['installed']);
+
+            // Cache for 6 hours
+            set_transient(
+                $cache_key,
+                $installed ? '1' : '0',
+                6 * HOUR_IN_SECONDS
+            );
+
             return $installed;
         }
 
