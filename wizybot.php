@@ -517,44 +517,56 @@ if (!class_exists('Wizybot')):
         }
 
         /**
-         * Reconstruct the WooCommerce cart from a Wizybot recovery URL.
+         * Public cart recovery capability flow.
          *
-         * Triggered when the customer clicks the recovery link sent via WhatsApp/SMS.
-         * The URL carries ?wizy_action=recover&products=id:qty,...&wizy_recover=cartId&wizyreferral=clientId.
-         *
-         * Must be PHP: adding items to the cart and persisting the session requires WC()->cart
-         * and WC()->session, which are server-side objects. React has no mechanism to manipulate
-         * WooCommerce cart state. After rebuilding the cart, PHP redirects to the checkout page.
+         * This is intentionally NOT protected by WordPress nonces because
+         * it is not a wp-admin authenticated action. The recovery token
+         * itself acts as a single-use capability token similar to password
+         * reset or email verification links.
          */
         public function handle_cart_recovery()
         {
-            $action = $this->get_query_param('wizy_action');
-            if ($action !== 'recover') {
+            // Fast early return before any heavy logic
+            if (
+                !isset($_GET['wizy_action']) ||
+                sanitize_text_field(wp_unslash($_GET['wizy_action'])) !== 'recover'
+            ) {
                 return;
             }
 
-            if (!function_exists('WC')) return;
-
-            // Session must exist before we can write to the cart
-            if (!WC()->session || !WC()->session->has_session()) {
-                WC()->session->set_customer_session_cookie(true);
+            if (!function_exists('WC')) {
+                return;
             }
-
-            WC()->cart->empty_cart();
 
             $recovery_token = $this->get_query_param('wizy_recovery_token');
-            if (!$recovery_token) {
+
+            // Strict token validation
+            if (
+                !$recovery_token ||
+                !preg_match('/^[a-zA-Z0-9_-]+$/', $recovery_token)
+            ) {
                 return;
             }
 
-            $recovery_data = get_transient('wizybot_cart_recovery_' . $recovery_token);
+            $transient_key = 'wizybot_cart_recovery_' . $recovery_token;
+
+            $recovery_data = get_transient($transient_key);
+
             if (!is_array($recovery_data)) {
                 return;
             }
 
-            $products_param = $recovery_data['products'] ?? '';
-            $cart_id_param = $recovery_data['cart_id'] ?? '';
+            // Ensure WooCommerce session exists
+            if (!WC()->session || !WC()->session->has_session()) {
+                WC()->session->set_customer_session_cookie(true);
+            }
+
+            $products_param  = $recovery_data['products'] ?? '';
+            $cart_id_param   = $recovery_data['cart_id'] ?? '';
             $client_id_param = $recovery_data['client_id'] ?? '';
+
+            // Only now mutate cart state
+            WC()->cart->empty_cart();
 
             // Parse products param: "productId:quantity,productId:quantity"
             if ($products_param) {
@@ -562,37 +574,69 @@ if (!class_exists('Wizybot')):
 
                 foreach ($products_data as $item_str) {
                     $parts = explode(':', $item_str);
-                    if (count($parts) !== 2) continue;
 
-                    $product_id = intval($parts[0]);
-                    $qty = intval($parts[1]);
+                    if (count($parts) !== 2) {
+                        continue;
+                    }
 
-                    $cart_item_data = [
+                    $product_id = absint($parts[0]);
+                    $qty        = absint($parts[1]);
+
+                    if ($product_id <= 0 || $qty <= 0) {
+                        continue;
+                    }
+
+                    $cart_item_data = array(
                         'wizy_recover_id' => $cart_id_param,
                         'wizy_referral'   => $client_id_param,
-                    ];
+                    );
 
-                    WC()->cart->add_to_cart($product_id, $qty, 0, [], $cart_item_data);
+                    WC()->cart->add_to_cart(
+                        $product_id,
+                        $qty,
+                        0,
+                        array(),
+                        $cart_item_data
+                    );
                 }
             }
 
-            // Restore tracking cookies so the eventual order is attributed to this recovery
+            // Restore tracking cookies
             $shop_domain = get_option('wizybot_shop_domain');
+
             if ($cart_id_param) {
-                setcookie('WIZY_CART_' . $shop_domain, $cart_id_param, time() + (86400 * 365), '/');
+                setcookie(
+                    'WIZY_CART_' . $shop_domain,
+                    $cart_id_param,
+                    time() + (86400 * 365),
+                    '/'
+                );
             }
+
             if ($client_id_param) {
-                setcookie('WIZY_CLIENT_' . $shop_domain, $client_id_param, time() + (86400 * 365), '/');
+                setcookie(
+                    'WIZY_CLIENT_' . $shop_domain,
+                    $client_id_param,
+                    time() + (86400 * 365),
+                    '/'
+                );
             }
 
             WC()->cart->calculate_totals();
             WC()->cart->set_session();
             WC()->session->save_data();
 
-            wp_safe_redirect(wc_get_checkout_url());
+            // Single-use token: invalidate after successful recovery
+            delete_transient($transient_key);
+
+            wp_safe_redirect(
+                function_exists('wc_get_checkout_url')
+                    ? wc_get_checkout_url()
+                    : site_url()
+            );
+
             exit;
         }
-
         /**
          * Persist Wizybot tracking IDs in each WooCommerce order line item.
          *
