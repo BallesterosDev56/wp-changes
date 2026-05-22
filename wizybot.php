@@ -117,6 +117,7 @@ if (!class_exists('Wizybot')):
             // Delete all info because doesn't exists shop but we have token
             if (!$is_already_installed && $token) {
                 delete_option('wizybot_token');
+                delete_option('wizybot_shop_token');
             }
 
             add_action('admin_menu', array($this, 'add_admin_menu'));
