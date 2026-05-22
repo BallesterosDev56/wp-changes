@@ -1,17 +1,14 @@
 // Import React Dependencies
-import React, { FC, useEffect, useRef, useState } from "react";
-import Cookies from "universal-cookie";
-import { Socket, io } from "socket.io-client";
-
-// Import phone input dependencies
-import { PhoneInput } from "react-international-phone";
+import React, { FC, useEffect, useRef, useState } from 'react';
+import Cookies from 'universal-cookie';
+import { Socket, io } from 'socket.io-client';
 
 // Import extra ui components
-import Add2Cart from "../extraUIcomponents/Add2Cart/Add2Cart";
-import ShopifyWidgetCart from "../extraUIcomponents/ShopifyWidgetCart";
-import RecommendationCarousel from "../extraUIcomponents/RecommendationCarousel/RecommendationCarousel";
-import AddToCartWithSubscriptions from "../extraUIcomponents/AddToCartWithSubscriptions/Add2CartWithSubscriptions";
-import AddMedia from "../extraUIcomponents/AddMedia/AddMedia";
+import Add2Cart from '../extraUIcomponents/Add2Cart/Add2Cart';
+import WordpressWidgetCart from '../extraUIcomponents/WordpressWidgetCart';
+import RecommendationCarousel from '../extraUIcomponents/RecommendationCarousel/RecommendationCarousel';
+import AddToCartWithSubscriptions from '../extraUIcomponents/AddToCartWithSubscriptions/Add2CartWithSubscriptions';
+import AddMedia from '../extraUIcomponents/AddMedia/AddMedia';
 
 // Import types
 import {
@@ -21,7 +18,7 @@ import {
   IMessage,
   IMessageBackend,
   IWidgetMessage,
-} from "../types/MessageType";
+} from '../types/MessageType';
 import {
   EExtraUIComponentTypes,
   ENewExtraUIComponentTypes,
@@ -35,10 +32,10 @@ import {
   INewAddMediaExtraUIComponent,
   IProductCard,
   isExtraUIComponentType,
-} from "../extraUIcomponents/extraUIComponentTypes";
-import ProductCard from "../extraUIcomponents/ProductCard/ProductCard";
-import ProductCart from "../extraUIcomponents/ProductCart/ProductCart";
-import WidgetMedia from "./WidgetMedia";
+} from '../extraUIcomponents/extraUIComponentTypes';
+import ProductCard from '../extraUIcomponents/ProductCard/ProductCard';
+import ProductCart from '../extraUIcomponents/ProductCart/ProductCart';
+import WidgetMedia from './WidgetMedia';
 
 // Define types
 type ShopifyWidgetProps = {
@@ -48,7 +45,6 @@ type ShopifyWidgetProps = {
   isDashboard: boolean;
   isAdmin: boolean;
   isRelative: boolean;
-  ipRegistryKey: string;
   globalSelectedBackend: string;
   chatProfileImage: string;
   curvyBorderImage: string;
@@ -128,88 +124,87 @@ export type IInit = {
 
 // Define enums
 enum EChatState {
-  close = "close",
-  open = "open",
+  close = 'close',
+  open = 'open',
 }
 
 enum EVisibleMessageState {
-  visible = "visible",
-  invisible = "invisible",
+  visible = 'visible',
+  invisible = 'invisible',
 }
 
 enum ECreateClientState {
-  visible = "visible",
-  invisible = "invisible",
+  visible = 'visible',
+  invisible = 'invisible',
 }
 
 enum ECartState {
-  visible = "visible",
-  invisible = "invisible",
+  visible = 'visible',
+  invisible = 'invisible',
 }
 
 enum EActionsMenuState {
-  visible = "visible",
-  invisible = "invisible",
+  visible = 'visible',
+  invisible = 'invisible',
 }
 
 enum ECreateClientBackendState {
-  send = "send",
-  loading = "loading",
+  send = 'send',
+  loading = 'loading',
 }
 
 enum EConnectionType {
-  initial = "initial",
-  message = "message",
-  brute = "brute",
+  initial = 'initial',
+  message = 'message',
+  brute = 'brute',
 }
 
 export enum EMainLanguage {
-  SPANISH = "Spanish",
-  ENGLISH = "English",
-  PORTUGUESE = "Portuguese",
-  FRENCH = "French",
-  GERMAN = "German",
-  ITALIAN = "Italian",
+  SPANISH = 'Spanish',
+  ENGLISH = 'English',
+  PORTUGUESE = 'Portuguese',
+  FRENCH = 'French',
+  GERMAN = 'German',
+  ITALIAN = 'Italian',
 }
 
 export enum ESide {
-  RIGHT = "Right",
-  LEFT = "Left",
+  RIGHT = 'Right',
+  LEFT = 'Left',
 }
 
 export enum EEmailRetrievalMethod {
-  MANDATORY = "Mandatory",
-  SEMANTIC = "Semantic",
-  NONE = "None",
+  MANDATORY = 'Mandatory',
+  SEMANTIC = 'Semantic',
+  NONE = 'None',
 }
 
 export enum EDataRetrievalType {
-  NAME = "Name",
-  EMAIL = "Email",
-  PHONE = "Phone",
-  BOTH = "Both",
-  NAME_EMAIL = "Name_Email",
-  NAME_PHONE = "Name_Phone",
-  NAME_EMAIL_PHONE = "Name_Email_Phone",
-  CUSTOM = "Custom",
+  NAME = 'Name',
+  EMAIL = 'Email',
+  PHONE = 'Phone',
+  BOTH = 'Both',
+  NAME_EMAIL = 'Name_Email',
+  NAME_PHONE = 'Name_Phone',
+  NAME_EMAIL_PHONE = 'Name_Email_Phone',
+  CUSTOM = 'Custom',
 }
 
 export enum ELimitBudgetAction {
-  WIDGET_OFF = "widget off",
-  AI_OFF = "ai off",
-  DEFAULT_MESSAGE = "default message",
-  REDIRECT = "redirect",
+  WIDGET_OFF = 'widget off',
+  AI_OFF = 'ai off',
+  DEFAULT_MESSAGE = 'default message',
+  REDIRECT = 'redirect',
 }
 
 // Page main functional component
-const ShopifyWidget: FC<ShopifyWidgetProps> = ({
+const WordpressWidget: FC<ShopifyWidgetProps> = ({
   domain,
   widget,
   isTest,
   isDashboard,
   isAdmin,
   isRelative,
-  ipRegistryKey,
   globalSelectedBackend,
   chatProfileImage,
   curvyBorderImage,
@@ -254,10 +249,10 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
   // Use State Variables
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const [newMessage, setNewMessage] = useState<string>("");
+  const [newMessage, setNewMessage] = useState<string>('');
   const [isNewMessage, setIsNewMessage] = useState<boolean>(false);
   const [init, setInit] = useState<IInit>({
-    init: "",
+    init: '',
     type: EConnectionType.initial,
   });
   const [chatState, setChatState] = useState<EChatState>(
@@ -266,7 +261,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
   const [chatStateVisibility, setChatStateVisibility] = useState<EChatState>(
     isRelative ? EChatState.open : EChatState.close,
   );
-  const [visibleMessage, setVisibleMessage] = useState<string>("");
+  const [visibleMessage, setVisibleMessage] = useState<string>('');
   const [visibleMessageState, setVisibleMessageState] =
     useState<EVisibleMessageState>(EVisibleMessageState.invisible);
   const [visibleMessageOpacity, setVisibleMessageOpacity] =
@@ -283,33 +278,39 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
   const [socket, setSocket] = useState<Socket>(
     io(
       globalSelectedBackend +
-        "/shopifywidget?domain=" +
+        '/shopifywidget?domain=' +
         domain +
-        "&&path=" +
+        '&&path=' +
         shopifyCurrentPath +
-        "&&marketId=" +
+        '&&marketId=' +
         marketId +
-        "&&languageCode=" +
+        '&&languageCode=' +
         languageCode,
       {
         forceNew: true,
         autoConnect: false,
-        transports: ["websocket"],
+        transports: ['websocket'],
         transportOptions: {
           websocket: {
             extraHeaders: {
-              "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
-              "Sec-WebSocket-Version": "13",
-              "Sec-WebSocket-Protocol": "chat, superchat",
+              'Sec-WebSocket-Key': 'dGhlIHNhbXBsZSBub25jZQ==',
+              'Sec-WebSocket-Version': '13',
+              'Sec-WebSocket-Protocol': 'chat, superchat',
             },
           },
         },
       },
     ),
   );
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [dialCode, setDialCode] = useState<string>(() => {
+    const raw = widget.setup.defaultCountryCode ?? '';
+    const cleaned = raw.replace(/\D/g, '');
+    return /^\d+$/.test(cleaned) ? cleaned : '';
+  });
+  const [localPhone, setLocalPhone] = useState<string>('');
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [phoneError, setPhoneError] = useState<boolean>(false);
@@ -329,28 +330,35 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
   // Constants
   const cookies = new Cookies();
+  const buildPhoneValue = (dialCodeValue: string, localValue: string) => {
+    const cleanedDialCode = dialCodeValue.replace(/\D/g, '');
+    const cleanedLocal = localValue.replace(/\D/g, '');
+    if (!cleanedLocal) return '';
+    if (!cleanedDialCode) return cleanedLocal;
+    return `+${cleanedDialCode}${cleanedLocal}`;
+  };
   const ecommerceEmojis = [
-    "😊",
-    "🛍️",
-    "📦",
-    "💳",
-    "🤑",
-    "🛒",
-    "💬",
-    "👍",
-    "📢",
-    "📆",
-    "✉️",
-    "🔍",
-    "🎁",
-    "📱",
-    "💻",
-    "📋",
-    "🌟",
-    "💬",
-    "❓",
-    "💯",
-    "🐗",
+    '😊',
+    '🛍️',
+    '📦',
+    '💳',
+    '🤑',
+    '🛒',
+    '💬',
+    '👍',
+    '📢',
+    '📆',
+    '✉️',
+    '🔍',
+    '🎁',
+    '📱',
+    '💻',
+    '📋',
+    '🌟',
+    '💬',
+    '❓',
+    '💯',
+    '🐗',
   ];
 
   /**
@@ -363,8 +371,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
    */
   const actionsMenuItems = [
     {
-      id: "image",
-      label: "Image",
+      id: 'image',
+      label: 'Image',
       icon: (
         <svg
           width="20"
@@ -421,11 +429,11 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     };
 
     if (actionsMenuState === EActionsMenuState.visible) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [actionsMenuState]);
 
@@ -442,16 +450,16 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     // Check for params in the url
     const urlParams = new URLSearchParams(window.location.search);
     // Get Wizyopen parameter
-    const wizyOpen = urlParams.get("wizyopen");
+    const wizyOpen = urlParams.get('wizyopen');
 
     // If there is a wizyopen true parameter
-    if (wizyOpen === "true") {
+    if (wizyOpen === 'true') {
       handleToggleChat();
     }
 
     // Start backend comunication
     const clientCookie = cookies.get(
-      isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+      isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
     );
 
     // If there is a cookie initizalize the websocket
@@ -480,24 +488,24 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         // Handle connection
         socket.connect();
 
-        socket.on("connect", onConnect);
-        socket.on("disconnect", onDisconnect);
-        socket.on("newMessage", onMessageEvent);
-        socket.on("typing", onTyping);
+        socket.on('connect', onConnect);
+        socket.on('disconnect', onDisconnect);
+        socket.on('newMessage', onMessageEvent);
+        socket.on('typing', onTyping);
         socket.on(
-          "init",
+          'init',
           connectionType === EConnectionType.initial
             ? onInitInitial
             : onInitMessage,
         );
 
         return () => {
-          socket.off("connect", onConnect);
-          socket.off("disconnect", onDisconnect);
-          socket.off("newMessage", onMessageEvent);
-          socket.off("typing", onTyping);
+          socket.off('connect', onConnect);
+          socket.off('disconnect', onDisconnect);
+          socket.off('newMessage', onMessageEvent);
+          socket.off('typing', onTyping);
           socket.off(
-            "init",
+            'init',
             connectionType === EConnectionType.initial
               ? onInitInitial
               : onInitMessage,
@@ -509,20 +517,20 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       // Initialize a provisional websocket
       const provisionalSocket = io(
         globalSelectedBackend +
-          "/shopifywidget?domain=" +
+          '/shopifywidget?domain=' +
           domain +
-          "&&path=" +
+          '&&path=' +
           shopifyCurrentPath,
         {
           forceNew: true,
           autoConnect: false,
-          transports: ["websocket"],
+          transports: ['websocket'],
           transportOptions: {
             websocket: {
               extraHeaders: {
-                "Sec-WebSocket-Key": "dGhlIHNhbXBsZSBub25jZQ==",
-                "Sec-WebSocket-Version": "13",
-                "Sec-WebSocket-Protocol": "chat, superchat",
+                'Sec-WebSocket-Key': 'dGhlIHNhbXBsZSBub25jZQ==',
+                'Sec-WebSocket-Version': '13',
+                'Sec-WebSocket-Protocol': 'chat, superchat',
               },
             },
           },
@@ -531,20 +539,20 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       // Handle connection
       provisionalSocket.connect();
 
-      provisionalSocket.on("connect", onConnect);
-      provisionalSocket.on("disconnect", onDisconnect);
-      provisionalSocket.on("newMessage", onMessageEvent);
-      provisionalSocket.on("typing", onTyping);
-      provisionalSocket.on("init", onInitBrute);
+      provisionalSocket.on('connect', onConnect);
+      provisionalSocket.on('disconnect', onDisconnect);
+      provisionalSocket.on('newMessage', onMessageEvent);
+      provisionalSocket.on('typing', onTyping);
+      provisionalSocket.on('init', onInitBrute);
 
       setSocket(provisionalSocket);
 
       return () => {
-        provisionalSocket.off("connect", onConnect);
-        provisionalSocket.off("disconnect", onDisconnect);
-        provisionalSocket.off("newMessage", onMessageEvent);
-        provisionalSocket.off("typing", onTyping);
-        provisionalSocket.off("init", onInitBrute);
+        provisionalSocket.off('connect', onConnect);
+        provisionalSocket.off('disconnect', onDisconnect);
+        provisionalSocket.off('newMessage', onMessageEvent);
+        provisionalSocket.off('typing', onTyping);
+        provisionalSocket.off('init', onInitBrute);
         provisionalSocket.disconnect();
       };
     }
@@ -594,7 +602,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
   ): Promise<void> => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify({
         domain: domain,
@@ -604,13 +612,13 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       });
 
       const response = await fetch(
-        globalSelectedBackend + "/shopifywidgetrest/outboundmessage",
+        globalSelectedBackend + '/shopifywidgetrest/outboundmessage',
         {
-          method: "POST",
+          method: 'POST',
           headers: myHeaders,
           body: raw,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       );
       if (!response.ok) {
@@ -688,7 +696,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             status: lastMessage.status,
             showLogs: false,
             messageLogs: lastMessage.messageLogs
-              ? typeof lastMessage.messageLogs === "string"
+              ? typeof lastMessage.messageLogs === 'string'
                 ? JSON.parse(lastMessage.messageLogs)
                 : lastMessage.messageLogs
               : null,
@@ -698,7 +706,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       // Only add visible messages to local state (for widget display)
       // console.log(lastMessage);
       const hasVisibleContent =
-        (lastMessage.content && lastMessage.content !== "") ||
+        (lastMessage.content && lastMessage.content !== '') ||
         lastMessage.hasMedia ||
         lastMessage.extraUIComponents ||
         lastMessage.extraUIComponentReference;
@@ -715,7 +723,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           setMessages((previous) => [
             ...previous,
             {
-              id: lastMessage.id ? lastMessage.id : "",
+              id: lastMessage.id ? lastMessage.id : '',
               content: lastMessage.content,
               createDate: lastMessage.createDate,
               role: lastMessage.role,
@@ -743,7 +751,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           }
           setMessages([
             {
-              id: lastMessage.id ? lastMessage.id : "",
+              id: lastMessage.id ? lastMessage.id : '',
               content: lastMessage.content,
               createDate: lastMessage.createDate,
               role: lastMessage.role,
@@ -787,7 +795,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     if (isLoaded) {
       if (chatState === EChatState.close && !widget.setup.hideOutboundMessage) {
         const lastMessage = messages.at(-1);
-        let lastVisibleMessage = lastMessage?.content ?? "";
+        let lastVisibleMessage = lastMessage?.content ?? '';
 
         // Display the product title as the visible message for the product card
         if (lastMessage?.extraUIComponents) {
@@ -822,12 +830,12 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         }, 5800);
       } else {
         const clientCookie = cookies.get(
-          isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+          isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
         );
         if (chatState === EChatState.open && clientCookie !== undefined) {
-          socketEmit("clientRead", {
+          socketEmit('clientRead', {
             clientId: cookies.get(
-              isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+              isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
             ),
             shopDomain: domain,
           });
@@ -880,8 +888,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               handleSocketConnection(EConnectionType.brute);
               setTimeout(() => attemptEmit(attempt + 1), delay); // Retry with backoff
             } else {
-              console.error("Emit failed after maximum retries.");
-              reject(new Error("Server did not respond after retries."));
+              console.error('Emit failed after maximum retries.');
+              reject(new Error('Server did not respond after retries.'));
             }
           }
         }, 3000); // 3 seconds timeout
@@ -902,42 +910,42 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     const clientInfo = JSON.parse(await getClientIpInfo());
     const location: string =
       clientInfo?.location?.city +
-      ", " +
+      ', ' +
       clientInfo?.location?.country?.name +
-      " " +
+      ' ' +
       clientInfo?.location?.country?.flag?.emoji;
     const computer: string =
-      window.navigator.platform === undefined ? "" : window.navigator.platform;
+      window.navigator.platform === undefined ? '' : window.navigator.platform;
 
     //create formData with all the info needed
     const formData = new FormData();
-    formData.append("file", image);
-    formData.append("clientId", clientId);
-    formData.append("location", location);
-    formData.append("computer", computer);
+    formData.append('file', image);
+    formData.append('clientId', clientId);
+    formData.append('location', location);
+    formData.append('computer', computer);
 
     const uploadResponse = await fetch(
-      globalSelectedBackend + "/shopifywidgetrest/mediaupload/" + domain,
+      globalSelectedBackend + '/shopifywidgetrest/mediaupload/' + domain,
       {
-        method: "POST",
+        method: 'POST',
         body: formData,
-        credentials: "include",
+        credentials: 'include',
       },
     );
 
     if (!uploadResponse.ok) {
       if (uploadResponse.status === 403) {
-        throw new Error("Upload limit reached. Please try again later.");
+        throw new Error('Upload limit reached. Please try again later.');
       }
-      console.error("Failed to upload image:", uploadResponse);
-      throw new Error("Failed to upload image");
+      console.error('Failed to upload image:', uploadResponse);
+      throw new Error('Failed to upload image');
     }
 
     const responseJson = await uploadResponse.json();
     const { mediaId } = responseJson;
 
     // 4. Emit via socket WITH media info (await to catch delivery failures)
-    await socketEmit("newMessage", {
+    await socketEmit('newMessage', {
       content: content,
       clientId: clientId,
       isTest: isTest,
@@ -955,38 +963,38 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
   const getUploadErrorMessage = (error?: unknown): string => {
     const isIpBlocked =
       error instanceof Error &&
-      error.message === "Upload limit reached. Please try again later.";
+      error.message === 'Upload limit reached. Please try again later.';
 
     if (isIpBlocked) {
       switch (widget.setup.mainLanguage) {
-        case "Spanish":
-          return "Tu dirección IP ha sido bloqueada por exceder el límite de envíos. ";
-        case "French":
+        case 'Spanish':
+          return 'Tu dirección IP ha sido bloqueada por exceder el límite de envíos. ';
+        case 'French':
           return "Votre adresse IP a été bloquée pour avoir dépassé la limite d'envoi.";
-        case "Portuguese":
-          return "Seu endereço IP foi bloqueado por exceder o limite de envios.";
-        case "German":
-          return "Ihre IP-Adresse wurde gesperrt, da das Sendelimit überschritten wurde.";
-        case "Italian":
-          return "Il tuo indirizzo IP è stato bloccato per aver superato il limite di invio.";
+        case 'Portuguese':
+          return 'Seu endereço IP foi bloqueado por exceder o limite de envios.';
+        case 'German':
+          return 'Ihre IP-Adresse wurde gesperrt, da das Sendelimit überschritten wurde.';
+        case 'Italian':
+          return 'Il tuo indirizzo IP è stato bloccato per aver superato il limite di invio.';
         default:
-          return "Your IP address has been blocked due to exceeding the upload limit.";
+          return 'Your IP address has been blocked due to exceeding the upload limit.';
       }
     }
 
     switch (widget.setup.mainLanguage) {
-      case "Spanish":
-        return "Error al enviar la imagen. Por favor, intenta de nuevo.";
-      case "French":
+      case 'Spanish':
+        return 'Error al enviar la imagen. Por favor, intenta de nuevo.';
+      case 'French':
         return "Erreur lors de l'envoi de l'image. Veuillez réessayer.";
-      case "Portuguese":
-        return "Erro ao enviar a imagem. Por favor, tente novamente.";
-      case "German":
-        return "Fehler beim Senden des Bildes. Bitte versuchen Sie es erneut.";
-      case "Italian":
+      case 'Portuguese':
+        return 'Erro ao enviar a imagem. Por favor, tente novamente.';
+      case 'German':
+        return 'Fehler beim Senden des Bildes. Bitte versuchen Sie es erneut.';
+      case 'Italian':
         return "Errore nell'invio dell'immagine. Per favore, riprova.";
       default:
-        return "Error sending the image. Please try again.";
+        return 'Error sending the image. Please try again.';
     }
   };
 
@@ -994,19 +1002,23 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     if (socket.connected) {
       if (!isCreatingClient) {
         const hasImage = selectedImage !== null;
-        const hasText = newMessage.replaceAll(" ", "") !== "";
+        const hasText = newMessage.replaceAll(' ', '') !== '';
 
         // Must have at least text OR image to send
         if (!hasText && !hasImage) return;
 
         const clientId = cookies.get(
-          isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+          isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
         );
 
         if (clientId !== undefined) {
           // === EXISTING CLIENT FLOW ==
           // For WordPress returning clients, register sale intent with current cart UUID on first message
-          if (platform === "WORDPRESS" && !isDashboard && !wordpressSaleCreatedRef.current) {
+          if (
+            platform === 'WORDPRESS' &&
+            !isDashboard &&
+            !wordpressSaleCreatedRef.current
+          ) {
             wordpressSaleCreatedRef.current = true;
             createSaleOption(clientId);
           }
@@ -1016,7 +1028,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
           // Create local message for immediate UI display
           const userMessage = {
-            content: content ?? "",
+            content: content ?? '',
             createDate: new Date().toISOString(),
             role: EMessageRole.user,
             name: null,
@@ -1053,7 +1065,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           }
 
           // Clear input state immediately for responsiveness
-          setNewMessage("");
+          setNewMessage('');
           if (hasImage) {
             handleClearImageSelection();
           }
@@ -1063,7 +1075,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             try {
               await uploadImageAndEmit(content, clientId, currentImage);
             } catch (error) {
-              console.error("Error uploading image:", error);
+              console.error('Error uploading image:', error);
 
               // Rollback: remove the optimistic message
               setMessages((previous) => previous.slice(0, -1));
@@ -1080,14 +1092,14 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
               // Show localized error message in chat
               const errorMsg: IMessage = {
-                id: "",
+                id: '',
                 content: getUploadErrorMessage(error),
                 createDate: new Date().toISOString(),
                 role: EMessageRole.ai,
-                name: "",
-                functionCall: "",
-                toolCalls: "",
-                toolCallId: "",
+                name: '',
+                functionCall: '',
+                toolCalls: '',
+                toolCallId: '',
                 extraUIComponents: null,
                 extraUIComponentReference: null,
                 sourceType: EMessageSourceTypes.SHOPIFY_WIDGET,
@@ -1100,7 +1112,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             }
           } else {
             // TEXT-ONLY FLOW (existing behavior)
-            socketEmit("newMessage", {
+            socketEmit('newMessage', {
               content: content,
               clientId: clientId,
               isTest: isTest,
@@ -1112,17 +1124,17 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           // === NO CLIENT COOKIE ===
           if (clientCreated) {
             const errorMessage = {
-              id: "",
+              id: '',
               content:
-                "We are sorry, but the widget has to be tested in your own web [page](https://" +
+                'We are sorry, but the widget has to be tested in your own web [page](https://' +
                 domain +
                 "). Enter now! It's already available!",
               createDate: messages[0].createDate,
               role: EMessageRole.ai,
-              name: "",
-              functionCall: "",
-              toolCalls: "",
-              toolCallId: "",
+              name: '',
+              functionCall: '',
+              toolCalls: '',
+              toolCallId: '',
               extraUIComponents: null,
               extraUIComponentReference: null,
               sourceType: EMessageSourceTypes.SHOPIFY_WIDGET,
@@ -1138,7 +1150,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               updateObservabilityMessages((previous) => [
                 ...previous,
                 {
-                  id: "",
+                  id: '',
                   content: errorMessage.content,
                   createDate: errorMessage.createDate,
                   role: EMessageRole.ai,
@@ -1151,16 +1163,16 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             setIsNewMessage(true);
             setIsTyping(false);
           } else {
-            if (widget.setup.emailRetrievalMethod === "Mandatory") {
+            if (widget.setup.emailRetrievalMethod === 'Mandatory') {
               handleToogleCreateClient();
             } else {
               // === AUTO-CREATE CLIENT FLOW (with image support) ===
-              const content = newMessage ?? "";
+              const content = newMessage ?? '';
               const currentImage = selectedImage;
               const currentPreviewUrl = imagePreviewUrl;
 
               const userMessage = {
-                content: content ?? "",
+                content: content ?? '',
                 createDate: new Date().toISOString(),
                 role: EMessageRole.user,
                 name: null,
@@ -1182,7 +1194,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               setMessages((previous) => [...previous, userMessage]);
 
               // Clear input state
-              setNewMessage("");
+              setNewMessage('');
               if (hasImage) {
                 handleClearImageSelection();
               }
@@ -1193,8 +1205,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               // Get the newly created clientId from cookie
               const newClientId = cookies.get(
                 isAdmin
-                  ? "WIZY_CLIENT_ADMIN_" + domain
-                  : "WIZY_CLIENT_" + domain,
+                  ? 'WIZY_CLIENT_ADMIN_' + domain
+                  : 'WIZY_CLIENT_' + domain,
               );
 
               if (!newClientId) return;
@@ -1221,7 +1233,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                 try {
                   await uploadImageAndEmit(content, newClientId, currentImage);
                 } catch (error) {
-                  console.error("Error uploading image:", error);
+                  console.error('Error uploading image:', error);
 
                   // Rollback: remove the optimistic message
                   setMessages((previous) => previous.slice(0, -1));
@@ -1237,14 +1249,14 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   setImagePreviewUrl(currentPreviewUrl);
 
                   const errorMsg: IMessage = {
-                    id: "",
+                    id: '',
                     content: getUploadErrorMessage(error),
                     createDate: new Date().toISOString(),
                     role: EMessageRole.ai,
-                    name: "",
-                    functionCall: "",
-                    toolCalls: "",
-                    toolCallId: "",
+                    name: '',
+                    functionCall: '',
+                    toolCalls: '',
+                    toolCallId: '',
                     extraUIComponents: null,
                     extraUIComponentReference: null,
                     sourceType: EMessageSourceTypes.SHOPIFY_WIDGET,
@@ -1257,7 +1269,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                 }
               } else {
                 // TEXT-ONLY FLOW after client creation
-                socketEmit("newMessage", {
+                socketEmit('newMessage', {
                   content: content,
                   clientId: newClientId,
                   isTest: isTest,
@@ -1297,33 +1309,33 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     }
 
     // validate file type
-    const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
     if (!validTypes.includes(file.type)) {
       // show error message based on language
       const errorContent =
-        widget.setup.mainLanguage === "English"
-          ? "Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP)."
-          : widget.setup.mainLanguage === "Spanish"
-            ? "Tipo de archivo no válido. Por favor, sube una imagen (JPEG, PNG, GIF o WebP)."
-            : widget.setup.mainLanguage === "French"
-              ? "Type de fichier invalide. Veuillez télécharger une image (JPEG, PNG, GIF ou WebP)."
-              : widget.setup.mainLanguage === "Portuguese"
-                ? "Tipo de arquivo inválido. Por favor, envie uma imagem (JPEG, PNG, GIF ou WebP)."
-                : widget.setup.mainLanguage === "German"
-                  ? "Ungültiger Dateityp. Bitte laden Sie ein Bild hoch (JPEG, PNG, GIF oder WebP)."
-                  : widget.setup.mainLanguage === "Italian"
+        widget.setup.mainLanguage === 'English'
+          ? 'Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).'
+          : widget.setup.mainLanguage === 'Spanish'
+            ? 'Tipo de archivo no válido. Por favor, sube una imagen (JPEG, PNG, GIF o WebP).'
+            : widget.setup.mainLanguage === 'French'
+              ? 'Type de fichier invalide. Veuillez télécharger une image (JPEG, PNG, GIF ou WebP).'
+              : widget.setup.mainLanguage === 'Portuguese'
+                ? 'Tipo de arquivo inválido. Por favor, envie uma imagem (JPEG, PNG, GIF ou WebP).'
+                : widget.setup.mainLanguage === 'German'
+                  ? 'Ungültiger Dateityp. Bitte laden Sie ein Bild hoch (JPEG, PNG, GIF oder WebP).'
+                  : widget.setup.mainLanguage === 'Italian'
                     ? "Tipo di file non valido. Si prega di caricare un'immagine (JPEG, PNG, GIF o WebP)."
-                    : "Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).";
+                    : 'Invalid file type. Please upload an image (JPEG, PNG, GIF, or WebP).';
 
       const errorMessage: IMessage = {
-        id: "",
+        id: '',
         content: errorContent,
         createDate: new Date().toISOString(),
         role: EMessageRole.ai,
-        name: "",
-        functionCall: "",
-        toolCalls: "",
-        toolCallId: "",
+        name: '',
+        functionCall: '',
+        toolCalls: '',
+        toolCallId: '',
         extraUIComponents: null,
         extraUIComponentReference: null,
         sourceType: EMessageSourceTypes.SHOPIFY_WIDGET,
@@ -1339,7 +1351,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         updateObservabilityMessages((previous) => [
           ...previous,
           {
-            id: "",
+            id: '',
             content: errorMessage.content,
             createDate: errorMessage.createDate,
             role: EMessageRole.ai,
@@ -1351,7 +1363,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
       // reset file input
       if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+        fileInputRef.current.value = '';
       }
 
       return;
@@ -1362,29 +1374,29 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     if (file.size > maxSizeInBytes) {
       // show error message based on language
       const errorContent =
-        widget.setup.mainLanguage === "English"
-          ? "File size exceeds the limit. Please upload an image smaller than 5MB."
-          : widget.setup.mainLanguage === "Spanish"
-            ? "El tamaño del archivo excede el límite. Por favor, sube una imagen menor a 5MB."
-            : widget.setup.mainLanguage === "French"
-              ? "La taille du fichier dépasse la limite. Veuillez télécharger une image de moins de 5 Mo."
-              : widget.setup.mainLanguage === "Portuguese"
-                ? "O tamanho do arquivo excede o limite. Por favor, envie uma imagem menor que 5MB."
-                : widget.setup.mainLanguage === "German"
-                  ? "Die Dateigröße überschreitet das Limit. Bitte laden Sie ein Bild unter 5 MB hoch."
-                  : widget.setup.mainLanguage === "Italian"
+        widget.setup.mainLanguage === 'English'
+          ? 'File size exceeds the limit. Please upload an image smaller than 5MB.'
+          : widget.setup.mainLanguage === 'Spanish'
+            ? 'El tamaño del archivo excede el límite. Por favor, sube una imagen menor a 5MB.'
+            : widget.setup.mainLanguage === 'French'
+              ? 'La taille du fichier dépasse la limite. Veuillez télécharger une image de moins de 5 Mo.'
+              : widget.setup.mainLanguage === 'Portuguese'
+                ? 'O tamanho do arquivo excede o limite. Por favor, envie uma imagem menor que 5MB.'
+                : widget.setup.mainLanguage === 'German'
+                  ? 'Die Dateigröße überschreitet das Limit. Bitte laden Sie ein Bild unter 5 MB hoch.'
+                  : widget.setup.mainLanguage === 'Italian'
                     ? "La dimensione del file supera il limite. Si prega di caricare un'immagine inferiore a 5 MB."
-                    : "File size exceeds the limit. Please upload an image smaller than 5MB.";
+                    : 'File size exceeds the limit. Please upload an image smaller than 5MB.';
 
       const errorMessage: IMessage = {
-        id: "",
+        id: '',
         content: errorContent,
         createDate: new Date().toISOString(),
         role: EMessageRole.ai,
-        name: "",
-        functionCall: "",
-        toolCalls: "",
-        toolCallId: "",
+        name: '',
+        functionCall: '',
+        toolCalls: '',
+        toolCallId: '',
         extraUIComponents: null,
         extraUIComponentReference: null,
         sourceType: EMessageSourceTypes.SHOPIFY_WIDGET,
@@ -1400,7 +1412,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         updateObservabilityMessages((previous) => [
           ...previous,
           {
-            id: "",
+            id: '',
             content: errorMessage.content,
             createDate: errorMessage.createDate,
             role: EMessageRole.ai,
@@ -1412,7 +1424,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
       // reset file input
       if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+        fileInputRef.current.value = '';
       }
 
       return;
@@ -1422,7 +1434,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     const previewUrl = URL.createObjectURL(file);
     setImagePreviewUrl(previewUrl);
     setSelectedImage(file);
-    setNewMessage("");
+    setNewMessage('');
 
     // close actions menu
     handleCloseActionsMenu();
@@ -1439,7 +1451,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
     // reset file input
     if (fileInputRef.current) {
-      fileInputRef.current.value = "";
+      fileInputRef.current.value = '';
     }
   };
 
@@ -1451,7 +1463,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
     // reset file input
     if (fileInputRef.current) {
-      fileInputRef.current.value = "";
+      fileInputRef.current.value = '';
     }
   };
 
@@ -1466,16 +1478,16 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       // dataDiv.setAttribute('data-additionaltextredirectionlink', text)
 
       const dataDiv = document.getElementById(
-        "WizybotShopifyWidget__data__div",
+        'WizybotShopifyWidget__data__div',
       );
       const additionalText: any =
         dataDiv?.dataset.additionaltextredirectionlink;
 
       // Add additional text if is the case
       if (additionalText) {
-        window.open(redirectionLink + additionalText, "_blank");
+        window.open(redirectionLink + additionalText, '_blank');
       } else {
-        window.open(redirectionLink, "_blank");
+        window.open(redirectionLink, '_blank');
       }
     } else {
       if (chatState === EChatState.close) {
@@ -1484,15 +1496,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         setIsOpen(true);
         setIsNewMessage(false);
         const clientCookie = cookies.get(
-          isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+          isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
         );
         if (clientCookie !== undefined) {
           try {
-            socketEmit("clientRead", {
+            socketEmit('clientRead', {
               clientId: cookies.get(
                 isAdmin
-                  ? "WIZY_CLIENT_ADMIN_" + domain
-                  : "WIZY_CLIENT_" + domain,
+                  ? 'WIZY_CLIENT_ADMIN_' + domain
+                  : 'WIZY_CLIENT_' + domain,
               ),
               shopDomain: domain,
             });
@@ -1542,10 +1554,10 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
   // Get cart content in the moment
   const getCart = async () => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "") {
+    if (shopifyRootPath !== null && shopifyRootPath !== '') {
       setIsCartLoaded(false);
-      await fetch(shopifyRootPath + "cart.js", {
-        method: "GET",
+      await fetch(shopifyRootPath + 'cart.js', {
+        method: 'GET',
       })
         .then((response) => {
           return response.json();
@@ -1568,11 +1580,11 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           });
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error('Error:', error);
           setIsCartLoaded(true);
         });
     } else {
-      console.log("Not in shopify");
+      console.log('Not in shopify');
       setIsCartLoaded(true);
     }
   };
@@ -1582,17 +1594,17 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     setIsCartLoaded(false);
     if (
       shopifyRootPath !== null &&
-      shopifyRootPath !== "" &&
+      shopifyRootPath !== '' &&
       cartToUpdate !== null
     ) {
       const updates = cartToUpdate.items.reduce(
         (a, v) => ({ ...a, [v.id]: v.quantity }),
         {},
       );
-      fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
+      fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ updates }),
       })
@@ -1616,15 +1628,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             }),
           });
           const clientId = cookies.get(
-            isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+            isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
           );
           if (clientId) {
-            fetch(globalSelectedBackend + "/carts/" + clientId, {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
+            fetch(globalSelectedBackend + '/carts/' + clientId, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 total: data.total_price / 100,
-                sourceType: "shopify widget",
+                sourceType: 'shopify widget',
                 cartToken: data.token,
                 items: data.items.map((item: any) => ({
                   shopifyVariantId: String(item.id),
@@ -1635,58 +1647,58 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   quantity: item.quantity,
                 })),
               }),
-            }).catch((e) => console.error("Error syncing cart to backend:", e));
+            }).catch((e) => console.error('Error syncing cart to backend:', e));
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error('Error:', error);
           setIsCartLoaded(true);
         });
     } else {
-      console.log("Not in shopify");
+      console.log('Not in shopify');
       setIsCartLoaded(true);
     }
   };
 
   // Create client sale option
   const createSaleOption = async (clientId: string) => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "" && !isDashboard) {
-      await fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
+    if (shopifyRootPath !== null && shopifyRootPath !== '' && !isDashboard) {
+      await fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           attributes: { wizybot: true },
-          note: widget.setup.preventSaleNoteCreation ? "" : "Wizybot sale!",
+          note: widget.setup.preventSaleNoteCreation ? '' : 'Wizybot sale!',
         }),
       })
         .then(async (response) => {
-          await fetch(shopifyRootPath + "cart.js", {
-            method: "GET",
+          await fetch(shopifyRootPath + 'cart.js', {
+            method: 'GET',
           })
             .then((response) => {
               return response.json();
             })
             .then(async (data) => {
               var raw = JSON.stringify({
-                cartId: data.token.split("?")[0],
+                cartId: data.token.split('?')[0],
               });
               var myHeaders = new Headers();
-              myHeaders.append("Content-Type", "application/json");
+              myHeaders.append('Content-Type', 'application/json');
               await fetch(
                 globalSelectedBackend +
-                  "/sale/" +
+                  '/sale/' +
                   domain +
-                  "/" +
+                  '/' +
                   clientId +
-                  "/createsale",
+                  '/createsale',
                 {
-                  method: "POST",
+                  method: 'POST',
                   headers: myHeaders,
                   body: raw,
-                  credentials: "include",
-                  redirect: "follow",
+                  credentials: 'include',
+                  redirect: 'follow',
                 },
               )
                 .then(async (response) => {
@@ -1701,32 +1713,37 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                 .then((result) => JSON.parse(result))
                 .then((JSONresult) => {})
                 .catch((error) => {
-                  console.log("Error:", error);
+                  console.log('Error:', error);
                 });
             })
             .catch((error) => {
-              console.error("Error:", error);
+              console.error('Error:', error);
             });
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
-    } else if (platform === "WORDPRESS" && !isDashboard) {
+    } else if (platform === 'WORDPRESS' && !isDashboard) {
       try {
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append('Content-Type', 'application/json');
         await fetch(
-          globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale",
+          globalSelectedBackend +
+            '/sale/' +
+            domain +
+            '/' +
+            clientId +
+            '/createsale',
           {
-            method: "POST",
+            method: 'POST',
             headers: myHeaders,
             body: JSON.stringify({ cartId: wizyCartId || null }),
-            credentials: "include",
-            redirect: "follow",
-          }
+            credentials: 'include',
+            redirect: 'follow',
+          },
         );
       } catch (error) {
-        console.error("Error creating WordPress sale:", error);
+        console.error('Error creating WordPress sale:', error);
       }
     }
   };
@@ -1757,9 +1774,9 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     if (isCreatingClient) return;
     setIsCreatingClient(true);
 
-    const emptyName = nameRequired && name.trim() === "";
-    const emptyEmail = emailRequired && email.trim() === "";
-    const emptyPhone = phoneRequired && phone === "";
+    const emptyName = nameRequired && name.trim() === '';
+    const emptyEmail = emailRequired && email.trim() === '';
+    const emptyPhone = phoneRequired && phone === '';
 
     if (emptyName || emptyEmail || emptyPhone) {
       setNameError(emptyName);
@@ -1775,9 +1792,9 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       { required: nameRequired, value: name },
     );
 
-    setNameError(invalidFields.includes("name"));
-    setEmailError(invalidFields.includes("email"));
-    setPhoneError(invalidFields.includes("phone"));
+    setNameError(invalidFields.includes('name'));
+    setEmailError(invalidFields.includes('email'));
+    setPhoneError(invalidFields.includes('phone'));
 
     if (invalidFields.length > 0) {
       setIsCreatingClient(false);
@@ -1786,7 +1803,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
     if (
       cookies.get(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
       ) !== undefined
     ) {
       setIsCreatingClient(false);
@@ -1797,24 +1814,24 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
     const clientInfo = JSON.parse(await getClientIpInfo());
 
-    const superClientId = cookies.get("WIZY_SUPERCLIENT_" + domain);
+    const superClientId = cookies.get('WIZY_SUPERCLIENT_' + domain);
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append('Content-Type', 'application/json');
 
     var raw = JSON.stringify({
       firstName: name.trim(),
-      lastName: "",
+      lastName: '',
       email: email.trim(),
-      phone: phone.replace(/^\+/, ""),
+      phone: phone.replace(/^\+/, ''),
       location:
         clientInfo.location.city +
-        ", " +
+        ', ' +
         clientInfo.location.country.name +
-        " " +
+        ' ' +
         clientInfo.location.country.flag.emoji,
       computer:
         window.navigator.platform === undefined
-          ? ""
+          ? ''
           : window.navigator.platform,
       ipAddress: clientInfo.ip,
       lastMessageDate: messages[0].createDate,
@@ -1830,15 +1847,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
     await fetch(
       globalSelectedBackend +
-        "/clients/" +
+        '/clients/' +
         domain +
-        (isDashboard ? "/private" : ""),
+        (isDashboard ? '/private' : ''),
       {
-        method: "POST",
+        method: 'POST',
         headers: myHeaders,
         body: raw,
-        credentials: "include",
-        redirect: "follow",
+        credentials: 'include',
+        redirect: 'follow',
       },
     )
       .then(async (response) => {
@@ -1854,21 +1871,21 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       .then((JSONresult) => {
         if (JSONresult.superClient?.id) {
           cookies.set(
-            "WIZY_SUPERCLIENT_" + domain,
+            'WIZY_SUPERCLIENT_' + domain,
             JSONresult.superClient?.id,
             {
-              path: "/",
+              path: '/',
               maxAge: 60 * 60 * 24 * 365,
             },
           );
-          document.cookie = `WIZY_SUPERCLIENT_${domain}=${JSONresult.superClient?.id}; path=/; max-age=${60*60*24*365}`;
+          document.cookie = `WIZY_SUPERCLIENT_${domain}=${JSONresult.superClient?.id}; path=/; max-age=${60 * 60 * 24 * 365}`;
         }
         cookies.set(
-          isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+          isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
           JSONresult.id,
-          { path: "/", maxAge: 60 * 60 * 24 * 365 },
+          { path: '/', maxAge: 60 * 60 * 24 * 365 },
         );
-        document.cookie = `${isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain}=${JSONresult.id}; path=/; max-age=${60*60*24*365}`;
+        document.cookie = `${isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain}=${JSONresult.id}; path=/; max-age=${60 * 60 * 24 * 365}`;
         handleToogleCreateClient();
         createSaleOption(JSONresult.id);
         setCreateClientBackendState(ECreateClientBackendState.send);
@@ -1887,7 +1904,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     setIsCreatingClient(true);
     if (
       cookies.get(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
       ) === undefined
     ) {
       setCreateClientBackendState(ECreateClientBackendState.loading);
@@ -1897,24 +1914,24 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
       setEmailError(false);
 
       // Check if there is a superclient cookie,
-      const superClientId = cookies.get("WIZY_SUPERCLIENT_" + domain);
+      const superClientId = cookies.get('WIZY_SUPERCLIENT_' + domain);
 
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
       var raw = JSON.stringify({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
         location:
           clientInfo.location.city +
-          ", " +
+          ', ' +
           clientInfo.location.country.name +
-          " " +
+          ' ' +
           clientInfo.location.country.flag.emoji,
         computer:
           window.navigator.platform === undefined
-            ? ""
+            ? ''
             : window.navigator.platform,
         ipAddress: clientInfo.ip,
         lastMessageDate: messages[0].createDate,
@@ -1933,15 +1950,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
       await fetch(
         globalSelectedBackend +
-          "/clients/" +
+          '/clients/' +
           domain +
-          (isDashboard ? "/private" : ""),
+          (isDashboard ? '/private' : ''),
         {
-          method: "POST",
+          method: 'POST',
           headers: myHeaders,
           body: raw,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       )
         .then(async (response) => {
@@ -1957,24 +1974,24 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         .then((JSONresult) => {
           if (JSONresult.superClient?.id) {
             cookies.set(
-              "WIZY_SUPERCLIENT_" + domain,
+              'WIZY_SUPERCLIENT_' + domain,
               JSONresult.superClient.id,
               {
-                path: "/",
+                path: '/',
                 maxAge: 60 * 60 * 24 * 365,
               },
             );
-            document.cookie = `WIZY_SUPERCLIENT_${domain}=${JSONresult.superClient.id}; path=/; max-age=${60*60*24*365}`;
+            document.cookie = `WIZY_SUPERCLIENT_${domain}=${JSONresult.superClient.id}; path=/; max-age=${60 * 60 * 24 * 365}`;
           }
           cookies.set(
-            isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+            isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
             JSONresult.id,
             {
-              path: "/",
+              path: '/',
               maxAge: 60 * 60 * 24 * 365,
             },
           );
-          document.cookie = `${isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain}=${JSONresult.id}; path=/; max-age=${60*60*24*365}`;
+          document.cookie = `${isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain}=${JSONresult.id}; path=/; max-age=${60 * 60 * 24 * 365}`;
           createSaleOption(JSONresult.id);
           setCreateClientBackendState(ECreateClientBackendState.send);
           setClientCreated(true);
@@ -1994,67 +2011,41 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
   // Get Client info from the ip (location. country, flag)
   const getClientIpInfo = async (): Promise<string> => {
-
-    if (platform === "WORDPRESS") {
-      return JSON.stringify({
-        ip: "",
-        location: {
-          city: "",
-          country: { name: "", flag: { emoji: "" } },
-        },
-      });
-    }
-
-    let clientInfo = "";
-    await fetch("https://api.ipregistry.co/?key=" + ipRegistryKey, {
-      method: "GET",
-      redirect: "follow",
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          let errorText = await response.text();
-          let errorJSON = JSON.parse(errorText);
-          throw new Error(errorJSON.message);
-        } else {
-          return response.text();
-        }
-      })
-      .then((result) => JSON.parse(result))
-      .then((JSONresult) => {
-        clientInfo = JSON.stringify(JSONresult);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return clientInfo;
+    return JSON.stringify({
+      ip: '',
+      location: {
+        city: '',
+        country: { name: '', flag: { emoji: '' } },
+      },
+    });
   };
 
   // Update client init
   const updateClient = async (selectedInit: string) => {
     if (
       cookies.get(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
       ) !== undefined
     ) {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify({
         websocketId: selectedInit,
       });
       await fetch(
         globalSelectedBackend +
-          "/clients/" +
+          '/clients/' +
           cookies.get(
-            isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+            isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
           ) +
-          "/websocketid",
+          '/websocketid',
         {
-          method: "PATCH",
+          method: 'PATCH',
           headers: myHeaders,
           body: raw,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       )
         .then(async (response) => {
@@ -2093,7 +2084,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   status: msg.status,
                   showLogs: false,
                   messageLogs: msg.messageLogs
-                    ? typeof msg.messageLogs === "string"
+                    ? typeof msg.messageLogs === 'string'
                       ? JSON.parse(msg.messageLogs)
                       : msg.messageLogs
                     : null,
@@ -2110,7 +2101,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     message.role === EMessageRole.assistant ||
                     message.role === EMessageRole.user) &&
                   ((isNotBlank(message.content) &&
-                    !message.content?.includes("{wizy_asset_reference}")) ||
+                    !message.content?.includes('{wizy_asset_reference}')) ||
                     message.hasMedia ||
                     (message.extraUIComponents?.length ?? 0) > 0 ||
                     (message.extraUIComponentReference?.length ?? 0) > 0)
@@ -2151,7 +2142,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
         .catch((error) => {
           console.log(error);
           cookies.remove(
-            isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+            isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
           );
         });
     }
@@ -2188,7 +2179,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ textDecoration: "underline" }}
+            style={{ textDecoration: 'underline' }}
           >
             {anchorText}
           </a>,
@@ -2212,15 +2203,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
     // If you actually want to preserve paragraphs, remove this step.
     const normalized = nodes; // keep as-is; CSS handles line breaks
 
-    return <div style={{ whiteSpace: "pre-line" }}>{normalized}</div>;
+    return <div style={{ whiteSpace: 'pre-line' }}>{normalized}</div>;
   };
 
   // Check whether or not a variable is blank
   const isNotBlank = (value: any): boolean => {
-    return value !== null && value !== undefined && value !== "";
+    return value !== null && value !== undefined && value !== '';
   };
 
-  type InvalidField = "name" | "email" | "phone";
+  type InvalidField = 'name' | 'email' | 'phone';
   const getContactDataValidation = async (
     phone: { required: boolean; value: string },
     email: { required: boolean; value: string },
@@ -2228,15 +2219,15 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
   ): Promise<InvalidField[]> => {
     try {
       const response = await fetch(
-        globalSelectedBackend + "/shopifywidgetrest/validatecontactdataform/",
+        globalSelectedBackend + '/shopifywidgetrest/validatecontactdataform/',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email, phone, name }),
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       );
 
@@ -2250,7 +2241,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 
       return data.invalidFields ?? [];
     } catch (error) {
-      console.error("Error in contact data validation");
+      console.error('Error in contact data validation');
       console.error(error);
 
       return [];
@@ -2268,28 +2259,28 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
           alt="ProtectedRoute__loader"
           id="ProtectedRoute__loader"
           style={{
-            display: "none",
+            display: 'none',
           }}
         />
         <div
           className="WizybotShopifyWidget__open__button__outter"
           style={{
             right:
-              widget.setup.side === ESide.RIGHT ? "0px" : "calc(100% - 80px)",
+              widget.setup.side === ESide.RIGHT ? '0px' : 'calc(100% - 80px)',
             visibility:
-              chatStateVisibility === EChatState.close ? "visible" : "hidden",
-            opacity: chatStateVisibility === EChatState.close ? "1" : "0",
+              chatStateVisibility === EChatState.close ? 'visible' : 'hidden',
+            opacity: chatStateVisibility === EChatState.close ? '1' : '0',
           }}
         >
           <div
             className="WizybotShopifyWidget__open__button__inner"
             style={{
               background:
-                "linear-gradient(135deg, " +
+                'linear-gradient(135deg, ' +
                 widget.setup.primaryColor +
-                " 0%, " +
+                ' 0%, ' +
                 widget.setup.secondaryColor +
-                " 100%)",
+                ' 100%)',
             }}
             onClick={() => {
               if (chatState === EChatState.close) {
@@ -2304,16 +2295,16 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               style={{
                 opacity:
                   chatStateVisibility === EChatState.close && isNewMessage
-                    ? "1"
-                    : "0",
-                display: widget.setup.hideNotificationSign ? "none" : "block",
+                    ? '1'
+                    : '0',
+                display: widget.setup.hideNotificationSign ? 'none' : 'block',
               }}
             >
               !
             </div>
             {isRedirect &&
-            (redirectionLink.includes("wa") ||
-              redirectionLink.includes("whatsapp")) ? (
+            (redirectionLink.includes('wa') ||
+              redirectionLink.includes('whatsapp')) ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 50 50"
@@ -2327,7 +2318,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   fill={widget.setup.fontColor}
                 />
               </svg>
-            ) : isRedirect && redirectionLink.includes("m.me") ? (
+            ) : isRedirect && redirectionLink.includes('m.me') ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 50 50"
@@ -2367,13 +2358,13 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               style={{
                 opacity:
                   visibleMessageOpacity === EVisibleMessageState.visible
-                    ? "1"
-                    : "0",
-                left: widget.setup.side === "Left" ? "-100%" : "0",
+                    ? '1'
+                    : '0',
+                left: widget.setup.side === 'Left' ? '-100%' : '0',
                 transform:
-                  widget.setup.side === "Left"
-                    ? "translate(130px, -100%)"
-                    : "translate(-110%, -100%)",
+                  widget.setup.side === 'Left'
+                    ? 'translate(130px, -100%)'
+                    : 'translate(-110%, -100%)',
               }}
             >
               <div className="WisybotShopifyWidget__new__visible__message__inner">
@@ -2381,61 +2372,61 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               </div>
             </div>
           ) : (
-            ""
+            ''
           )}
         </div>
         <div
           className="WizybotShopifyWidget__outter__outter"
           style={{
-            position: "absolute",
+            position: 'absolute',
             visibility:
-              chatStateVisibility === EChatState.close ? "hidden" : "visible",
-            opacity: chatStateVisibility === EChatState.close ? "0" : "1",
+              chatStateVisibility === EChatState.close ? 'hidden' : 'visible',
+            opacity: chatStateVisibility === EChatState.close ? '0' : '1',
           }}
         >
           <div
             className={
               chatState === EChatState.open
-                ? widget.setup.side === "Left"
-                  ? "WizybotShopifyWidget__outter__open__left"
-                  : "WizybotShopifyWidget__outter__open__right"
-                : "WizybotShopifyWidget__outter__close"
+                ? widget.setup.side === 'Left'
+                  ? 'WizybotShopifyWidget__outter__open__left'
+                  : 'WizybotShopifyWidget__outter__open__right'
+                : 'WizybotShopifyWidget__outter__close'
             }
           >
             {/* image preview - absolute to main container */}
             {imagePreviewUrl && selectedImage && (
               <div
                 style={{
-                  position: "absolute",
-                  bottom: "110px",
-                  left: "15px",
-                  right: "70px",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-                  padding: "8px 10px",
+                  position: 'absolute',
+                  bottom: '110px',
+                  left: '15px',
+                  right: '70px',
+                  backgroundColor: '#fff',
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+                  padding: '8px 10px',
                   zIndex: 100,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  height: "50px",
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  height: '50px',
                 }}
               >
                 <img
                   src={imagePreviewUrl}
                   alt="Preview"
                   style={{
-                    width: "30px",
-                    height: "40px",
-                    objectFit: "cover",
-                    borderRadius: "6px",
+                    width: '30px',
+                    height: '40px',
+                    objectFit: 'cover',
+                    borderRadius: '6px',
                     flexShrink: 0,
                   }}
                 />
                 <div
                   style={{
-                    fontSize: "12px",
-                    color: "#666",
+                    fontSize: '12px',
+                    color: '#666',
                     flex: 1,
                     minWidth: 0,
                   }}
@@ -2443,40 +2434,40 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   <div
                     style={{
                       fontWeight: 500,
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                      marginBottom: "2px",
-                      color: "#333",
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                      marginBottom: '2px',
+                      color: '#333',
                     }}
                   >
                     {selectedImage.name}
                   </div>
-                  <div style={{ fontSize: "11px", color: "#999" }}>
+                  <div style={{ fontSize: '11px', color: '#999' }}>
                     {(selectedImage.size / 1024).toFixed(1)} KB
                   </div>
                 </div>
                 <div
                   onClick={handleRemoveImagePreview}
                   style={{
-                    cursor: "pointer",
-                    width: "24px",
-                    height: "24px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "50%",
-                    backgroundColor: "#f5f5f5",
-                    transition: "all 0.2s",
+                    cursor: 'pointer',
+                    width: '24px',
+                    height: '24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '50%',
+                    backgroundColor: '#f5f5f5',
+                    transition: 'all 0.2s',
                     flexShrink: 0,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#e8e8e8";
-                    e.currentTarget.style.transform = "scale(1.1)";
+                    e.currentTarget.style.backgroundColor = '#e8e8e8';
+                    e.currentTarget.style.transform = 'scale(1.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#f5f5f5";
-                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.backgroundColor = '#f5f5f5';
+                    e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
                   <svg
@@ -2500,11 +2491,11 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               className="WizybotShopifyWidget__header"
               style={{
                 background:
-                  "linear-gradient(135deg, " +
+                  'linear-gradient(135deg, ' +
                   widget.setup.primaryColor +
-                  " 0%, " +
+                  ' 0%, ' +
                   widget.setup.secondaryColor +
-                  " 100%)",
+                  ' 100%)',
               }}
             >
               <div className="WizybotShopifyWidget__header__inner">
@@ -2512,7 +2503,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   <div className="WizybotShopifyWidget__header__picture__name">
                     <img
                       src={
-                        widget.setup.image === ""
+                        widget.setup.image === ''
                           ? chatProfileImage
                           : widget.setup.image
                       }
@@ -2524,26 +2515,26 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                         className="WizybotShopifyWidget__header__chat__with"
                         style={{ color: widget.setup.fontColor }}
                       >
-                        {widget.setup.mainLanguage === "English"
-                          ? "Chat with"
-                          : widget.setup.mainLanguage === "Spanish"
-                            ? "Habla con"
-                            : widget.setup.mainLanguage === "French"
-                              ? "Parler avec"
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Conversar com"
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Chatten Sie mit"
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Chat con"
-                                    : "Chat with"}
+                        {widget.setup.mainLanguage === 'English'
+                          ? 'Chat with'
+                          : widget.setup.mainLanguage === 'Spanish'
+                            ? 'Habla con'
+                            : widget.setup.mainLanguage === 'French'
+                              ? 'Parler avec'
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Conversar com'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Chatten Sie mit'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Chat con'
+                                    : 'Chat with'}
                       </div>
                       <div
                         className="WizybotShopifyWidget__header__agent__name"
                         style={{ color: widget.setup.fontColor }}
                       >
-                        {" "}
-                        {widget.setup.agentName}{" "}
+                        {' '}
+                        {widget.setup.agentName}{' '}
                       </div>
                     </div>
                   </div>
@@ -2662,8 +2653,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             <div
               className={
                 createClientState === ECreateClientState.invisible
-                  ? "WizybotShopifyWidget__email__requirement__outter__close"
-                  : "WizybotShopifyWidget__email__requirement__outter__open"
+                  ? 'WizybotShopifyWidget__email__requirement__outter__close'
+                  : 'WizybotShopifyWidget__email__requirement__outter__open'
               }
             >
               <div className="WizybotMandatoryForm__inner">
@@ -2672,17 +2663,17 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     {nameRequired && (
                       <div>
                         <div className="WizybotShopifyWidget__email__input__title">
-                          {widget.setup.mainLanguage === "Spanish"
-                            ? "Nombre"
-                            : widget.setup.mainLanguage === "French"
-                              ? "Nom"
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Nome"
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Name"
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Nome"
-                                    : "Name"}
+                          {widget.setup.mainLanguage === 'Spanish'
+                            ? 'Nombre'
+                            : widget.setup.mainLanguage === 'French'
+                              ? 'Nom'
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Nome'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Name'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Nome'
+                                    : 'Name'}
                         </div>
                         <div className="WizybotShopifyWidget__email__input__2__outter">
                           <input
@@ -2694,12 +2685,12 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                               setName(value);
                             }}
                             style={{
-                              border: nameError ? "1px solid #ff3e3e" : "",
+                              border: nameError ? '1px solid #ff3e3e' : '',
                             }}
                             onKeyDown={(
                               event: React.KeyboardEvent<HTMLInputElement>,
                             ) => {
-                              if (event.key === "Enter") {
+                              if (event.key === 'Enter') {
                                 if (
                                   createClientBackendState ===
                                     ECreateClientBackendState.send &&
@@ -2731,12 +2722,12 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                               setEmail(value);
                             }}
                             style={{
-                              border: emailError ? "1px solid #ff3e3e" : "",
+                              border: emailError ? '1px solid #ff3e3e' : '',
                             }}
                             onKeyDown={(
                               event: React.KeyboardEvent<HTMLInputElement>,
                             ) => {
-                              if (event.key === "Enter") {
+                              if (event.key === 'Enter') {
                                 if (
                                   createClientBackendState ===
                                     ECreateClientBackendState.send &&
@@ -2756,56 +2747,94 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     {phoneRequired && (
                       <div>
                         <div className="WizybotShopifyWidget__email__input__title">
-                          {widget.setup.mainLanguage === "English"
-                            ? "Phone"
-                            : widget.setup.mainLanguage === "Spanish"
-                              ? "Teléfono"
-                              : widget.setup.mainLanguage === "French"
-                                ? "Téléphone"
-                                : widget.setup.mainLanguage === "Portuguese"
-                                  ? "Telefone"
-                                  : widget.setup.mainLanguage === "German"
-                                    ? "Telefon"
-                                    : widget.setup.mainLanguage === "Italian"
-                                      ? "Telefono"
-                                      : "Phone"}
+                          {widget.setup.mainLanguage === 'English'
+                            ? 'Phone'
+                            : widget.setup.mainLanguage === 'Spanish'
+                              ? 'Teléfono'
+                              : widget.setup.mainLanguage === 'French'
+                                ? 'Téléphone'
+                                : widget.setup.mainLanguage === 'Portuguese'
+                                  ? 'Telefone'
+                                  : widget.setup.mainLanguage === 'German'
+                                    ? 'Telefon'
+                                    : widget.setup.mainLanguage === 'Italian'
+                                      ? 'Telefono'
+                                      : 'Phone'}
                         </div>
 
-                        <PhoneInput
-                          defaultCountry={
-                            widget.setup.defaultCountryCode ?? "co"
-                          }
-                          value={phone}
-                          onChange={(phone) => {
-                            setPhone(phone);
+                        <div
+                          style={{
+                            display: 'flex',
+                            gap: '8px',
+                            alignItems: 'stretch',
                           }}
-                          inputStyle={{
-                            borderTop: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                            borderRight: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                            borderBottom: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                          }}
-                          countrySelectorStyleProps={{
-                            buttonStyle: {
-                              borderTop: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                              borderLeft: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                              borderBottom: `1px solid ${phoneError ? "#ff3e3e" : "#d1d5db"}`,
-                            },
-                          }}
-                          inputProps={{
-                            onKeyDown: (
+                        >
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              padding: '0 8px',
+                              borderTop: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderLeft: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderBottom: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderRight: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderRadius: '6px',
+                              background: '#fff',
+                            }}
+                          >
+                            <span style={{ marginRight: '4px' }}>+</span>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              value={dialCode}
+                              placeholder="57"
+                              onChange={(event) => {
+                                const nextDialCode =
+                                  event.currentTarget.value.replace(/\D/g, '');
+                                setDialCode(nextDialCode);
+                                setPhone(
+                                  buildPhoneValue(nextDialCode, localPhone),
+                                );
+                              }}
+                              style={{
+                                width: '60px',
+                                border: 'none',
+                                outline: 'none',
+                                fontSize: '14px',
+                                background: 'transparent',
+                              }}
+                            />
+                          </div>
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            className="WizybotShopifyWidget__email__input__2"
+                            value={localPhone}
+                            onChange={(event) => {
+                              const nextLocal =
+                                event.currentTarget.value.replace(/\D/g, '');
+                              setLocalPhone(nextLocal);
+                              setPhone(buildPhoneValue(dialCode, nextLocal));
+                            }}
+                            style={{
+                              borderTop: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderRight: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                              borderBottom: `1px solid ${phoneError ? '#ff3e3e' : '#d1d5db'}`,
+                            }}
+                            onKeyDown={(
                               e: React.KeyboardEvent<HTMLInputElement>,
                             ) => {
                               if (
-                                e.key === "Enter" &&
+                                e.key === 'Enter' &&
                                 createClientBackendState ===
                                   ECreateClientBackendState.send &&
                                 !isCreatingClient
                               ) {
                                 createClient();
                               }
-                            },
-                          }}
-                        />
+                            }}
+                          />
+                        </div>
                         <div className="WizybotShopifyWidget__email__input__prompt__1">
                           Eg: +573123456789
                         </div>
@@ -2821,19 +2850,19 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                         }}
                       />
                       <div className="WizybotShopifyWidget__email__input__checkbox__text">
-                        {widget.setup.mainLanguage === "English"
-                          ? "Sign up for our newsletter"
-                          : widget.setup.mainLanguage === "Spanish"
-                            ? "Suscríbete a nuestro boletín"
-                            : widget.setup.mainLanguage === "French"
-                              ? "Inscrivez-vous à notre newsletter"
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Assine a nossa newsletter"
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Melden Sie sich für unseren Newsletter an"
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Iscriviti alla nostra newsletter"
-                                    : "Sign up for our newsletter"}
+                        {widget.setup.mainLanguage === 'English'
+                          ? 'Sign up for our newsletter'
+                          : widget.setup.mainLanguage === 'Spanish'
+                            ? 'Suscríbete a nuestro boletín'
+                            : widget.setup.mainLanguage === 'French'
+                              ? 'Inscrivez-vous à notre newsletter'
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Assine a nossa newsletter'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Melden Sie sich für unseren Newsletter an'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Iscriviti alla nostra newsletter'
+                                    : 'Sign up for our newsletter'}
                       </div>
                     </div>
                   </div>
@@ -2844,13 +2873,13 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     <button
                       className="WizybotShopifyWidget__email__button"
                       style={{
-                        width: "100%",
+                        width: '100%',
                         background:
-                          "linear-gradient(135deg, " +
+                          'linear-gradient(135deg, ' +
                           widget.setup.primaryColor +
-                          " 0%, " +
+                          ' 0%, ' +
                           widget.setup.secondaryColor +
-                          " 100%)",
+                          ' 100%)',
                         color: widget.setup.fontColor,
                       }}
                       onClick={async () => {
@@ -2865,32 +2894,32 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     >
                       {createClientBackendState ===
                       ECreateClientBackendState.send
-                        ? widget.setup.mainLanguage === "English"
-                          ? "Send"
-                          : widget.setup.mainLanguage === "Spanish"
-                            ? "Enviar"
-                            : widget.setup.mainLanguage === "French"
-                              ? "Envoyer"
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Enviar"
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Schicken"
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Inviare"
-                                    : "Send"
-                        : widget.setup.mainLanguage === "English"
-                          ? "Loading..."
-                          : widget.setup.mainLanguage === "Spanish"
-                            ? "Cargando..."
-                            : widget.setup.mainLanguage === "French"
-                              ? "Chargement..."
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Carregando..."
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Wird geladen..."
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Caricamento..."
-                                    : "Loading..."}
+                        ? widget.setup.mainLanguage === 'English'
+                          ? 'Send'
+                          : widget.setup.mainLanguage === 'Spanish'
+                            ? 'Enviar'
+                            : widget.setup.mainLanguage === 'French'
+                              ? 'Envoyer'
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Enviar'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Schicken'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Inviare'
+                                    : 'Send'
+                        : widget.setup.mainLanguage === 'English'
+                          ? 'Loading...'
+                          : widget.setup.mainLanguage === 'Spanish'
+                            ? 'Cargando...'
+                            : widget.setup.mainLanguage === 'French'
+                              ? 'Chargement...'
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Carregando...'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Wird geladen...'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Caricamento...'
+                                    : 'Loading...'}
                     </button>
                   </div>
                 </div>
@@ -2900,12 +2929,12 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
             <div
               className={
                 cartState === ECartState.invisible
-                  ? "WizybotShopifyWidget__cart__outter__close"
-                  : "WizybotShopifyWidget__cart__outter__open"
+                  ? 'WizybotShopifyWidget__cart__outter__close'
+                  : 'WizybotShopifyWidget__cart__outter__open'
               }
             >
               {cart !== null && isCartLoaded ? (
-                <ShopifyWidgetCart
+                <WordpressWidgetCart
                   cart={cart}
                   updateCart={updateCart}
                   language={widget.setup.mainLanguage}
@@ -2918,38 +2947,38 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   <div>
                     <div className="WizybotShopifyWidget__cart__outter__products">
                       <div className="WizybotShopifyWidget__cart__outter__no__products">
-                        {widget.setup.mainLanguage === "English"
+                        {widget.setup.mainLanguage === 'English'
                           ? "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?"
-                          : widget.setup.mainLanguage === "Spanish"
-                            ? "¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?"
-                            : widget.setup.mainLanguage === "French"
+                          : widget.setup.mainLanguage === 'Spanish'
+                            ? '¡Hola! Parece que no has añadido nada a tu carrito, ¿por qué no nos pides algunas recomendaciones?'
+                            : widget.setup.mainLanguage === 'French'
                               ? "Bonjour! Il semble que vous n'avez rien ajouté à votre panier, pourquoi ne pas nous demander des recommandations?"
-                              : widget.setup.mainLanguage === "Portuguese"
-                                ? "Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?"
-                                : widget.setup.mainLanguage === "German"
-                                  ? "Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?"
-                                  : widget.setup.mainLanguage === "Italian"
-                                    ? "Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?"
+                              : widget.setup.mainLanguage === 'Portuguese'
+                                ? 'Olá! Parece que você não adicionou nada ao seu carrinho, por que não nos pede algumas recomendações?'
+                                : widget.setup.mainLanguage === 'German'
+                                  ? 'Hallo! Es scheint, dass Sie nichts in Ihren Warenkorb gelegt haben. Warum fragen Sie uns nicht nach einigen Empfehlungen?'
+                                  : widget.setup.mainLanguage === 'Italian'
+                                    ? 'Ciao! Sembra che tu non abbia aggiunto nulla al carrello, perché non ci chiedi qualche consiglio?'
                                     : "Hello there! It seems you have not added anything to your cart, why don't you ask us for some recommendations?"}
                         <div className="WizybotShopifyWidget__cart__inner__estimated__button__outter">
                           <button
                             className="WizybotShopifyWidget__cart__inner__estimated__no__products__button"
-                            style={{ width: "100%" }}
+                            style={{ width: '100%' }}
                             onClick={handleToggleCartState}
                           >
-                            {widget.setup.mainLanguage === "English"
-                              ? "Chat with"
-                              : widget.setup.mainLanguage === "Spanish"
-                                ? "Habla con"
-                                : widget.setup.mainLanguage === "French"
-                                  ? "Parler avec"
-                                  : widget.setup.mainLanguage === "Portuguese"
-                                    ? "Conversar com"
-                                    : widget.setup.mainLanguage === "German"
-                                      ? "Chatten Sie mit"
-                                      : widget.setup.mainLanguage === "Italian"
-                                        ? "Chat con"
-                                        : "Chat with"}{" "}
+                            {widget.setup.mainLanguage === 'English'
+                              ? 'Chat with'
+                              : widget.setup.mainLanguage === 'Spanish'
+                                ? 'Habla con'
+                                : widget.setup.mainLanguage === 'French'
+                                  ? 'Parler avec'
+                                  : widget.setup.mainLanguage === 'Portuguese'
+                                    ? 'Conversar com'
+                                    : widget.setup.mainLanguage === 'German'
+                                      ? 'Chatten Sie mit'
+                                      : widget.setup.mainLanguage === 'Italian'
+                                        ? 'Chat con'
+                                        : 'Chat with'}{' '}
                             {widget.setup.agentName}
                           </button>
                         </div>
@@ -2958,20 +2987,20 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     <div className="WizybotShopifyWidget__cart__outter__checkout">
                       <div className="WizybotShopifyWidget__cart__outter__estimated">
                         <div className="WizybotShopifyWidget__cart__inner__estimated">
-                          {widget.setup.mainLanguage === "English"
-                            ? "Estimated total"
-                            : widget.setup.mainLanguage === "Spanish"
-                              ? "Total estimado"
-                              : widget.setup.mainLanguage === "French"
-                                ? "Total estimé"
-                                : widget.setup.mainLanguage === "Portuguese"
-                                  ? "Total estimado"
-                                  : widget.setup.mainLanguage === "German"
-                                    ? "Geschätzte Gesamtsumme"
-                                    : widget.setup.mainLanguage === "Italian"
-                                      ? "Totale stimato"
-                                      : "Estimated total"}
-                        </div>{" "}
+                          {widget.setup.mainLanguage === 'English'
+                            ? 'Estimated total'
+                            : widget.setup.mainLanguage === 'Spanish'
+                              ? 'Total estimado'
+                              : widget.setup.mainLanguage === 'French'
+                                ? 'Total estimé'
+                                : widget.setup.mainLanguage === 'Portuguese'
+                                  ? 'Total estimado'
+                                  : widget.setup.mainLanguage === 'German'
+                                    ? 'Geschätzte Gesamtsumme'
+                                    : widget.setup.mainLanguage === 'Italian'
+                                      ? 'Totale stimato'
+                                      : 'Estimated total'}
+                        </div>{' '}
                         <div className="WizybotShopifyWidget__cart__inner__estimated__price">
                           $0.00
                         </div>
@@ -2982,26 +3011,26 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           style={{
-                            textDecoration: "none",
+                            textDecoration: 'none',
                           }}
                         >
                           <button
                             className="WizybotShopifyWidget__cart__inner__estimated__button"
-                            style={{ width: "100%" }}
+                            style={{ width: '100%' }}
                           >
-                            {widget.setup.mainLanguage === "English"
-                              ? "Pay"
-                              : widget.setup.mainLanguage === "Spanish"
-                                ? "Pagar"
-                                : widget.setup.mainLanguage === "French"
-                                  ? "Payer"
-                                  : widget.setup.mainLanguage === "Portuguese"
-                                    ? "Pagar"
-                                    : widget.setup.mainLanguage === "German"
-                                      ? "Bezahlen"
-                                      : widget.setup.mainLanguage === "Italian"
-                                        ? "Pagare"
-                                        : "Pay"}
+                            {widget.setup.mainLanguage === 'English'
+                              ? 'Pay'
+                              : widget.setup.mainLanguage === 'Spanish'
+                                ? 'Pagar'
+                                : widget.setup.mainLanguage === 'French'
+                                  ? 'Payer'
+                                  : widget.setup.mainLanguage === 'Portuguese'
+                                    ? 'Pagar'
+                                    : widget.setup.mainLanguage === 'German'
+                                      ? 'Bezahlen'
+                                      : widget.setup.mainLanguage === 'Italian'
+                                        ? 'Pagare'
+                                        : 'Pay'}
                           </button>
                         </a>
                       </div>
@@ -3014,7 +3043,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     <div className="WizybotShopifyWidget__cart__outter__products">
                       <div
                         className="WizybotShopifyWidget__cart__outter__no__products"
-                        style={{ width: "fit-content" }}
+                        style={{ width: 'fit-content' }}
                       >
                         <div className="loader"></div>
                       </div>
@@ -3022,28 +3051,28 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     <div className="WizybotShopifyWidget__cart__outter__checkout">
                       <div className="WizybotShopifyWidget__cart__outter__estimated">
                         <div className="WizybotShopifyWidget__cart__inner__estimated">
-                          {widget.setup.mainLanguage === "English"
-                            ? "Estimated total"
-                            : widget.setup.mainLanguage === "Spanish"
-                              ? "Total estimado"
-                              : widget.setup.mainLanguage === "French"
-                                ? "Total estimé"
-                                : widget.setup.mainLanguage === "Portuguese"
-                                  ? "Total estimado"
-                                  : widget.setup.mainLanguage === "German"
-                                    ? "Geschätzte Gesamtsumme"
-                                    : widget.setup.mainLanguage === "Italian"
-                                      ? "Totale stimato"
-                                      : "Estimated total"}
-                        </div>{" "}
+                          {widget.setup.mainLanguage === 'English'
+                            ? 'Estimated total'
+                            : widget.setup.mainLanguage === 'Spanish'
+                              ? 'Total estimado'
+                              : widget.setup.mainLanguage === 'French'
+                                ? 'Total estimé'
+                                : widget.setup.mainLanguage === 'Portuguese'
+                                  ? 'Total estimado'
+                                  : widget.setup.mainLanguage === 'German'
+                                    ? 'Geschätzte Gesamtsumme'
+                                    : widget.setup.mainLanguage === 'Italian'
+                                      ? 'Totale stimato'
+                                      : 'Estimated total'}
+                        </div>{' '}
                         <div className="WizybotShopifyWidget__cart__inner__estimated__price">
                           <div
                             className="loader"
                             style={{
-                              position: "absolute",
-                              transform: "translate(-100%, -50%)",
-                              left: "100%",
-                              top: "50%",
+                              position: 'absolute',
+                              transform: 'translate(-100%, -50%)',
+                              left: '100%',
+                              top: '50%',
                             }}
                           ></div>
                         </div>
@@ -3054,26 +3083,26 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           style={{
-                            textDecoration: "none",
+                            textDecoration: 'none',
                           }}
                         >
                           <button
                             className="WizybotShopifyWidget__cart__inner__estimated__button"
-                            style={{ width: "100%" }}
+                            style={{ width: '100%' }}
                           >
-                            {widget.setup.mainLanguage === "English"
-                              ? "Pay"
-                              : widget.setup.mainLanguage === "Spanish"
-                                ? "Pagar"
-                                : widget.setup.mainLanguage === "French"
-                                  ? "Payer"
-                                  : widget.setup.mainLanguage === "Portuguese"
-                                    ? "Pagar"
-                                    : widget.setup.mainLanguage === "German"
-                                      ? "Bezahlen"
-                                      : widget.setup.mainLanguage === "Italian"
-                                        ? "Pagare"
-                                        : "Pay"}
+                            {widget.setup.mainLanguage === 'English'
+                              ? 'Pay'
+                              : widget.setup.mainLanguage === 'Spanish'
+                                ? 'Pagar'
+                                : widget.setup.mainLanguage === 'French'
+                                  ? 'Payer'
+                                  : widget.setup.mainLanguage === 'Portuguese'
+                                    ? 'Pagar'
+                                    : widget.setup.mainLanguage === 'German'
+                                      ? 'Bezahlen'
+                                      : widget.setup.mainLanguage === 'Italian'
+                                        ? 'Pagare'
+                                        : 'Pay'}
                           </button>
                         </a>
                       </div>
@@ -3086,31 +3115,31 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
               <div className="WizybotShopifyWidget__chat__inner">
                 {messages.map((message, index) => {
                   return (
-                    <div style={{ width: "100%" }} key={index}>
+                    <div style={{ width: '100%' }} key={index}>
                       <div className="WizybotShopifyWidget__chat__message__outter">
                         {message.content &&
                           !message.content?.includes(
-                            "{wizy_asset_reference}",
+                            '{wizy_asset_reference}',
                           ) && (
                             <div
                               className="WizybotShopifyWidget__chat__message__inner"
                               style={{
                                 marginLeft:
                                   message.role === EMessageRole.user
-                                    ? "auto"
-                                    : "",
+                                    ? 'auto'
+                                    : '',
                                 background:
                                   message.role === EMessageRole.user
-                                    ? "linear-gradient(135deg, " +
+                                    ? 'linear-gradient(135deg, ' +
                                       widget.setup.primaryColor +
-                                      " 0%, " +
+                                      ' 0%, ' +
                                       widget.setup.secondaryColor +
-                                      " 100%)"
-                                    : "",
+                                      ' 100%)'
+                                    : '',
                                 color:
                                   message.role === EMessageRole.user
                                     ? widget.setup.fontColor
-                                    : "black",
+                                    : 'black',
                               }}
                             >
                               {convertToHTMLLink(message.content)}
@@ -3250,9 +3279,9 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                                   content={{
                                     cards: extraUIComponent.cards.map(
                                       (card) => {
-                                        if (card.cardType === "product") {
+                                        if (card.cardType === 'product') {
                                           return {
-                                            type: "product",
+                                            type: 'product',
                                             title: card.title,
                                             price: card.price,
                                             imageUrl: card.imageUrls[0],
@@ -3260,7 +3289,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                                           } as IProductCard;
                                         } else {
                                           return {
-                                            type: "collection",
+                                            type: 'collection',
                                             title: card.title,
                                             imageUrls: card.imageUrls,
                                             redirectUrl: card.redirectUrl,
@@ -3341,8 +3370,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                           style={{
                             justifyContent:
                               message.role === EMessageRole.user
-                                ? "flex-end"
-                                : "flex-start",
+                                ? 'flex-end'
+                                : 'flex-start',
                           }}
                         >
                           {message.localMediaUrl ? (
@@ -3351,8 +3380,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                               <div
                                 className="ChatMedia__inner"
                                 style={{
-                                  width: "fit-content",
-                                  height: "fit-content",
+                                  width: 'fit-content',
+                                  height: 'fit-content',
                                 }}
                               >
                                 <a
@@ -3365,7 +3394,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                                     className="ChatMedia__image"
                                     src={message.localMediaUrl}
                                     alt="Uploaded image"
-                                    style={{ zIndex: 1, display: "block" }}
+                                    style={{ zIndex: 1, display: 'block' }}
                                   />
                                 </a>
                               </div>
@@ -3393,14 +3422,14 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     <div
                       className="WizybotShopifyWidget__chat__message__inner"
                       style={{
-                        color: "black",
+                        color: 'black',
                       }}
                     >
                       <div className="loader"></div>
                     </div>
                   </div>
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
             </div>
@@ -3409,13 +3438,13 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                 className="WizybotShopifyWidget__send__button__outter"
                 style={{
                   background:
-                    "linear-gradient(135deg, " +
+                    'linear-gradient(135deg, ' +
                     widget.setup.primaryColor +
-                    " 0%, " +
+                    ' 0%, ' +
                     widget.setup.secondaryColor +
-                    " 100%)",
-                  opacity: isSendButtonActive ? "1" : "0",
-                  visibility: isSendButtonActive ? "visible" : "hidden",
+                    ' 100%)',
+                  opacity: isSendButtonActive ? '1' : '0',
+                  visibility: isSendButtonActive ? 'visible' : 'hidden',
                 }}
                 onClick={() => {
                   if (chatState === EChatState.close) {
@@ -3433,7 +3462,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   xmlns="http://www.w3.org/2000/svg"
                   className="WizybotShopifyWidget__open__button__image"
                   style={{
-                    transform: "scale(1) translate(-50%, -50%)",
+                    transform: 'scale(1) translate(-50%, -50%)',
                   }}
                 >
                   <path
@@ -3450,19 +3479,19 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     type="text"
                     className="WizybotShopifyWidget__chat__input"
                     placeholder={
-                      widget.setup.mainLanguage === "English"
-                        ? "Enter your message..."
-                        : widget.setup.mainLanguage === "Spanish"
-                          ? "Ingrese su mensaje.."
-                          : widget.setup.mainLanguage === "French"
-                            ? "Entrez votre message..."
-                            : widget.setup.mainLanguage === "Portuguese"
-                              ? "Digite sua mensagem..."
-                              : widget.setup.mainLanguage === "German"
-                                ? "Geben Sie eine Nachricht ein..."
-                                : widget.setup.mainLanguage === "Italian"
-                                  ? "Inserisci il tuo messaggio..."
-                                  : "Enter your message..."
+                      widget.setup.mainLanguage === 'English'
+                        ? 'Enter your message...'
+                        : widget.setup.mainLanguage === 'Spanish'
+                          ? 'Ingrese su mensaje..'
+                          : widget.setup.mainLanguage === 'French'
+                            ? 'Entrez votre message...'
+                            : widget.setup.mainLanguage === 'Portuguese'
+                              ? 'Digite sua mensagem...'
+                              : widget.setup.mainLanguage === 'German'
+                                ? 'Geben Sie eine Nachricht ein...'
+                                : widget.setup.mainLanguage === 'Italian'
+                                  ? 'Inserisci il tuo messaggio...'
+                                  : 'Enter your message...'
                     }
                     onChange={(event: React.FormEvent<HTMLInputElement>) => {
                       setNewMessage(event.currentTarget.value);
@@ -3470,7 +3499,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     onKeyDown={(
                       event: React.KeyboardEvent<HTMLInputElement>,
                     ) => {
-                      if (event.key === "Enter") {
+                      if (event.key === 'Enter') {
                         handleMessageSend();
                       }
                     }}
@@ -3483,22 +3512,22 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                 {/* actions menu container */}
                 <div
                   ref={actionsMenuRef}
-                  style={{ position: "relative", display: "flex" }}
+                  style={{ position: 'relative', display: 'flex' }}
                 >
                   {/* actions menu dropdown */}
                   {actionsMenuState === EActionsMenuState.visible && (
                     <div
                       style={{
-                        position: "absolute",
-                        bottom: "40px",
-                        left: "0",
-                        backgroundColor: "#ffffff",
-                        borderRadius: "8px",
-                        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
-                        padding: "8px",
-                        minWidth: "150px",
+                        position: 'absolute',
+                        bottom: '40px',
+                        left: '0',
+                        backgroundColor: '#ffffff',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+                        padding: '8px',
+                        minWidth: '150px',
                         zIndex: 1000,
-                        animation: "fadeInUp 0.2s ease-out",
+                        animation: 'fadeInUp 0.2s ease-out',
                       }}
                     >
                       {/* render menu items dynamically */}
@@ -3507,27 +3536,27 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                           key={item.id}
                           onClick={item.onClick}
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            padding: "10px 12px",
-                            cursor: "pointer",
-                            borderRadius: "6px",
-                            transition: "background-color 0.2s",
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: '10px 12px',
+                            cursor: 'pointer',
+                            borderRadius: '6px',
+                            transition: 'background-color 0.2s',
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor =
-                              "rgba(130, 177, 230, 0.1)";
+                              'rgba(130, 177, 230, 0.1)';
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.backgroundColor =
-                              "transparent";
+                              'transparent';
                           }}
                         >
-                          <div style={{ marginRight: "10px" }}>{item.icon}</div>
+                          <div style={{ marginRight: '10px' }}>{item.icon}</div>
                           <span
                             style={{
-                              fontSize: "14px",
-                              color: "#333",
+                              fontSize: '14px',
+                              color: '#333',
                               fontWeight: 500,
                             }}
                           >
@@ -3543,7 +3572,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     type="file"
                     ref={fileInputRef}
                     onChange={handleImageUpload}
-                    style={{ display: "none" }}
+                    style={{ display: 'none' }}
                     accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
                   />
 
@@ -3551,7 +3580,7 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   <div
                     className="WizybotShopifyWidget__emojis__outter"
                     onClick={handleToggleActionsMenu}
-                    style={{ marginRight: "5px" }}
+                    style={{ marginRight: '5px' }}
                   >
                     <svg
                       id="ic_actionsMenu"
@@ -3590,8 +3619,8 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                   className="WizybotShopifyWidget__propaganda__outter"
                   style={{
                     visibility: widget.setup.hideWizybotBanner
-                      ? "hidden"
-                      : "visible",
+                      ? 'hidden'
+                      : 'visible',
                   }}
                 >
                   <div className="WizybotShopifyWidget__propaganda__text">
@@ -3602,16 +3631,16 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
                     target="_blank"
                     rel="noreferrer"
                     style={{
-                      textDecoration: "none",
+                      textDecoration: 'none',
                     }}
                   >
                     <div className="WizybotShopifyWidget__propaganda__logo__outter">
-                      {" "}
+                      {' '}
                       <img
                         src={wizyLogoImage}
                         alt="wizy_logo_blue"
                         className="WizybotShopifyWidget__propaganda__logo__image"
-                      />{" "}
+                      />{' '}
                       <div className="WizybotShopifyWidget__propaganda__logo__text">
                         Wizybot
                       </div>
@@ -3630,4 +3659,4 @@ const ShopifyWidget: FC<ShopifyWidgetProps> = ({
 };
 
 // Default exported function
-export default ShopifyWidget;
+export default WordpressWidget;
