@@ -283,6 +283,7 @@ if (!class_exists('Wizybot')):
                 'wordpressUrl' => site_url(),
                 'siteUrl' => site_url(),
                 'hasWooCommerce' => class_exists('WooCommerce'),
+                'wooCommerceSuccess' => get_option('wizybot_woocommerce_success', false),
                 'nonce' => wp_create_nonce('wp_rest'),
                 'apiUrl' => esc_url_raw(rest_url('wizybot/v1')),
                 'userId' => wp_get_current_user()->ID,
