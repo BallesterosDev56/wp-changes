@@ -1,23 +1,23 @@
 // Import React Dependencies
-import { FC, useEffect, useState } from "react";
-import React from "react";
-import ReactIframe from "./ReactIframe";
-import Cookies from "universal-cookie";
-import ShopifyWidget, {
+import { FC, useEffect, useState } from 'react';
+import React from 'react';
+import ReactIframe from './ReactIframe';
+import Cookies from 'universal-cookie';
+import WordpressWidget from './WordpressWidget';
+import {
   EDataRetrievalType,
   EEmailRetrievalMethod,
   ELimitBudgetAction,
   EMainLanguage,
   ESide,
   IWidgetVariables,
-} from "./ShopifyWidget";
-import { IWidgetMessage } from "../types/MessageType";
+} from './WordpressWidget';
+import { IWidgetMessage } from '../types/MessageType';
 
 // Declare types and interfaces
 export type IShopifyWidgetWrapperProps = {
   domain: string;
   isRelative: boolean;
-  ipRegistryKey: string;
   globalSelectedBackend: string;
   chatProfileImage: string;
   curvyBorderImage: string;
@@ -41,10 +41,9 @@ export type IShopifyWidgetWrapperProps = {
 };
 
 // Page main functional component
-const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
+const WordpressWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
   domain,
   isRelative,
-  ipRegistryKey,
   globalSelectedBackend,
   chatProfileImage,
   curvyBorderImage,
@@ -71,39 +70,39 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(isRelative);
   const [width, setWidth] = useState<number>(80);
   const [widget, setWidget] = useState<IWidgetVariables>({
-    domain: "",
+    domain: '',
     setup: {
-      primaryColor: "",
-      secondaryColor: "",
-      fontColor: "",
-      agentName: "",
-      onlinePhrase: "",
+      primaryColor: '',
+      secondaryColor: '',
+      fontColor: '',
+      agentName: '',
+      onlinePhrase: '',
       mainLanguage: EMainLanguage.ENGLISH,
       side: ESide.RIGHT,
       paddingBottom: 0,
       paddingSide: 0,
-      image: "",
+      image: '',
       isVisible: false,
       emailRetrievalMethod: EEmailRetrievalMethod.NONE,
       dataRetrievalType: EDataRetrievalType.EMAIL,
-      dataRetrievalCustomPrompt: "",
+      dataRetrievalCustomPrompt: '',
       isRedirect: false,
-      redirectionLink: "",
+      redirectionLink: '',
       isOverLimitBudget: false,
       limitBudgetAction: ELimitBudgetAction.REDIRECT,
-      limitBudgetRedirectionLink: "",
+      limitBudgetRedirectionLink: '',
       hideNotificationSign: false,
       hideWizybotBanner: false,
       hideOutboundMessage: false,
       preventSaleNoteCreation: false,
-      customWidgetCode: "",
-      pagesToExcludeWidget: "",
-      defaultCountryCode: "CO",
+      customWidgetCode: '',
+      pagesToExcludeWidget: '',
+      defaultCountryCode: 'CO',
     },
   });
   const [shouldShow, setShouldShow] = useState<boolean>(true);
   const [isRedirect, setIsRedirect] = useState<boolean>(false);
-  const [redirectionLink, setRedirectionLink] = useState<string>("");
+  const [redirectionLink, setRedirectionLink] = useState<string>('');
   const [actualDate, setActualDate] = useState<number>(0);
   const cookies = new Cookies();
 
@@ -119,9 +118,9 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
     // Check for params in the url
     const urlParams = new URLSearchParams(window.location.search);
     // Client conversation param
-    const wizyClient = urlParams.get("wizyclient");
+    const wizyClient = urlParams.get('wizyclient');
     // Referral from another Wizybot channel param
-    const wizyReferral = urlParams.get("wizyreferral");
+    const wizyReferral = urlParams.get('wizyreferral');
 
     // If there is a wizyclient parameter
     if (wizyClient !== null) {
@@ -130,30 +129,30 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
 
       // Remove client id
       cookies.remove(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
         {
-          path: "/",
+          path: '/',
         },
       );
       // Set the new one
       cookies.set(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
         wizyClient,
         {
-          path: "/",
+          path: '/',
           maxAge: 60 * 60 * 24 * 365,
         },
       );
       // Remove super client id
-      cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-        path: "/",
+      cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+        path: '/',
       });
       // Set the new one
       const clientSuperClientId = await clientId2SuperClientId(wizyClient);
       if (clientSuperClientId) {
         // Set it as cookie
-        cookies.set("WIZY_SUPERCLIENT_" + domain, clientSuperClientId, {
-          path: "/",
+        cookies.set('WIZY_SUPERCLIENT_' + domain, clientSuperClientId, {
+          path: '/',
           maxAge: 60 * 60 * 24 * 365,
         });
       }
@@ -165,9 +164,9 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
       createSaleOption(wizyReferral);
 
       // Get cookies
-      const superClientCookie = cookies.get("WIZY_SUPERCLIENT_" + domain);
+      const superClientCookie = cookies.get('WIZY_SUPERCLIENT_' + domain);
       const clientCookie = cookies.get(
-        isAdmin ? "WIZY_CLIENT_ADMIN_" + domain : "WIZY_CLIENT_" + domain,
+        isAdmin ? 'WIZY_CLIENT_ADMIN_' + domain : 'WIZY_CLIENT_' + domain,
       );
 
       // If no client has been previously created on the webpage chat
@@ -177,8 +176,8 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
           await clientId2SuperClientId(wizyReferral);
         if (referralSuperClientId) {
           // Set it as cookie
-          cookies.set("WIZY_SUPERCLIENT_" + domain, referralSuperClientId, {
-            path: "/",
+          cookies.set('WIZY_SUPERCLIENT_' + domain, referralSuperClientId, {
+            path: '/',
             maxAge: 60 * 60 * 24 * 365,
           });
         }
@@ -193,14 +192,14 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
         );
         // If there was an old superclient cookie remove it
         if (superClientCookie) {
-          cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-            path: "/",
+          cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+            path: '/',
           });
         }
         // Set the merged superclient id as the new superclient cookie
         if (mergedSuperClientId) {
-          cookies.set("WIZY_SUPERCLIENT_" + domain, mergedSuperClientId, {
-            path: "/",
+          cookies.set('WIZY_SUPERCLIENT_' + domain, mergedSuperClientId, {
+            path: '/',
             maxAge: 60 * 60 * 24 * 365,
           });
         }
@@ -221,11 +220,11 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
             oldReferralSuperClientId,
           );
           if (mergedSuperClientId) {
-            cookies.remove("WIZY_SUPERCLIENT_" + domain, {
-              path: "/",
+            cookies.remove('WIZY_SUPERCLIENT_' + domain, {
+              path: '/',
             });
-            cookies.set("WIZY_SUPERCLIENT_" + domain, mergedSuperClientId, {
-              path: "/",
+            cookies.set('WIZY_SUPERCLIENT_' + domain, mergedSuperClientId, {
+              path: '/',
               maxAge: 60 * 60 * 24 * 365,
             });
           }
@@ -240,13 +239,13 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
     const url = new URL(
       `${globalSelectedBackend}/shops/${domain}/widgetvariables`,
     );
-    if (marketId) url.searchParams.append("marketId", marketId);
-    if (languageCode) url.searchParams.append("languageCode", languageCode);
+    if (marketId) url.searchParams.append('marketId', marketId);
+    if (languageCode) url.searchParams.append('languageCode', languageCode);
 
     await fetch(url.toString(), {
-      method: "GET",
-      credentials: "include",
-      redirect: "follow",
+      method: 'GET',
+      credentials: 'include',
+      redirect: 'follow',
     })
       .then(async (response) => {
         if (!response.ok) {
@@ -272,17 +271,17 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
             paddingBottom: +JSONresult.setup.paddingBottom,
             paddingSide: +JSONresult.setup.paddingSide,
             image:
-              JSONresult.setup.image !== "Default"
-                ? globalSelectedBackend !== "https://api.wizybot.com"
-                  ? "" +
+              JSONresult.setup.image !== 'Default'
+                ? globalSelectedBackend !== 'https://api.wizybot.com'
+                  ? 'https://s3-tjlabs-wizybot-widget-images-dev.s3.amazonaws.com/' +
                     JSONresult.setup.image +
-                    "?nocache=" +
-                    new Date()[Symbol.toPrimitive]("number")
-                  : "" +
+                    '?nocache=' +
+                    new Date()[Symbol.toPrimitive]('number')
+                  : 'https://s3-tjlabs-wizybot-widget-images-prod.s3.amazonaws.com/' +
                     JSONresult.setup.image +
-                    "?nocache=" +
-                    new Date()[Symbol.toPrimitive]("number")
-                : "",
+                    '?nocache=' +
+                    new Date()[Symbol.toPrimitive]('number')
+                : '',
             isVisible: JSONresult.setup.isVisible,
             emailRetrievalMethod: JSONresult.setup.emailRetrievalMethod,
             dataRetrievalType: JSONresult.setup.dataRetrievalType,
@@ -311,13 +310,13 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
             JSONresult.setup.pagesToExcludeWidget === null
               ? true
               : !JSONresult.setup.pagesToExcludeWidget
-                  .split(",")
+                  .split(',')
                   .some((pageToExclude: string) =>
                     shopifyCurrentPath.includes(pageToExclude),
                   )));
         // Initially widget should not redirect
         var shouldRedirect = false;
-        var redirectionLink = "";
+        var redirectionLink = '';
         // But in case is not in the dashboard
         if (!isDashboard) {
           // The widget should be redirecting if is redirect flag
@@ -328,10 +327,10 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
 
           // Check limit budgests and what to do if over the limit
           if (JSONresult.setup.isOverLimitBudget) {
-            if (JSONresult.setup.limitBudgetAction === "widget off") {
+            if (JSONresult.setup.limitBudgetAction === 'widget off') {
               shouldShowWidget = false;
             }
-            if (JSONresult.setup.limitBudgetAction === "redirect") {
+            if (JSONresult.setup.limitBudgetAction === 'redirect') {
               shouldRedirect = true;
               redirectionLink = JSONresult.setup.limitBudgetRedirectionLink;
             }
@@ -350,12 +349,12 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
 
             // Extract numeric parts of the versions
             const actualVersionNumber = parseInt(
-              actualWidgetVersion.split("-").pop(),
+              actualWidgetVersion.split('-').pop(),
               10,
             );
 
             const extractedVersionNumber = parseInt(
-              extractedVersion.split("-").pop(),
+              extractedVersion.split('-').pop(),
               10,
             );
 
@@ -386,9 +385,9 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
       const response = await fetch(
         `${globalSelectedBackend}/shopifywidgetrest/updatewidgetversion`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             actualWidgetVersion,
@@ -403,51 +402,51 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
       }
 
       const result = await response.json();
-      console.log("Widget version updated successfully:", result.message);
+      console.log('Widget version updated successfully:', result.message);
     } catch (error) {
-      console.error("Error updating widget version:", error);
+      console.error('Error updating widget version:', error);
     }
   };
 
   // Create a sale option for a possible referral
   const createSaleOption = async (clientId: string) => {
-    if (shopifyRootPath !== null && shopifyRootPath !== "" && !isDashboard) {
-      await fetch(shopifyRootPath + "cart/update.js", {
-        method: "POST",
+    if (shopifyRootPath !== null && shopifyRootPath !== '' && !isDashboard) {
+      await fetch(shopifyRootPath + 'cart/update.js', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           attributes: { wizybot: true },
-          note: widget.setup.preventSaleNoteCreation ? "" : "Wizybot sale!",
+          note: widget.setup.preventSaleNoteCreation ? '' : 'Wizybot sale!',
         }),
       })
         .then(async (response) => {
-          await fetch(shopifyRootPath + "cart.js", {
-            method: "GET",
+          await fetch(shopifyRootPath + 'cart.js', {
+            method: 'GET',
           })
             .then((response) => {
               return response.json();
             })
             .then(async (data) => {
               var raw = JSON.stringify({
-                cartId: data.token.split("?")[0],
+                cartId: data.token.split('?')[0],
               });
               var myHeaders = new Headers();
-              myHeaders.append("Content-Type", "application/json");
+              myHeaders.append('Content-Type', 'application/json');
               await fetch(
                 globalSelectedBackend +
-                  "/sale/" +
+                  '/sale/' +
                   domain +
-                  "/" +
+                  '/' +
                   clientId +
-                  "/createsale",
+                  '/createsale',
                 {
-                  method: "POST",
+                  method: 'POST',
                   headers: myHeaders,
                   body: raw,
-                  credentials: "include",
-                  redirect: "follow",
+                  credentials: 'include',
+                  redirect: 'follow',
                 },
               )
                 .then(async (response) => {
@@ -462,32 +461,37 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
                 .then((result) => JSON.parse(result))
                 .then((JSONresult) => {})
                 .catch((error) => {
-                  console.log("Error:", error);
+                  console.log('Error:', error);
                 });
             })
             .catch((error) => {
-              console.error("Error:", error);
+              console.error('Error:', error);
             });
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
-    } else if (platform === "WORDPRESS" && !isDashboard) {
+    } else if (platform === 'WORDPRESS' && !isDashboard) {
       try {
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append('Content-Type', 'application/json');
         await fetch(
-          globalSelectedBackend + "/sale/" + domain + "/" + clientId + "/createsale",
+          globalSelectedBackend +
+            '/sale/' +
+            domain +
+            '/' +
+            clientId +
+            '/createsale',
           {
-            method: "POST",
+            method: 'POST',
             headers: myHeaders,
             body: JSON.stringify({ cartId: wizyCartId || null }),
-            credentials: "include",
-            redirect: "follow",
-          }
+            credentials: 'include',
+            redirect: 'follow',
+          },
         );
       } catch (error) {
-        console.error("Error creating WordPress sale:", error);
+        console.error('Error creating WordPress sale:', error);
       }
     }
   };
@@ -498,17 +502,17 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
   ): Promise<string | undefined> => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
 
       const response = await fetch(
         globalSelectedBackend +
-          "/superclients/clientid2superclientid/" +
+          '/superclients/clientid2superclientid/' +
           clientId,
         {
-          method: "GET",
+          method: 'GET',
           headers: myHeaders,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       );
       if (!response.ok) {
@@ -529,7 +533,7 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
   ): Promise<string | undefined> => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify({
         fromClientId: referralClientId,
@@ -537,13 +541,13 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
       });
 
       const response = await fetch(
-        globalSelectedBackend + "/superclients/mergebyclientids/",
+        globalSelectedBackend + '/superclients/mergebyclientids/',
         {
-          method: "POST",
+          method: 'POST',
           headers: myHeaders,
           body: raw,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       );
       if (!response.ok) {
@@ -564,7 +568,7 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
   ): Promise<string | undefined> => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify({
         fromSuperClientId: referralSuperClientId,
@@ -572,13 +576,13 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
       });
 
       const response = await fetch(
-        globalSelectedBackend + "/superclients/mergebysuperclientids/",
+        globalSelectedBackend + '/superclients/mergebysuperclientids/',
         {
-          method: "POST",
+          method: 'POST',
           headers: myHeaders,
           body: raw,
-          credentials: "include",
-          redirect: "follow",
+          credentials: 'include',
+          redirect: 'follow',
         },
       );
       if (!response.ok) {
@@ -617,7 +621,7 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
           rel="stylesheet"
           href={
             isRelative
-              ? stylesPathOutter + "?randomID=" + actualDate
+              ? stylesPathOutter + '?randomID=' + actualDate
               : stylesPathOutter
           }
         />
@@ -630,23 +634,23 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
           iframetitle="wizybot-chat-iframe"
           className={
             isRelative
-              ? "WizybotShopifyWidget__iframe__outter__open__relative"
+              ? 'WizybotShopifyWidget__iframe__outter__open__relative'
               : isOpen
                 ? widget.setup.side === ESide.RIGHT
-                  ? "WizybotShopifyWidget__iframe__outter__open__right"
-                  : "WizybotShopifyWidget__iframe__outter__open__left"
-                : "WizybotShopifyWidget__iframe__outter__close"
+                  ? 'WizybotShopifyWidget__iframe__outter__open__right'
+                  : 'WizybotShopifyWidget__iframe__outter__open__left'
+                : 'WizybotShopifyWidget__iframe__outter__close'
           }
           id="WizybotShopifyWidget__iframe__outter__id"
           style={{
             right: !isOpen
               ? widget.setup.side === ESide.RIGHT
                 ? widget.setup.paddingSide
-                : "calc(100% - " + (widget.setup.paddingSide + width) + "px)"
-              : "",
-            bottom: !isOpen ? widget.setup.paddingBottom : "",
-            width: !isOpen ? width + "px" : "",
-            height: !isOpen ? "80px" : "",
+                : 'calc(100% - ' + (widget.setup.paddingSide + width) + 'px)'
+              : '',
+            bottom: !isOpen ? widget.setup.paddingBottom : '',
+            width: !isOpen ? width + 'px' : '',
+            height: !isOpen ? '80px' : '',
           }}
         >
           <div>
@@ -655,7 +659,7 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
               rel="stylesheet"
               href={
                 isRelative
-                  ? stylesPathInner + "?randomID=" + actualDate
+                  ? stylesPathInner + '?randomID=' + actualDate
                   : stylesPathInner
               }
             />
@@ -667,14 +671,13 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
               rel="stylesheet"
             />
             {/* Call the actual shopify widget component */}
-            <ShopifyWidget
+            <WordpressWidget
               domain={domain}
               widget={widget}
               isTest={isTest}
               isAdmin={isAdmin}
               isDashboard={isDashboard}
               isRelative={isRelative}
-              ipRegistryKey={ipRegistryKey}
               globalSelectedBackend={globalSelectedBackend}
               chatProfileImage={chatProfileImage}
               curvyBorderImage={curvyBorderImage}
@@ -683,7 +686,7 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
               widgetLoader={widgetLoader}
               shopifyRootPath={shopifyRootPath}
               shopifyCurrentPath={
-                shopifyCurrentPath === null ? "/" : shopifyCurrentPath
+                shopifyCurrentPath === null ? '/' : shopifyCurrentPath
               }
               isShopifyForeing={isShopifyForeing}
               isRedirect={isRedirect}
@@ -708,4 +711,4 @@ const ShopifyWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
 };
 
 // Default exported function
-export default ShopifyWidgetWrapper;
+export default WordpressWidgetWrapper;
