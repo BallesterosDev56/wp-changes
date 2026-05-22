@@ -366,19 +366,18 @@ const WidgetMedia = props => {
 /* harmony export */   wP: () => (/* binding */ ELimitBudgetAction)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(394);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(394);
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(820);
-/* harmony import */ var react_international_phone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(849);
-/* harmony import */ var _extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(719);
-/* harmony import */ var _extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(585);
-/* harmony import */ var _extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(966);
-/* harmony import */ var _extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(897);
-/* harmony import */ var _types_MessageType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(222);
-/* harmony import */ var _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(486);
-/* harmony import */ var _extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(253);
-/* harmony import */ var _extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(726);
-/* harmony import */ var _WidgetMedia__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(624);
+/* harmony import */ var _extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(849);
+/* harmony import */ var _extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(719);
+/* harmony import */ var _extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(585);
+/* harmony import */ var _extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(966);
+/* harmony import */ var _extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(897);
+/* harmony import */ var _types_MessageType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(222);
+/* harmony import */ var _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(486);
+/* harmony import */ var _extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(253);
+/* harmony import */ var _extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(726);
+/* harmony import */ var _WidgetMedia__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(624);
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -387,9 +386,6 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
 // Import React Dependencies
 
 
-
-
-// Import phone input dependencies
 
 
 // Import extra ui components
@@ -565,6 +561,13 @@ const WordpressWidget = _ref => {
   const [name, setName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [phone, setPhone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [dialCode, setDialCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(() => {
+    var _widget$setup$default;
+    const raw = (_widget$setup$default = widget.setup.defaultCountryCode) !== null && _widget$setup$default !== void 0 ? _widget$setup$default : '';
+    const cleaned = raw.replace(/\D/g, '');
+    return /^\d+$/.test(cleaned) ? cleaned : '';
+  });
+  const [localPhone, setLocalPhone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [nameError, setNameError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [emailError, setEmailError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [phoneError, setPhoneError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
@@ -583,7 +586,14 @@ const WordpressWidget = _ref => {
   const socketRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(socket);
 
   // Constants
-  const cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .A();
+  const cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A();
+  const buildPhoneValue = (dialCodeValue, localValue) => {
+    const cleanedDialCode = dialCodeValue.replace(/\D/g, '');
+    const cleanedLocal = localValue.replace(/\D/g, '');
+    if (!cleanedLocal) return '';
+    if (!cleanedDialCode) return cleanedLocal;
+    return "+".concat(cleanedDialCode).concat(cleanedLocal);
+  };
   const ecommerceEmojis = ['😊', '🛍️', '📦', '💳', '🤑', '🛒', '💬', '👍', '📢', '📆', '✉️', '🔍', '🎁', '📱', '💻', '📋', '🌟', '💬', '❓', '💯', '🐗'];
 
   /**
@@ -947,14 +957,14 @@ const WordpressWidget = _ref => {
         // Display the product title as the visible message for the product card
         if (lastMessage !== null && lastMessage !== void 0 && lastMessage.extraUIComponents) {
           var _lastMessage$extraUIC;
-          if (((_lastMessage$extraUIC = lastMessage.extraUIComponents[0]) === null || _lastMessage$extraUIC === void 0 ? void 0 : _lastMessage$extraUIC.type) === _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD) {
+          if (((_lastMessage$extraUIC = lastMessage.extraUIComponents[0]) === null || _lastMessage$extraUIC === void 0 ? void 0 : _lastMessage$extraUIC.type) === _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD) {
             lastVisibleMessage = lastMessage.extraUIComponents[0].content.title;
           }
         }
 
         // Display the product title as the visible message for the new product card
         if (lastMessage !== null && lastMessage !== void 0 && (_lastMessage$extraUIC2 = lastMessage.extraUIComponentReference) !== null && _lastMessage$extraUIC2 !== void 0 && _lastMessage$extraUIC2[0]) {
-          lastVisibleMessage = (0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .getNewExtraUIComponentTitle */ .Wz)(lastMessage.extraUIComponentReference[0], widget.setup.mainLanguage);
+          lastVisibleMessage = (0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .getNewExtraUIComponentTitle */ .Wz)(lastMessage.extraUIComponentReference[0], widget.setup.mainLanguage);
         }
         setVisibleMessage(lastVisibleMessage);
         setVisibleMessageState(EVisibleMessageState.visible);
@@ -1137,19 +1147,19 @@ const WordpressWidget = _ref => {
           const userMessage = {
             content: content !== null && content !== void 0 ? content : '',
             createDate: new Date().toISOString(),
-            role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+            role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user,
             name: null,
             functionCall: null,
             toolCalls: null,
             toolCallId: null,
             extraUIComponents: [],
             extraUIComponentReference: [],
-            sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+            sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
             sourceId: null,
             hasMedia: hasImage,
             localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
             isAsset: false,
-            status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+            status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
           };
 
           // Update both local state and observability
@@ -1158,7 +1168,7 @@ const WordpressWidget = _ref => {
             updateObservabilityMessages(previous => [...previous, {
               content: content,
               createDate: new Date().toISOString(),
-              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user,
               showLogs: false,
               messageLogs: null,
               hasMedia: hasImage,
@@ -1194,18 +1204,18 @@ const WordpressWidget = _ref => {
                 id: '',
                 content: getUploadErrorMessage(error),
                 createDate: new Date().toISOString(),
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
                 name: '',
                 functionCall: '',
                 toolCalls: '',
                 toolCallId: '',
                 extraUIComponents: null,
                 extraUIComponentReference: null,
-                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
                 sourceId: null,
                 hasMedia: false,
                 isAsset: false,
-                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
               };
               setMessages(previous => [...previous, errorMsg]);
             }
@@ -1226,18 +1236,18 @@ const WordpressWidget = _ref => {
               id: '',
               content: 'We are sorry, but the widget has to be tested in your own web [page](https://' + domain + "). Enter now! It's already available!",
               createDate: messages[0].createDate,
-              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+              role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
               name: '',
               functionCall: '',
               toolCalls: '',
               toolCallId: '',
               extraUIComponents: null,
               extraUIComponentReference: null,
-              sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+              sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
               sourceId: null,
               hasMedia: false,
               isAsset: false,
-              status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+              status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
             };
 
             // Update both local state and observability
@@ -1247,7 +1257,7 @@ const WordpressWidget = _ref => {
                 id: '',
                 content: errorMessage.content,
                 createDate: errorMessage.createDate,
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
                 showLogs: false,
                 messageLogs: null
               }]);
@@ -1265,19 +1275,19 @@ const WordpressWidget = _ref => {
               const userMessage = {
                 content: content !== null && content !== void 0 ? content : '',
                 createDate: new Date().toISOString(),
-                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+                role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user,
                 name: null,
                 functionCall: null,
                 toolCalls: null,
                 toolCallId: null,
                 extraUIComponents: [],
                 extraUIComponentReference: [],
-                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
                 sourceId: null,
                 hasMedia: hasImage,
                 localMediaUrl: hasImage && currentPreviewUrl ? currentPreviewUrl : undefined,
                 isAsset: false,
-                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+                status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
               };
 
               // Update local state immediately for widget display
@@ -1301,7 +1311,7 @@ const WordpressWidget = _ref => {
                 updateObservabilityMessages(previous => [...previous, {
                   content: content,
                   createDate: new Date().toISOString(),
-                  role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user,
+                  role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user,
                   showLogs: false,
                   messageLogs: null,
                   hasMedia: hasImage,
@@ -1329,18 +1339,18 @@ const WordpressWidget = _ref => {
                     id: '',
                     content: getUploadErrorMessage(error),
                     createDate: new Date().toISOString(),
-                    role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+                    role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
                     name: '',
                     functionCall: '',
                     toolCalls: '',
                     toolCallId: '',
                     extraUIComponents: null,
                     extraUIComponentReference: null,
-                    sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+                    sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
                     sourceId: null,
                     hasMedia: false,
                     isAsset: false,
-                    status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+                    status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
                   };
                   setMessages(previous => [...previous, errorMsg]);
                 }
@@ -1390,18 +1400,18 @@ const WordpressWidget = _ref => {
         id: '',
         content: errorContent,
         createDate: new Date().toISOString(),
-        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
         name: '',
         functionCall: '',
         toolCalls: '',
         toolCallId: '',
         extraUIComponents: null,
         extraUIComponentReference: null,
-        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
         sourceId: null,
         hasMedia: false,
         isAsset: false,
-        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
       };
 
       // update both local state and observability
@@ -1411,7 +1421,7 @@ const WordpressWidget = _ref => {
           id: '',
           content: errorMessage.content,
           createDate: errorMessage.createDate,
-          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
           showLogs: false,
           messageLogs: null
         }]);
@@ -1433,18 +1443,18 @@ const WordpressWidget = _ref => {
         id: '',
         content: errorContent,
         createDate: new Date().toISOString(),
-        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+        role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
         name: '',
         functionCall: '',
         toolCalls: '',
         toolCallId: '',
         extraUIComponents: null,
         extraUIComponentReference: null,
-        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
+        sourceType: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageSourceTypes */ .rS.SHOPIFY_WIDGET,
         sourceId: null,
         hasMedia: false,
         isAsset: false,
-        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageStatus */ .nH.SENT
+        status: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageStatus */ .nH.SENT
       };
 
       // update both local state and observability
@@ -1454,7 +1464,7 @@ const WordpressWidget = _ref => {
           id: '',
           content: errorMessage.content,
           createDate: errorMessage.createDate,
-          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai,
+          role: _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai,
           showLogs: false,
           messageLogs: null
         }]);
@@ -1993,7 +2003,7 @@ const WordpressWidget = _ref => {
           setMessages([]);
           sortedMessages.filter(message => {
             var _message$content, _message$extraUICompo, _message$extraUICompo2, _message$extraUICompo3, _message$extraUICompo4;
-            if ((message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.ai || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.assistant || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user) && (isNotBlank(message.content) && !((_message$content = message.content) !== null && _message$content !== void 0 && _message$content.includes('{wizy_asset_reference}')) || message.hasMedia || ((_message$extraUICompo = (_message$extraUICompo2 = message.extraUIComponents) === null || _message$extraUICompo2 === void 0 ? void 0 : _message$extraUICompo2.length) !== null && _message$extraUICompo !== void 0 ? _message$extraUICompo : 0) > 0 || ((_message$extraUICompo3 = (_message$extraUICompo4 = message.extraUIComponentReference) === null || _message$extraUICompo4 === void 0 ? void 0 : _message$extraUICompo4.length) !== null && _message$extraUICompo3 !== void 0 ? _message$extraUICompo3 : 0) > 0)) {
+            if ((message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.ai || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.assistant || message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user) && (isNotBlank(message.content) && !((_message$content = message.content) !== null && _message$content !== void 0 && _message$content.includes('{wizy_asset_reference}')) || message.hasMedia || ((_message$extraUICompo = (_message$extraUICompo2 = message.extraUIComponents) === null || _message$extraUICompo2 === void 0 ? void 0 : _message$extraUICompo2.length) !== null && _message$extraUICompo !== void 0 ? _message$extraUICompo : 0) > 0 || ((_message$extraUICompo3 = (_message$extraUICompo4 = message.extraUIComponentReference) === null || _message$extraUICompo4 === void 0 ? void 0 : _message$extraUICompo4.length) !== null && _message$extraUICompo3 !== void 0 ? _message$extraUICompo3 : 0) > 0)) {
               return true;
             } else {
               return false;
@@ -2119,7 +2129,6 @@ const WordpressWidget = _ref => {
 
   // JSX Return statement
   if (isLoaded) {
-    var _widget$setup$default;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: widgetLoader,
       className: "ProtectedRoute__loader",
@@ -2456,32 +2465,66 @@ const WordpressWidget = _ref => {
       className: "WizybotShopifyWidget__email__input__prompt__1"
     }, "Eg: jhon.doe@email.com")), phoneRequired && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__email__input__title"
-    }, widget.setup.mainLanguage === 'English' ? 'Phone' : widget.setup.mainLanguage === 'Spanish' ? 'Teléfono' : widget.setup.mainLanguage === 'French' ? 'Téléphone' : widget.setup.mainLanguage === 'Portuguese' ? 'Telefone' : widget.setup.mainLanguage === 'German' ? 'Telefon' : widget.setup.mainLanguage === 'Italian' ? 'Telefono' : 'Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_international_phone__WEBPACK_IMPORTED_MODULE_2__/* .PhoneInput */ .LR, {
-      defaultCountry: (_widget$setup$default = widget.setup.defaultCountryCode) !== null && _widget$setup$default !== void 0 ? _widget$setup$default : 'co',
-      value: phone,
-      onChange: phone => {
-        setPhone(phone);
+    }, widget.setup.mainLanguage === 'English' ? 'Phone' : widget.setup.mainLanguage === 'Spanish' ? 'Teléfono' : widget.setup.mainLanguage === 'French' ? 'Téléphone' : widget.setup.mainLanguage === 'Portuguese' ? 'Telefone' : widget.setup.mainLanguage === 'German' ? 'Telefon' : widget.setup.mainLanguage === 'Italian' ? 'Telefono' : 'Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: '8px',
+        alignItems: 'stretch'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 8px',
+        borderTop: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderLeft: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderBottom: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderRight: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
+        borderRadius: '6px',
+        background: '#fff'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      style: {
+        marginRight: '4px'
+      }
+    }, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      inputMode: "numeric",
+      value: dialCode,
+      placeholder: "57",
+      onChange: event => {
+        const nextDialCode = event.currentTarget.value.replace(/\D/g, '');
+        setDialCode(nextDialCode);
+        setPhone(buildPhoneValue(nextDialCode, localPhone));
       },
-      inputStyle: {
+      style: {
+        width: '60px',
+        border: 'none',
+        outline: 'none',
+        fontSize: '14px',
+        background: 'transparent'
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "text",
+      inputMode: "numeric",
+      className: "WizybotShopifyWidget__email__input__2",
+      value: localPhone,
+      onChange: event => {
+        const nextLocal = event.currentTarget.value.replace(/\D/g, '');
+        setLocalPhone(nextLocal);
+        setPhone(buildPhoneValue(dialCode, nextLocal));
+      },
+      style: {
         borderTop: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
         borderRight: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
         borderBottom: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db')
       },
-      countrySelectorStyleProps: {
-        buttonStyle: {
-          borderTop: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
-          borderLeft: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db'),
-          borderBottom: "1px solid ".concat(phoneError ? '#ff3e3e' : '#d1d5db')
-        }
-      },
-      inputProps: {
-        onKeyDown: e => {
-          if (e.key === 'Enter' && createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
-            createClient();
-          }
+      onKeyDown: e => {
+        if (e.key === 'Enter' && createClientBackendState === ECreateClientBackendState.send && !isCreatingClient) {
+          createClient();
         }
       }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__email__input__prompt__1"
     }, "Eg: +573123456789")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "WizybotShopifyWidget__email__checkbox__outter"
@@ -2512,7 +2555,7 @@ const WordpressWidget = _ref => {
       }
     }, createClientBackendState === ECreateClientBackendState.send ? widget.setup.mainLanguage === 'English' ? 'Send' : widget.setup.mainLanguage === 'Spanish' ? 'Enviar' : widget.setup.mainLanguage === 'French' ? 'Envoyer' : widget.setup.mainLanguage === 'Portuguese' ? 'Enviar' : widget.setup.mainLanguage === 'German' ? 'Schicken' : widget.setup.mainLanguage === 'Italian' ? 'Inviare' : 'Send' : widget.setup.mainLanguage === 'English' ? 'Loading...' : widget.setup.mainLanguage === 'Spanish' ? 'Cargando...' : widget.setup.mainLanguage === 'French' ? 'Chargement...' : widget.setup.mainLanguage === 'Portuguese' ? 'Carregando...' : widget.setup.mainLanguage === 'German' ? 'Wird geladen...' : widget.setup.mainLanguage === 'Italian' ? 'Caricamento...' : 'Loading...'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: cartState === ECartState.invisible ? 'WizybotShopifyWidget__cart__outter__close' : 'WizybotShopifyWidget__cart__outter__open'
-    }, cart !== null && isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+    }, cart !== null && isCartLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_WordpressWidgetCart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
       cart: cart,
       updateCart: updateCart,
       language: widget.setup.mainLanguage,
@@ -2608,14 +2651,14 @@ const WordpressWidget = _ref => {
       }, message.content && !((_message$content2 = message.content) !== null && _message$content2 !== void 0 && _message$content2.includes('{wizy_asset_reference}')) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "WizybotShopifyWidget__chat__message__inner",
         style: {
-          marginLeft: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'auto' : '',
-          background: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)' : '',
-          color: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? widget.setup.fontColor : 'black'
+          marginLeft: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user ? 'auto' : '',
+          background: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user ? 'linear-gradient(135deg, ' + widget.setup.primaryColor + ' 0%, ' + widget.setup.secondaryColor + ' 100%)' : '',
+          color: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user ? widget.setup.fontColor : 'black'
         }
       }, convertToHTMLLink(message.content))), message.extraUIComponents && message.extraUIComponents.length > 0 ? message.extraUIComponents.map((extraUIComponent, i) => {
         switch (extraUIComponent.type) {
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
               key: i,
               content: extraUIComponent.content,
               extraUIComponentIndex: i,
@@ -2627,8 +2670,8 @@ const WordpressWidget = _ref => {
               openCart: handleToggleCartState,
               isShopifyForeing: isShopifyForeing
             });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART_WITH_SUBSCRIPTIONS:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .EExtraUIComponentTypes */ .q2.ADD_TO_CART_WITH_SUBSCRIPTIONS:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
               key: i,
               content: extraUIComponent.content,
               extraUIComponentIndex: i,
@@ -2640,15 +2683,15 @@ const WordpressWidget = _ref => {
               noImageImage: noImageImage,
               openCart: handleToggleCartState
             });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.RECOMMENDATION_CAROUSEL:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .EExtraUIComponentTypes */ .q2.RECOMMENDATION_CAROUSEL:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
               key: i,
               content: extraUIComponent.content,
               language: widget.setup.mainLanguage,
               platform: platform
             });
-          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+          case _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .EExtraUIComponentTypes */ .q2.PRODUCT_CARD:
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
               noImageImage: noImageImage,
               key: i,
               content: extraUIComponent.content,
@@ -2660,8 +2703,8 @@ const WordpressWidget = _ref => {
             });
         }
       }) : message.extraUIComponentReference ? message.extraUIComponentReference.map((extraUIComponent, i) => {
-        if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+        if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_Add2Cart_Add2Cart__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
             key: i,
             content: {
               title: extraUIComponent.title,
@@ -2683,8 +2726,8 @@ const WordpressWidget = _ref => {
             openCart: handleToggleCartState,
             isShopifyForeing: isShopifyForeing
           });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART_WITH_SUBSCRIPTIONS)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.ADD_TO_CART_WITH_SUBSCRIPTIONS)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddToCartWithSubscriptions_Add2CartWithSubscriptions__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
             key: i,
             content: {
               title: extraUIComponent.title,
@@ -2706,8 +2749,8 @@ const WordpressWidget = _ref => {
             noImageImage: noImageImage,
             openCart: handleToggleCartState
           });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.RECOMMENDATION_CAROUSEL)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.RECOMMENDATION_CAROUSEL)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_RecommendationCarousel_RecommendationCarousel__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
             key: i,
             content: {
               cards: extraUIComponent.cards.map(card => {
@@ -2732,8 +2775,8 @@ const WordpressWidget = _ref => {
             language: widget.setup.mainLanguage,
             platform: platform
           });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CARD)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CARD)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
             noImageImage: noImageImage,
             content: {
               title: extraUIComponent.title,
@@ -2747,14 +2790,14 @@ const WordpressWidget = _ref => {
             },
             language: widget.setup.mainLanguage
           });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CART)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.PRODUCT_CART)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_ProductCart_ProductCart__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
             noImageImage: noImageImage,
             content: extraUIComponent,
             language: widget.setup.mainLanguage
           });
-        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_9__/* .ENewExtraUIComponentTypes */ .qH.ADD_MEDIA)) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+        } else if ((0,_extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .isExtraUIComponentType */ .ks)(extraUIComponent, _extraUIcomponents_extraUIComponentTypes__WEBPACK_IMPORTED_MODULE_8__/* .ENewExtraUIComponentTypes */ .qH.ADD_MEDIA)) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_extraUIcomponents_AddMedia_AddMedia__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
             key: i,
             isAdmin: isAdmin,
             content: extraUIComponent,
@@ -2773,7 +2816,7 @@ const WordpressWidget = _ref => {
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), message.hasMedia ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "WizybotShopifyWidget__chat__message__outter",
         style: {
-          justifyContent: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_8__/* .EMessageRole */ .PG.user ? 'flex-end' : 'flex-start'
+          justifyContent: message.role === _types_MessageType__WEBPACK_IMPORTED_MODULE_7__/* .EMessageRole */ .PG.user ? 'flex-end' : 'flex-start'
         }
       }, message.localMediaUrl ?
       /*#__PURE__*/
@@ -2804,7 +2847,7 @@ const WordpressWidget = _ref => {
       })))) : message.id ?
       /*#__PURE__*/
       // Server media (historical or received messages)
-      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_WidgetMedia__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A, {
+      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_WidgetMedia__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
         messageId: message.id,
         isAsset: message.isAsset,
         globalSelectedBackend: globalSelectedBackend,
@@ -7073,20 +7116,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ 11:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   LR: () => (/* binding */ Ue)
-/* harmony export */ });
-/* unused harmony exports CountrySelector, CountrySelectorDropdown, DialCodePreview, FlagImage, buildCountryData, defaultCountries, getActiveFormattingMask, getCountry, guessCountryByPartialPhoneNumber, parseCountry, removeDialCode, usePhoneInput */
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-var R=[["Afghanistan","af","93"],["Albania","al","355"],["Algeria","dz","213"],["Andorra","ad","376"],["Angola","ao","244"],["Antigua and Barbuda","ag","1268"],["Argentina","ar","54","(..) ........",0],["Armenia","am","374",".. ......"],["Aruba","aw","297"],["Australia","au","61",{default:". .... ....","/^4/":"... ... ...","/^5(?!50)/":"... ... ...","/^1(3|8)00/":".... ... ...","/^13/":".. .. ..","/^180/":"... ...."},0,[]],["Austria","at","43"],["Azerbaijan","az","994","(..) ... .. .."],["Bahamas","bs","1242"],["Bahrain","bh","973"],["Bangladesh","bd","880"],["Barbados","bb","1246"],["Belarus","by","375","(..) ... .. .."],["Belgium","be","32","... .. .. .."],["Belize","bz","501"],["Benin","bj","229"],["Bhutan","bt","975"],["Bolivia","bo","591"],["Bosnia and Herzegovina","ba","387"],["Botswana","bw","267"],["Brazil","br","55","(..) .....-...."],["British Indian Ocean Territory","io","246"],["Brunei","bn","673"],["Bulgaria","bg","359"],["Burkina Faso","bf","226"],["Burundi","bi","257"],["Cambodia","kh","855"],["Cameroon","cm","237"],["Canada","ca","1","(...) ...-....",1,["204","226","236","249","250","289","306","343","365","387","403","416","418","431","437","438","450","506","514","519","548","579","581","587","604","613","639","647","672","705","709","742","778","780","782","807","819","825","867","873","902","905"]],["Cape Verde","cv","238"],["Caribbean Netherlands","bq","599","",1],["Cayman Islands","ky","1","... ... ....",4,["345"]],["Central African Republic","cf","236"],["Chad","td","235"],["Chile","cl","56"],["China","cn","86","... .... ...."],["Colombia","co","57","... ... ...."],["Comoros","km","269"],["Congo","cd","243"],["Congo","cg","242"],["Costa Rica","cr","506","....-...."],["C\xF4te d'Ivoire","ci","225",".. .. .. .. .."],["Croatia","hr","385"],["Cuba","cu","53"],["Cura\xE7ao","cw","599","",0],["Cyprus","cy","357",".. ......"],["Czech Republic","cz","420","... ... ..."],["Denmark","dk","45",".. .. .. .."],["Djibouti","dj","253",".. .. ...."],["Dominica","dm","1767"],["Dominican Republic","do","1","(...) ...-....",2,["809","829","849"]],["Ecuador","ec","593"],["Egypt","eg","20"],["El Salvador","sv","503","....-...."],["Equatorial Guinea","gq","240"],["Eritrea","er","291"],["Estonia","ee","372",".... ......"],["Ethiopia","et","251",".. ... ...."],["Fiji","fj","679"],["Finland","fi","358",".. ... .. .."],["France","fr","33",". .. .. .. .."],["French Guiana","gf","594"],["French Polynesia","pf","689"],["Gabon","ga","241"],["Gambia","gm","220"],["Georgia","ge","995"],["Germany","de","49","... ........."],["Ghana","gh","233"],["Greece","gr","30"],["Greenland","gl","299",".. .. .."],["Grenada","gd","1473"],["Guadeloupe","gp","590","",0],["Guam","gu","1671"],["Guatemala","gt","502","....-...."],["Guinea","gn","224"],["Guinea-Bissau","gw","245"],["Guyana","gy","592"],["Haiti","ht","509","....-...."],["Honduras","hn","504"],["Hong Kong","hk","852",".... ...."],["Hungary","hu","36"],["Iceland","is","354","... ...."],["India","in","91",".....-....."],["Indonesia","id","62"],["Iran","ir","98","... ... ...."],["Iraq","iq","964"],["Ireland","ie","353",".. ......."],["Israel","il","972","... ... ...."],["Italy","it","39","... .......",0],["Jamaica","jm","1876"],["Japan","jp","81",".. .... ...."],["Jordan","jo","962"],["Kazakhstan","kz","7","... ...-..-..",0],["Kenya","ke","254"],["Kiribati","ki","686"],["Kosovo","xk","383"],["Kuwait","kw","965"],["Kyrgyzstan","kg","996","... ... ..."],["Laos","la","856"],["Latvia","lv","371",".. ... ..."],["Lebanon","lb","961"],["Lesotho","ls","266"],["Liberia","lr","231"],["Libya","ly","218"],["Liechtenstein","li","423"],["Lithuania","lt","370"],["Luxembourg","lu","352"],["Macau","mo","853"],["Macedonia","mk","389"],["Madagascar","mg","261"],["Malawi","mw","265"],["Malaysia","my","60","..-....-...."],["Maldives","mv","960"],["Mali","ml","223"],["Malta","mt","356"],["Marshall Islands","mh","692"],["Martinique","mq","596"],["Mauritania","mr","222"],["Mauritius","mu","230"],["Mayotte","yt","262","",1,["269","639"]],["Mexico","mx","52","... ... ....",0],["Micronesia","fm","691"],["Moldova","md","373","(..) ..-..-.."],["Monaco","mc","377"],["Mongolia","mn","976"],["Montenegro","me","382"],["Morocco","ma","212"],["Mozambique","mz","258"],["Myanmar","mm","95"],["Namibia","na","264"],["Nauru","nr","674"],["Nepal","np","977"],["Netherlands","nl","31",{"/^06/":"(.). .........","/^6/":". .........","/^0(10|13|14|15|20|23|24|26|30|33|35|36|38|40|43|44|45|46|50|53|55|58|70|71|72|73|74|75|76|77|78|79|82|84|85|87|88|91)/":"(.).. ........","/^(10|13|14|15|20|23|24|26|30|33|35|36|38|40|43|44|45|46|50|53|55|58|70|71|72|73|74|75|76|77|78|79|82|84|85|87|88|91)/":".. ........","/^0/":"(.)... .......",default:"... ......."}],["New Caledonia","nc","687"],["New Zealand","nz","64","...-...-...."],["Nicaragua","ni","505"],["Niger","ne","227"],["Nigeria","ng","234"],["North Korea","kp","850"],["Norway","no","47","... .. ..."],["Oman","om","968"],["Pakistan","pk","92","...-......."],["Palau","pw","680"],["Palestine","ps","970"],["Panama","pa","507"],["Papua New Guinea","pg","675"],["Paraguay","py","595"],["Peru","pe","51"],["Philippines","ph","63","... ... ...."],["Poland","pl","48","...-...-..."],["Portugal","pt","351"],["Puerto Rico","pr","1","(...) ...-....",3,["787","939"]],["Qatar","qa","974"],["R\xE9union","re","262","",0],["Romania","ro","40"],["Russia","ru","7","(...) ...-..-..",1],["Rwanda","rw","250"],["Saint Kitts and Nevis","kn","1869"],["Saint Lucia","lc","1758"],["Saint Vincent and the Grenadines","vc","1784"],["Samoa","ws","685"],["San Marino","sm","378"],["S\xE3o Tom\xE9 and Pr\xEDncipe","st","239"],["Saudi Arabia","sa","966"],["Senegal","sn","221"],["Serbia","rs","381"],["Seychelles","sc","248"],["Sierra Leone","sl","232"],["Singapore","sg","65","....-...."],["Slovakia","sk","421"],["Slovenia","si","386"],["Solomon Islands","sb","677"],["Somalia","so","252"],["South Africa","za","27"],["South Korea","kr","82","... .... ...."],["South Sudan","ss","211"],["Spain","es","34","... ... ..."],["Sri Lanka","lk","94"],["Sudan","sd","249"],["Suriname","sr","597"],["Swaziland","sz","268"],["Sweden","se","46","... ... ..."],["Switzerland","ch","41",".. ... .. .."],["Syria","sy","963"],["Taiwan","tw","886"],["Tajikistan","tj","992"],["Tanzania","tz","255"],["Thailand","th","66"],["Timor-Leste","tl","670"],["Togo","tg","228"],["Tonga","to","676"],["Trinidad and Tobago","tt","1868"],["Tunisia","tn","216"],["Turkey","tr","90","... ... .. .."],["Turkmenistan","tm","993"],["Tuvalu","tv","688"],["Uganda","ug","256"],["Ukraine","ua","380","(..) ... .. .."],["United Arab Emirates","ae","971"],["United Kingdom","gb","44",".... ......"],["United States","us","1","(...) ...-....",0],["Uruguay","uy","598"],["Uzbekistan","uz","998",".. ... .. .."],["Vanuatu","vu","678"],["Vatican City","va","39",".. .... ....",1],["Venezuela","ve","58"],["Vietnam","vn","84"],["Yemen","ye","967"],["Zambia","zm","260"],["Zimbabwe","zw","263"]];var xe="react-international-phone-",se=(...t)=>t.filter(e=>!!e).join(" ").trim(),Se=(...t)=>se(...t).split(" ").map(e=>`${xe}${e}`).join(" "),P=({addPrefix:t,rawClassNames:e})=>se(Se(...t),...e);var le=({value:t,mask:e,maskSymbol:a,offset:s=0,trimNonMaskCharsLeftover:r=!1})=>{if(t.length<s)return t;let o=t.slice(0,s),c=t.slice(s),i=o,n=0;for(let l of e.split("")){if(n>=c.length){if(!r&&l!==a){i+=l;continue}break}l===a?(i+=c[n],n+=1):i+=l}return i};var F=t=>t?/^\d+$/.test(t):!1;var z=t=>t.replace(/\D/g,"");var ue=(t,e)=>{let a=t.style.display;a!=="block"&&(t.style.display="block");let s=t.getBoundingClientRect(),r=e.getBoundingClientRect(),o=r.top-s.top,c=s.bottom-r.bottom;o>=0&&c>=0||(Math.abs(o)<Math.abs(c)?t.scrollTop+=o:t.scrollTop-=c),t.style.display=a};var De=t=>{let{name:e,iso2:a,dialCode:s,format:r,priority:o,areaCodes:c}=t,i=[e,a,s,r,o,c];for(let n=0;n<i.length;n+=1){if(n===0)continue;let l=i[n-1],d=i[n];if(l===void 0&&d!==void 0){let m=JSON.stringify(i,(f,g)=>g===void 0?"__undefined":g).replace(/"__undefined"/g,"undefined");throw new Error(`[react-international-phone] invalid country values passed to buildCountryData. Check ${l} in: ${m}`)}}return i.filter(n=>n!==void 0)};var de=()=>typeof window>"u"?!1:window.navigator.userAgent.toLowerCase().includes("macintosh");var ce=({phone:t,dialCode:e,prefix:a="+",charAfterDialCode:s=" "})=>{if(!t||!e)return t;let r=t;return r.startsWith(a)&&(r=r.replace(a,"")),r.startsWith(e)?(r=r.replace(e,""),r.startsWith(s)&&(r=r.replace(s,"")),r):t};var pe=(t,e)=>{let a=e.disableDialCodeAndPrefix?!1:e.forceDialCode,s=e.disableDialCodeAndPrefix?!1:e.insertDialCodeOnEmpty,r=t,o=l=>e.trimNonDigitsEnd?l.trim():l;if(!r)return s&&!r.length||a?o(`${e.prefix}${e.dialCode}${e.charAfterDialCode}`):o(r);if(r=z(r),r===e.dialCode&&!e.disableDialCodeAndPrefix)return o(`${e.prefix}${e.dialCode}${e.charAfterDialCode}`);if(e.dialCode.startsWith(r)&&!e.disableDialCodeAndPrefix)return o(a?`${e.prefix}${e.dialCode}${e.charAfterDialCode}`:`${e.prefix}${r}`);if(!r.startsWith(e.dialCode)&&!e.disableDialCodeAndPrefix){if(a)return o(`${e.prefix}${e.dialCode}${e.charAfterDialCode}`);if(r.length<e.dialCode.length)return o(`${e.prefix}${r}`)}let c=()=>{let l=e.dialCode.length,d=r.slice(0,l),m=r.slice(l);return{phoneLeftSide:d,phoneRightSide:m}},{phoneLeftSide:i,phoneRightSide:n}=c();return i=`${e.prefix}${i}${e.charAfterDialCode}`,n=le({value:n,mask:e.mask,maskSymbol:e.maskChar,trimNonMaskCharsLeftover:e.trimNonDigitsEnd||e.disableDialCodeAndPrefix&&n.length===0}),e.disableDialCodeAndPrefix&&(i=""),o(`${i}${n}`)};var me=({phoneBeforeInput:t,phoneAfterInput:e,phoneAfterFormatted:a,cursorPositionAfterInput:s,leftOffset:r=0,deletion:o})=>{if(s<r)return r;if(!t)return a.length;let c=null;for(let d=s-1;d>=0;d-=1)if(F(e[d])){c=d;break}if(c===null){for(let d=0;d<e.length;d+=1)if(F(a[d]))return d;return e.length}let i=0;for(let d=0;d<c;d+=1)F(e[d])&&(i+=1);let n=0,l=0;for(let d=0;d<a.length&&(n+=1,F(a[d])&&(l+=1),!(l>=i+1));d+=1);if(o!=="backward")for(;!F(a[n])&&n<a.length;)n+=1;return n};var O=({phone:t,prefix:e})=>t?`${e}${z(t)}`:"";function W({value:t,country:e,insertDialCodeOnEmpty:a,trimNonDigitsEnd:s,countries:r,prefix:o,charAfterDialCode:c,forceDialCode:i,disableDialCodeAndPrefix:n,defaultMask:l,countryGuessingEnabled:d,disableFormatting:m}){let f=t;n&&(f=f.startsWith(`${o}`)?f:`${o}${e.dialCode}${f}`);let g=d?X({phone:f,countries:r,currentCountryIso2:e?.iso2}):void 0,S=g?.country??e,p=pe(f,{prefix:o,mask:Q({phone:f,country:S,defaultMask:l,disableFormatting:m}),maskChar:J,dialCode:S.dialCode,trimNonDigitsEnd:s,charAfterDialCode:c,forceDialCode:i,insertDialCodeOnEmpty:a,disableDialCodeAndPrefix:n}),h=d&&!g?.fullDialCodeMatch?e:S;return{phone:O({phone:n?`${h.dialCode}${p}`:p,prefix:o}),inputValue:p,country:h}}var ke=t=>{if(t?.toLocaleLowerCase().includes("delete")??!1)return t?.toLocaleLowerCase().includes("forward")?"forward":"backward"},fe=(t,{country:e,insertDialCodeOnEmpty:a,phoneBeforeInput:s,prefix:r,charAfterDialCode:o,forceDialCode:c,disableDialCodeAndPrefix:i,countryGuessingEnabled:n,defaultMask:l,disableFormatting:d,countries:m})=>{let f=t.nativeEvent,g=f.inputType,S=ke(g),p=!!g?.startsWith("insertFrom"),h=g==="insertText",D=f?.data||void 0,k=t.target.value,_=t.target.selectionStart??0;if(g?.includes("history"))return{inputValue:s,phone:O({phone:s,prefix:r}),cursorPosition:s.length,country:e};if(h&&!F(D)&&k!==r)return{inputValue:s,phone:O({phone:i?`${e.dialCode}${s}`:s,prefix:r}),cursorPosition:_-(D?.length??0),country:e};if(c&&!k.startsWith(`${r}${e.dialCode}`)&&!p){let b=k?s:`${r}${e.dialCode}${o}`;return{inputValue:b,phone:O({phone:b,prefix:r}),cursorPosition:r.length+e.dialCode.length+o.length,country:e}}let{phone:N,inputValue:u,country:y}=W({value:k,country:e,trimNonDigitsEnd:S==="backward",insertDialCodeOnEmpty:a,countryGuessingEnabled:n,countries:m,prefix:r,charAfterDialCode:o,forceDialCode:c,disableDialCodeAndPrefix:i,disableFormatting:d,defaultMask:l}),C=me({cursorPositionAfterInput:_,phoneBeforeInput:s,phoneAfterInput:k,phoneAfterFormatted:u,leftOffset:c?r.length+e.dialCode.length+o.length:0,deletion:S});return{phone:N,inputValue:u,cursorPosition:C,country:y}};var he=(t,e)=>{let a=Object.keys(t),s=Object.keys(e);if(a.length!==s.length)return!1;for(let r of a)if(t[r]!==e[r])return!1;return!0};var Ce=()=>{let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(),e=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(Date.now());return{check:()=>{let s=Date.now(),r=t.current?s-e.current:void 0;return t.current=e.current,e.current=s,r}}};var Ie={size:20,overrideLastItemDebounceMS:-1};function ge(t,e){let{size:a,overrideLastItemDebounceMS:s,onChange:r}={...Ie,...e},[o,c]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(t),[i,n]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([o]),[l,d]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),m=Ce();return[o,(p,h)=>{if(typeof p=="object"&&typeof o=="object"&&he(p,o)||p===o)return;let I=s>0,D=m.check(),k=I&&D!==void 0?D>s:!0;if(h?.overrideLastItem!==void 0?h.overrideLastItem:!k)n(N=>[...N.slice(0,l),p]);else{let N=i.length>=a;n(u=>[...u.slice(N?1:0,l+1),p]),N||d(u=>u+1)}c(p),r?.(p)},()=>{if(l<=0)return{success:!1};let p=i[l-1];return c(p),d(h=>h-1),r?.(p),{success:!0,value:p}},()=>{if(l+1>=i.length)return{success:!1};let p=i[l+1];return c(p),d(h=>h+1),r?.(p),{success:!0,value:p}}]}var J=".",E={defaultCountry:"us",value:"",prefix:"+",defaultMask:"............",charAfterDialCode:" ",historySaveDebounceMS:200,disableCountryGuess:!1,disableDialCodePrefill:!1,forceDialCode:!1,disableDialCodeAndPrefix:!1,disableFormatting:!1,countries:R,preferredCountries:[]},ee=({defaultCountry:t=E.defaultCountry,value:e=E.value,countries:a=E.countries,prefix:s=E.prefix,defaultMask:r=E.defaultMask,charAfterDialCode:o=E.charAfterDialCode,historySaveDebounceMS:c=E.historySaveDebounceMS,disableCountryGuess:i=E.disableCountryGuess,disableDialCodePrefill:n=E.disableDialCodePrefill,forceDialCode:l=E.forceDialCode,disableDialCodeAndPrefix:d=E.disableDialCodeAndPrefix,disableFormatting:m=E.disableFormatting,onChange:f,inputRef:g})=>{let h={countries:a,prefix:s,charAfterDialCode:o,forceDialCode:d?!1:l,disableDialCodeAndPrefix:d,defaultMask:r,countryGuessingEnabled:!i,disableFormatting:m},I=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),D=g||I,k=w=>{Promise.resolve().then(()=>{typeof window>"u"||D.current!==document?.activeElement||D.current?.setSelectionRange(w,w)})},[{phone:_,inputValue:N,country:u},y,C,b]=ge(()=>{let w=$({value:t,field:"iso2",countries:a});w||console.error(`[react-international-phone]: can not find a country with "${t}" iso2 code`);let T=w||$({value:"us",field:"iso2",countries:a}),{phone:x,inputValue:L,country:U}=W({value:e,country:T,insertDialCodeOnEmpty:!n,...h});return k(L.length),{phone:x,inputValue:L,country:U.iso2}},{overrideLastItemDebounceMS:c,onChange:({inputValue:w,phone:T,country:x})=>{if(!f)return;let L=v(x);f({phone:T,inputValue:w,country:L})}}),v=(0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(w=>$({value:w,field:"iso2",countries:a}),[a]),A=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>v(u),[u,v]);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{let w=D.current;if(!w)return;let T=x=>{if(!x.key)return;let L=x.ctrlKey,U=x.metaKey,ve=x.shiftKey;if(x.key.toLowerCase()==="z"){if(de()){if(!U)return}else if(!L)return;ve?b():C()}};return w.addEventListener("keydown",T),()=>{w.removeEventListener("keydown",T)}},[D,C,b]);let V=w=>{w.preventDefault();let{phone:T,inputValue:x,country:L,cursorPosition:U}=fe(w,{country:A,phoneBeforeInput:N,insertDialCodeOnEmpty:!1,...h});return y({inputValue:x,phone:T,country:L.iso2}),k(U),e},K=(w,T={focusOnInput:!1})=>{let x=$({value:w,field:"iso2",countries:a});if(!x){console.error(`[react-international-phone]: can not find a country with "${w}" iso2 code`);return}let L=d?"":`${s}${x.dialCode}${o}`;y({inputValue:L,phone:`${s}${x.dialCode}`,country:x.iso2}),T.focusOnInput&&Promise.resolve().then(()=>{D.current?.focus()})},[G,j]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(!1);return (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{if(!G){j(!0),e!==_&&f?.({inputValue:N,phone:_,country:A});return}if(e===_)return;let{phone:w,inputValue:T,country:x}=W({value:e,country:A,insertDialCodeOnEmpty:!n,...h});y({phone:w,inputValue:T,country:x.iso2})},[e]),{phone:_,inputValue:N,country:A,setCountry:K,handlePhoneValueChange:V,inputRef:D}};var Q=({phone:t,country:e,defaultMask:a="............",disableFormatting:s=!1})=>{let r=e.format,o=i=>s?i.replace(new RegExp(`[^${J}]`,"g"),""):i;if(!r)return o(a);if(typeof r=="string")return o(r);if(!r.default)return console.error(`[react-international-phone]: default mask for ${e.iso2} is not provided`),o(a);let c=Object.keys(r).find(i=>{if(i==="default")return!1;if(!(i.charAt(0)==="/"&&i.charAt(i.length-1)==="/"))return console.error(`[react-international-phone]: format regex "${i}" for ${e.iso2} is not valid`),!1;let l=new RegExp(i.substring(1,i.length-1)),d=t.replace(e.dialCode,"");return l.test(z(d))});return o(c?r[c]:r.default)};var M=t=>{let[e,a,s,r,o,c]=t;return{name:e,iso2:a,dialCode:s,format:r,priority:o,areaCodes:c}};var Ae=t=>`Field "${t}" is not supported`,$=({field:t,value:e,countries:a=R})=>{if(["priority"].includes(t))throw new Error(Ae(t));let s=a.find(r=>{let o=M(r);return e===o[t]});if(s)return M(s)};var X=({phone:t,countries:e=R,currentCountryIso2:a})=>{let s={country:void 0,fullDialCodeMatch:!1};if(!t)return s;let r=z(t);if(!r)return s;let o=s,c=({country:i,fullDialCodeMatch:n})=>{let l=i.dialCode===o.country?.dialCode,d=(i.priority??0)<(o.country?.priority??0);(!l||d)&&(o={country:i,fullDialCodeMatch:n})};for(let i of e){let n=M(i),{dialCode:l,areaCodes:d}=n;if(r.startsWith(l)){let m=o.country?Number(l)>=Number(o.country.dialCode):!0;if(d){let f=r.substring(l.length);for(let g of d)if(f.startsWith(g))return{country:n,fullDialCodeMatch:!0}}(m||l===r||!o.fullDialCodeMatch)&&c({country:n,fullDialCodeMatch:!0})}o.fullDialCodeMatch||r.length<l.length&&l.startsWith(r)&&(!o.country||Number(l)<=Number(o.country.dialCode))&&c({country:n,fullDialCodeMatch:!1})}if(a){let i=$({value:a,field:"iso2",countries:e});if(!i)return o;let l=i?(m=>{if(!m?.areaCodes)return!1;let f=r.substring(m.dialCode.length);return m.areaCodes.some(g=>g.startsWith(f))})(i):!1;!!o&&o.country?.dialCode===i.dialCode&&o.country!==i&&o.fullDialCodeMatch&&(!i.areaCodes||l)&&(o={country:i,fullDialCodeMatch:!0})}return o};var Te=(t,e)=>{let a=parseInt(t,16);return Number(a+e).toString(16)},Ee="abcdefghijklmnopqrstuvwxyz",Le="1f1e6",Pe=Ee.split("").reduce((t,e,a)=>({...t,[e]:Te(Le,a)}),{}),$e=t=>[Pe[t[0]],Pe[t[1]]].join("-"),q=({iso2:t,size:e,src:a,protocol:s="https",disableLazyLoading:r,className:o,style:c,...i})=>{if(!t)return react__WEBPACK_IMPORTED_MODULE_0__.createElement("img",{className:P({addPrefix:["flag-emoji"],rawClassNames:[o]}),width:e,height:e,...i});let n=()=>{if(a)return a;let l=$e(t);return`${s}://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${l}.svg`};return react__WEBPACK_IMPORTED_MODULE_0__.createElement("img",{className:P({addPrefix:["flag-emoji"],rawClassNames:[o]}),src:n(),width:e,height:e,draggable:!1,"data-country":t,loading:r?void 0:"lazy",style:{width:e,height:e,...c},alt:"",...i})};var He=1e3,ne=({show:t,dialCodePrefix:e="+",selectedCountry:a,countries:s=R,preferredCountries:r=[],flags:o,onSelect:c,onClose:i,...n})=>{let l=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),d=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(),m=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>{if(!r||!r.length)return s;let u=[],y=[...s];for(let C of r){let b=y.findIndex(v=>M(v).iso2===C);if(b!==-1){let v=y.splice(b,1)[0];u.push(v)}}return u.concat(y)},[s,r]),f=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({updatedAt:void 0,value:""}),g=u=>{let y=f.current.updatedAt&&new Date().getTime()-f.current.updatedAt.getTime()>He;f.current={value:y?u:`${f.current.value}${u}`,updatedAt:new Date};let C=m.findIndex(b=>M(b).name.toLowerCase().startsWith(f.current.value));C!==-1&&h(C)},S=(0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(u=>m.findIndex(y=>M(y).iso2===u),[m]),[p,h]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(S(a)),I=()=>{d.current!==a&&h(S(a))},D=(0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(u=>{h(S(u.iso2)),c?.(u)},[c,S]),k=u=>{let y=m.length-1,C=b=>u==="prev"?b-1:u==="next"?b+1:u==="last"?y:0;h(b=>{let v=C(b);return v<0?0:v>y?y:v})},_=u=>{if(u.stopPropagation(),u.key==="Enter"){u.preventDefault();let y=M(m[p]);D(y);return}if(u.key==="Escape"){i?.();return}if(u.key==="ArrowUp"){u.preventDefault(),k("prev");return}if(u.key==="ArrowDown"){u.preventDefault(),k("next");return}if(u.key==="PageUp"){u.preventDefault(),k("first");return}if(u.key==="PageDown"){u.preventDefault(),k("last");return}u.key===" "&&u.preventDefault(),u.key.length===1&&!u.altKey&&!u.ctrlKey&&!u.metaKey&&g(u.key.toLocaleLowerCase())},N=(0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(()=>{if(!l.current||p===void 0)return;let u=M(m[p]).iso2;if(u===d.current)return;let y=l.current.querySelector(`[data-country="${u}"]`);y&&(ue(l.current,y),d.current=u)},[p,m]);return (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{N()},[p,N]),(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{l.current&&(t?l.current.focus():I())},[t]),(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{I()},[a]),react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul",{ref:l,role:"listbox",className:P({addPrefix:["country-selector-dropdown"],rawClassNames:[n.className]}),style:{display:t?"block":"none",...n.style},onKeyDown:_,onBlur:i,tabIndex:-1,"aria-activedescendant":`react-international-phone__${M(m[p]).iso2}-option`},m.map((u,y)=>{let C=M(u),b=C.iso2===a,v=y===p,A=r.includes(C.iso2),V=y===r.length-1,K=o?.find(G=>G.iso2===C.iso2);return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment,{key:C.iso2},react__WEBPACK_IMPORTED_MODULE_0__.createElement("li",{"data-country":C.iso2,role:"option","aria-selected":b,"aria-label":`${C.name} ${e}${C.dialCode}`,id:`react-international-phone__${C.iso2}-option`,className:P({addPrefix:["country-selector-dropdown__list-item",A&&"country-selector-dropdown__list-item--preferred",b&&"country-selector-dropdown__list-item--selected",v&&"country-selector-dropdown__list-item--focused"],rawClassNames:[n.listItemClassName]}),onClick:()=>D(C),style:n.listItemStyle,title:C.name},react__WEBPACK_IMPORTED_MODULE_0__.createElement(q,{iso2:C.iso2,src:K?.src,className:P({addPrefix:["country-selector-dropdown__list-item-flag-emoji"],rawClassNames:[n.listItemFlagClassName]}),style:n.listItemFlagStyle}),react__WEBPACK_IMPORTED_MODULE_0__.createElement("span",{className:P({addPrefix:["country-selector-dropdown__list-item-country-name"],rawClassNames:[n.listItemCountryNameClassName]}),style:n.listItemCountryNameStyle},C.name),react__WEBPACK_IMPORTED_MODULE_0__.createElement("span",{className:P({addPrefix:["country-selector-dropdown__list-item-dial-code"],rawClassNames:[n.listItemDialCodeClassName]}),style:n.listItemDialCodeStyle},e,C.dialCode)),V?react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr",{className:P({addPrefix:["country-selector-dropdown__preferred-list-divider"],rawClassNames:[n.preferredListDividerClassName]}),style:n.preferredListDividerStyle}):null)}))};var ae=({selectedCountry:t,onSelect:e,disabled:a,hideDropdown:s,countries:r=R,preferredCountries:o=[],flags:c,renderButtonWrapper:i,...n})=>{let[l,d]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(!1),m=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>{if(t)return $({value:t,field:"iso2",countries:r})},[r,t]),f=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),g=p=>{p.key&&["ArrowUp","ArrowDown"].includes(p.key)&&(p.preventDefault(),d(!0))},S=()=>{let p={title:m?.name,onClick:()=>d(I=>!I),onMouseDown:I=>I.preventDefault(),onKeyDown:g,disabled:s||a,role:"combobox","aria-label":"Country selector","aria-haspopup":"listbox","aria-expanded":l},h=react__WEBPACK_IMPORTED_MODULE_0__.createElement("div",{className:P({addPrefix:["country-selector-button__button-content"],rawClassNames:[n.buttonContentWrapperClassName]}),style:n.buttonContentWrapperStyle},react__WEBPACK_IMPORTED_MODULE_0__.createElement(q,{iso2:t,src:c?.find(I=>I.iso2===t)?.src,className:P({addPrefix:["country-selector-button__flag-emoji",a&&"country-selector-button__flag-emoji--disabled"],rawClassNames:[n.flagClassName]}),style:{visibility:t?"visible":"hidden",...n.flagStyle}}),!s&&react__WEBPACK_IMPORTED_MODULE_0__.createElement("div",{className:P({addPrefix:["country-selector-button__dropdown-arrow",a&&"country-selector-button__dropdown-arrow--disabled",l&&"country-selector-button__dropdown-arrow--active"],rawClassNames:[n.dropdownArrowClassName]}),style:n.dropdownArrowStyle}));return i?i({children:h,rootProps:p}):react__WEBPACK_IMPORTED_MODULE_0__.createElement("button",{...p,type:"button",className:P({addPrefix:["country-selector-button",l&&"country-selector-button--active",a&&"country-selector-button--disabled",s&&"country-selector-button--hide-dropdown"],rawClassNames:[n.buttonClassName]}),"data-country":t,style:n.buttonStyle},h)};return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div",{className:P({addPrefix:["country-selector"],rawClassNames:[n.className]}),style:n.style,ref:f},S(),react__WEBPACK_IMPORTED_MODULE_0__.createElement(ne,{show:l,countries:r,preferredCountries:o,flags:c,onSelect:p=>{d(!1),e?.(p)},selectedCountry:t,onClose:()=>{d(!1)},...n.dropdownStyleProps}))};var ie=({dialCode:t,prefix:e,disabled:a,style:s,className:r})=>react__WEBPACK_IMPORTED_MODULE_0__.createElement("div",{className:P({addPrefix:["dial-code-preview",a&&"dial-code-preview--disabled"],rawClassNames:[r]}),style:s},`${e}${t}`);var Ue=(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(({value:t,onChange:e,countries:a=R,preferredCountries:s=[],hideDropdown:r,showDisabledDialCodeAndPrefix:o,disableFocusAfterCountrySelect:c,flags:i,style:n,className:l,inputStyle:d,inputClassName:m,countrySelectorStyleProps:f,dialCodePreviewStyleProps:g,inputProps:S,placeholder:p,disabled:h,name:I,onFocus:D,onBlur:k,required:_,autoFocus:N,...u},y)=>{let{phone:C,inputValue:b,inputRef:v,country:A,setCountry:V,handlePhoneValueChange:K}=ee({value:t,countries:a,...u,onChange:j=>{e?.(j.phone,{country:j.country,inputValue:j.inputValue})}}),G=u.disableDialCodeAndPrefix&&o&&A?.dialCode;return (0,react__WEBPACK_IMPORTED_MODULE_0__.useImperativeHandle)(y,()=>v.current?Object.assign(v.current,{setCountry:V,state:{phone:C,inputValue:b,country:A}}):null,[v,V,C,b,A]),react__WEBPACK_IMPORTED_MODULE_0__.createElement("div",{ref:y,className:P({addPrefix:["input-container"],rawClassNames:[l]}),style:n},react__WEBPACK_IMPORTED_MODULE_0__.createElement(ae,{onSelect:j=>V(j.iso2,{focusOnInput:!c}),flags:i,selectedCountry:A.iso2,countries:a,preferredCountries:s,disabled:h,hideDropdown:r,...f}),G&&react__WEBPACK_IMPORTED_MODULE_0__.createElement(ie,{dialCode:A.dialCode,prefix:u.prefix??"+",disabled:h,...g}),react__WEBPACK_IMPORTED_MODULE_0__.createElement("input",{onChange:K,value:b,type:"tel",ref:v,className:P({addPrefix:["input",h&&"input--disabled"],rawClassNames:[m]}),placeholder:p,disabled:h,style:d,name:I,onFocus:D,onBlur:k,autoFocus:N,required:_,...S}))});
-
-
-/***/ }),
-
 /***/ 820:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
@@ -8277,7 +8306,7 @@ class WS extends Transport {
                         opts.compress = packet.options.compress;
                     }
                     if (this.opts.perMessageDeflate) {
-                        const len = 
+                        const len =
                         // @ts-ignore
                         "string" === typeof data ? Buffer.byteLength(data) : data.length;
                         if (len < this.opts.perMessageDeflate.threshold) {
@@ -10875,7 +10904,7 @@ Object.assign(esm_lookup, {
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -10889,14 +10918,14 @@ Object.assign(esm_lookup, {
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -10909,7 +10938,7 @@ Object.assign(esm_lookup, {
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -10921,7 +10950,7 @@ Object.assign(esm_lookup, {
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -10933,12 +10962,12 @@ Object.assign(esm_lookup, {
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -10949,7 +10978,7 @@ Object.assign(esm_lookup, {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
