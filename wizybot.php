@@ -545,6 +545,7 @@ if (!class_exists('Wizybot')):
          * reset or email verification links.
          */
         public function handle_cart_recovery()
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         {
             // Fast early return before any heavy logic
             if (
@@ -553,7 +554,7 @@ if (!class_exists('Wizybot')):
             ) {
                 return;
             }
-
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
             if (!function_exists('WC')) {
                 return;
             }

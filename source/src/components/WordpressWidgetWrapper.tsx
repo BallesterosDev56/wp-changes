@@ -273,11 +273,11 @@ const WordpressWidgetWrapper: FC<IShopifyWidgetWrapperProps> = ({
             image:
               JSONresult.setup.image !== 'Default'
                 ? globalSelectedBackend !== 'https://api.wizybot.com'
-                  ? 'https://s3-tjlabs-wizybot-widget-images-dev.s3.amazonaws.com/' +
+                  ? 'h' +
                     JSONresult.setup.image +
                     '?nocache=' +
                     new Date()[Symbol.toPrimitive]('number')
-                  : 'https://s3-tjlabs-wizybot-widget-images-prod.s3.amazonaws.com/' +
+                  : '' +
                     JSONresult.setup.image +
                     '?nocache=' +
                     new Date()[Symbol.toPrimitive]('number')
