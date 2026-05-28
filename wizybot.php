@@ -117,6 +117,7 @@ if (!class_exists('Wizybot')):
             // Delete all info because doesn't exists shop but we have token
             if (!$is_already_installed && $token) {
                 delete_option('wizybot_token');
+                delete_option('wizybot_shop_token');
             }
 
             add_action('admin_menu', array($this, 'add_admin_menu'));
@@ -177,16 +178,16 @@ if (!class_exists('Wizybot')):
 
         public function handle_setup( WP_REST_Request $request ) {
           $token   = $request->get_param('token');
+          $woocommerce_success = $request->get_param('woocommerce_success');
           if ($token) {
             update_option('wizybot_shop_token', $token);
+            delete_transient('wizybot_installed');
+            update_option('wizybot_is_already_installed', true);
+          }
+          if ($woocommerce_success !== null) {
+            update_option('wizybot_woocommerce_success', rest_sanitize_boolean($woocommerce_success));
           }
           return rest_ensure_response(['ok' => true]);
-        }
-
-        public function handle_woocommerce_success( WP_REST_Request $request ) {
-            $woocommerce_success = $request->get_param('success');
-            update_option('wizybot_woocommerce_success', rest_sanitize_boolean($woocommerce_success));
-            return rest_ensure_response(['ok' => true]);
         }
 
         /**
@@ -283,6 +284,7 @@ if (!class_exists('Wizybot')):
                 'wordpressUrl' => site_url(),
                 'siteUrl' => site_url(),
                 'hasWooCommerce' => class_exists('WooCommerce'),
+                'wooCommerceSuccess' => get_option('wizybot_woocommerce_success', false),
                 'nonce' => wp_create_nonce('wp_rest'),
                 'apiUrl' => esc_url_raw(rest_url('wizybot/v1')),
                 'userId' => wp_get_current_user()->ID,
@@ -375,15 +377,7 @@ if (!class_exists('Wizybot')):
                     'required'          => false,
                     'sanitize_callback' => 'sanitize_text_field',
                   ],
-              ],
-          ]);
-
-          register_rest_route('wizybot/v1', '/woocommerce-success', [
-              'methods'             => 'POST',
-              'callback'            => array($this, 'handle_woocommerce_success'),
-              'permission_callback' => array($this, 'check_admin_permissions'),
-              'args' => [
-                  'success' => [
+                  'woocommerce_success' => [
                     'required'          => false,
                     'sanitize_callback' => 'rest_sanitize_boolean',
                   ],
@@ -455,9 +449,13 @@ if (!class_exists('Wizybot')):
          */
         public function request_is_already_installed()
         {
+          // Early return to avoid request
+          if(!(is_admin() && is_user_logged_in())) {
+            return false;
+          }
             $shopDomain = get_option('wizybot_shop_domain');
 
-            $cache_key = 'wizybot_installed_' . md5($shopDomain);
+            $cache_key = 'wizybot_installed';
 
             // Return cached value if exists
             $cached = get_transient($cache_key);
@@ -466,7 +464,7 @@ if (!class_exists('Wizybot')):
                 return (bool) $cached;
             }
 
-            $url_backend = WIZYBOT_GLOBAL_SELECTED_BACKEND;
+            $url_backend = WIZYBOT_STAGE === 'local' ? NGROK_URL : WIZYBOT_GLOBAL_SELECTED_BACKEND;
 
             $url = WIZYBOT_STAGE === 'local'
                 ? 'https://host.docker.internal:3001/wordpress/isinstalled/' . urlencode($shopDomain)
@@ -547,6 +545,7 @@ if (!class_exists('Wizybot')):
          * reset or email verification links.
          */
         public function handle_cart_recovery()
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         {
             // Fast early return before any heavy logic
             if (
@@ -555,7 +554,7 @@ if (!class_exists('Wizybot')):
             ) {
                 return;
             }
-
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
             if (!function_exists('WC')) {
                 return;
             }
@@ -726,7 +725,9 @@ if (!class_exists('Wizybot')):
                 'wizybot_shop_name',
                 'wizybot_shop_email',
                 'wizybot_is_already_installed',
-                'wizybot_app_uuid'
+                'wizybot_app_uuid',
+                '_transient_wizybot_installed',
+                'wizybot_woocommerce_success',
             );
 
             foreach ($options as $option) {
