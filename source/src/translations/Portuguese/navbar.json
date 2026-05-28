@@ -1,0 +1,25 @@
+{
+  "Upgrade": "Atualizar plano",
+  "Sound": "Som",
+  "NoSound": "Silenciar",
+  "Logout": "Sair",
+  "Support": "Suporte",
+  "Admin": "Admin",
+  "AdminAccount": "Conta de administrador",
+  "Mode": "Modo escuro",
+  "NewMessage": "Você tem uma nova mensagem",
+  "StolenT": "Conexão ao vivo perdida",
+  "StolenD": "Parece que sua sessão foi usada em outro navegador. Para garantir a estabilidade, utilize esta conta em apenas um dispositivo por vez.",
+  "Reestablish": "Usar este dispositivo",
+  "userType": {
+    "shop_administrator_shopify": "Administrador da loja Shopify",
+    "shop_agent": "Agente da loja",
+    "shop_administrator": "Administrador da loja",
+    "super_administrator": "Superadministrador",
+    "shop_trainer": "Treinador da loja",
+    "ai_agent": "Agente de IA"
+  },
+  "NewMessageTabTitle": "🔔 - Nova mensagem!",
+  "NewFeature": "Interface nova",
+  "OldFeature": "Interface clássica"
+}

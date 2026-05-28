@@ -1,0 +1,8 @@
+{
+  "Back": "Back",
+  "Reset": "Reset",
+  "Deletion": "Delete client",
+  "DeletionD": "Are you sure that you want to delete the test client?",
+  "Validation": "Success",
+  "Success": "The test client was succesfully created"
+}

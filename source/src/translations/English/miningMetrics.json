@@ -1,0 +1,72 @@
+{
+  "title": "Lead Metrics",
+  "filters": {
+    "group": "Group:",
+    "channel": "Channel:",
+    "country": "Country:",
+    "technology": "Technology"
+  },
+  "all": "All",
+  "salesRep": "Sales Representative",
+  "searchSalesRep": "Search Representative",
+  "noItemsFoundText": "No representatives found",
+  "eventsCounter": {
+    "bdr": {
+      "bookings": "Total Bookings",
+      "completedBookings": "Completed Bookings",
+      "contact": "Total Contacts",
+      "followupBdr": "Total Follow-ups",
+      "bookingsPerContact": "Scheduled Bookings per Contact",
+      "completedBookingsPerContact": "Completed Bookings per Contact"
+    },
+    "sdr": {
+      "demo": "Total Demos",
+      "followupSdr": "Total Follow-ups",
+      "paidInstallation": "Total Paid Installations",
+      "referralRequested": "Total Referrals Requested",
+      "paidInstallationPerDemo": "Paid Installations per Demo"
+    }
+  },
+  "country": {
+    "all": "All",
+    "ar": "Argentina",
+    "bo": "Bolivia",
+    "br": "Brazil",
+    "br1": "Brazil - Region 1",
+    "cl": "Chile",
+    "co": "Colombia",
+    "cr": "Costa Rica",
+    "cu": "Cuba",
+    "do": "Dominican Republic",
+    "ec": "Ecuador",
+    "sv": "El Salvador",
+    "gt": "Guatemala",
+    "ht": "Haiti",
+    "hn": "Honduras",
+    "mx": "Mexico",
+    "ni": "Nicaragua",
+    "pa": "Panama",
+    "py": "Paraguay",
+    "pe": "Peru",
+    "uy": "Uruguay",
+    "ve": "Venezuela",
+    "usfl": "Florida",
+    "res": "Others / Reserved"
+  },
+  "addColdLead": "Add Cold Lead",
+  "addColdLeadDescription": "Enter individual cold lead",
+  "urlPlaceholder": "https://example-shop.com",
+  "merchantNamePlaceholder": "John Doe",
+  "telephonesPlaceholder": "3001234567:3109876543",
+  "emailsPlaceholder": "sales@example.com:info@example.com",
+  "monthlyVisitsPlaceholder": "5000",
+  "annualVisitsPlaceholder": "60000",
+  "linkedinPlaceholder": "https://linkedin.com/in/johndoe",
+  "selectCountry": "Select Country",
+  "selectPlatform": "Select Platform",
+  "selectChannel": "Select Channel",
+  "selectSalesRep": "Select Sales Representative",
+  "saveLead": "Save Lead",
+  "noBoards": "No boards for this user",
+  "selectBoard": "Select a board"
+}

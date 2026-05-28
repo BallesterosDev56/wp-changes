@@ -1,0 +1,71 @@
+{
+  "title": "Métricas de Leads",
+  "filters": {
+    "group": "Grupo:",
+    "channel": "Canal:",
+    "country": "País:"
+  },
+  "all": "Todos",
+  "salesRep": "Representante",
+  "searchSalesRep": "Buscar Representante",
+  "noItemsFoundText": "Nenhum representante encontrado",
+  "eventsCounter": {
+    "bdr": {
+      "bookings": "Total de Agendamentos",
+      "completedBookings": "Agendamentos Concluídos",
+      "contact": "Total de Contatos",
+      "followupBdr": "Total de Acompanhamentos",
+      "bookingsPerContact": "Agendamentos Programados por Contato",
+      "completedBookingsPerContact": "Agendamentos Concluídos por Contato"
+    },
+    "sdr": {
+      "demo": "Total de Demonstrações",
+      "followupSdr": "Total de Acompanhamentos",
+      "paidInstallation": "Total de Instalações Pagas",
+      "referralRequested": "Total de Indicações Solicitadas",
+      "paidInstallationPerDemo": "Instalações Pagas por Demonstração"
+    }
+  },
+  "country": {
+    "all": "Todos",
+    "ar": "Argentina",
+    "bo": "Bolívia",
+    "br": "Brasil",
+    "br1": "Brasil - Região 1",
+    "cl": "Chile",
+    "co": "Colômbia",
+    "cr": "Costa Rica",
+    "cu": "Cuba",
+    "do": "República Dominicana",
+    "ec": "Equador",
+    "sv": "El Salvador",
+    "gt": "Guatemala",
+    "ht": "Haiti",
+    "hn": "Honduras",
+    "mx": "México",
+    "ni": "Nicarágua",
+    "pa": "Panamá",
+    "py": "Paraguai",
+    "pe": "Peru",
+    "uy": "Uruguai",
+    "ve": "Venezuela",
+    "usfl": "Flórida",
+    "res": "Outros / Reservado"
+  },
+  "addColdLead": "Adicionar Lead Frio",
+  "addColdLeadDescription": "Insira lead frio individual",
+  "urlPlaceholder": "https://example-shop.com",
+  "merchantNamePlaceholder": "John Doe",
+  "telephonesPlaceholder": "3001234567:3109876543",
+  "emailsPlaceholder": "sales@example.com:info@example.com",
+  "monthlyVisitsPlaceholder": "5000",
+  "annualVisitsPlaceholder": "60000",
+  "linkedinPlaceholder": "https://linkedin.com/in/johndoe",
+  "selectCountry": "Selecionar País",
+  "selectPlatform": "Selecionar Plataforma",
+  "selectChannel": "Selecionar Tipo",
+  "selectSalesRep": "Selecionar Representante",
+  "saveLead": "Salvar Lead",
+  "noBoards": "Não há quadros para este usuário",
+  "selectBoard": "Selecione um quadro"
+}

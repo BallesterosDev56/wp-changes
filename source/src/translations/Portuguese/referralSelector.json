@@ -1,0 +1,15 @@
+{
+  "ReferralSelector": "Seletor de referências",
+  "ReferralSelectorSubtitle": "Consulte as referências de lojas e as lojas referidas",
+  "ReferralState": "Estado da referência",
+  "ReferralStateSubtitle": "Consulte o estado da referência da loja",
+  "PartnerReferralTitle": "Esta loja foi referida por um parceiro",
+  "StoreReferralTitle": "Esta loja foi referida por outra loja",
+  "NoReferralTitle": "Esta loja está ",
+  "PartnerReferralText": "Um parceiro indicou esta loja, o que significa que 20% da receita já foi reivindicada. Para obter informações sobre o parceiro, vá para: ",
+  "StoreReferralText": "Outra loja indicou esta loja, o que significa que 20% da receita já foi reivindicada. Para obter informações sobre a loja, vá para: ",
+  "NoReferralText": "Ninguém reivindicou uma referência para esta loja. Lembre-se de que ela pode ser reivindicada por outra loja no menu ao lado ou no menu de parceiros: ",
+  "ReferralChildren": "Referências secundárias",
+  "Available": "Disponível",
+  "Referred": "Referido"
+}

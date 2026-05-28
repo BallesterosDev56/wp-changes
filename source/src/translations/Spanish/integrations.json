@@ -1,0 +1,27 @@
+{
+  "title": "Integraciones",
+  "subtitle": "Conecta tu tienda con herramientas y servicios externos potentes",
+  "available": "Disponibles",
+  "installed": "Instaladas",
+  "install": "Instalar",
+  "installing": "Instalando...",
+  "uninstall": "Desinstalar",
+  "activate": "Activar",
+  "deactivate": "Desactivar",
+  "active": "Activa",
+  "inactive": "Inactiva",
+  "error": "Error",
+  "pending": "Pendiente",
+  "noIntegrations": "No hay integraciones instaladas",
+  "noIntegrationsMessage": "Instala tu primera integración desde la pestaña Disponibles para comenzar.",
+  "installedOn": "Instalada:",
+  "lastSync": "Última sincronización:",
+  "categories": {
+    "ecommerce": "E-commerce",
+    "crm": "CRM",
+    "email": "Email",
+    "analytics": "Analíticas",
+    "returns": "Devoluciones",
+    "other": "Otros"
+  }
+}

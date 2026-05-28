@@ -1,0 +1,17 @@
+{
+  "title": "Preguntas Frecuentes",
+  "faq1Question": "¿Cómo activar Wizybot en mi página web?",
+  "faq1Answer": "Para habilitar la visibilidad de Wizybot en tu tienda, sigue estos pasos desde tu administrador de Shopify:\n\n- Ve al menú de la izquierda y selecciona Online Store (Tienda en línea).\n- Entra en el submenú Themes (Temas).\n- Haz clic en el botón Customize (Personalizar).\n- En la barra lateral izquierda, selecciona el icono de App embeds (Aplicaciones incrustadas).\n- Localiza Wizybot y activa el interruptor.\n- Importante: Haz clic en el botón Save (Guardar) en la esquina superior derecha.",
+  "faq2Question": "¿Cómo conectar WhatsApp, Instagram o Facebook?",
+  "faq2Answer": "Para integrar tus canales de Meta, es necesario agendar una sesión con nuestro equipo técnico. Puedes contactarnos de las siguientes formas:\n\n- Escribe directamente en el grupo de WhatsApp asignado a tu tienda.\n- Si aún no tienes un grupo, contáctanos al: +57 350 256 6085.",
+  "faq3Question": "¿Cómo corrijo una respuesta de Wizybot?",
+  "faq3Answer": "Si deseas ajustar o mejorar las respuestas de la IA:\n\n- Dirígete al menú principal de la aplicación y selecciona la opción Conocimientos.\n- Desde allí, podrás agregar o editar la información que el bot utiliza para responder.\n- Si necesitas ayuda adicional, recuerda que puedes escribirnos a través de tu grupo de soporte en WhatsApp. Si aún no tienes un grupo, contáctanos al: +57 350 256 6085.",
+  "faq4Question": "Planes y precios",
+  "faq4Answer": "Actualmente ofrecemos dos modalidades diseñadas para escalar con tu negocio:\n\n- Plan Básico ($69.99 USD/mes): Incluye hasta 1,250 mensajes y 2,500 comentarios mensuales.\n- Plan Personalizado: Si tu flujo de mensajes es superior, diseñamos un plan a la medida de tus necesidades operativas.",
+  "faq5Question": "¿Qué incluyen nuestros planes?",
+  "faq5Answer": "Al contratar Wizybot, obtienes acceso total a nuestro ecosistema de herramientas:\n\n- IA Avanzada: Respuesta automática de conversaciones y comentarios.\n- Gestión de Clientes (CRM): Control total de tus prospectos.\n- Marketing: Mensajería masiva y automatizaciones vía WhatsApp.\n- Equipo Ilimitado: Crea todos los usuarios que necesites, asignando roles y departamentos específicos.\n- Soporte VIP: Acompañamiento prioritario para que tu operación nunca se detenga.",
+  "noResults": "No encontramos FAQs con ese criterio.",
+  "contactTitle": "¿Todavía tienes dudas?",
+  "contactDescription": "Nuestro equipo de soporte está disponible para ayudarte por correo o WhatsApp con cualquier consulta técnica o comercial.",
+  "contactButton": "Contactar Soporte"
+}

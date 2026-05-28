@@ -1,0 +1,15 @@
+{
+  "ReferralSelector": "Referral selector",
+  "ReferralSelectorSubtitle": "Check store referrals and referred stores",
+  "ReferralState": "Referral state",
+  "ReferralStateSubtitle": "Check the store referral status",
+  "PartnerReferralTitle": "This store was referred by a partner",
+  "StoreReferralTitle": "This store was referred by another shop",
+  "NoReferralTitle": "This store is ",
+  "PartnerReferralText": "A partner has referred this store this means that 20% of the revenew is already claimed for, in order to get information from the partner got to: ",
+  "StoreReferralText": "Another store has referred this store this means that 20% of the revenew is already claimed for, in order to get information from the shop got to: ",
+  "NoReferralText": "No one has claimed a referral for this store, remember it can be claimed from another store in the contigous menu or in the partners menu: ",
+  "ReferralChildren": "Referral children",
+  "Available": "Available",
+  "Referred": "Referred"
+}

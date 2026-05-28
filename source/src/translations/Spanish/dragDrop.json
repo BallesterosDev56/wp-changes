@@ -1,0 +1,19 @@
+{
+  "dragDrop": "Arrastra y suelta o",
+  "clickToBrowse": "haz clic para buscar",
+  "files": "archivos",
+  "allowed": "Permitido",
+  "uploading": "Subiendo...",
+  "filesToUpload": "Archivos para subir:",
+  "stillDrag": "Todavía puedes arrastrar y soltar archivos o",
+  "browseMore": "buscar más",
+  "remove": "Eliminar",
+  "removeFile": "Eliminar archivo",
+  "errors": {
+    "invalidFiles": "Estos archivos no están permitidos: {{files}}.",
+    "duplicateFiles": "Estos archivos están duplicados: {{files}}.",
+    "noFiles": "No hay archivos para subir.",
+    "failedUploads": "No se pudieron subir los siguientes archivos: {{files}}.",
+    "generalFailure": "Uno o más archivos no se pudieron subir."
+  }
+}

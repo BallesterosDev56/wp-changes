@@ -1,0 +1,22 @@
+{
+    "CampaignDetails": "Campaign Details",
+    "CampaignName": "Campaign Name",
+    "WhatsAppTemplate": "WhatsApp Template",
+    "AssignedCount": "Assigned Customers",
+    "EstimatedCost": "Estimated Cost",
+    "SendCampaign": "Send Campaign",
+    "LatestResults": "Latest Results",
+    "SendSuccessCount": "Messages Sent",
+    "SendErrorCount": "Messages with Sending Errors",
+    "DeliverySuccessCount": "Messages Delivered",
+    "DeliveryErrorCount": "Messages with Delivery Errors",
+    "ReadCount": "Messages Read",
+    "SaleCount": "Sales Generated",
+    "SalesSumLocalCurrency": "Total Sales Value",
+    "ConvertionRate": "Conversion Rate",
+    "RealCost": "Campaign Cost",
+    "RoiMultiple": "Return on Investment (ROI)",
+    "Return": "Return",
+    "ErrorTitle": "There was an error during the campaign sending process: ",
+    "Retry": "Retry"
+}

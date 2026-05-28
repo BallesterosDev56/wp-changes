@@ -1,0 +1,447 @@
+{
+ "roles": {
+    "SUPER_ADMIN": {
+      "title": "Super Administrador",
+      "desc": "Super administrador a nivel de plataforma con acceso total a todas las tiendas y configuraciones."
+    },
+    "ADMIN": {
+      "title": "Administrador del Sistema",
+      "desc": "Control total del ecosistema. Supervisa la configuración global, gestiona estructuras de seguridad, roles y usuarios. Tiene acceso completo a todas las herramientas de automatización y entrenamiento de IA."
+    },
+    "CUSTOMER_SUPPORT_AGENT": {
+      "title": "Agente de Soporte al Cliente",
+      "desc": "Perfil centrado en operaciones para atención al cliente. Gestiona chats en vivo, comentarios en redes sociales y tickets de soporte para garantizar resoluciones rápidas y efectivas."
+    },
+    "CUSTOMER_SUPPORT_MANAGER": {
+      "title": "Gerente de Soporte al Cliente",
+      "desc": "Responsable de la calidad del servicio. Además de las tareas operativas, configura flujos de IA, entrena la base de conocimientos, supervisa las métricas de rendimiento del equipo y optimiza las automatizaciones."
+    }
+  },
+  "permissions": {
+    "shopify": {
+      "grant": {
+        "title": "Otorgar Permisos de Shopify",
+        "desc": "Permite conectar y gestionar las credenciales de la tienda Shopify."
+      }
+    },
+    "woocommerce": {
+      "grant": {
+        "title": "Otorgar Permisos de WooCommerce",
+        "desc": "Permite conectar y gestionar las credenciales de la tienda WooCommerce."
+      }
+    },
+    "billing": {
+      "view": {
+        "title": "Ver Facturación",
+        "desc": "Acceso para ver facturas, planes y métodos de pago."
+      },
+      "update": {
+        "title": "Actualizar Facturación",
+        "desc": "Permite modificar métodos de pago y actualizar planes."
+      }
+    },
+    "home": {
+      "view": {
+        "title": "Ver Inicio",
+        "desc": "Acceso al dashboard con métricas clave, progreso de onboarding y guía de configuración de la tienda."
+      },
+      "metrics_view": {
+        "title": "Ver Métricas del Inicio",
+        "desc": "Muestra las gráficas de métricas de rendimiento en el dashboard de inicio (ventas, mensajes, clientes enganchados, tickets, tiempo ahorrado y facturación)."
+      },
+      "billing_view": {
+        "title": "Ver Facturación en Inicio",
+        "desc": "Muestra widgets y resúmenes de facturación en el dashboard."
+      },
+      "widget_update": {
+        "title": "Activar/Desactivar Widget",
+        "desc": "Permite encender o apagar el widget de chat desde el dashboard."
+      }
+    },
+    "chat": {
+      "view": {
+        "title": "Ver Chats",
+        "desc": "Permite leer las conversaciones activas."
+      },
+      "ai_managed": {
+        "title": "Ver Chats Gestionados por IA",
+        "desc": "Acceso a las conversaciones manejadas por el agente de IA."
+      },
+      "need_help": {
+        "title": "Ver Chats 'Necesita Ayuda'",
+        "desc": "Filtrar chats que requieren intervención humana."
+      },
+      "closed": {
+        "title": "Ver Chats Cerrados",
+        "desc": "Acceso al historial de conversaciones finalizadas."
+      },
+      "assigned_others": {
+        "title": "Ver Chats de Otros",
+        "desc": "Permite ver chats asignados a otros agentes."
+      },
+      "closed_others": {
+        "title": "Ver Chats Cerrados por Otros",
+        "desc": "Acceso a chats finalizados por otros miembros del equipo."
+      },
+      "claim_others": {
+        "title": "Reclamar Conversaciones de Otros",
+        "desc": "Permite tomar el control de una conversación asignada a otro agente."
+      }
+    },
+    "comments": {
+      "view": {
+        "title": "Ver Comentarios",
+        "desc": "Permite leer comentarios de publicaciones en redes sociales."
+      },
+      "write": {
+        "title": "Escribir Comentarios",
+        "desc": "Permite publicar nuevos comentarios y respuestas."
+      },
+      "need_help": {
+        "title": "Comentarios 'Necesita Ayuda'",
+        "desc": "Acceso a comentarios marcados para revisión humana."
+      },
+      "ai_managed": {
+        "title": "Comentarios Gestionados por IA",
+        "desc": "Ver comentarios manejados por la automatización."
+      },
+      "closed": {
+        "title": "Ver Comentarios Cerrados",
+        "desc": "Acceso a comentarios resueltos o archivados."
+      },
+      "change_status": {
+        "title": "Cambiar Estado de Comentarios",
+        "desc": "Permite marcar comentarios como resueltos o abiertos."
+      },
+      "hide": {
+        "title": "Ocultar Comentarios",
+        "desc": "Permite ocultar comentarios inapropiados del feed público."
+      },
+      "reply_comment": {
+        "title": "Responder mediante Comentario",
+        "desc": "Permite responder a una publicación con un comentario público."
+      },
+      "reply_message": {
+        "title": "Responder mediante Mensaje Privado",
+        "desc": "Permite enviar un mensaje directo como respuesta a un comentario."
+      },
+      "delete": {
+        "title": "Eliminar Comentarios",
+        "desc": "Permite la eliminación permanente de comentarios."
+      },
+      "config_update": {
+        "title": "Actualizar Configuración de Comentarios",
+        "desc": "Gestionar ajustes globales para los comentarios en redes sociales."
+      }
+    },
+    "posts": {
+      "view": {
+        "title": "Ver Publicaciones",
+        "desc": "Permite ver las publicaciones sincronizadas de redes sociales."
+      },
+      "update_desc": {
+        "title": "Actualizar Descripción de Publicación",
+        "desc": "Permite editar metadatos internos o descripciones de los posts."
+      }
+    },
+    "clients": {
+      "view": {
+        "title": "Ver Clientes",
+        "desc": "Acceso a la base de datos de clientes."
+      },
+      "update": {
+        "title": "Actualizar Clientes",
+        "desc": "Permite editar la información del perfil del cliente."
+      },
+      "create": {
+        "title": "Crear Clientes",
+        "desc": "Permite añadir nuevos clientes manualmente."
+      },
+      "tag_update": {
+        "title": "Actualizar Etiquetas de Cliente",
+        "desc": "Permite organizar clientes con etiquetas personalizadas."
+      },
+      "export": {
+        "title": "Exportar Clientes",
+        "desc": "Permite descargar la lista de clientes en formato CSV/Excel."
+      }
+    },
+    "ticket": {
+      "view": {
+        "title": "Ver Tickets",
+        "desc": "Acceso al sistema de tickets de soporte."
+      },
+      "create": {
+        "title": "Crear Tickets",
+        "desc": "Permite abrir nuevas solicitudes de soporte."
+      },
+      "update": {
+        "title": "Actualizar Tickets",
+        "desc": "Permite editar detalles y contenido de los tickets."
+      },
+      "fields_update": {
+        "title": "Actualizar Campos Personalizados",
+        "desc": "Permite modificar campos de datos adicionales en un ticket."
+      },
+      "tags_update": {
+        "title": "Actualizar Etiquetas de Ticket",
+        "desc": "Permite categorizar tickets mediante etiquetas."
+      },
+      "status_update": {
+        "title": "Actualizar Estado de Ticket",
+        "desc": "Permite cambiar estados (Abierto, Pendiente, Resuelto)."
+      }
+    },
+    "train": {
+      "view": {
+        "title": "Acceder a Probar Wizybot",
+        "desc": "Acceso a la página de pruebas de Wizybot para revisar conversaciones de IA y datos de observabilidad."
+      },
+      "test": {
+        "title": "Ejecutar Pruebas del Bot",
+        "desc": "Permite probar el bot mediante canales simulados (web, WhatsApp, Instagram, Messenger) para validar respuestas de IA."
+      }
+    },
+    "observability": {
+      "view": {
+        "title": "Ver Observabilidad",
+        "desc": "Acceso a logs del sistema y monitoreo de rendimiento."
+      }
+    },
+    "knowledge": {
+      "view": {
+        "title": "Ver Base de Conocimiento",
+        "desc": "Acceso a documentos de entrenamiento y URLs."
+      },
+      "create": {
+        "title": "Crear Conocimiento",
+        "desc": "Permite subir nuevos documentos a la IA."
+      },
+      "update": {
+        "title": "Actualizar Conocimiento",
+        "desc": "Permite editar elementos existentes en la base de conocimiento."
+      },
+      "delete": {
+        "title": "Eliminar Conocimiento",
+        "desc": "Permite eliminar documentos de la memoria de la IA."
+      },
+      "tests_view": {
+        "title": "Ver Pruebas de Conocimiento",
+        "desc": "Acceso a resultados de pruebas automatizadas sobre precisión de información de productos, stock y órdenes."
+      },
+      "tests_submit": {
+        "title": "Ejecutar Pruebas de Conocimiento",
+        "desc": "Permite ejecutar suites de pruebas automatizadas para validar las respuestas de la base de conocimiento."
+      }
+    },
+    "ai_flows": {
+      "view": {
+        "title": "Ver Flujos de IA",
+        "desc": "Acceso al editor visual de Flujos de IA para ver y gestionar flujos de automatización."
+      },
+      "create": {
+        "title": "Crear Flujos",
+        "desc": "Permite construir nueva lógica de automatización."
+      },
+      "update": {
+        "title": "Actualizar Flujos",
+        "desc": "Permite editar flujos de automatización existentes."
+      },
+      "delete": {
+        "title": "Eliminar Flujos",
+        "desc": "Permite eliminar flujos de automatización."
+      }
+    },
+    "ai_agent": {
+      "create": {
+        "title": "Crear Agentes de IA",
+        "desc": "Permite configurar nuevas identidades de IA."
+      },
+      "update": {
+        "title": "Actualizar Agentes de IA",
+        "desc": "Permite modificar el comportamiento y ajustes del agente."
+      },
+      "delete": {
+        "title": "Eliminar Agentes de IA",
+        "desc": "Permite eliminar agentes de IA del sistema."
+      }
+    },
+    "campaigns": {
+      "view": {
+        "title": "Ver Campañas",
+        "desc": "Acceso a campañas de mensajería saliente."
+      },
+      "create": {
+        "title": "Crear Campañas",
+        "desc": "Permite configurar nuevas campañas de marketing o notificación."
+      },
+      "update": {
+        "title": "Actualizar Campañas",
+        "desc": "Permite editar ajustes y programación de campañas."
+      }
+    },
+    "automations": {
+      "view": {
+        "title": "Ver Automatizaciones",
+        "desc": "Acceso a las automatizaciones generales del sistema."
+      },
+      "create": {
+        "title": "Crear Automatizaciones",
+        "desc": "Permite construir nuevas reglas basadas en disparadores."
+      },
+      "update": {
+        "title": "Actualizar Automatizaciones",
+        "desc": "Permite editar reglas de automatización existentes."
+      },
+      "delete": {
+        "title": "Eliminar Automatizaciones",
+        "desc": "Permite eliminar reglas de automatización."
+      }
+    },
+    "metrics": {
+      "view": {
+        "title": "Métricas Generales",
+        "desc": "Acceso a paneles de rendimiento global."
+      },
+      "usage": {
+        "title": "Métricas de Uso",
+        "desc": "Acceso a reportes de ROI, consumo de tokens y conteo de mensajes."
+      },
+      "conv_view": {
+        "title": "Métricas de Conversación",
+        "desc": "Acceso al historial de conversaciones, volumen de chats y reportes de tiempos de respuesta."
+      },
+      "team_view": {
+        "title": "Métricas de Equipo",
+        "desc": "Acceso a informes de rendimiento general del equipo."
+      },
+      "team_mine": {
+        "title": "Mis Métricas",
+        "desc": "Acceso a estadísticas de rendimiento personales."
+      },
+      "team_others": {
+        "title": "Métricas de Otros",
+        "desc": "Comparar el rendimiento entre diferentes miembros del equipo."
+      }
+    },
+    "users": {
+      "view": {
+        "title": "Acceso a Página de Usuarios",
+        "desc": "Permite acceder a la página de gestión de usuarios, departamentos y roles."
+      },
+      "list_view": {
+        "title": "Ver Lista de Usuarios",
+        "desc": "Permite ver el listado de miembros del equipo."
+      },
+      "create": {
+        "title": "Crear Usuarios",
+        "desc": "Permite invitar nuevos miembros a la plataforma."
+      },
+      "update": {
+        "title": "Actualizar Usuarios",
+        "desc": "Permite editar el perfil y estado de los usuarios."
+      },
+      "delete": {
+        "title": "Eliminar Usuarios",
+        "desc": "Permite eliminar usuarios de la organización."
+      },
+      "depts_update": {
+        "title": "Actualizar Deptos. de Usuario",
+        "desc": "Permite cambiar a qué departamentos pertenece un usuario."
+      },
+      "roles_update": {
+        "title": "Actualizar Roles de Usuario",
+        "desc": "Permite cambiar permisos y roles de los usuarios."
+      }
+    },
+    "departments": {
+      "list_view": {
+        "title": "Ver Lista de Departamentos",
+        "desc": "Permite ver el listado de departamentos de la organización."
+      },
+      "create": {
+        "title": "Crear Departamentos",
+        "desc": "Permite crear nuevos grupos de equipo."
+      },
+      "update": {
+        "title": "Actualizar Departamentos",
+        "desc": "Permite renombrar o modificar departamentos."
+      },
+      "delete": {
+        "title": "Eliminar Departamentos",
+        "desc": "Permite eliminar departamentos."
+      }
+    },
+    "roles": {
+      "list_view": {
+        "title": "Ver Lista de Roles",
+        "desc": "Permite ver el listado de roles y sus permisos asignados."
+      },
+      "create": {
+        "title": "Crear Roles",
+        "desc": "Permite definir nuevos conjuntos de permisos."
+      },
+      "update": {
+        "title": "Actualizar Roles",
+        "desc": "Permite modificar permisos de roles existentes."
+      },
+      "delete": {
+        "title": "Eliminar Roles",
+        "desc": "Permite eliminar configuraciones de roles."
+      }
+    },
+    "settings": {
+      "view": {
+        "title": "Ver Configuración",
+        "desc": "Acceso a la configuración global de la plataforma."
+      }
+    }
+  },
+  "pages": {
+    "SHOPIFY": "Shopify",
+    "WOOCOMMERCE": "Woocommerce",
+    "BILLING": "Facturación",
+    "HOME": "Inicio",
+    "CHAT": "Chats",
+    "COMMENTS": "Comentarios",
+    "POSTS": "Publicaciones",
+    "CLIENTS": "Clientes",
+    "TICKET": "Tickets",
+    "TRAIN": "Probar Wizybot",
+    "OBSERVABILITY": "Observabilidad",
+    "KNOWLEDGE": "Conocimiento",
+    "AI_FLOWS": "Flujos de IA",
+    "AI_AGENT": "Agentes de IA",
+    "CAMPAIGNS": "Campañas",
+    "AUTOMATIONS": "Automatizaciones",
+    "METRICS": "Métricas",
+    "USERS": "Usuarios",
+    "DEPARTMENTS": "Departamentos",
+    "ROLES": "Roles",
+    "SETTINGS": "Configuraciones"
+  },
+  "AddRole": "Crear Nuevo Rol",
+  "RoleName": "Nombre del Rol",
+  "RoleNamePlaceholder": "Ej. Agente de Soporte",
+  "TemplateRole": "Empezar desde una plantilla",
+  "Permissions": "Permisos",
+  "Creating": "Creando...",
+  "CreateRole": "Crear Rol",
+  "SystemRole": "Sistema",
+  "Save": "Guardar",
+  "Cancel": "Cancelar",
+  "EditName": "Editar nombre",
+  "DeleteRole": "Eliminar rol",
+  "Saving": "Guardando...",
+  "SaveChanges": "Guardar cambios",
+  "Reset": "Cancel",
+  "DeleteSIT": "Eliminar rol",
+  "DeleteSIP": "¿Estás seguro de que deseas eliminar este rol?",
+  "DeleteSI": "Eliminar",
+  "OK": "Aceptar",
+  "NO": "Cancelar",
+  "RoleType": "Tipo",
+  "IsCustom": "Personalizados",
+  "IsDefault": "Sistema",
+  "Roles": "Roles"
+}

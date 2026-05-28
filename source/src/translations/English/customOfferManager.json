@@ -1,0 +1,21 @@
+{
+  "CustomOfferPlan": "Custom Offer Plan",
+  "NoCustomPlan": "This shop has no custom offer plan",
+  "CreateCustomPlan": "Create Custom Plan",
+  "EnterDetails": "Please enter the details of the custom plan and click Submit",
+  "Name": "Name",
+  "MessagesPerMonth": "Msg / Month",
+  "MessagesPerYear": "Msg / Year",
+  "CommentsPerMonth": "Comments / Month",
+  "CommentsPerYear": "Comments / Year",
+  "MonthlyPrice": "USD / Month",
+  "YearlyPrice": "USD / Year",
+  "AdditionalMessagePrice": "USD / Extra Msg",
+  "AdditionalCommentPrice": "USD / Extra Comment",
+  "ShowcaseText": "Showcase text",
+  "Submit": "Submit",
+  "GoBack": "Go Back",
+  "Update": "Update",
+  "Delete": "Delete",
+  "SubscribedToCustom": "The shop is currently subscribed to the custom plan so it cannot be modified"
+}

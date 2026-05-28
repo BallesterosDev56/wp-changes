@@ -1,0 +1,8 @@
+{
+  "ChatFunctions": "Chat Functions",
+  "SelectFunctions": "Select the functions that the chatbot of this shop can use",
+  "DefaultFunctions": "Default Functions",
+  "CustomFunctions": "Custom Functions",
+  "SelectedFunctions": "Selected Functions",
+  "Update": "Update"
+}

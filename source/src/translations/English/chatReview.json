@@ -1,0 +1,17 @@
+{
+  "GetMessages": "Get Messages",
+  "PendingReviews": "Pending reviews:",
+  "NeedsCorrection": "Needs correction:",
+  "CorrectionType": "Correction type:",
+  "OpsTeam": "Ops Team",
+  "TechTeam": "Tech Team",
+  "Score": "Score:",
+  "Note": "Note:",
+  "Cancel": "Cancel",
+  "Submit": "Submit",
+  "Good": "Good",
+  "Bad": "Bad",
+  "CorrectionsRequired": "Corrections Required",
+  "ShopToReview": "Type of review",
+  "NoChats": "There are no chats to review today"
+}

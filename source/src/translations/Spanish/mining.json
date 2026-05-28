@@ -1,0 +1,90 @@
+{
+  "EmailUsernameOrCRMList": "Email, Username",
+  "Text": "Text",
+  "Filters": "Filtros",
+  "FiltersD": "Puedes buscar representantes de ventas según los parámetros listados a continuación.",
+  "Eg": "Eg: Jhon.doe@gmail.com",
+  "TrelloUsername": "Nombre de usuario Trello",
+  "Eg1": "Eg: jhondoe",
+  "Eg2": "Eg: co-shopify",
+  "Eg3": "Eg: contacting",
+  "Apply": "Aplicar",
+  "Reset": "Restablecer",
+  "SalesRepresentative": "Agentes de Ventas",
+  "SalesRepresentativeD": "Busca agentes de ventas dentro de la aplicación",
+  "Mining": "Mineria",
+  "MiningD": "Gestiona el proceso de mineria de lideres",
+  "AddUser": "Añadir",
+  "Actions": "Acciones",
+  "AddSaleRepresentative": "Agregar agente",
+  "Update": "Actualizar",
+  "AddSaleRepresentativeD": "Agrega un nuevo agente y asígnale grupos de minado y listas del CRM",
+  "UpdateD": "Actualiza un agente y cambiar grupos de minado o listas del CRM",
+  "SelectedMiningGroups": "Grupos de mineria seleccionados",
+  "MiningGroupsSearch": "Búsqueda de grupos de mineria",
+  "MiningGroupSearchPlaceholder": "Eg: co-shopify",
+  "CreateSaleRepresentative": "Crear Agente",
+  "UpdateSaleRepresentative": "Actualizar Agente",
+  "MissingFields": "Campos faltantes",
+  "AlreadyCreated": "Hubo un error",
+  "CRMLists": "Listas CRM",
+  "Title": "Título",
+  "EmailSearch": "Búsqueda por email",
+  "ManageMiningGroups": "Administrar grupos de minado",
+  "ManageMiningGroupsD": "Crea y organiza grupos de minado para segmentar agentes de ventas",
+  "CountryCode": "Código de país",
+  "Service": "Servicio",
+  "Description": "Descripción",
+  "Selected": "Seleccionado",
+  "Download": "Descargar",
+  "MiningGroups": "Grupos de minado",
+  "MiningGroupCode": "Código de grupo de mineria",
+  "Date": "Fecha",
+  "DateI": "Fecha Inicial",
+  "DateF": "Fecha Final",
+  "ManageBoards": "Administrar tableros",
+  "ManageBoardsD": "Crea y actualiza tableros de Trello para asignar agentes de ventas y gestionar su flujo de trabajo de manera efectiva en los diferentes grupos mineros.",
+  "BoardName": "Nombre del tablero",
+  "CRMListType": "Nueva lista",
+  "SelectedBoards": "Tableros seleccionados",
+  "BoardsSearch": "Busqueda de tableros",
+  "Creation": "Creación",
+  "CreateBoard": "Crear Tablero",
+  "UpdateBoard": "Actualizar Tablero",
+  "Create": "Crear",
+  "DeleteBoard": "Eliminar Tablero",
+  "BoardsPickerSearch": "Buscar tablero...",
+  "BoardsPickerNotFound": "No se encontraron tableros",
+  "ConfirmDeleteBoard": "¿Estás seguro de que deseas eliminar este tablero?",
+  "DeleteSaleRepresentative": "Eliminar Agente",
+  "ConfirmDeleteSaleRepresentative": "¿Estás seguro de que deseas eliminar este agente",
+  "fileUploadSizeWarning": "<strong>Advertencia:</strong> Al subir archivos directamente a la base de datos, cada archivo debe ser menor de 500KB y el tamaño total de todos los archivos no debe superar 1MB.",
+  "Role": "Rol",
+  "miner": {
+    "label": "Minero"
+  },
+  "credits": {
+    "available": "Créditos Disponibles"
+  },
+  "leads": {
+    "csv": "Leads CSV"
+  },
+  "stats": {
+    "accepted": "Aceptados",
+    "incomplete": "Incompletos",
+    "rejected": "Rechazados"
+  },
+  "aws": {
+    "files": {
+      "title": "Archivos AWS S3",
+      "subtitle": "Estos son los archivos a minar"
+    }
+  },
+  "sort_by_filesize": "Ordenar por tamaño de archivo",
+  "dragDrop": {
+    "uploadS3": "Subir archivos a S3",
+    "uploadDb": "Subir archivos a la base de datos",
+    "uploadColdLead": "Subir archivos como lead frío"
+  },
+  "addColdLead": "Agregar Lead en Frío"
+}

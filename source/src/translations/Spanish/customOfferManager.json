@@ -1,0 +1,21 @@
+{
+  "CustomOfferPlan": "Plan de Oferta Personalizado",
+  "NoCustomPlan": "Esta tienda no tiene un plan de oferta personalizado",
+  "CreateCustomPlan": "Crear Plan Personalizado",
+  "EnterDetails": "Por favor, ingrese los detalles del plan personalizado y haga clic en Enviar",
+  "Name": "Nombre",
+  "MessagesPerMonth": "Mensajes / Mes",
+  "MessagesPerYear": "Mensajes / Año",
+  "CommentsPerMonth": "Comentarios / Mes",
+  "CommentsPerYear": "Comentarios / Año",
+  "MonthlyPrice": "USD / Mes",
+  "YearlyPrice": "USD / Año",
+  "AdditionalMessagePrice": "USD / Mensaje Extra",
+  "AdditionalCommentPrice": "USD / Comentario Extra",
+  "ShowcaseText": "Texto de Mostrador",
+  "Submit": "Enviar",
+  "GoBack": "Volver",
+  "Update": "Actualizar",
+  "Delete": "Eliminar",
+  "SubscribedToCustom": "La tienda está actualmente suscrita al plan personalizado, por lo que no se puede modificar"
+}

@@ -1,0 +1,447 @@
+{
+  "roles": {
+    "SUPER_ADMIN": {
+      "title": "Super Administrator",
+      "desc": "Platform-level super administrator with full access across all shops and settings."
+    },
+    "ADMIN": {
+      "title": "System Administrator",
+      "desc": "Full ecosystem control. Oversees global configuration, manages security structures, roles, and users. Has complete access to all automation and AI training tools."
+    },
+    "CUSTOMER_SUPPORT_AGENT": {
+      "title": "Customer Support Agent",
+      "desc": "Operations-focused profile for customer care. Manages live chats, social media comments, and support tickets to ensure quick and effective customer resolutions."
+    },
+    "CUSTOMER_SUPPORT_MANAGER": {
+      "title": "Customer Support Manager",
+      "desc": "Responsible for service quality. In addition to operational tasks, they configure AI flows, train the knowledge base, monitor team performance metrics, and optimize automations."
+    }
+  },
+"permissions": {
+    "shopify": {
+      "grant": {
+        "title": "Grant Shopify Permissions",
+        "desc": "Allows connecting and managing Shopify store credentials."
+      }
+    },
+    "woocommerce": {
+      "grant": {
+        "title": "Grant WooCommerce Permissions",
+        "desc": "Allows connecting and managing WooCommerce store credentials."
+      }
+    },
+    "billing": {
+      "view": {
+        "title": "View Billing",
+        "desc": "Access to view invoices, plans, and payment methods."
+      },
+      "update": {
+        "title": "Update Billing",
+        "desc": "Allows modification of payment methods and plan upgrades."
+      }
+    },
+    "home": {
+      "view": {
+        "title": "View Home",
+        "desc": "Access to the home dashboard with key metrics, onboarding progress, and shop setup guide."
+      },
+      "metrics_view": {
+        "title": "View Home Metrics",
+        "desc": "Shows performance metric charts on the home dashboard (sales, messages, engaged clients, tickets, time saved, and billing)."
+      },
+      "billing_view": {
+        "title": "View Home Billing",
+        "desc": "Shows billing widgets and summaries on the dashboard."
+      },
+      "widget_update": {
+        "title": "Toggle Widget",
+        "desc": "Allows enabling or disabling the chat widget from the dashboard."
+      }
+    },
+    "chat": {
+      "view": {
+        "title": "View Chats",
+        "desc": "Allows reading active conversations."
+      },
+      "ai_managed": {
+        "title": "View AI Managed Chats",
+        "desc": "Access to conversations handled by the AI agent."
+      },
+      "need_help": {
+        "title": "View 'Need Help' Chats",
+        "desc": "Filter chats that require human intervention."
+      },
+      "closed": {
+        "title": "View Closed Chats",
+        "desc": "Access to the history of finished conversations."
+      },
+      "assigned_others": {
+        "title": "View Others' Chats",
+        "desc": "Allows seeing chats assigned to other agents."
+      },
+      "closed_others": {
+        "title": "View Others' Closed Chats",
+        "desc": "Access to chats finalized by other team members."
+      },
+      "claim_others": {
+        "title": "Claim Others' Conversations",
+        "desc": "Allows taking over a conversation assigned to another agent."
+      }
+    },
+    "comments": {
+      "view": {
+        "title": "View Comments",
+        "desc": "Allows reading comments from social media posts."
+      },
+      "write": {
+        "title": "Write Comments",
+        "desc": "Allows posting new comments and replies."
+      },
+      "need_help": {
+        "title": "Comments Need Help",
+        "desc": "Access to comments flagged for human review."
+      },
+      "ai_managed": {
+        "title": "AI Managed Comments",
+        "desc": "View comments handled by automation."
+      },
+      "closed": {
+        "title": "View Closed Comments",
+        "desc": "Access to resolved or archived comments."
+      },
+      "change_status": {
+        "title": "Change Comment Status",
+        "desc": "Allows marking comments as resolved or open."
+      },
+      "hide": {
+        "title": "Hide Comments",
+        "desc": "Allows hiding inappropriate comments from the public feed."
+      },
+      "reply_comment": {
+        "title": "Reply via Comment",
+        "desc": "Allows replying to a post using a public comment."
+      },
+      "reply_message": {
+        "title": "Reply via Private Message",
+        "desc": "Allows sending a DM as a response to a public comment."
+      },
+      "delete": {
+        "title": "Delete Comments",
+        "desc": "Allows permanent removal of comments."
+      },
+      "config_update": {
+        "title": "Update Comment Config",
+        "desc": "Manage global settings for social media comments."
+      }
+    },
+    "posts": {
+      "view": {
+        "title": "View Posts",
+        "desc": "Allows viewing synced social media posts."
+      },
+      "update_desc": {
+        "title": "Update Post Description",
+        "desc": "Allows editing the internal metadata or descriptions of posts."
+      }
+    },
+    "clients": {
+      "view": {
+        "title": "View Clients",
+        "desc": "Access to the customer database."
+      },
+      "update": {
+        "title": "Update Clients",
+        "desc": "Allows editing customer profile information."
+      },
+      "create": {
+        "title": "Create Clients",
+        "desc": "Allows adding new customers manually."
+      },
+      "tag_update": {
+        "title": "Update Client Tags",
+        "desc": "Allows organizing clients with custom labels."
+      },
+      "export": {
+        "title": "Export Clients",
+        "desc": "Allows downloading the client list in CSV/Excel format."
+      }
+    },
+    "ticket": {
+      "view": {
+        "title": "View Tickets",
+        "desc": "Access to the support ticket system."
+      },
+      "create": {
+        "title": "Create Tickets",
+        "desc": "Allows opening new support requests."
+      },
+      "update": {
+        "title": "Update Tickets",
+        "desc": "Allows editing ticket details and content."
+      },
+      "fields_update": {
+        "title": "Update Custom Fields",
+        "desc": "Allows modifying additional data fields within a ticket."
+      },
+      "tags_update": {
+        "title": "Update Ticket Tags",
+        "desc": "Allows categorizing tickets with tags."
+      },
+      "status_update": {
+        "title": "Update Ticket Status",
+        "desc": "Allows changing ticket states (Open, Pending, Resolved)."
+      }
+    },
+    "train": {
+      "view": {
+        "title": "Access Test Wizybot",
+        "desc": "Access to the Test Wizybot page to review AI conversations and observability data."
+      },
+      "test": {
+        "title": "Run Bot Tests",
+        "desc": "Allows testing the bot through simulated channels (web, WhatsApp, Instagram, Messenger) to validate AI responses."
+      }
+    },
+    "observability": {
+      "view": {
+        "title": "View Observability",
+        "desc": "Access to system logs and performance monitoring."
+      }
+    },
+    "knowledge": {
+      "view": {
+        "title": "View Knowledge Base",
+        "desc": "Access to training documents and URLs."
+      },
+      "create": {
+        "title": "Create Knowledge",
+        "desc": "Allows uploading new documents to the AI."
+      },
+      "update": {
+        "title": "Update Knowledge",
+        "desc": "Allows editing existing knowledge base items."
+      },
+      "delete": {
+        "title": "Delete Knowledge",
+        "desc": "Allows removing documents from the AI memory."
+      },
+      "tests_view": {
+        "title": "View Knowledge Tests",
+        "desc": "Access to automated test results for product, stock, and order information accuracy."
+      },
+      "tests_submit": {
+        "title": "Run Knowledge Tests",
+        "desc": "Allows running automated test suites to validate knowledge base responses."
+      }
+    },
+    "ai_flows": {
+      "view": {
+        "title": "View AI Flows",
+        "desc": "Access to the AI Flows visual editor to view and manage automation workflows."
+      },
+      "create": {
+        "title": "Create Flows",
+        "desc": "Allows building new automation logic."
+      },
+      "update": {
+        "title": "Update Flows",
+        "desc": "Allows editing existing automation flows."
+      },
+      "delete": {
+        "title": "Delete Flows",
+        "desc": "Allows removing automation flows."
+      }
+    },
+    "ai_agent": {
+      "create": {
+        "title": "Create AI Agents",
+        "desc": "Allows setting up new AI personas."
+      },
+      "update": {
+        "title": "Update AI Agents",
+        "desc": "Allows modifying agent behavior and settings."
+      },
+      "delete": {
+        "title": "Delete AI Agents",
+        "desc": "Allows removing AI agents from the system."
+      }
+    },
+    "campaigns": {
+      "view": {
+        "title": "View Campaigns",
+        "desc": "Access to outbound message campaigns."
+      },
+      "create": {
+        "title": "Create Campaigns",
+        "desc": "Allows setting up new marketing or notification campaigns."
+      },
+      "update": {
+        "title": "Update Campaigns",
+        "desc": "Allows editing campaign settings and schedules."
+      }
+    },
+    "automations": {
+      "view": {
+        "title": "View Automations",
+        "desc": "Access to general system automations."
+      },
+      "create": {
+        "title": "Create Automations",
+        "desc": "Allows building new trigger-based rules."
+      },
+      "update": {
+        "title": "Update Automations",
+        "desc": "Allows editing existing automation rules."
+      },
+      "delete": {
+        "title": "Delete Automations",
+        "desc": "Allows removing automation rules."
+      }
+    },
+    "metrics": {
+      "view": {
+        "title": "General Metrics",
+        "desc": "Access to overall performance dashboards."
+      },
+      "usage": {
+        "title": "Usage Metrics",
+        "desc": "Access to ROI, token consumption, and message count reports."
+      },
+      "conv_view": {
+        "title": "Conversation Metrics",
+        "desc": "Access to conversation history, chat volume, and response time reports."
+      },
+      "team_view": {
+        "title": "Team Metrics",
+        "desc": "Access to general team performance reports."
+      },
+      "team_mine": {
+        "title": "My Metrics",
+        "desc": "Access to personal performance statistics."
+      },
+      "team_others": {
+        "title": "Others' Metrics",
+        "desc": "Compare performance across different team members."
+      }
+    },
+    "users": {
+      "view": {
+        "title": "Access Users Page",
+        "desc": "Allows accessing the users, departments and roles management page."
+      },
+      "list_view": {
+        "title": "View Users List",
+        "desc": "Allows viewing the list of team members."
+      },
+      "create": {
+        "title": "Create Users",
+        "desc": "Allows inviting new members to the platform."
+      },
+      "update": {
+        "title": "Update Users",
+        "desc": "Allows editing user profile and status."
+      },
+      "delete": {
+        "title": "Delete Users",
+        "desc": "Allows removing users from the organization."
+      },
+      "depts_update": {
+        "title": "Update User Depts",
+        "desc": "Allows changing which departments a user belongs to."
+      },
+      "roles_update": {
+        "title": "Update User Roles",
+        "desc": "Allows changing permissions and roles for users."
+      }
+    },
+    "departments": {
+      "list_view": {
+        "title": "View Departments List",
+        "desc": "Allows viewing the list of organization departments."
+      },
+      "create": {
+        "title": "Create Departments",
+        "desc": "Allows creating new team groups."
+      },
+      "update": {
+        "title": "Update Departments",
+        "desc": "Allows renaming or modifying departments."
+      },
+      "delete": {
+        "title": "Delete Departments",
+        "desc": "Allows removing departments."
+      }
+    },
+    "roles": {
+      "list_view": {
+        "title": "View Roles List",
+        "desc": "Allows viewing the list of roles and their assigned permissions."
+      },
+      "create": {
+        "title": "Create Roles",
+        "desc": "Allows defining new permission sets."
+      },
+      "update": {
+        "title": "Update Roles",
+        "desc": "Allows modifying existing role permissions."
+      },
+      "delete": {
+        "title": "Delete Roles",
+        "desc": "Allows removing role configurations."
+      }
+    },
+    "settings": {
+      "view": {
+        "title": "View Settings",
+        "desc": "Access to global platform configuration."
+      }
+    }
+  },
+  "pages": {
+    "SHOPIFY": "Shopify",
+    "WOOCOMMERCE": "Woocommerce",
+    "BILLING": "Billing",
+    "HOME": "Home",
+    "CHAT": "Chats",
+    "COMMENTS": "Comments",
+    "POSTS": "Posts",
+    "CLIENTS": "Clients",
+    "TICKET": "Tickets",
+    "TRAIN": "Test Wizybot",
+    "OBSERVABILITY": "Observability",
+    "KNOWLEDGE": "Knowledge",
+    "AI_FLOWS": "AI Flows",
+    "AI_AGENT": "AI Agents",
+    "CAMPAIGNS": "Campaigns",
+    "AUTOMATIONS": "Automations",
+    "METRICS": "Metrics",
+    "USERS": "Users",
+    "DEPARTMENTS": "Departments",
+    "ROLES": "Roles",
+    "SETTINGS": "Settings"
+  },
+  "AddRole": "Add New Role",
+  "RoleName": "Role Name",
+  "RoleNamePlaceholder": "e.g. Support Agent",
+  "TemplateRole": "Start from a template",
+  "Permissions": "Permissions",
+  "Creating": "Creating...",
+  "CreateRole": "Create Role",
+  "SystemRole": "System",
+  "Save": "Save",
+  "Cancel": "Cancel",
+  "EditName": "Edit name",
+  "DeleteRole": "Delete role",
+  "Saving": "Saving...",
+  "SaveChanges": "Save changes",
+  "Reset": "Reset",
+  "DeleteSIT": "Delete role",
+  "DeleteSIP": "Are you sure you want to delete this role?",
+  "DeleteSI": "Delete",
+  "OK": "Confirm",
+  "NO": "Cancel",
+  "RoleType": "Type",
+  "IsCustom": "Custom",
+  "IsDefault": "System",
+  "Roles": "Roles"
+}

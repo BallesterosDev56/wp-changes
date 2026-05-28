@@ -64,6 +64,7 @@
     "build": "react-scripts build",
     "widget": "webpack --mode production",
     "widget-wordpress": "webpack --config webpack.wordpress.config.js --mode production",
+    "widget-wordpress-stats": "webpack --config webpack.wordpress.config.js --mode production --json=stats.json",
     "widget-wordpress:watch": "webpack --config webpack.wordpress.config.js --mode development --watch",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,0 +1,72 @@
+{
+  "title": "Métricas Leads",
+  "filters": {
+    "group": "Grupo:",
+    "channel": "Canal:",
+    "country": "País:",
+    "technology": "Tecnologia"
+  },
+  "all": "Todos",
+  "salesRep": "Representante",
+  "searchSalesRep": "Buscar Representante",
+  "noItemsFoundText": "No se encontraron representantes",
+  "eventsCounter": {
+    "bdr": {
+      "bookings": "Total de Reservas",
+      "completedBookings": "Reservas Completadas",
+      "contact": "Total de Contactos",
+      "followupBdr": "Total de Seguimientos",
+      "bookingsPerContact": "Reservas Programadas por Contacto",
+      "completedBookingsPerContact": "Reservas Completadas por Contacto"
+    },
+    "sdr": {
+      "demo": "Total de Demostraciones",
+      "followupSdr": "Total de Seguimientos",
+      "paidInstallation": "Total de Instalaciones Pagadas",
+      "referralRequested": "Total de Referencias Solicitadas",
+      "paidInstallationPerDemo": "Instalaciones Pagadas por Demostración"
+    }
+  },
+  "country": {
+    "all": "Todos",
+    "ar": "Argentina",
+    "bo": "Bolivia",
+    "br": "Brasil",
+    "br1": "Brasil - Región 1",
+    "cl": "Chile",
+    "co": "Colombia",
+    "cr": "Costa Rica",
+    "cu": "Cuba",
+    "do": "República Dominicana",
+    "ec": "Ecuador",
+    "sv": "El Salvador",
+    "gt": "Guatemala",
+    "ht": "Haití",
+    "hn": "Honduras",
+    "mx": "México",
+    "ni": "Nicaragua",
+    "pa": "Panamá",
+    "py": "Paraguay",
+    "pe": "Perú",
+    "uy": "Uruguay",
+    "ve": "Venezuela",
+    "usfl": "Florida",
+    "res": "Otros / Reservado"
+  },
+  "addColdLead": "Agregar Lead en Frío",
+  "addColdLeadDescription": "Ingresa lead en frío individual",
+  "urlPlaceholder": "https://example-shop.com",
+  "merchantNamePlaceholder": "John Doe",
+  "telephonesPlaceholder": "3001234567:3109876543",
+  "emailsPlaceholder": "sales@example.com:info@example.com",
+  "monthlyVisitsPlaceholder": "5000",
+  "annualVisitsPlaceholder": "60000",
+  "linkedinPlaceholder": "https://linkedin.com/in/johndoe",
+  "selectCountry": "Selecciona País",
+  "selectPlatform": "Selecciona Plataforma",
+  "selectChannel": "Selecciona Tipo",
+  "selectSalesRep": "Selecciona Representante",
+  "saveLead": "Guardar Lead",
+  "noBoards": "No hay tableros para este usuario",
+  "selectBoard": "Selecciona un tablero"
+}

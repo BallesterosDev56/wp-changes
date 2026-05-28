@@ -1,0 +1,27 @@
+{
+  "title": "Integrations",
+  "subtitle": "Connect your shop with powerful third-party tools and services",
+  "available": "Available",
+  "installed": "Installed",
+  "install": "Install",
+  "installing": "Installing...",
+  "uninstall": "Uninstall",
+  "activate": "Activate",
+  "deactivate": "Deactivate",
+  "active": "Active",
+  "inactive": "Inactive",
+  "error": "Error",
+  "pending": "Pending",
+  "noIntegrations": "No integrations installed",
+  "noIntegrationsMessage": "Install your first integration from the Available tab to get started.",
+  "installedOn": "Installed:",
+  "lastSync": "Last sync:",
+  "categories": {
+    "ecommerce": "E-commerce",
+    "crm": "CRM",
+    "email": "Email",
+    "analytics": "Analytics",
+    "returns": "Returns",
+    "other": "Other"
+  }
+}

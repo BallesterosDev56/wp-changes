@@ -1,0 +1,22 @@
+{
+  "CampaignDetails": "Detalhes da campanha",
+  "CampaignName": "Nome da campanha",
+  "WhatsAppTemplate": "Modelo do WhatsApp",
+  "AssignedCount": "Clientes atribuídos",
+  "EstimatedCost": "Custo estimado",
+  "SendCampaign": "Enviar campanha",
+  "LatestResults": "Últimos resultados",
+  "SendSuccessCount": "Mensagens enviadas",
+  "SendErrorCount": "Mensagens com erro no envio",
+  "DeliverySuccessCount": "Mensagens entregues",
+  "DeliveryErrorCount": "Mensagens com erro na entrega",
+  "ReadCount": "Mensagens lidas",
+  "SaleCount": "Vendas geradas",
+  "SalesSumLocalCurrency": "Valor total em vendas",
+  "ConvertionRate": "Taxa de conversão",
+  "RealCost": "Custo da campanha",
+  "RoiMultiple": "Retorno sobre investimento (ROI)",
+  "Return": "Voltar",
+  "ErrorTitle": "Ocorreu um erro durante o envio da campanha: ",
+  "Retry": "Tentar novamente"
+}

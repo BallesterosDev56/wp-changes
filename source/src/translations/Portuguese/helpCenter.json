@@ -1,0 +1,48 @@
+{
+  "HelpCenter": "Central de ajuda",
+  "TutorialVideos": "Vídeos tutoriais",
+  "FaqsTitle": "Perguntas frequentes (FAQs)",
+  "ContactSupport": "Entrar em contato com o suporte",
+  "home": {
+    "faq1": {
+      "title": "Como concluo a configuração inicial?",
+      "content": "Você deve seguir os 5 passos do painel esquerdo: personalizar o chat, definir a personalidade, corrigir pelo menos 3 respostas no módulo de treinamento, ativar o bot e conectá-lo ao Meta (WhatsApp/Instagram)."
+    },
+    "faq2": {
+      "title": "Meu bot está ativado, mas não aparece na minha loja Shopify. O que faço?",
+      "content": "Certifique-se de que o botão de Status do Wizybot esteja em “On”. Se você usa Shopify, clique no botão de ativação para ver as instruções de instalação no editor de temas."
+    },
+    "faq3": {
+      "title": "Como altero a moeda dos meus relatórios de vendas?",
+      "content": "Na métrica de Vendas do Wizybot, você encontrará um seletor ao lado do símbolo da moeda. Clique nele para alterar a visualização para sua moeda local."
+    },
+    "faq4": {
+      "title": "O que significa a métrica “Tempo economizado”?",
+      "content": "É uma estimativa baseada na quantidade de mensagens respondidas com sucesso pela IA sem intervenção humana."
+    },
+    "faq5": {
+      "title": "Onde encontro meu ID de conta para suporte?",
+      "content": "Você pode ver seu ID de conta e o plano atual da loja expandindo o painel de informações da loja abaixo do checklist de configuração."
+    },
+    "faq6": {
+      "title": "Como altero o idioma ou a aparência do app (modo escuro)?",
+      "content": "Clique no ícone de usuário no canto superior direito. Lá você encontrará as opções de Interface para alternar entre o modo claro e escuro, além do seletor de Idioma para ajustar a plataforma à sua preferência."
+    },
+    "faq7": {
+      "title": "Como posso silenciar as notificações?",
+      "content": "Dentro do mesmo menu de usuário (canto superior direito), procure a opção de Som. A partir daí você pode ativar ou desativar os alertas sonoros da plataforma conforme necessário."
+    },
+    "faq8": {
+      "title": "Onde posso melhorar ou alterar meu plano atual?",
+      "content": "Você tem duas opções: acessar o menu do usuário e selecionar Upgrade da assinatura, ou expandir o painel de informações da loja na página inicial e clicar no botão Upgrade do plano."
+    },
+    "faq9": {
+      "title": "Como encerro minha sessão com segurança?",
+      "content": "Basta abrir o painel do usuário no canto superior direito e selecionar a opção Sair no final da lista."
+    },
+    "faq10": {
+      "title": "Como posso alternar entre minhas diferentes lojas?",
+      "content": "Clique no ícone de usuário no canto superior direito para abrir o painel da sua conta. Lá você verá um seletor com todas as suas lojas vinculadas, como Shopify ou WordPress. Basta selecionar a loja que deseja revisar para visualizar suas métricas e configurações específicas."
+    }
+  }
+}

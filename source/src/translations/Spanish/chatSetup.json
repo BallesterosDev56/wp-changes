@@ -1,0 +1,14 @@
+{
+  "Message1": "Hola",
+  "Message2": "Hola, ¿cómo puedo ayudarte hoy?",
+  "Message3": "Tengo una pregunta sobre mi pedido reciente.",
+  "Message4": "Claro, estaré encantado de ayudarte. Por favor, proporciona tu número de pedido.",
+  "Message5": "Mi número de pedido es 12345.",
+  "Message6": "Gracias por proporcionar el número de pedido. ¿Cómo puedo ayudarte con tu pedido?",
+  "Message7": "Todavía no he recibido mi paquete. Han pasado dos semanas desde que realicé el pedido.",
+  "Message8": "Lamento la demora. Permíteme verificar el estado de tu pedido para ti.",
+  "Message9": "Gracias, lo aprecio.",
+  "Message10": "Lamento las molestias. Parece que ha habido un retraso en el envío, pero tu paquete está actualmente en tránsito y debería llegar en los próximos días. Haré una nota de este problema en nuestro sistema.",
+  "Message11": "De acuerdo, esperaré unos días más entonces. Gracias por tu ayuda.",
+  "Message12": "¡De nada! Si tienes alguna otra pregunta o inquietud, no dudes en preguntar. Estamos aquí para ayudarte."
+}

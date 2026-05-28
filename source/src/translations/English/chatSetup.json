@@ -1,0 +1,14 @@
+{
+  "Message1": "Hello",
+  "Message2": "Hello, how can I assist you today?",
+  "Message3": "I have a question about my recent order.",
+  "Message4": "Sure, I'll be happy to help. Please provide me with your order number.",
+  "Message5": "My order number is 12345.",
+  "Message6": "Thank you for providing the order number. How can I assist you with your order?",
+  "Message7": "I haven't received my package yet. It's been two weeks since I placed the order.",
+  "Message8": "I apologize for the delay. Let me check the status of your order for you.",
+  "Message9": "Thank you, I appreciate it.",
+  "Message10": "I'm sorry for the inconvenience. It seems there was a delay in shipping, but your package is currently in transit and should arrive within the next few days. I will make a note of this issue in our system.",
+  "Message11": "Alright, I'll wait for a few more days then. Thank you for your help.",
+  "Message12": "You're welcome! If you have any further questions or concerns, feel free to ask. We're here to assist you."
+}

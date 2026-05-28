@@ -1,0 +1,12 @@
+{
+  "KamSelector": "Kam selector",
+  "KamSelectorSubtitle": "Check store Key Account Manager",
+  "KamState": "Kam state",
+  "KamStateSubtitle": "Store Key Account Manager state",
+  "NoKamTitle": "This store is ",
+  "NoKamText": "No Key Account Manager has been assigned to this store, In the side menu you can choose or create one.",
+  "KamSelect": "Kam Select",
+  "Available": "Available",
+  "KamTitle": "Has an active Key Account Manager",
+  "KamText": "A Key Account Manager was already assigned to this store here is the id: "
+}

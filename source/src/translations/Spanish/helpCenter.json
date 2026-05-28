@@ -1,0 +1,48 @@
+{
+  "HelpCenter": "Centro de ayuda",
+  "TutorialVideos": "Videos tutoriales",
+  "FaqsTitle": "Preguntas frecuentes (FAQs)",
+  "ContactSupport": "Contactar soporte",
+  "home": {
+    "faq1": {
+      "title": "¿Cómo completo la configuración inicial?",
+      "content": "Debes seguir los 5 pasos del panel izquierdo: personalizar el chat, definir la personalidad, corregir al menos 3 respuestas en el módulo de entrenamiento, activar el bot y conectarlo con Meta (WhatsApp/Instagram)."
+    },
+    "faq2": {
+      "title": "Mi bot está activado pero no se ve en mi tienda Shopify, ¿qué hago?",
+      "content": "Asegúrate de que el switch en Estado de Wizybot esté en “On”. Si usas Shopify, haz clic en el botón de activación para ver las instrucciones de instalación en el editor de temas."
+    },
+    "faq3": {
+      "title": "¿Cómo cambio la moneda de mis reportes de ventas?",
+      "content": "En la métrica de Ventas de Wizybot encontrarás un selector junto al símbolo de moneda. Haz clic allí para cambiar la visualización a tu moneda local."
+    },
+    "faq4": {
+      "title": "¿Qué significa la métrica “Tiempo ahorrado”?",
+      "content": "Es una estimación basada en la cantidad de mensajes respondidos exitosamente por la IA sin intervención de un agente humano."
+    },
+    "faq5": {
+      "title": "¿Dónde encuentro mi ID de cuenta para soporte?",
+      "content": "Puedes ver tu ID de cuenta y tu plan actual expandiendo el panel de información de tu tienda debajo del checklist de configuración."
+    },
+    "faq6": {
+      "title": "¿Cómo cambio el idioma o la apariencia de la app (modo oscuro)?",
+      "content": "Haz clic en el ícono de usuario arriba a la derecha. Allí encontrarás las opciones de Interfaz para elegir entre el modo claro u oscuro, y el selector de Idioma para ajustar la plataforma a tu preferencia."
+    },
+    "faq7": {
+      "title": "¿Cómo puedo silenciar las notificaciones?",
+      "content": "Dentro del mismo menú de usuario (arriba a la derecha), busca la opción de Sonido. Desde ahí puedes activar o desactivar las alertas sonoras de la plataforma según lo necesites."
+    },
+    "faq8": {
+      "title": "¿Dónde puedo mejorar o cambiar mi plan actual?",
+      "content": "Tienes dos opciones: puedes ir al menú de usuario y seleccionar Mejorar suscripción, o expandir el panel de información de tu tienda en el inicio y hacer clic en el botón Ampliar Plan."
+    },
+    "faq9": {
+      "title": "¿Cómo cierro mi sesión de forma segura?",
+      "content": "Solo debes abrir el panel de usuario en la esquina superior derecha y seleccionar la opción Cerrar sesión al final de la lista."
+    },
+    "faq10": {
+      "title": "¿Cómo puedo cambiar entre mis diferentes tiendas?",
+      "content": "Haz clic en el ícono de usuario arriba a la derecha para desplegar el panel de tu cuenta. Allí verás un selector con los nombres de todas tus tiendas vinculadas (como Shopify o WordPress); simplemente selecciona la tienda que quieras revisar para ver sus métricas y configuración específicas."
+    }
+  }
+}

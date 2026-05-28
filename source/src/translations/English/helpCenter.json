@@ -1,0 +1,48 @@
+{
+  "HelpCenter": "Help Center",
+  "TutorialVideos": "Tutorial videos",
+  "FaqsTitle": "Frequently Asked Questions (FAQs)",
+  "ContactSupport": "Contact support",
+  "home": {
+    "faq1": {
+      "title": "How do I complete the initial setup?",
+      "content": "You must complete the 5 steps in the left panel: customize the chat, define the personality, correct at least 3 responses in the training module, activate the bot, and connect it with Meta (WhatsApp/Instagram)."
+    },
+    "faq2": {
+      "title": "My bot is activated but it doesn't appear on my Shopify store. What should I do?",
+      "content": "Make sure the Wizybot Status switch is set to “On”. If you use Shopify, click the activation button to view the installation instructions in the theme editor."
+    },
+    "faq3": {
+      "title": "How do I change the currency of my sales reports?",
+      "content": "In the Wizybot Sales metric, you will find a selector next to the currency symbol. Click it to change the display to your local currency."
+    },
+    "faq4": {
+      "title": "What does the “Time saved” metric mean?",
+      "content": "It is an estimate based on the number of messages successfully answered by the AI without human agent intervention."
+    },
+    "faq5": {
+      "title": "Where can I find my account ID for support?",
+      "content": "You can find your account ID and current store plan by expanding the store information panel below the setup checklist."
+    },
+    "faq6": {
+      "title": "How do I change the app language or appearance (dark mode)?",
+      "content": "Click the user icon in the top-right corner. There you will find the Interface options to switch between light and dark mode, as well as the Language selector to adjust the platform to your preference."
+    },
+    "faq7": {
+      "title": "How can I mute notifications?",
+      "content": "Inside the same user menu (top-right corner), look for the Sound option. From there you can enable or disable the platform's sound alerts as needed."
+    },
+    "faq8": {
+      "title": "Where can I upgrade or change my current plan?",
+      "content": "You have two options: go to the user menu and select Upgrade Subscription, or expand the store information panel on the home page and click the Upgrade Plan button."
+    },
+    "faq9": {
+      "title": "How do I safely log out?",
+      "content": "Simply open the user panel in the top-right corner and select the Log out option at the bottom of the list."
+    },
+    "faq10": {
+      "title": "How can I switch between my different stores?",
+      "content": "Click the user icon in the top-right corner to open your account panel. There you will see a selector with all your linked stores, such as Shopify or WordPress. Simply select the store you want to review to view its specific metrics and settings."
+    }
+  }
+}

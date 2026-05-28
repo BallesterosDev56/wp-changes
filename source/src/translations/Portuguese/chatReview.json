@@ -1,0 +1,17 @@
+{
+  "GetMessages": "Atualizar",
+  "PendingReviews": "Revisões pendentes:",
+  "NeedsCorrection": "Necessita correção:",
+  "CorrectionType": "Tipo de correção:",
+  "OpsTeam": "Equipe de Operações",
+  "TechTeam": "Equipe Técnica",
+  "Score": "Pontuação:",
+  "Note": "Nota:",
+  "Cancel": "Cancelar",
+  "Submit": "Enviar",
+  "Good": "Bom",
+  "Bad": "Ruim",
+  "CorrectionsRequired": "Correções Necessárias",
+  "ShopToReview": "Tipo de revisão",
+  "NoChats": "Não há chats para revisar hoje"
+}

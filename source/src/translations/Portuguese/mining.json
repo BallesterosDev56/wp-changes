@@ -1,0 +1,90 @@
+{
+  "EmailUsernameOrCRMList": "Email, Nome de usuário",
+  "Text": "Texto",
+  "Filters": "Filtros",
+  "FiltersD": "Você pode buscar representantes de vendas de acordo com os parâmetros listados abaixo.",
+  "Eg": "Ex: Jhon.doe@gmail.com",
+  "TrelloUsername": "Nome de usuário do Trello",
+  "Eg1": "Ex: jhondoe",
+  "Eg2": "Ex: co-shopify",
+  "Eg3": "Ex: entrando em contato",
+  "Apply": "Aplicar",
+  "Reset": "Redefinir",
+  "SalesRepresentative": "Agentes de Vendas",
+  "SalesRepresentativeD": "Busque agentes de vendas dentro do aplicativo",
+  "Mining": "Mineração",
+  "MiningD": "Gerencie o processo de mineração de leads",
+  "AddUser": "Adicionar",
+  "Actions": "Ações",
+  "AddSaleRepresentative": "Adicionar agente",
+  "Update": "Atualizar",
+  "AddSaleRepresentativeD": "Adicione um novo agente e atribua grupos de mineração e listas do CRM",
+  "UpdateD": "Atualize um agente e altere grupos de mineração ou listas do CRM",
+  "SelectedMiningGroups": "Grupos de mineração selecionados",
+  "MiningGroupsSearch": "Busca de grupos de mineração",
+  "MiningGroupSearchPlaceholder": "Ex: co-shopify",
+  "CreateSaleRepresentative": "Criar Agente",
+  "UpdateSaleRepresentative": "Atualizar Agente",
+  "MissingFields": "Campos ausentes",
+  "AlreadyCreated": "Ocorreu um erro",
+  "CRMLists": "Listas CRM",
+  "Title": "Título",
+  "EmailSearch": "Busca por email",
+  "ManageMiningGroups": "Gerenciar grupos de mineração",
+  "ManageMiningGroupsD": "Crie e organize grupos de mineração para segmentar agentes de vendas",
+  "CountryCode": "Código do país",
+  "Service": "Serviço",
+  "Description": "Descrição",
+  "Selected": "Selecionado",
+  "Download": "Baixar",
+  "MiningGroups": "Grupos de mineração",
+  "MiningGroupCode": "Código do grupo de mineração",
+  "Date": "Data",
+  "DateI": "Data Inicial",
+  "DateF": "Data Final",
+  "ManageBoards": "Gerenciar quadros",
+  "ManageBoardsD": "Crie e atualize quadros do Trello para atribuir agentes de vendas e gerenciar seu fluxo de trabalho de forma eficaz nos diferentes grupos de mineração.",
+  "BoardName": "Nome do quadro",
+  "CRMListType": "Nova lista",
+  "SelectedBoards": "Quadros selecionados",
+  "BoardsSearch": "Busca de quadros",
+  "Creation": "Criação",
+  "CreateBoard": "Criar Quadro",
+  "UpdateBoard": "Atualizar Quadro",
+  "Create": "Criar",
+  "DeleteBoard": "Excluir Quadro",
+  "BoardsPickerSearch": "Buscar quadro...",
+  "BoardsPickerNotFound": "Nenhum quadro encontrado",
+  "ConfirmDeleteBoard": "Tem certeza de que deseja excluir este quadro?",
+  "DeleteSaleRepresentative": "Excluir Agente",
+  "ConfirmDeleteSaleRepresentative": "Tem certeza de que deseja excluir este agente?",
+  "fileUploadSizeWarning": "<strong>Aviso:</strong> Ao enviar arquivos diretamente para o banco de dados, cada arquivo deve ter menos de 500KB e o tamanho total de todos os arquivos não deve exceder 1MB.",
+  "Role": "Função",
+  "miner": {
+    "label": "Minerador"
+  },
+  "credits": {
+    "available": "Créditos Disponíveis"
+  },
+  "leads": {
+    "csv": "Leads CSV"
+  },
+  "stats": {
+    "accepted": "Aceitos",
+    "incomplete": "Incompletos",
+    "rejected": "Rejeitados"
+  },
+  "aws": {
+    "files": {
+      "title": "Arquivos AWS S3",
+      "subtitle": "Estes são os arquivos a serem minerados"
+    }
+  },
+  "sort_by_filesize": "Ordenar por tamanho do arquivo",
+  "dragDrop": {
+    "uploadS3": "Enviar arquivos para o S3",
+    "uploadDb": "Enviar arquivos para o banco de dados",
+    "uploadColdLead": "Enviar arquivos como lead frio"
+  },
+  "addColdLead": "Adicionar Lead Frio"
+}

@@ -1,0 +1,81 @@
+{
+  "days": {
+    "sunday": "Domingo",
+    "monday": "Segunda-feira",
+    "tuesday": "Terça-feira",
+    "wednesday": "Quarta-feira",
+    "thursday": "Quinta-feira",
+    "friday": "Sexta-feira",
+    "saturday": "Sábado"
+  },
+  "daysShort": {
+    "sunday": "Dom",
+    "monday": "Seg",
+    "tuesday": "Ter",
+    "wednesday": "Qua",
+    "thursday": "Qui",
+    "friday": "Sex",
+    "saturday": "Sáb"
+  },
+  "months": {
+    "january": "Janeiro",
+    "february": "Fevereiro",
+    "march": "Março",
+    "april": "Abril",
+    "may": "Maio",
+    "june": "Junho",
+    "july": "Julho",
+    "august": "Agosto",
+    "september": "Setembro",
+    "october": "Outubro",
+    "november": "Novembro",
+    "december": "Dezembro"
+  },
+  "monthsShort": {
+    "january": "Jan",
+    "february": "Fev",
+    "march": "Mar",
+    "april": "Abr",
+    "may": "Mai",
+    "june": "Jun",
+    "july": "Jul",
+    "august": "Ago",
+    "september": "Set",
+    "october": "Out",
+    "november": "Nov",
+    "december": "Dez"
+  },
+  "time": {
+    "second": "Segundo",
+    "seconds": "Segundos",
+    "minute": "Minuto",
+    "minutes": "Minutos",
+    "hour": "Hora",
+    "hours": "Horas",
+    "day": "Dia",
+    "days": "Dias",
+    "week": "Semana",
+    "weeks": "Semanas",
+    "month": "Mês",
+    "months": "Meses",
+    "year": "Ano",
+    "years": "Anos",
+    "short": {
+      "second": "s",
+      "minute": "m",
+      "hour": "h",
+      "day": "d",
+      "week": "sem",
+      "month": "mês",
+      "year": "a"
+    },
+    "am": "AM",
+    "pm": "PM",
+    "invalid": "Data inválida",
+    "now": "Agora mesmo",
+    "fullFormat": "{{dayName}}, {{day}} de {{month}} de {{year}} às {{hours}}:{{minutes}} {{ampm}}"
+  },
+  "customFormat": {
+    "shortDateTimeWithYear": "{{day}} de {{month}} de {{year}} às {{time}}"
+  }
+}

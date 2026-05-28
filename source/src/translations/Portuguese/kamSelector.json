@@ -1,0 +1,12 @@
+{
+  "KamSelector": "Seletor de Kam",
+  "KamSelectorSubtitle": "Verificar o Key Account Manager da loja",
+  "KamState": "Estado do Kam",
+  "KamStateSubtitle": "Estado do Key Account Manager da loja",
+  "NoKamTitle": "Esta loja está",
+  "NoKamText": "Nenhum Key Account Manager foi atribuído a esta loja. No menu lateral você pode escolher ou criar um.",
+  "KamSelect": "Selecionar Kam",
+  "Available": "Disponível",
+  "KamTitle": "Possui um Key Account Manager ativo",
+  "KamText": "Um Key Account Manager já foi atribuído a esta loja, aqui está o ID: "
+}

@@ -1,0 +1,91 @@
+{
+  "EmailUsernameOrCRMList": "Email, Username",
+  "Text": "Text",
+  "Filters": "Filters",
+  "FiltersD": "You can look for sale representative based on the parameters listed below.",
+  "Eg": "Eg: Jhon.doe@gmail.com",
+  "TrelloUsername": "Trello Username",
+  "Eg1": "Eg: jhondoe",
+  "Eg2": "Eg: co-shopify",
+  "Eg3": "Eg: Leads SD",
+  "Apply": "Apply",
+  "Reset": "Reset",
+  "SalesRepresentative": "Sales Representative",
+  "SalesRepresentativeD": "Look for sales representative inside the app",
+  "Mining": "Mining",
+  "MiningD": "Manage mining leads process inside the app.",
+  "AddUser": "Add",
+  "Actions": "Actions",
+  "AddSaleRepresentative": "Add sale representative",
+  "Update": "Update",
+  "Delete": "Delete",
+  "AddSaleRepresentativeD": "Add a new sale representative and assign mining pools and CRM lists to it",
+  "UpdateD": "Update an sale representative and change mining groups or CRM lists",
+  "SelectedMiningGroups": "Selected Mining Groups",
+  "MiningGroupsSearch": "Mining Group Search",
+  "MiningGroupSearchPlaceholder": "Eg: co-shopify",
+  "CreateSaleRepresentative": "Create Sale Representative",
+  "UpdateSaleRepresentative": "Update Sale Representative",
+  "MissingFields": "Missing Fields",
+  "AlreadyCreated": "There was an error",
+  "CRMLists": "CRM Lists",
+  "Title": "Title",
+  "EmailSearch": "Search for email",
+  "ManageMiningGroups": "Manage mining groups",
+  "ManageMiningGroupsD": "Create and organize mining groups to segment sales representative",
+  "CountryCode": "Country Code",
+  "Service": "Service",
+  "Description": "Description",
+  "Selected": "Selected",
+  "Download": "Download",
+  "MiningGroups": "Mining Groups",
+  "MiningGroupCode": "Mining Group Code",
+  "Date": "Date",
+  "DateI": "Start Date",
+  "DateF": "End Date",
+  "ManageBoards": "Manage boards",
+  "ManageBoardsD": "Create and update Trello boards to assign sales representatives and manage their workflow effectively across different mining groups.",
+  "BoardName": "Board name",
+  "CRMListType": "New list",
+  "SelectedBoards": "Selected Boards",
+  "BoardsSearch": "Boards Search",
+  "Creation": "Creation",
+  "CreateBoard": "Create Board",
+  "UpdateBoard": "Update Board",
+  "Create": "Create",
+  "DeleteBoard": "Delete Board",
+  "BoardsPickerSearch": "Search board...",
+  "BoardsPickerNotFound": "No boards found",
+  "ConfirmDeleteBoard": "Are you sure you want to delete this board?",
+  "DeleteSaleRepresentative": "Delete Sale Representative",
+  "ConfirmDeleteSaleRepresentative": "Are you sure you want to delete this sale representative?",
+  "fileUploadSizeWarning": "<strong>Warning:</strong> When uploading files directly to the database, each file must be under 500KB, and the total size of all files must not exceed 1MB.",
+  "Role": "Role",
+  "miner": {
+    "label": "Miner"
+  },
+  "credits": {
+    "available": "Available Credits"
+  },
+  "leads": {
+    "csv": "Leads CSV"
+  },
+  "stats": {
+    "accepted": "Accepted",
+    "incomplete": "Incomplete",
+    "rejected": "Rejected"
+  },
+  "aws": {
+    "files": {
+      "title": "AWS S3 Files",
+      "subtitle": "These are the files to mine"
+    }
+  },
+  "sort_by_filesize": "Sort by filesize",
+  "dragDrop": {
+    "uploadS3": "Upload files to S3",
+    "uploadDb": "Upload files to database",
+    "uploadColdLead": "Upload files as cold lead"
+  },
+  "addColdLead": "Add Cold Lead"
+}

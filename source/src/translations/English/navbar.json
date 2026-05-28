@@ -1,0 +1,25 @@
+{
+  "Upgrade": "Upgrade Plan",
+  "Sound": "Sound",
+  "NoSound": "Silence",
+  "Logout": "Log Out",
+  "Support": "Support",
+  "Admin": "Admin",
+  "AdminAccount": "Admin Account",
+  "Mode": "Dark Mode",
+  "NewMessage": "You have a new message",
+  "StolenT": "Live connection lost",
+  "StolenD": "It seems your user session has been used in another browser. To ensure stability, please use this account on only one device at a time.",
+  "Reestablish": "Use this device",
+  "userType": {
+    "shop_administrator_shopify": "Shop Administrator Shopify",
+    "shop_agent": "Shop Agent",
+    "shop_administrator": "Shop Administrator",
+    "super_administrator": "Super Administrator",
+    "shop_trainer": "Shop Trainer",
+    "ai_agent": "AI Agent"
+  },
+  "NewMessageTabTitle": "🔔 - New message!",
+  "NewFeature": "New Interface",
+  "OldFeature": "Classic Interface"
+}

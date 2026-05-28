@@ -1,0 +1,17 @@
+{
+  "title": "Frequently Asked Questions",
+  "faq1Question": "How do I enable Wizybot on my website?",
+  "faq1Answer": "To make Wizybot visible in your store, follow these steps in your Shopify admin:\n\n- In the left menu, select Online Store.\n- Open the Themes submenu.\n- Click Customize.\n- In the left sidebar, select the App embeds icon.\n- Find Wizybot and turn the switch on.\n- Important: Click Save in the top-right corner.",
+  "faq2Question": "How do I connect WhatsApp, Instagram, or Facebook?",
+  "faq2Answer": "To integrate your Meta channels, you need to schedule a session with our technical team. You can reach us as follows:\n\n- Write directly in the WhatsApp group assigned to your store.\n- If you do not have a group yet, contact us at: +57 350 256 6085.",
+  "faq3Question": "How do I correct a Wizybot reply?",
+  "faq3Answer": "If you want to adjust or improve the AI replies:\n\n- Go to the app main menu and select Knowledge.\n- From there, you can add or edit the information the bot uses to respond.\n- If you need more help, you can write through your WhatsApp support group. If you do not have a group yet, contact us at: +57 350 256 6085.",
+  "faq4Question": "Plans and pricing",
+  "faq4Answer": "We currently offer two options designed to scale with your business:\n\n- Basic plan ($69.99 USD/month): Includes up to 1,250 messages and 2,500 monthly comments.\n- Custom plan: If your message volume is higher, we design a plan tailored to your operational needs.",
+  "faq5Question": "What do our plans include?",
+  "faq5Answer": "When you subscribe to Wizybot, you get full access to our tool ecosystem:\n\n- Advanced AI: Automatic replies to conversations and comments.\n- Customer management (CRM): Full control of your prospects.\n- Marketing: Bulk messaging and automations via WhatsApp.\n- Unlimited team: Create as many users as you need, with specific roles and departments.\n- VIP support: Priority guidance so your operation never stops.",
+  "noResults": "No FAQs match that criteria.",
+  "contactTitle": "Still have questions?",
+  "contactDescription": "Our support team is available to help you by email or WhatsApp with any technical or business question.",
+  "contactButton": "Contact Support"
+}

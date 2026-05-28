@@ -1,0 +1,17 @@
+{
+  "title": "Perguntas Frequentes",
+  "faq1Question": "Como ativar o Wizybot na minha loja online?",
+  "faq1Answer": "Para habilitar a visibilidade do Wizybot na sua loja, siga estes passos no administrador da Shopify:\n\n- No menu da esquerda, selecione Online Store (Loja online).\n- Entre no submenu Themes (Temas).\n- Clique em Customize (Personalizar).\n- Na barra lateral esquerda, selecione o icone de App embeds (Aplicativos incorporados).\n- Localize o Wizybot e ative o interruptor.\n- Importante: Clique em Save (Salvar) no canto superior direito.",
+  "faq2Question": "Como conectar WhatsApp, Instagram ou Facebook?",
+  "faq2Answer": "Para integrar seus canais da Meta, e necessario agendar uma sessao com nossa equipe tecnica. Voce pode nos contatar assim:\n\n- Escreva diretamente no grupo de WhatsApp atribuido a sua loja.\n- Se ainda nao tiver um grupo, entre em contato pelo: +57 350 256 6085.",
+  "faq3Question": "Como corrijo uma resposta do Wizybot?",
+  "faq3Answer": "Se quiser ajustar ou melhorar as respostas da IA:\n\n- Va ao menu principal do aplicativo e selecione Conhecimentos.\n- A partir dai, voce pode adicionar ou editar as informacoes que o bot usa para responder.\n- Se precisar de mais ajuda, escreva pelo seu grupo de suporte no WhatsApp. Se ainda nao tiver um grupo, entre em contato pelo: +57 350 256 6085.",
+  "faq4Question": "Planos e precos",
+  "faq4Answer": "Atualmente oferecemos duas modalidades pensadas para escalar com o seu negocio:\n\n- Plano Basico ($69.99 USD/mes): Inclui ate 1.250 mensagens e 2.500 comentarios mensais.\n- Plano Personalizado: Se o seu fluxo de mensagens for maior, desenhamos um plano sob medida para as suas necessidades operacionais.",
+  "faq5Question": "O que incluem nossos planos?",
+  "faq5Answer": "Ao contratar o Wizybot, voce tem acesso total ao nosso ecossistema de ferramentas:\n\n- IA avancada: Resposta automatica de conversas e comentarios.\n- Gestao de clientes (CRM): Controle total dos seus prospectos.\n- Marketing: Mensageria em massa e automacoes via WhatsApp.\n- Equipe ilimitada: Crie quantos usuarios precisar, com funcoes e departamentos especificos.\n- Suporte VIP: Acompanhamento prioritario para que sua operacao nao pare.",
+  "noResults": "Nao encontramos FAQs com esse criterio.",
+  "contactTitle": "Ainda tem duvidas?",
+  "contactDescription": "Nosso time de suporte esta disponivel para ajudar por email ou WhatsApp com qualquer duvida tecnica ou comercial.",
+  "contactButton": "Contatar Suporte"
+}
