@@ -160,43 +160,53 @@ For WordPress plugin technical issues:
 - Review FAQ section
 - Contact Wizybot support for platform-related issues
 
-== Código fuente incluido (source/) ==
+== Included source code (source/) ==
 
-El directorio `source/` contiene los archivos fuente del widget frontend (React + TypeScript) y la configuración necesaria para empaquetarlo y generar los assets que utiliza el plugin de WordPress.
+The `source/` directory contains the frontend widget source code (React + TypeScript) and the configuration needed to bundle it and generate the assets used by the WordPress plugin.
 
-**Estructura principal:**
+**Main structure:**
 
-- `package.json`: dependencias y scripts de desarrollo/compilación.
-- `webpack.wordpress.config.js`: configuración de webpack para construir los paquetes destinados a WordPress.
-- `public/`: archivos CSS que se copian al plugin durante el build:
+- `package.json`: development/build dependencies and scripts.
+- `webpack.wordpress.config.js`: webpack configuration to build the WordPress bundles.
+- `public/`: CSS files copied to the plugin during the build:
   - `ShopifyWidgetInner.css`
   - `ShopifyWidgetOutter.css`
-- `src/components/`: componentes React/TypeScript que implementan el widget y UI.
-- `src/wordpress/`: entradas y assets específicos para WordPress:
+- `src/components/`: React/TypeScript components that implement the widget and UI.
+- `src/wordpress/`: WordPress-specific entries and assets:
   - `widget/indexWidget.wordpress.tsx`
   - `dashboard/indexDashboard.wordpress.tsx`
   - `index.wordpress.css`
 
-**Como compilar los assets de WordPress (widget + dashboard):**
+**How to build the WordPress assets (widget + dashboard):**
 
-1. Instalar dependencias:
+1. Install dependencies:
    - `cd source`
    - `npm install`
-2. Compilar en modo produccion:
+2. Create a Babel config file:
+  - .babelrc
+  - with the contents:
+  {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  }
+3. Build in production mode:
    - `npm run widget-wordpress`
 
-El script `widget-wordpress` ejecuta:
+The `widget-wordpress` script runs:
 
 `webpack --config webpack.wordpress.config.js --mode production`
 
-**Salida del build:**
+**Build output:**
 
-- Los archivos generados se escriben en `assets/` en la raiz del plugin.
-- Se crean `main.js`, `dashboard.js`, `main.css`, `dashboard.css`.
-- Se copian imagenes y CSS estaticos definidos en `webpack.wordpress.config.js`.
+- Generated files are written to `assets/` in the plugin root.
+- `main.js`, `dashboard.js`, `main.css`, `dashboard.css` are created.
+- Images and static CSS defined in `webpack.wordpress.config.js` are copied.
 
-**Desarrollo (watch):**
+**Development (watch):**
 
-- `npm run widget-wordpress:watch` recompila automaticamente en modo desarrollo.
+- `npm run widget-wordpress:watch` rebuilds automatically in development mode.
 
-Este codigo fuente representa la implementacion del widget frontend que se integra con el plugin para mostrar la interfaz de chat y funcionalidad en tiendas.
+This source code represents the frontend widget implementation that integrates with the plugin to display the chat interface and functionality in stores.

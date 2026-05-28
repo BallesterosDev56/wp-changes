@@ -464,7 +464,7 @@ if (!class_exists('Wizybot')):
                 return (bool) $cached;
             }
 
-            $url_backend = WIZYBOT_STAGE === 'local' ? NGROK_URL : WIZYBOT_GLOBAL_SELECTED_BACKEND;
+            $url_backend = WIZYBOT_GLOBAL_SELECTED_BACKEND;
 
             $url = WIZYBOT_STAGE === 'local'
                 ? 'https://host.docker.internal:3001/wordpress/isinstalled/' . urlencode($shopDomain)
