@@ -4,11 +4,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 
+const rootDir = __dirname;
+const srcDir = path.resolve(rootDir, 'src');
+const publicDir = path.resolve(rootDir, 'public');
+const assetsDir = path.resolve(rootDir, '..', 'assets');
+
 // Read ngrok.env
 let ngrokDomain = '';
 let wpLocalUrl = 'https://localhost:3004';
 try {
-  const envPath = path.resolve(__dirname, 'ngrok.env');
+  const envPath = path.resolve(rootDir, 'ngrok.env');
   if (fs.existsSync(envPath)) {
     const envContent = fs.readFileSync(envPath, 'utf8');
     const match = envContent.match(/NGROK_DOMAIN=(.*)/);
@@ -26,15 +31,15 @@ if (ngrokDomain === '') {
 
 module.exports = {
   entry: {
-    main: './src/wordpress/widget/indexWidget.wordpress.tsx',
-    dashboard: './src/wordpress/dashboard/indexDashboard.wordpress.tsx',
+    main: path.resolve(srcDir, 'wordpress/widget/indexWidget.wordpress.tsx'),
+    dashboard: path.resolve(
+      srcDir,
+      'wordpress/dashboard/indexDashboard.wordpress.tsx',
+    ),
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(
-      __dirname,
-      './tjlabs-wizybot-wordpress-extension/extensions/chat-extemsion/assets',
-    ),
+    path: assetsDir,
     clean: true,
   },
   stats: {
@@ -47,6 +52,9 @@ module.exports = {
     moduleTrace: true,
     dependentModules: true,
     outputPath: true,
+    errors: true,
+    errorDetails: true,
+    warnings: true,
   },
   module: {
     rules: [
@@ -119,42 +127,42 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: './src/images/logos/Logo.svg',
+          from: path.resolve(srcDir, 'images/logos/Logo.svg'),
           to: 'Logo.svg',
         },
         {
-          from: './src/images/wizy_chat_profile.png',
+          from: path.resolve(srcDir, 'images/wizy_chat_profile.png'),
           to: 'wizy_chat_profile.png',
         },
         {
-          from: './src/images/wizy_curvy_border.png',
+          from: path.resolve(srcDir, 'images/wizy_curvy_border.png'),
           to: 'wizy_curvy_border.png',
         },
         {
-          from: './src/images/wizy_logo_blue.svg',
+          from: path.resolve(srcDir, 'images/wizy_logo_blue.svg'),
           to: 'wizy_logo_blue.svg',
         },
         {
-          from: './src/images/wizy_no_image_available.png',
+          from: path.resolve(srcDir, 'images/wizy_no_image_available.png'),
           to: 'wizy_no_image_available.png',
         },
         {
-          from: './src/images/wizy_widget_loader.svg',
+          from: path.resolve(srcDir, 'images/wizy_widget_loader.svg'),
           to: 'wizy_widget_loader.svg',
         },
         {
-          from: './public/ShopifyWidgetInner.css',
+          from: path.resolve(publicDir, 'ShopifyWidgetInner.css'),
           to: 'ShopifyWidgetInner.css',
         },
         {
-          from: './public/ShopifyWidgetOutter.css',
+          from: path.resolve(publicDir, 'ShopifyWidgetOutter.css'),
           to: 'ShopifyWidgetOutter.css',
         },
         {
-          from: 'ngrok.env',
+          from: path.resolve(rootDir, 'ngrok.env'),
           to: 'ngrok.php',
           noErrorOnMissing: true,
-          transform(content, path) {
+          transform(content, filePath) {
             return `<?php define('NGROK_DOMAIN_WEBPACK', '${ngrokDomain}'); define('WP_LOCAL_URL_WEBPACK', '${wpLocalUrl}'); ?>`;
           },
         },
