@@ -1,1 +1,0 @@
-<?php define('NGROK_DOMAIN_WEBPACK', 'wizybot-api-11'); define('WP_LOCAL_URL_WEBPACK', 'https://localhost:3004'); ?>
