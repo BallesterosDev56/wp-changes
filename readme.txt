@@ -162,20 +162,41 @@ For WordPress plugin technical issues:
 
 == Código fuente incluido (source/) ==
 
-El directorio `source/` contiene los archivos fuente del widget frontend (React + TypeScript) y la configuración necesaria para empaquetarlo y generar los assets que utiliza el plugin de WordPress. A continuación se describe la estructura y el propósito de los archivos incluidos:
+El directorio `source/` contiene los archivos fuente del widget frontend (React + TypeScript) y la configuración necesaria para empaquetarlo y generar los assets que utiliza el plugin de WordPress.
 
-- `package.json`: define dependencias y scripts de desarrollo/compilación.
+**Estructura principal:**
+
+- `package.json`: dependencias y scripts de desarrollo/compilación.
 - `webpack.wordpress.config.js`: configuración de webpack para construir los paquetes destinados a WordPress.
-- `public/`: contiene archivos CSS compilados que se copian al plugin en tiempo de build:
+- `public/`: archivos CSS que se copian al plugin durante el build:
   - `ShopifyWidgetInner.css`
   - `ShopifyWidgetOutter.css`
-- `src/components/`: componentes React/TypeScript que implementan el widget:
-  - `ShopifyWidget.tsx`: componente principal del widget.
-  - `ShopifyWidgetWrapper.tsx`: envoltorio/bridge que facilita la integración en WordPress.
-  - `styles/ShopifyWidget.css`: estilos del widget.
-- `src/wordpress/`: punto de entrada y assets específicos para la versión WordPress:
-  - `index.wordpress.css`: estilos globales para la integración en WordPress.
-  - `types/WizybotWindow.ts`: definiciones de tipos TypeScript para objetos globales usados por el widget.
-  - `widget/indexWidget.wordpress.tsx`: entrypoint que inicializa el widget dentro de páginas WordPress.
+- `src/components/`: componentes React/TypeScript que implementan el widget y UI.
+- `src/wordpress/`: entradas y assets específicos para WordPress:
+  - `widget/indexWidget.wordpress.tsx`
+  - `dashboard/indexDashboard.wordpress.tsx`
+  - `index.wordpress.css`
 
-Este código fuente representa la implementación del widget frontend que se integra con el plugin para mostrar la interfaz de chat y funcionalidad en tiendas.
+**Como compilar los assets de WordPress (widget + dashboard):**
+
+1. Instalar dependencias:
+   - `cd source`
+   - `npm install`
+2. Compilar en modo produccion:
+   - `npm run widget-wordpress`
+
+El script `widget-wordpress` ejecuta:
+
+`webpack --config webpack.wordpress.config.js --mode production`
+
+**Salida del build:**
+
+- Los archivos generados se escriben en `assets/` en la raiz del plugin.
+- Se crean `main.js`, `dashboard.js`, `main.css`, `dashboard.css`.
+- Se copian imagenes y CSS estaticos definidos en `webpack.wordpress.config.js`.
+
+**Desarrollo (watch):**
+
+- `npm run widget-wordpress:watch` recompila automaticamente en modo desarrollo.
+
+Este codigo fuente representa la implementacion del widget frontend que se integra con el plugin para mostrar la interfaz de chat y funcionalidad en tiendas.

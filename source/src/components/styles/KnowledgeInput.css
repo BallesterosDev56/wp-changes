@@ -1,0 +1,113 @@
+.KnowledgeInput__Container {
+  display: block;
+  white-space: pre-wrap;
+  padding: 10px;
+  min-height: 50px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: text;
+  direction: ltr;
+  text-align: left;
+}
+
+.KnowledgeInput__Container:empty:not(:focus)::before {
+  font-size: small;
+  content: attr(data-placeholder);
+  color: #aaa;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.KnowledgeInput__Container:focus {
+  outline: none;
+}
+
+.KnowledgeInput__Input {
+    background: #fff;
+    outline: none;
+    width: fit-content;
+    height: 20px;
+    margin: 2px;
+    padding: 3px 0px;
+}
+
+.KnowledgeInput__Input__Last {
+    background: #fff;
+    outline: none;
+    width: max-content;
+    flex-grow: 1;
+    height: 20px;
+    margin: 2px;
+    padding: 3px 0px;
+}
+
+.KnowledgeInput__Input:focus
+.KnowledgeInput__Input__Last:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+.KnowledgeInput__Tag {
+    display: inline-block;
+    position: relative;
+    border-radius: 0.25rem;
+    background-color: #f3f4f6;
+    padding: 3px 7px;
+    padding-right: 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+    border: 1px solid rgba(209, 213, 219, 0.1);
+    height: 24px;
+    margin: 2px;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+.KnowledgeInput__Tag__Button {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    margin-left: 4px;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.KnowledgeInput__Tag__Button:hover {
+    opacity: 1;
+}
+
+.KnowledgeInput__Tag__Button img {
+    width: 12px;
+    height: 12px;
+}
+
+.KnowledgeInput__CharCounter {
+    text-align: right;
+    font-size: 12px;
+    color: #6b7280;
+    padding: 4px 8px 0 0;
+    user-select: none;
+    margin-top: 2px;
+    transition: color 0.2s ease;
+}
+
+.KnowledgeInput__CharCounter--over-limit {
+    color: #dc2626;
+    font-weight: 600;
+}

@@ -1,0 +1,32 @@
+.BulkWhatsAppTemplate__body__variable__input__outter {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.BulkWhatsAppTemplate__body__variable__input__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.BulkWhatsAppTemplate__body__variable__input__column__title {
+  padding-bottom: 5px;
+}
+
+.BulkWhatsAppTemplate__body__variable__container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.BulkWhatsAppTemplate__discount__code__container {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  margin: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}

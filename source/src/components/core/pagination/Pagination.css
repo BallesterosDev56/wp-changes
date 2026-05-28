@@ -1,0 +1,25 @@
+.Wizy__pagination__container {
+  display: flex;
+  list-style-type: none;
+  max-width: 288px;
+  min-width: 240px;
+  justify-content: space-between;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.Wizy__next__page__arrow {
+  position: relative;
+  width: 10px;
+  opacity: 0.6;
+  transform: scaleX(-1);
+}
+
+.Wizy__previous__page__arrow {
+  position: relative;
+  width: 10px;
+  opacity: 0.6;
+}
